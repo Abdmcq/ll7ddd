@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاسئلة الوزارية الدور الاول والثاني - اعداد عبدالرحمن حسن</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --primary-color: #007bff; /* Medical Blue */
+            --secondary-color: #17a2b8; /* Cyan Info */
+            --accent-color: #28a745; /* Success Green */
+            --background-start: #f8f9fa; /* Light Gray */
+            --background-end: #e9ecef;   /* Lighter Gray */
+            --card-bg: #ffffff;
+            --text-color: #343a40; /* Dark Gray */
+            --text-light: #6c757d; /* Medium Gray */
+            --text-on-primary: #ffffff;
+            --correct-color: #28a745; /* Green */
+            --wrong-color: #dc3545; /* Red */
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 123, 255, 0.15);
+            --hover-shadow-color: rgba(0, 123, 255, 0.3);
+            --font-family: 'Cairo', sans-serif;
+            --border-radius-sm: 6px;
+            --border-radius-md: 10px;
+            --border-radius-lg: 15px;
+
+            --dark-bg-start: #212529; /* Dark Gray */
+            --dark-bg-end: #343a40;   /* Darker Gray */
+            --dark-card-bg: #495057; /* Lighter Dark Gray */
+            --dark-text-color: #f8f9fa; /* Light Gray */
+            --dark-text-light: #adb5bd; /* Medium Light Gray */
+            --dark-border-color: #6c757d; /* Medium Gray Border */
+            --dark-shadow-color: rgba(0, 0, 0, 0.3);
+            --dark-hover-shadow-color: rgba(0, 0, 0, 0.5);
+            --dark-primary-hover: #0056b3; /* Darker Blue for hover */
+            --dark-accent-color: #34d399; /* Brighter Green for Dark Mode */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: space-between;
+            padding-top: 30px;
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 850px;
+            padding: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .page.visible {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease-in-out;
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            margin-bottom: 40px;
+        }
+        #main-buttons-page, #ministerial-questions-sub-page {
+             top: 30px;
+         }
+
+
+        .button {
+            padding: 15px 30px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: var(--border-radius-lg);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-on-primary);
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            font-family: var(--font-family);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            text-decoration: none;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px var(--hover-shadow-color);
+        }
+        .button:active {
+            transform: translateY(0) scale(1);
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .button i {
+            font-size: 1.1em;
+        }
+
+
+        #main-buttons-page h1 {
+            font-family: var(--font-family);
+            font-size: 2.0em; /* Slightly smaller for longer title */
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            transition: color 0.4s ease;
+            line-height: 1.4;
+        }
+        .main-button {
+             width: 100%;
+             max-width: 450px;
+        }
+
+        .sub-buttons-page h2 {
+             font-family: var(--font-family);
+             font-size: 1.8em;
+             font-weight: 700;
+             margin-bottom: 25px;
+             color: var(--secondary-color);
+             text-align: center;
+             transition: color 0.4s ease;
+        }
+        .sub-buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Wider minmax */
+            gap: 15px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .sub-button {
+            background: var(--card-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            font-size: 1.0em; /* Slightly smaller for potentially longer titles */
+            font-weight: 700;
+            padding: 12px 15px; /* Adjusted padding */
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: var(--border-radius-md);
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column; /* Stack icon and text */
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 8px;
+            min-height: 80px; /* Ensure consistent height */
+        }
+         .sub-button i {
+            font-size: 1.3em; /* Larger icon */
+            margin-bottom: 5px;
+        }
+        .sub-button:hover {
+            background: var(--primary-color);
+            color: var(--text-on-primary);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px var(--shadow-color);
+        }
+
+        #quiz-page {
+             padding-bottom: 80px;
+             padding-top: 0;
+             margin-bottom: 0;
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-on-primary);
+            text-align: center;
+            padding: 25px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom-left-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8em; /* Adjusted for potentially long lecture titles */
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            line-height: 1.3;
+        }
+        header h1 i {
+            font-size: 1.1em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 30px 0 0 0;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            width: 100%;
+            box-sizing: border-box;
+            animation: fadeIn 0.6s ease-out;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question {
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+            animation: slideInUp 0.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: calc(var(--question-index) * 0.1s);
+            transition: border-color 0.4s ease;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .question h2 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.6;
+            transition: color 0.4s ease;
+        }
+        .question .original-question, .question .translated-question {
+            font-family: var(--font-family);
+        }
+        .question .translated-question {
+            display: none;
+        }
+
+        .options {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .options button {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            font-size: 1.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-family);
+            text-align: right;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+        .options button:hover:not(:disabled) {
+            background-color: #e9ecef;
+            border-color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+        .options button:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+         .options button.correct, .options button.wrong {
+            color: white;
+            border-color: transparent;
+            font-weight: 700;
+        }
+        .options button.correct {
+            background-color: var(--correct-color);
+        }
+        .options button.wrong {
+            background-color: var(--wrong-color);
+        }
+
+        .options button.correct::before,
+        .options button.wrong::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 1.1em;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: popIn 0.4s ease-out;
+        }
+        .options button.correct::before { content: "\f00c"; color: white; }
+        .options button.wrong::before { content: "\f00d"; color: white; }
+
+        @keyframes popIn {
+            0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
+            70% { transform: translateY(-50%) scale(1.1); opacity: 1; }
+            100% { transform: translateY(-50%) scale(1); }
+        }
+
+        .options .original-option, .options .translated-option{
+            display: block;
+            font-family: var(--font-family);
+            padding-left: 30px;
+        }
+        .options .translated-option{ display: none; }
+
+        .translate-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .translate-button, .untranslate-button {
+            padding: 8px 18px;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            background-color: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-family: var(--font-family);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+         .translate-button::before { font-family: "Font Awesome 6 Free"; content: "\f0ac"; font-weight: 900; }
+         .untranslate-button::before { font-family: "Font Awesome 6 Free"; content: "\f0e2"; font-weight: 900; }
+
+        .translate-button:hover, .untranslate-button:hover {
+            background-color: #218838; /* Darker Green */
+            transform: scale(1.05);
+        }
+        .untranslate-button { background-color: #adb5bd; } /* Lighter gray */
+        .untranslate-button:hover { background-color: #6c757d; }
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: transparent;
+            color: var(--text-light);
+            font-size: 0.9em;
+            width: 100%;
+            font-family: var(--font-family);
+            box-sizing: border-box;
+            margin-top: auto;
+            transition: color 0.4s ease;
+        }
+        footer i.fa-copyright { margin-inline-end: 5px; }
+
+
+        .back-button-container {
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .back-button {
+             background: #6c757d; /* Medium Gray */
+             color: white;
+             width: auto;
+             display: inline-flex;
+             padding: 10px 25px;
+             font-size: 1em;
+             font-weight: 700;
+             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+             border-radius: var(--border-radius-lg);
+             transition: all 0.3s ease;
+        }
+         .back-button::before {
+             font-family: "Font Awesome 6 Free"; content: "\f060";
+             font-weight: 900; margin-inline-end: 8px;
+        }
+        .back-button:hover {
+            background-color: #5a6268; /* Darker Gray */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        footer .back-button-container { margin-top: 0; margin-bottom: 10px; }
+
+        .floating-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-on-primary);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            transform: scale(1);
+        }
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 20px var(--hover-shadow-color);
+        }
+        .floating-btn i {
+            transition: transform 0.4s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
+            color: var(--dark-text-color);
+            --shadow-color: var(--dark-shadow-color);
+            --hover-shadow-color: var(--dark-hover-shadow-color);
+            --border-color: var(--dark-border-color);
+            --text-color: var(--dark-text-color);
+            --text-light: var(--dark-text-light);
+        }
+
+        body.dark-mode #main-buttons-page h1 {
+            color: var(--secondary-color);
+            text-shadow: none;
+        }
+         body.dark-mode .sub-buttons-page h2 {
+             color: var(--accent-color);
+         }
+
+        body.dark-mode .sub-button {
+            background: var(--dark-card-bg);
+            color: var(--accent-color);
+            border-color: var(--dark-border-color);
+            box-shadow: 0 2px 8px var(--dark-shadow-color);
+        }
+        body.dark-mode .sub-button:hover {
+            background: var(--dark-border-color);
+            color: var(--dark-accent-color);
+            border-color: var(--accent-color);
+            box-shadow: 0 6px 15px var(--dark-hover-shadow-color);
+        }
+
+        body.dark-mode header {
+            background: linear-gradient(135deg, var(--dark-bg-start), #343a40);
+            box-shadow: 0 5px 15px var(--dark-shadow-color);
+        }
+
+        body.dark-mode .container {
+            background-color: var(--dark-card-bg);
+            box-shadow: 0 5px 25px var(--dark-shadow-color);
+        }
+
+        body.dark-mode .question {
+            border-bottom-color: var(--dark-border-color);
+        }
+        body.dark-mode .question h2 {
+            color: var(--dark-accent-color);
+        }
+
+        body.dark-mode .options button {
+            background-color: #495057; /* Lighter dark gray */
+            border-color: var(--dark-border-color);
+            color: var(--dark-text-color);
+        }
+        body.dark-mode .options button:hover:not(:disabled) {
+            background-color: #6c757d; /* Medium gray */
+            border-color: var(--accent-color);
+        }
+        body.dark-mode .options button:disabled {
+            opacity: 0.6;
+        }
+
+         body.dark-mode .options button.correct { background-color: var(--correct-color); }
+         body.dark-mode .options button.wrong { background-color: var(--wrong-color); }
+         body.dark-mode .options button.correct::before,
+         body.dark-mode .options button.wrong::before { color: white; }
+
+
+        body.dark-mode .translate-button { background-color: var(--accent-color); color: #111; }
+        body.dark-mode .translate-button:hover { background-color: var(--dark-accent-color); }
+        body.dark-mode .untranslate-button { background-color: #555; }
+        body.dark-mode .untranslate-button:hover { background-color: #777; }
+
+        body.dark-mode footer { color: var(--dark-text-light); }
+
+        body.dark-mode .back-button {
+            background: #5a6268; /* Darker Gray */
+            color: var(--dark-text-color);
+            box-shadow: 0 2px 8px var(--dark-shadow-color);
+        }
+        body.dark-mode .back-button:hover {
+            background: #6c757d; /* Medium Gray */
+            box-shadow: 0 4px 12px var(--dark-hover-shadow-color);
+        }
+
+        body.dark-mode .floating-btn {
+            background: linear-gradient(135deg, #495057, #343a40);
+            color: var(--dark-accent-color);
+            box-shadow: 0 5px 15px var(--dark-shadow-color);
+        }
+         body.dark-mode .floating-btn:hover {
+             box-shadow: 0 8px 20px var(--dark-hover-shadow-color);
+         }
+
+
+        @media (max-width: 768px) {
+            .page { padding: 15px; top: 70px; }
+             #main-buttons-page, #ministerial-questions-sub-page { top: 20px; }
+             #main-buttons-page h1 { font-size: 1.7em; }
+             .sub-buttons-page h2 { font-size: 1.6em; }
+             .button { padding: 14px 25px; font-size: 1.1em; }
+             .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* Adjust breakpoint */
+             .sub-button { font-size: 0.95em; padding: 10px 12px; min-height: 70px; }
+             .sub-button i { font-size: 1.2em; }
+            header { padding: 20px 15px; }
+            header h1 { font-size: 1.5em; gap: 10px; }
+            header h1 i { font-size: 1.0em; }
+            .container { margin-top: 20px; padding: 20px; }
+            .question h2 { font-size: 1.25em; }
+            .options button { font-size: 1em; padding: 12px 15px; }
+             .options button.correct::before, .options button.wrong::before { left: 12px; font-size: 1em; }
+            .options .original-option, .options .translated-option{ padding-left: 25px; }
+             .translate-button, .untranslate-button { font-size: 0.85em; padding: 7px 15px; }
+            footer { font-size: 0.85em; padding: 15px; }
+            .back-button { padding: 9px 20px; font-size: 0.95em; }
+            .floating-btn { width: 50px; height: 50px; font-size: 1.3em; bottom: 20px; right: 20px; }
+        }
+
+        @media (max-width: 480px) {
+             #main-buttons-page h1 { font-size: 1.5em; }
+              .sub-buttons-page h2 { font-size: 1.4em; }
+             .button { padding: 12px 20px; font-size: 1em; }
+             .sub-buttons-container { grid-template-columns: 1fr; } /* Single column */
+              .sub-button { font-size: 1em; padding: 12px 15px; }
+              .sub-button i { font-size: 1.3em; }
+            header h1 { font-size: 1.3em; }
+            .container { padding: 15px; }
+            .question h2 { font-size: 1.15em; }
+            .options button { font-size: 0.95em; }
+            .floating-btn { width: 45px; height: 45px; font-size: 1.2em; bottom: 15px; right: 15px;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main-buttons-page" class="page">
+        <h1><i class="fas fa-stethoscope"></i> الاسئلة الوزارية الدور الاول والثاني <br> اعداد عبدالرحمن حسن</h1>
+        <button class="button main-button" onclick="showPage('ministerial-questions-sub-page')">
+            <i class="fas fa-book-medical"></i>
+            عرض محاضرات الاسئلة الوزارية
+        </button>
+    </div>
+
+    <div id="ministerial-questions-sub-page" class="page sub-buttons-page">
+        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة</h2>
+        <div class="sub-buttons-container">
+            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'PreMedication')">
+                <i class="fas fa-pills"></i> pre-medication
+            </button>
+            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Laryngospasm')">
+                <i class="fas fa-lungs"></i> Laryngospasm and Bronchospasm
+            </button>
+            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'HypoxiaMH')">
+                <i class="fas fa-temperature-high"></i> Hypoxia and Malignant Hyperthermia
+            </button>
+            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Fluids')">
+                <i class="fas fa-vial"></i> Intravenous fluids
+            </button>
+             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Blood')">
+                <i class="fas fa-tint"></i> Blood and blood products
+            </button>
+             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Positioning')">
+                <i class="fas fa-bed-pulse"></i> Surgical position
+            </button>
+             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Monitoring')">
+                <i class="fas fa-heart-pulse"></i> Intraoperative patient monitoring
+            </button>
+             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'CPR')">
+                <i class="fas fa-lungs-virus"></i> CPR
+            </button>
+             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Safety')">
+                <i class="fas fa-shield-alt"></i> Safety measure operating room
+            </button>
+        </div>
+        <div class="back-button-container">
+            <button class="button back-button" onclick="showPage('main-buttons-page')">رجوع</button>
+        </div>
+    </div>
+
+    <div id="quiz-page" class="page">
+        <header>
+            <h1 id="quiz-title"> <i class="fas fa-notes-medical"></i> </h1>
+        </header>
+        <div class="container">
+            <p class="loading-text" style="text-align: center; font-size: 1.2em; color: var(--text-light); padding: 30px;">جار تحميل الأسئلة...</p>
+        </div>
+        <footer>
+             <div class="back-button-container" style="margin-top: 0; margin-bottom: 10px;">
+                <button class="button back-button" onclick="showPage(lastSubButtonsPageId)">رجوع</button>
+            </div>
+            <span><i class="far fa-copyright"></i> عبدالرحمن حسن</span>
+        </footer>
+    </div>
+
+    <button id="darkModeToggle" class="floating-btn" aria-label="Toggle Dark Mode">
+        <i class="fas fa-sun"></i>
+    </button>
+
+
+    <script>
+         const quizData = {
+             "MinisterialQuestions": {
+                "PreMedication": [
+                    { question: "About midazolam ?", options: ["A) The elimination half-life is (1.5-3.5) hours", "B) Acts on GABA receptor", "C) Has a good hemodynamic stability", "D) A benzodiazepine drug", "E) All of the above"], correct: 4 },
+                    { question: "What is the primary mechanism of action of opioid analgesics?", options: ["A) COX inhibition", "B) Norepinephrine reuptake inhibition", "C) Mu receptor agonism", "D) NMDA receptor antagonism", "E) None of the above ."], correct: 2 },
+                    { question: "Which anxiolytic drug is characterized by rapid absorption when given orally?", options: ["A) Diazepam", "B) Midazolam", "C) Lorazepam", "D) Alprazolam", "E) Morphine"], correct: 0 },
+                    { question: "Which one of the following is commonly used to treat bradycardia?", options: ["A) Atropine", "B) Aminophylline", "C) Adrenaline", "D) Salbutamol", "E) None of the above ."], correct: 0 },
+                    { question: "All the following are analgesic drugs except ?", options: ["A) Ketamine", "B) Fentanyl", "C) Pethidine", "D) Paracetamol", "E) Propofol"], correct: 4 },
+                    { question: "Which opioid is known for its ultra-short-acting synthetic nature and is antagonized by naloxone ?", options: ["A) Fentanyl", "B) Morphine", "C) Pethidine", "D) Remifentanil", "E) Codeine"], correct: 3 },
+                    { question: "Metoclopramide (All true except one)?", options: ["A) The most common used antiemetic drug", "B) Act centrally as dopaminergic antagonist on the vomiting center in the medulla", "C) Act peripherally by decreasing the rate of gastric emptying", "D) Increasing in the gut peristalsis", "E) May produce oculogyric (extrapyramidal) side effect"], correct: 2 },
+                    { question: "What is the main purpose of using antacid drugs preoperatively?", options: ["A) Increase the volume of gastric juice", "B) Increase the pH of gastric content", "C) Prevent postoperative nausea and vomiting", "D) Stimulate gastric peristalsis", "E) Enhance pulmonary aspiration risk"], correct: 1 },
+                    { question: "Ondansetron ( all true except one) ?", options: ["A) Ondansetron is a selective 5-HT3 serotonin-receptor antagonist", "B) Used for its antiemetic properties", "C) Ondansetron acts both centrally and peripherally to prevent and treat nausea and vomiting", "D) Has effects peripherally by acting on the laryngeal nerve", "E) The peripheral actions of ondansetron are thought to be the mechanism for its antiemetic effects"], correct: 3 },
+                    { question: "Atropine is : ( all true except one) ?", options: ["A) Has vagal inhibition", "B) CNS depressant", "C) The dose of atropine is 0.3-0.4 mg IV", "D) Antisialagogues (decrease salivation)", "E) Increases heart rate"], correct: 1 },
+                    { question: "All of the following drugs are benzodiazepines except ?", options: ["A) Omeprazole", "B) Midazolam", "C) Diazepam", "D) Lorazepam", "E) Alprazolam"], correct: 0 },
+                    { question: "Drug that causes tachycardia is ?", options: ["A) Morphine", "B) Beta blockers", "C) Remifentanil", "D) Ketamine", "E) Halothane"], correct: 3 },
+                    { question: "Regarding Pethidine versus morphine, all choices are true except one?", options: ["A) Less spasmodic action in smooth muscles", "B) Less miosis, constipation, and urinary retention", "C) Rapid but short duration of action (2-3 hrs)", "D) Vagolytic effect", "E) Bradycardia"], correct: 4 },
+                    { question: "How does metoclopramide primarily act to prevent nausea and vomiting?", options: ["A) By blocking dopamine receptors in the medulla", "B) By enhancing serotonin release in the gut", "C) By increasing gastric acidity", "D) By inhibiting 5-HT3 serotonin receptors centrally", "E) By suppressing vagal nerve activity"], correct: 0 },
+                    { question: "Diazepam, Midazolam,and Atropine are ?", options: ["A) Postoperative analgesics", "B) Intraoperative analgesics", "C) Preanesthetic medications", "D) TIVA", "E) Antiemetic medications"], correct: 2 },
+                    { question: "How does fentanyl compare to morphine in terms of analgesic potency ?", options: ["A) Equipotent", "B) Half as potent", "C) Twice as potent", "D) 100 times more potent", "E) 10 times more potent"], correct: 3 },
+                    { question: "All the following are true regarding Glycopyrrolate except one?", options: ["A) Anticholinergic drug", "B) Increase heart rate", "C) Causes sedation", "D) Not pass blood brain barrier", "E) No antiemetic effects"], correct: 2 },
+                    { question: "Which of the following statements about anxiolytic drugs is true?", options: ["A) They primarily act on serotonin receptors", "B) They commonly cause nausea and vomiting", "C) They lack analgesic effects", "D) They do not cross the placenta", "E) Do not cause cardiac and respiratory depression"], correct: 2 },
+                    { question: "Which of the following drugs is known as H2-blockers and used as antacids?", options: ["A) Ranitidine", "B) Omeprazole", "C) Hyoscine", "D) Lansoprazole", "E) None of the above"], correct: 0 },
+                    { question: "Which of the following statements about antacid drugs is true?", options: ["A) They decrease the pH of gastric juice", "B) They are recommended for patients with no risk of aspiration", "C) They primarily act by increasing gastric volume", "D) Sodium citrate is commonly administered intravenously", "E) Histamine H2 receptor antagonists increase the pH of gastric content"], correct: 4 },
+                    { question: "The aim of premedication ?", options: ["A) Analgesia", "B) Anti-anxiety", "C) Amnesia", "D) Antiemetic", "E) All of the above"], correct: 4 },
+                    { question: "Drugs used in the presence of acute severe pain ?", options: ["A) Corticosteroids", "B) NSAIDs", "C) Opioid analgesics", "D) Anti-autonomic drugs", "E) Antiemetic drugs"], correct: 2 },
+                    { question: "All the following are true regarding fentanyl, except one ?", options: ["A) Cause less nausea and vomiting", "B) Can be reversed by physostigmine", "C) Rapid onset", "D) Short duration", "E) Should be used with caution in COPD patient"], correct: 1 },
+                    { question: "The primary mechanism of action of ondansetron is by ?", options: ["A) Inhibition of opioid receptors", "B) Stimulation of acetylcholine receptors", "C) Blockade of histamine receptors", "D) Inhibition of 5-HT3 serotonin receptors", "E) Activation of dopamine receptors"], correct: 3 },
+                    { question: "Which opioid produces less miosis, constipation, and urinary retention compared to morphine ?", options: ["A) Pethidine", "B) Codeine", "C) Remifentanil", "D) Fentanyl", "E) Morphine"], correct: 0 },
+                    { question: "NSAIDs are?", options: ["A) Analgesic drugs", "B) Sedation drugs", "C) Anti-autonomic drugs", "D) Antiemetic drugs", "E) None of the above"], correct: 0 },
+                    { question: "Regarding Remifentanil, all are true except one?", options: ["A) Is a potent ultra-short-acting synthetic opioid given to patients during surgery for pain relief", "B) Remifentanil is a specific mu-type-opioid receptor agonist", "C) Causes respiratory depression and analgesia", "D) Is antagonized by flumazenil", "E) The analgesic effects of remifentanil are rapid in onset and offset"], correct: 3 },
+                    { question: "Most common side effect of remifentanil is ?", options: ["A) Hypertension", "B) Tachycardia", "C) Thrombophlebitis", "D) Vomiting.", "E) Hypotension ."], correct: 4 }
+                ],
+                "Laryngospasm": [
+                    { question: "All of the following are true about bronchospasm manifestations except ?", options: ["A) An inspiratory wheeze", "B) Prolonged expiration", "C) Change in capnogram", "D) Low oxygen saturation", "E) Hypoventilation"], correct: 0 },
+                    { question: "During management of laryngospasm (all are true except) ?", options: ["A) Trying 20% of induction dose", "B) Using CPAP", "C) Always using Guedel airway", "D) 100% O2", "E) If all failed, use suxamethonium"], correct: 2 },
+                    { question: "Precipitating causes of laryngospasm include all the following except ?", options: ["A) Blood in pharynx", "B) Steroids", "C) Surgical stimulation", "D) Irritant volatile agent", "E) Airway manipulation"], correct: 1 },
+                    { question: "Laryngospasm may increase ?", options: ["A) Bronchodilation", "B) Risk of kidney failure", "C) Risk of pulmonary edema", "D) Risk of allergy", "E) The possibility of wound infection"], correct: 2 },
+                    { question: "............. is the only tensor of the vocal cords. Gentle stretching of this muscle may overcome moderate laryngospasm ?", options: ["A) Cricothyroid muscle", "B) Internal intercostal muscle", "C) External intercostal", "D) Buccinators muscle", "E) Diaphragm"], correct: 0 },
+                    { question: "Signs of laryngospasm (all are true except one)?", options: ["A) Paradoxical chest/abdominal movements", "B) Inspiratory stridor/airway obstruction", "C) Decreased inspiratory efforts", "D) Bradycardia", "E) Desaturation"], correct: 2 },
+                    { question: "By which mechanism can anaphylaxis produce bronchospasm?", options: ["A) Serotonin release", "B) Dopamine release", "C) Histamine release", "D) Oxytocin release", "E) Aldosterone release"], correct: 2 },
+                    { question: "End tidal CO2 reading increase in case of ?", options: ["A) Rebreathing", "B) Hypoventilation", "C) Increased CO2 production", "D) All of the above", "E) None of the above"], correct: 3 },
+                    { question: "Risk factors for laryngospasm include all the following except?", options: ["A) Difficult intubation", "B) Nasal and anal surgery", "C) Pharyngeal surgery", "D) Children with asthma", "E) Slim patients"], correct: 4 },
+                    { question: "Signs of severe bronchospasm (all true except one) ?", options: ["A) Silent on auscultation", "B) Low oxygen saturation", "C) Hypoventilation", "D) Hypotension", "E) Decreased airway pressure"], correct: 4 },
+                    { question: "Causes of bronchospasm include ?", options: ["A) Anaphylaxis", "B) Misplacement of endotracheal tube", "C) Aspiration of gastric contents", "D) Pulmonary oedema", "E) All of the above"], correct: 4 },
+                    { question: "The management of bronchospasm includes: (all true except)?", options: ["A) 100% O2", "B) Stop stimulation", "C) Give morphine", "D) Try gentle chin lift", "E) Deepen anesthesia"], correct: 2 },
+                    { question: "By which mechanism can bronchospasm cause hypotension?", options: ["A) Increase thoracic pressure and decrease venous return", "B) Vasoconstriction", "C) Decrease ICP", "D) All of the above", "E) None of the above"], correct: 0 },
+                    { question: "Regarding using suxamethonium for laryngospasm management, one of the following is correct?", options: ["A) Can trigger laryngospasm during surgery", "B) Cannot be used for intubation", "C) Intramuscular administration should be avoided", "D) It can cause tachycardia", "E) The dose for relieving laryngospasm is 0.5 mg/kg intravenously"], correct: 4 },
+                    { question: "Which drug is recommended for nebulization in the management of bronchospasm?", options: ["A) Adrenaline", "B) Salbutamol", "C) Hydrocortisone", "D) Aminophylline", "E) Noradrenaline"], correct: 1 },
+                    { question: "Bronchospasm cause hypoxia by affecting ?", options: ["A) Tissue perfusion", "B) Upper airway obstruction", "C) Decreasing cardiac output", "D) Prevent O2 from reaching the lungs", "E) Equipment related"], correct: 3 },
+                    { question: "The management of anaphylaxis that occurs during anesthesia include ?", options: ["A) Administer 40% O2", "B) Bronchodilators and an antihistamine", "C) Stop administration of intravenous saline", "D) Give metoprolol", "E) Continue administration of anesthetic agent"], correct: 1 },
+                    { question: "The cause of bronchospasm during induction of anesthesia includes the following except ?", options: ["A) Anaphylaxis", "B) Misplacement of ETT", "C) Pulmonary edema", "D) Unknown cause", "E) All of the above"], correct: 4 },
+                    { question: "Which statement about the administration of suxamethonium for laryngospasm management is correct?", options: ["A) Delay in relieving severe laryngospasm was associated with post-obstructive pulmonary edema", "B) Suxamethonium can be used for pediatric patients only", "C) It is not recommended for patients with laryngospasm", "D) It should be the first step for management", "E) Suxamethonium administration always requires intubation as a follow-up procedure"], correct: 0 },
+                    { question: "When administering atropine during laryngospasm management, what dosage should be used to prevent bradycardia?", options: ["A) 0.1 mg/kg", "B) 0.01 mg/kg", "C) 0.5 mg/kg", "D) 0.05 mg/kg", "E) 0.001 mg/kg"], correct: 1 },
+                    { question: "Management of laryngospasm all true except ?", options: ["A) 100% oxygen", "B) Jaw thrust", "C) Call for help", "D) Continue the surgery", "E) Clear the airway"], correct: 3 },
+                    { question: "Signs of laryngospasm (all true except one)?", options: ["A) Expiratory stridor", "B) Increased inspiratory efforts", "C) Paradoxical chest", "D) Desaturation", "E) Central cyanosis"], correct: 0 },
+                    { question: "Precipitating causes of laryngospasm include all the following except ?", options: ["A) Airway manipulation", "B) Regurgitation", "C) Deep anesthesia", "D) Moving patient", "E) Pain"], correct: 2 },
+                    { question: "What is the recommended dosage of salbutamol for adult patients experiencing bronchospasm during anesthesia ?", options: ["A) 0.001 mg/kg bolus", "B) 0.1 ml/kg of 1:10,000 solution", "C) 1 ml (5 mg) solution nebulized", "D) 0.0015 mg/kg/min infusion", "E) 0.2 mg/kg bolus"], correct: 2 },
+                    { question: "Which phase of anesthesia is most likely to be identified with unilateral bronchospasm and pulmonary edema ?", options: ["A) Maintenance", "B) Emergence or recovery", "C) Pre-operative", "D) Induction", "E) All of the above"], correct: 1 },
+                    { question: "If you cannot ventilate the patient with bronchospasm, the possible causes include ?", options: ["A) Misplaced tube", "B) Kinked tube", "C) Aspiration", "D) Pneumothorax", "E) All of the above"], correct: 4 }
+                ],
+                 "HypoxiaMH": [
+                    { question: "Causes of hypoxia under general anesthesia (all true except one)?", options: ["A) Pneumothorax", "B) Laryngospasm", "C) Anaphylaxis", "D) Inadequate reversal of muscle relaxant", "E) Drugs like salbutamol"], correct: 4 },
+                    { question: "Regarding malignant hyperthermia, all are true except ?", options: ["A) Is a hyper-metabolic response to potent inhalation agents", "B) The depolarizing muscle relaxant succinylcholine can cause MH", "C) Unexplained decrease of end-tidal", "D) It can occur during the surgery", "E) Tachycardia is a sign"], correct: 2 },
+                    { question: "The following are diagnostic criteria for malignant hyperthermia except ?", options: ["A) Muscle rigidity", "B) Tachycardia", "C) Hyperthermia", "D) Unexplained increase of EtCO2", "E) Alkalosis"], correct: 4 },
+                    { question: "One of following is incorrect regarding anesthetic drugs causing hypoxia ?", options: ["A) Light anesthesia", "B) A drop in blood pressure", "C) Muscle relaxants", "D) Anaphylaxis", "E) None of the above"], correct: 0 },
+                    { question: "How can anaphylaxis cause hypoxia ?", options: ["A) By central respiratory depression", "B) Causing upper airway obstruction", "C) Producing bronchospasm and low cardiac output", "D) Produce muscle paralysis", "E) Both A & B"], correct: 2 },
+                    { question: "What can cause splinting of the diaphragm and interfere with breathing in infants?", options: ["A) Pneumothorax", "B) Facemask ventilation", "C) Lung consolidation", "D) Tracheal intubation", "E) Opioid administration"], correct: 1 },
+                    { question: "All the following are late signs of malignant hyperthermia except one?", options: ["A) Cola-colored urine", "B) Increased serum creatinine kinase", "C) Hyperkalemia", "D) Decrease Spo2", "E) Coagulopathy"], correct: 3 },
+                    { question: "Traction on the peritoneum or eye can cause ?", options: ["A) Blood loss", "B) Hypoxia", "C) Hypothermia", "D) Bradycardia", "E) Increase EtCO2"], correct: 3 },
+                    { question: "Malignant hyperthermia treatment by a drug known as ?", options: ["A) Metoclopramide", "B) Dantrolene", "C) Dexamethasone", "D) Atropine", "E) Neostigmine"], correct: 1 },
+                    { question: "All the following are drug-related causes of hypoxemia except ?", options: ["A) Deep anesthesia", "B) Muscle relaxant", "C) Hypotension", "D) Chronic use of hyperglycemic drugs", "E) Anaphylaxis"], correct: 3 },
+                    { question: "All are causes of malignant hyperthermia except one?", options: ["A) Non-depolarizing muscle relaxant", "B) Halothane", "C) Sevoflurane", "D) Stress", "E) Desflurane"], correct: 0 },
+                    { question: "Regarding management of malignant hyperthermia, mannitol is used to ?", options: ["A) Maintain high blood pressure", "B) Maintain diuresis", "C) Decrease CO2 production", "D) Reduction of metabolic factors", "E) All of the above"], correct: 1 },
+                    { question: "All the following are early signs of malignant hyperthermia except one?", options: ["A) Masseter spasm", "B) Elevated EtCO2", "C) Acidosis", "D) Tachycardia", "E) Arrhythmia"], correct: 2 },
+                    { question: "How is the diagnosis of malignant hyperthermia typically confirmed?", options: ["A) Clinical presentation", "B) Blood glucose levels", "C) Electrocardiogram (ECG)", "D) Serum creatinine levels", "E) Chest X-ray"], correct: 0 },
+                    { question: "Which one is not related to the signs of developing malignant hyperthermia?", options: ["A) Hyperkalemia", "B) Hypernatremia", "C) CVS instability", "D) Acidosis", "E) None of the above"], correct: 1 },
+                    { question: "Regarding circulation in the management of hypoxia (all true except) ?", options: ["A) Feel for a pulse", "B) Check the blood pressure", "C) Check the peripheral perfusion and capillary refill time", "D) Inspection of the chest movements and tidal volume", "E) Is anesthesia too deep? Is there a high spinal block"], correct: 3 },
+                    { question: "Decreased venous return leads to hypoxia by causing ?", options: ["A) Hypotension", "B) Splint the diaphragm", "C) Airway obstruction", "D) Pneumothorax", "E) None of the above"], correct: 0 },
+                    { question: "All are causes of intraoperative hypoxia except ?", options: ["A) Disconnection of endotracheal tube", "B) Obstruction by secretion", "C) Severe anemia", "D) Hypervolemia", "E) Empty O2 cylinder"], correct: 3 },
+                    { question: "Management of hypoxia during anesthesia ?", options: ["A) Reposition of LMA", "B) Reposition of probe of oximeter", "C) Check blood pressure", "D) Fluid replacement", "E) All the above"], correct: 4 },
+                    { question: "Regarding the management of hypoxia, what action is recommended if there is doubt about the position of the endotracheal tube?", options: ["A) Secure it firmly in place", "B) Increase the ventilator rate", "C) Administer a bronchodilator", "D) Remove the tube", "E) Check the oxygen saturation level"], correct: 3 },
+                    { question: "By which mechanism can high spinal anesthesia cause hypoxia?", options: ["A) Causes airway obstruction", "B) Causes inadequate breathing", "C) Central respiratory depression", "D) Severe bronchospasm", "E) None of the above"], correct: 1 },
+                    { question: "Malignant hyperthermia ( all true except one)?", options: ["A) Is a hypermetabolic response to potent inhalation agents", "B) There is no specific diagnostic testing", "C) The key diagnostic features include an unexplained elevation of expired carbon dioxide", "D) Bradycardia occurs", "E) Acidosis"], correct: 3 },
+                    { question: "What is the laboratory finding used to confirm the diagnosis of malignant hyperthermia?", options: ["A) Increase Hb", "B) Blood glucose levels", "C) Serum magnesium level", "D) Serum creatinine levels", "E) None of the above"], correct: 3 },
+                    { question: "All the following are treatments of malignant hyperthermia except ?", options: ["A) Dantrolene", "B) Maintain urine output > 2 ml/min", "C) Maintain anesthesia with TIVA", "D) Cool the patient", "E) Serial ABG"], correct: 2 },
+                    { question: "All the following are early signs of malignant hyperthermia except one?", options: ["A) Masseter spasm", "B) Elevated EtCO2", "C) Tachycardia", "D) Arrhythmia", "E) Acidosis"], correct: 4 },
+                    { question: "following are complications of hypothermia during anesthesia except ?", options: ["A) Longer hospital stay", "B) Hypertension", "C) Poor wound healing", "D) Wound infection", "E) Shivering"], correct: 1 },
+                    { question: "Active cooling of a patient with malignant hyperthermia includes all the following Except ?", options: ["A) Intra-abdominal lavage with saline at (4°C)", "B) Paracetamol", "C) Cool sponging and ice pack", "D) Lowering theater temperature", "E) Cold IV fluid"], correct: 1 },
+                    { question: "The management of anaphylaxis that occurs during anesthesia includes ?", options: ["A) Administer 40% O2", "B) Bronchodilators and an antihistamine", "C) Stop administration of intravenous saline", "D) Give metoprolol", "E) Continue administration of anesthetic agent"], correct: 1 },
+                    { question: "How does spinal anesthesia potentially affect body temperature?", options: ["A) It has no effect on body temperature", "B) It causes a marked increase in core temperature", "C) It may lead to hypothermia due to autonomic impairment", "D) It directly measures core temperature", "E) All of the above"], correct: 2 },
+                    { question: "Unrecognized inadvertent intubation morbidity and mortality is a major cause of anesthetic-related issues?", options: ["A) Tracheal", "B) Endobronchial", "C) Esophageal", "D) Both A & B", "E) Both A & C"], correct: 2 }
+                 ],
+                "Fluids": [
+                    { question: "The primary function of Albumin solution is ?", options: ["A) Buffering", "B) Antioxidant", "C) Transport protein", "D) All of the above", "E) None of the above"], correct: 3 },
+                    { question: "What is the colloid oncotic pressure (COP) of gelatins ?", options: ["A) 27-34 mmHg", "B) 45-50 mmHg", "C) 15-25 mmHg", "D) 5-10 mmHg", "E) 55-70 mmHg"], correct: 0 },
+                    { question: "The elimination half-life of hydroxyethyl starch is ?", options: ["A) 30 days", "B) 40 days", "C) 10 days", "D) 1 day", "E) 17 days"], correct: 4 },
+                    { question: "The example of colloids ?", options: ["A) Normal saline", "B) Ringer lactate", "C) Glucose water", "D) Glucose saline", "E) Plasma"], correct: 4 },
+                    { question: "What is the main use of hypertonic saline ?", options: ["A) Fluid replacement in trauma", "B) Treatment of severe brain edema", "C) Treatment of hypokalemia", "D) Correction of metabolic alkalosis", "E) Treatment of hypernatremia"], correct: 1 },
+                    { question: "Which intravenous fluid is commonly used for burn patients ?", options: ["A) Hypertonic saline", "B) Lactated Ringer's", "C) Dextrose solutions", "D) Dextran", "E) Starch solution"], correct: 1 },
+                    { question: "Additional fluid losses include all ?", options: ["A) Polyuria", "B) Nasogastric aspirates", "C) Vomit", "D) Diarrhea", "E) All of the above"], correct: 4 },
+                    { question: "According to the distribution of dextrose solutions, which percent remains in the intravascular space ?", options: ["A) 5%", "B) <10%", "C) >50%", "D) <50%", "E) 30%"], correct: 1 },
+                    { question: "How much of infused 5% albumin remains intravascular ?", options: ["A) 25%", "B) 30%", "C) 75%", "D) 100%", "E) 50%"], correct: 4 },
+                    { question: "Which synthetic colloid has the shortest duration of action due to rapid renal excretion?", options: ["A) Dextran", "B) Gelofusine", "C) Hydroxyethyl starches", "D) Human albumin 20%", "E) Human albumin 5%"], correct: 1 },
+                    { question: "Best for parenteral maintenance fluids rather than aggressive intravascular volume repletion ?", options: ["A) 0.9% normal saline", "B) 0.45% sodium chloride", "C) Dextrose 5%", "D) Ringer Lactate", "E) Albumin"], correct: 1 },
+                    { question: "What is the main indication for 0.9% normal saline infusion ?", options: ["A) Metabolic alkalosis treatment", "B) Hyperkalemia treatment", "C) Intracellular fluid replacement", "D) Nutritional support", "E) Extracellular fluid replacement"], correct: 4 },
+                    { question: "What is the primary disadvantage of rapid administration of large amounts of crystalloids ?", options: ["A) Tissue edema", "B) Inadequate volume expansion", "C) Blood coagulation dysfunction", "D) Tissue healing impairment", "E) None of the above"], correct: 0 },
+                    { question: "Which solution is used as a maintenance fluid for patients with water deficit and hypernatremia?", options: ["A) Dextrose 5% solutions", "B) Hypertonic saline", "C) Lactated Ringer's", "D) Albumin", "E) Plasma"], correct: 0 },
+                    { question: "All of the following are main indications for intravenous fluid except ?", options: ["A) Prophylaxis", "B) Resuscitation", "C) Replacement", "D) Maintenance", "E) None of the above"], correct: 0 },
+                    { question: "One of the crystalloid intravenous fluids is Ringer lactate, also called ?", options: ["A) Dextran", "B) Normal saline", "C) Mannitol solution", "D) Hartman solution", "E) Starch"], correct: 3 },
+                    { question: "The main difference between crystalloid and colloid solutions ?", options: ["A) Crystalloids contain large molecular weight particles", "B) Colloids have a shorter half-life", "C) Crystalloids pass through diffusional barriers more readily than colloids", "D) Colloids have no effect on intravascular volume", "E) Colloids are cheaper"], correct: 2 },
+                    { question: "Indication for using 3% hypertonic saline ?", options: ["A) Treatment of metabolic alkalosis", "B) Replacement fluid in hyperkalemia", "C) Fluid resuscitation in patients with severe hypoalbuminemia", "D) Therapy of severe symptomatic hyponatremia", "E) Maintenance fluid for patients with hypernatremia"], correct: 3 },
+                    { question: "Colloid fluid ( which one is true)?", options: ["A) Natural colloid is albumin", "B) Rate of replacement 1:3", "C) Do not pass membrane readily", "D) No risk for anaphylaxis", "E) Cheaper than crystalloid"], correct: 2 },
+                    { question: "Crystalloid Solutions, all true except ?", options: ["A) Composed of water and small solutes such as electrolytes and glucose.", "B) Its particles act as glue in water.", "C) Its particles easily pass across semipermeable membranes.", "D) Crystalloid solutions can be further categorized as hypotonic, isotonic, or hypertonic.", "E) intravascular half-life of a crystalloid solution is shorter than a colloid solution."], correct: 1 },
+                    { question: "Which of the following statements about colloids is true?", options: ["A) Primarily provide calories.", "B) Expand intravascular volume.", "C) Isotonic solutions.", "D) Colloids are a type of crystalloid.", "E) The intravascular half-lives between 3 and 6 hours."], correct: 4 },
+                    { question: "All of the following are colloids except ?", options: ["A) Gelatin", "B) Starch", "C) Dextrose 50%", "D) Gelofusine", "E) HES"], correct: 2 },
+                    { question: "What is the primary indication for the administration of dextran?", options: ["A) Hemophilia", "B) Hypofibrinogenemia", "C) Thrombocytopenia", "D) Massive hemorrhage", "E) Acute coronary syndrome"], correct: 3 },
+                    { question: "one of the following is not true regarding gelatin ?", options: ["A) COP of 27-34 mmHg", "B) Rapidly excreted by the kidneys", "C) Associated with anaphylactic reactions", "D) The cheapest colloid available", "E) Duration is 10-15"], correct: 4 },
+                    { question: "Lactated Ringer's solution is contraindicated as a diluent for blood transfusions because ?", options: ["A) Calcium binding to the citrated anticoagulant in blood products can inactivate the anticoagulant.", "B) It can lead to hypokalemia.", "C) It may cause metabolic alkalosis.", "D) It may cause sodium retention.", "E) None of the above."], correct: 0 },
+                    { question: "Indications of normal saline include all the following except?", options: ["A) Hypoglycemia", "B) Hypovolemia", "C) Dehydration", "D) Metabolic alkalosis", "E) Sepsis"], correct: 0 },
+                    { question: "What disadvantage is associated with glucose infusions?", options: ["A) Hyperglycemia", "B) Increased CO2 production", "C) Risk of infection and neuropathy", "D) Aggravation of ischemic brain injury", "E) All of the above"], correct: 4 },
+                    { question: "implications of rapid administration of large amounts of crystalloid solutions include ?", options: ["A) Associated with tissue edema", "B) Delay return of bowel function", "C) Can impair oxygen transport", "D) Delay tissue healing", "E) All of the above"], correct: 4 }
+                ],
+                "Blood": [
+                     { question: "When plasma is stored at a temperature of 2-6°C, the labile clotting activity of Factors V and VIII will decline to 10-20% within...?", options: ["A) 8 hours", "B) 48 hours", "C) 24 hours", "D) 36 hours", "E) One hour"], correct: 1 },
+                     { question: "One of the following is related to the effects of storage on whole blood ?", options: ["A) Increase the pH", "B) Decrease plasma potassium concentration", "C) Progressive decrease in red cell content of2,3diphosphoglycerate (2,3 DPG)", "D) Increase RBC count", "E) Increase in Factor VIII to 10-20% of normal within 48 hours of donation"], correct: 2 },
+                     { question: "Indications of plasma transfusion are?", options: ["A) Anticipated invasive procedure or surgery", "B) Massive hemorrhage (over one blood volume)", "C) The correction of coagulopathy associated with liver disease", "D) All the above are true", "E) None of the above are true"], correct: 3 },
+                     { question: "What is the primary indication for red blood cell (RBC) transfusion?", options: ["A) Treatment of hemophilia A", "B) Correction of severe hyperfibrinogenemia", "C) Thrombocytopenia", "D) Ongoing bleeding with incompletely responsive to 2-3 L crystalloid", "E) Hypovolemia"], correct: 3 },
+                     { question: "Which of the following is not related to delay hemolytic reaction?", options: ["A) Extravascular hemolysis", "B) Caused by antibodies to non D antigen of Rh system", "C) Delayed 2-3 month", "D) Jaundice", "E) Fever"], correct: 2 },
+                     { question: "Packed red blood cells prior to transfusion better diluted with?", options: ["A) 0.9% normal saline", "B) Dextrose", "C) Ringer's lactate", "D) Albumin", "E) Dextran"], correct: 0 },
+                     { question: "The following are immune complications of blood transfusion except ?", options: ["A) Graft versus host disease", "B) Anaphylactic reaction", "C) Hepatitis C", "D) Hemolytic reactions", "E) Non-hemolytic reactions"], correct: 2 },
+                     { question: "Regarding whole blood ?", options: ["A) Dose: 6 ml/kg of WB raise Hemoglobin level 1 g/dl", "B) During donation, blood is collected into a sterile pack", "C) The sterile pack needs an anticoagulant-preservative", "D) Preservative solution usually contains citrate, phosphate, dextrose, and often adenine (CPDA)", "E) All of the above"], correct: 4 },
+                     { question: "All the following are indications for plasma transfusion except ?", options: ["A) INR >1.5 without active bleeding", "B) Massive hemorrhage (over one blood volume)", "C) Emergent reversal of anticoagulant (warfarin) therapy", "D) Anticipated invasive procedure or surgery", "E) Treatment of isolated factor deficiencies"], correct: 0 },
+                     { question: "Function of CPDA in blood collection bag all true except ?", options: ["A) Anticoagulant", "B) Acid-base balance", "C) Provide energy", "D) Maintain the RBC membrane", "E) Support metabolism"], correct: 1 },
+                     { question: "PRBCs transfusion guidelines, the correct answer is ?", options: ["A) ICU patient HB > 7", "B) Post-operative HB > 8", "C) Transfusion rapid first 15 min", "D) Transfusion complete within 4 hours", "E) Cardiovascular disease HB > 8"], correct: 3 },
+                     { question: "All true about cryoprecipitate except ?", options: ["A) Obtain from multiple donations", "B) Rich in factor VIII", "C) Rich in factor XIII", "D) Fibrinogen", "E) Von Willebrand factor"], correct: 0 },
+                     { question: "What is the primary function of platelet transfusion?", options: ["A) To enhance red cell mass", "B) To correct coagulopathies", "C) To provide clotting factors", "D) To increase platelet count and function", "E) None of the above"], correct: 3 },
+                     { question: "Regarding complications of massive blood transfusion (all are true except) ?", options: ["A) Coagulopathy", "B) Hypothermia", "C) Hypernatremia", "D) Citrate Toxicity", "E) Acid-Base Balance disturbance"], correct: 2 },
+                     { question: "Which of the following is true about whole blood transfusion?", options: ["A) It is commonly available in most blood banks.", "B) One unit raises the hemoglobin level by 2 g/dL.", "C) It is stored without any preservative solution.", "D) Metabolism continues in red cells and platelets during storage.", "E) It is the preferred form of blood product for most transfusion needs."], correct: 3 },
+                     { question: "The function of phosphate as anticoagulant preservative in solution of blood collection pack is ?", options: ["A) Exchange sodium salt", "B) Support metabolism of red cells to ensure they release oxygen readily at tissue level", "C) Maintained the red cell membrane", "D) Provide energy source", "E) None of the above"], correct: 1 },
+                     { question: "Which blood product is primarily indicated for thrombocytopenia ?", options: ["A) Fresh frozen plasma", "B) Cryoprecipitate", "C) Platelets", "D) Red blood cells", "E) Dextran"], correct: 2 },
+                     { question: "Regarding cryoprecipitate ?", options: ["A) Is rich in factor VIII, von Willebrand factor (VWF), factor XIII, and fibrinogen.", "B) Cryoprecipitate is obtained from a single donation of FFP at about 4°C.", "C) Cryoprecipitate is usually administered as a transfusion of 10 single unit.", "D) Can use in hemophilia A.", "E) All of the above."], correct: 4 },
+                     { question: "Regarding management of hemolytic reaction (all are true except)?", options: ["A) transfusion should be stopped immediately and the blood bank should be notified.", "B) Blood should be drawn to identify hemoglobin in plasma, to repeat compatibility testing.", "C) Urinary catheter should be avoided.", "D) Osmotic diuresis should be initiated with mannitol and intravenous fluids.", "E) The urine should be checked for hemoglobin."], correct: 2 },
+                     { question: "Acute hemolytic reaction that occurs after blood transfusion, in anesthetized patients is manifested by ?", options: ["A) Hypertension", "B) Disseminated intravascular coagulation", "C) Hypothermia", "D) Bradycardia", "E) Normal urine output"], correct: 1 },
+                     { question: "Non-hemolytic immune reactions all true except ?", options: ["A) Usually due to ABO blood incompatibility.", "B) Post-Transfusion Purpura", "C) Febrile Reactions.", "D) Graft-Versus-Host Disease", "E) Transfusion-Related Acute Lung Injury"], correct: 0 },
+                     { question: "The anticoagulant preservative solutions contents are ?", options: ["A) Sodium citrate.", "B) Phosphate.", "C) Dextrose", "D) Adenine.", "E) All of the above"], correct: 4 }
+                 ],
+                 "Positioning": [
+                     { question: "What is the hemodynamic risk associated withclassic supine position ?", options: ["A) Supine hypotensive syndrome", "B) Bradycardia", "C) Increase ejection fraction", "D) Increase FRC", "E) All of the above"], correct: 0 },
+                     { question: "Regarding positioning of elderly patients, all are true except ?", options: ["A) Fragile surfaces", "B) Limited range of motion", "C) Dragging or sliding rather than lifting", "D) Adequate padding for bony prominence", "E) Arthritic joints"], correct: 2 },
+                     { question: "In craniotomy, the main position-related risk is ?", options: ["A) Bronchospasm", "B) Hypotension", "C) Tachycardia", "D) Air embolism", "E) Desaturation"], correct: 3 },
+                     { question: "Which position may result in nerve damage from pressure exerted by stirrups ?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Prone position", "E) Lateral position"], correct: 2 },
+                     { question: "Position for laminectomy is ?", options: ["A) Supine position", "B) Lateral position", "C) Prone position", "D) Trendelenburg", "E) Reverse Trendelenburg"], correct: 2 },
+                     { question: "it is the most common surgery position?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Prone position", "E) Lateral position"], correct: 0 },
+                     { question: "Lateral position, all true except one?", options: ["A) Used in some operations such as kidney", "B) It may result in asymmetrical lung ventilation", "C) Used in thoracic surgeries with incompletely responsive to 2-3 L crystalloid", "D) The body laid flat on the back", "E) The pelvis and shoulders must be supported to prevent from rolling"], correct: 3 },
+                     { question: "Which offollowing positions is most commonly associated with decreased FRC ?", options: ["A) Lithotomy position", "B) Lateral position", "C) Supine position", "D) Reverse Trendelenburg position", "E) None of the above"], correct: 0 },
+                     { question: "The goals of position include all the following except ?", options: ["A) Maximum surgical exposure", "B) Prevent injury", "C) Adequate access to monitoring", "D) Satisfactory surgical result", "E) Overextension of the"], correct: 4 },
+                     { question: "The false answer for the position of old patient is ?", options: ["A) Fragile skin", "B) Use adhesive tape", "C) Arthritis joint", "D) Limited range of motion.", "E) Padding of bony prominence"], correct: 1 },
+                     { question: "Position for pelvis and lower abdomen surgery(such as: anal and cysto) ?", options: ["A) Lithotomy position", "B) Lateral position", "C) Supine position", "D) Sitting position", "E) Trendelenburg"], correct: 0 },
+                     { question: "Trendelenburg position?", options: ["A) Used in hypertensive patient", "B) The patient is in lateral position", "C) Head is up and legs down", "D) The head is down and legs up", "E) Has no effect on hemodynamics"], correct: 3 },
+                     { question: "One of the following positions used for neck and head surgery and gynecological procedures because it reduces flow of blood to those areas ?", options: ["A) Prone position", "B) Supine position", "C) Lithotomy and Lloyd Davis position", "D) Reverse Trendelenburg position", "E) Seated position: (Sitting position"], correct: 3 },
+                     { question: "In prone position all true except ?", options: ["A) Excessive extension of shoulder should be avoided", "B) Patient lying on right or left side", "C) Face and eyes should be protected from trauma", "D) Tracheal tube must be secured", "E) Support beneath shoulder and iliac crest"], correct: 1 },
+                     { question: "Lateral position, all true except one?", options: ["A) Used in some operations such as kidney and thoracic surgeries", "B) The body laid flat on the back", "C) The patient is lying on his right or left side", "D) The pelvis and shoulders must be supported to prevent from rolling", "E) It may result in asymmetrical lung ventilation"], correct: 1 },
+                     { question: "In which position are the occiput, sacrum, and heel at risk of pressure sores?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Trendelenburg position", "E) Lateral position"], correct: 0 },
+                     { question: "Air embolism is a common complication of ?", options: ["A) Supine position", "B) Lateral position", "C) Lithotomy position", "D) Sitting position", "E) All of the above"], correct: 3 },
+                     { question: "Position of the pediatric patient (all true except one)?", options: ["A) Think of appropriate size", "B) Right size for bed and attachments", "C) Don't use safety strap", "D) Never overextended limbs or keep in one position for longer periods", "E) Children are prone to and have greater risk of physiologically compromised"], correct: 2 },
+                     { question: "The regions that are accessible with supine position?", options: ["A) Peritoneal & thoracic & pericardial", "B) Head and neck", "C) Lumbar region", "D) Both A & B", "E) None of the above"], correct: 3 },
+                     { question: "What is a potential complication of the lithotomy position?", options: ["A) Nerve damage in the leg", "B) Abdominal compression", "C) Asymmetrical lung ventilation", "D) Brachial plexus damage", "E) None of the above"], correct: 0 }
+                 ],
+                 "Monitoring": [
+                    { question: "What do you have to do regarding abnormal heart rhythm on ECG?", options: ["A) Assess the vital signs A.B.C", "B) Listen for equal air entry", "C) Check the airway patency", "D) Check pulse, blood pressure", "E) All of the above should be done"], correct: 4 },
+                    { question: "Which lead is most commonly used for detecting cardiac arrhythmias during anesthesia?", options: ["A) Lead I", "B) Lead II", "C) Lead III", "D) CM5 lead", "E) CB5 lead"], correct: 1 },
+                    { question: "End tidal CO2 reading increases in case of ?", options: ["A) Rebreathing", "B) Hypoventilation", "C) Increased CO2 production", "D) All of the above", "E) None of the above"], correct: 3 },
+                    { question: "What is the primary purpose of intraoperative monitoring?", options: ["A) To administer medications", "B) To facilitate surgical access", "C) Both A and B", "D) To ensure surgical accuracy", "E) To monitor physiological status"], correct: 4 },
+                    { question: "A normal EtCO2 reading is ?", options: ["A) 4.5-6.0mmHg or 35-45Kpа.", "B) 4.5-6.0kPa or 35-45mmHg", "C) 5.5-8.0kPa or 45-55mmHg", "D) 2.5-5.0kPa or 30-85mmHg", "E) None of the above"], correct: 1 },
+                    { question: "Drug that causes tachycardia is ?", options: ["A) Morphine", "B) Beta blockers", "C) Remifentanil", "D) Ketamine", "E) Halothane"], correct: 3 },
+                    { question: "The wave of capnography that can be seen during cardiac arrest is ?", options: ["A) Flat wave.", "B) Elevated wave.", "C) Low wave", "D) Irregular wave.", "E) Curare cleft wave"], correct: 0 },
+                    { question: "One of the following complications of hypothermia commonly increases 02 consumption ?", options: ["A) Coagulation system dysfunction", "B) Wound infections", "C) Poor wound healing", "D) Patient discomfort and shivering", "E) All of the above"], correct: 3 },
+                    { question: "All following are risk factors for arrhythmia during anesthesia except one?", options: ["A) The presence of cardiac disease", "B) Alkalosis", "C) Low CO2 level", "D) Hypoxia", "E) Electrolyte disturbances"], correct: 2 },
+                    { question: "Which of the Ffollowing statements accurately describes the implications of end-tidal carbon dioxide (ETCO2) readings?", options: ["A) A low ETCO2 reading is always indicative of hypothermia.", "B) Hyperventilation leads to a progressive rise in ETCO2 levels.", "C) Rebreathing CO2 can result in a progressive drop in ETCO2 levels.", "D) An airway obstruction typically results in a sudden rise in ETCO2 levels.", "E) A sudden rise in ETCO2 could indicate return of spontaneous circulation (ROSC) following CPR for cardiorespiratory arrest."], correct: 4 },
+                    { question: "A low EtCO2 reading may indicate ?", options: ["A) Hyperthermia", "B) Esophageal intubation", "C) Hyperventilation", "D) Both A & B", "E) All of the above"], correct: 2 },
+                    { question: "All of the following abnormalities can be detected by ECG ?", options: ["A) Arrhythmias", "B) Myocardial ischemia", "C) Hypertension", "D) Pericarditis", "E) Left ventricular hypertrophy"], correct: 2 },
+                    { question: "Which of the following statements is correct regarding the effects of drugs and other factors on cardiac rhythm during anesthesia ?", options: ["A) Halothane and nitrous oxide commonly cause sinus bradycardia.", "B) Catecholamines have no effect on impulse conduction.", "C) Hypoxia and acidosis decrease the likelihood of arrhythmias during anesthesia.", "D) Ventricular ectopic beats are rare during anesthesia.", "E) Cardiac disease, hypoxia, acidosis, hypercarbia, and electrolyte disturbances Increase the likelihood of arrhythmias during anesthesia."], correct: 4 },
+                    { question: "Which parameter is NOT routinely measured during most surgical procedures?", options: ["A) Blood glucose level.", "B) Blood pressure.", "C) Heart's electrical activity", "D) Arterial blood oxygen level.", "E) None of the above"], correct: 0 }
+                 ],
+                 "CPR": [
+                    { question: "Golden rules in CPR include ?", options: ["A) Ensure high quality chest compressions: rate, depth recoil", "B) Plan actions before interrupting CPR", "C) Minimize interruption of chest compressions", "D) Early defibrillation of shockable rhythm", "E) All of the above"], correct: 4 },
+                    { question: "Regarding anesthesia and arrhythmia, which one is common during thoracic surgery?", options: ["A) Ventricular fibrillation", "B) Atrial fibrillation", "C) Supraventricular tachycardia", "D) Pulseless electrical activity", "E) None of the above"], correct: 1 },
+                    { question: "Which one of the following could be indicative of ROSC following CPR for cardiorespiratory arrest, as the patient starts breathing again?", options: ["A) Sudden rise in CO2", "B) Low ETCO2", "C) Absent waveform", "D) Hyperventilation", "E) None of the above"], correct: 0 },
+                    { question: "How can inadequate circulation be identified?", options: ["A) Pulse oximeter showing a loss or reduction of pulsatile waveform", "B) Decreased respiratory rate", "C) Increased capillary refill time", "D) Elevated blood pressure", "E) Audible wheezing"], correct: 0 },
+                    { question: "A patient with CPR may have the following complications except ?", options: ["A) Rib fracture", "B) Sternum fracture", "C) Lung contusion", "D) Pneumothorax", "E) Bowel injury"], correct: 4 },
+                    { question: "Use of adrenaline in cardiac arrest (all true except one)?", options: ["A) Adrenaline 1mg IV (10ml of 1:10,000)", "B) Non-shockable rhythm: give after fifth shock (during CPR)", "C) Flush with 20ml saline", "D) Non-shockable rhythm: give as soon as IV access is established", "E) Repeat adrenaline dose during every other CPR cycle thereafter (i.e., repeat every 3-5 Minutes once given, regardless of rhythm)"], correct: 1 },
+                    { question: "The drugs that are used in CPR include all of the following except ?", options: ["A) Adrenaline", "B) Amiodarone", "C) Magnesium", "D) Dantrolene", "E) Calcium"], correct: 3 },
+                    { question: "Which one of the following is shockable rhythm ?", options: ["A) AF", "B) VF", "C) SVT", "D) Ectopic beats", "E) PEA"], correct: 1 },
+                    { question: "In CPR we avoid one of the following which is redistributed away from the intravascular space rapidly ?", options: ["A) Normal saline", "B) Dextrose", "C) Mannitol", "D) Albumin", "E) Ringer"], correct: 1 },
+                    { question: "What type of IV fluid is recommended for rapid infusion during CPR if hypovolemia is Suspected ?", options: ["A) Dextrose", "B) Ringer's solution", "C) 5% NaCl", "D) Lactated Ringer's solution", "E) Hypertonic saline"], correct: 1 },
+                    { question: "Sodium bicarbonate is used in ?", options: ["A) Severe metabolic alkalosis (pH > 7.1)", "B) Life-threatening hyperkalemia", "C) Tricyclic antidepressant overdose", "D) Both B & C", "E) All of the above"], correct: 3 },
+                    { question: "Sodium bicarbonate is avoided to use routinely because the complications include ?", options: ["A) Increase CO2 load", "B) Impaired myocardial contractility", "C) Hypernatremia", "D) Inhibit release of 02 to the tissue", "E) All of the above"], correct: 4 },
+                    { question: "Dose of vasopressin (ADH) administered during CPR ?", options: ["A) 40 IU once", "B) 50 IU once", "C) 60 IU once", "D) 70 IU once", "E) 80 IU once"], correct: 0 },
+                    { question: "One of the following is not considered the Golden Rule in CPR (Chest compressions)?", options: ["A) Ensure high quality chest compressions rate, depth recoil", "B) Plan actions before interrupting CPR", "C) Chest compression by one hand", "D) Minimize interruption of chest compressions", "E) Early defibrillation of shockable rhythm"], correct: 2 },
+                    { question: "About magnesium that is used in CPR, all true except ?", options: ["A) Give to VF with hypomagnesaemia", "B) Give in pulmonary embolism", "C) Used in torsade de pointes", "D) Digoxin toxicity", "E) Dose 2 mg IV"], correct: 1 },
+                    { question: "What is the role of atropine in CPR ?", options: ["A) Treatment of ventricular fibrillation", "B) Treatment of asystole", "C) Routine use in pulseless electrical activity (PEA)", "D) Treatment of sinus bradycardia causing hemodynamic instability", "E) Routine use in tricyclic antidepressant overdose"], correct: 3 },
+                    { question: "Signs of restored ventilation and circulation during CPR include ?", options: ["A) Struggling movements", "B) Improved color", "C) Return of systemic blood pressure", "D) Return of or strong pulse", "E) All the above"], correct: 4 },
+                    { question: "When does a person have a 40% chance of survival if CPR is started promptly and defibrillation is provided within 10 minutes ?", options: ["A) Within 2 minutes of cardiac arrest", "B) Within 4 minutes of cardiac arrest", "C) Within 12 minutes of cardiac arrest", "D) Within 15 minutes of cardiac arrest", "E) Within 20 minutes of cardiac arrest"], correct: 1 },
+                    { question: "What is the voltage range of electricity discharge typically used for defibrillation ?", options: ["A) 50-100 joules", "B) 150-360 joules (biphasic)", "C) 200-500 joules", "D) 50-200 joules (monophasic)", "E) 100-300 joules"], correct: 1 },
+                    { question: "Basic life support is?", options: ["A) Support with endotracheal tube", "B) Support with defibrillator", "C) Support with ECG monitor", "D) Respiratory support", "E) Cardiac and respiratory support"], correct: 4 },
+                    { question: "What is the recommended compression rate per minute ?", options: ["A) 80-100", "B) 100-120", "C) 120-150", "D) 150-170", "E) 50-60"], correct: 1 },
+                    { question: "An intubated patient developed rapid desaturation (all the following are true except one?", options: ["A) Check the position of tube", "B) The most common cause is esophageal intubation", "C) Check blood pressure", "D) Check ECG", "E) Give long-acting muscle relaxant"], correct: 4 },
+                    { question: "What is recommended technique for chest compressions during CPR?", options: ["A) Using only one hand to compress the chest", "B) Positioning the shoulders away from the hands", "C) Depressing the sternum at any level", "D) Performing compressions at a rate of 60-80 per minute", "E) Performing compressions with a ratio of 15 compressions to 1 ventilation"], correct: 4 },
+                    { question: "When is the finger sweep technique advised for airway patency?", options: ["A) In conscious patients", "B) In patients with a strong cough reflex", "C) In convulsing patients", "D) In patients with a foreign body in the mouth", "E) In patients with a blocked nose"], correct: 3 }
+                 ],
+                 "Safety": [
+                    { question: "Why should nitrous oxide be avoided during surgeries where airway fires are a concern?", options: ["A) It supports combustion as readily as oxygen", "B) Has a cooling effect, reducing the risk of fires", "C) It is less flammable than other anesthetic gases", "D) It does not contribute to the oxygen-enriched environment in the airway", "E) None of the above"], correct: 0 },
+                    { question: "Why should surgical instruments and surrounding surfaces be non-reflective during laser procedures?", options: ["A) To increase the visibility of the surgical site", "B) To improve the accuracy of incisions", "C) To minimize reflection of the laser beam", "D) To improve oxygen delivery", "E) To facilitate tissue healing"], correct: 2 },
+                    { question: "What is an airway fire ?", options: ["A) A fire that occurs outside the operating room", "B) A fire that involves only the patient's skin", "C) A fire that occurs within a patient's airway or involves an in-situ airway device or contiguous breathing circuit", "D) A fire that occurs during recovery room procedures", "E) A fire that originates from surgical instruments"], correct: 2 },
+                    { question: "The use of the following may pose significant safety concerns during airway surgery (all true except one)?", options: ["A) Supplemental oxygen delivered to the patient", "B) Nitrous oxide as a carrier gas delivered to the patient", "C) Helium as a carrier gas delivered to the patient", "D) An open breathing circuit for delivery of gases to the patient", "E) Nitrogen gas in close proximity to the patient/surgical field"], correct: 4 },
+                    { question: "Regarding safety measurement in surgical laser (all are true except) ?", options: ["A) Put near bronchoscopes and endotracheal tubes.", "B) The active tip should be visible at all time.", "C) Deactivated before removal from the surgical site", "D) Using of special types of endotracheal tubes for laser surgery", "E) Placed in a sheath away from the patient when not in use"], correct: 0 },
+                    { question: "Regarding airway fire, only one is true ?", options: ["A) Electrocautery should be used whenever possible", "B) Cutting diathermy mode poses less risk", "C) Unipolar is preferable over bipolar", "D) Electrocautery should be operated by single person", "E) Electrocautery can be used with any inspired O2 concentration"], correct: 3 },
+                    { question: "immediate coordinated response for airway fire includes all of following except ?", options: ["A) Increase the concentration of O2 flow for the patient.", "B) Whoever notices the fire first must announce it out loud immediately", "C) The surgeon should stop the procedure immediately. The anesthetist should stop the flow of all airway gases.", "D) Another team member should extinguish the fire by flooding the site with sterile saline", "E) The surgeon should remove any segments of burnt airway"], correct: 0 },
+                    { question: "Which measure is NOT recommended for preventing airway fires?", options: ["A) Using laser-resistant endotracheal tubes", "B) Minimizing the use of electrocautery where possible", "C) Tightly sealing of surgical drapes around the surgical site.", "D) Avoiding high fractional inspired oxygen concentrations", "E) Using silicone or rubber tubes."], correct: 4 },
+                    { question: "The safety used of electrocautery include all except ?", options: ["A) It should be avoid where possible", "B) Monopolar better than bipolar", "C) Cutting diathermy mode carry high risk", "D) It should be avoid when inspired O2 more than 50%", "E) It should be operated by single person"], correct: 1 },
+                    { question: "What immediate action should be taken if the situation remains unsafe for the patient or staff during an airway fire?", options: ["A) Active alarms", "B) Use a carbon dioxide extinguisher without delay", "C) Call for help from other team members", "D) The theater should be evacuated", "E) Cut the oxygen source"], correct: 3 },
+                    { question: "What determines the prognosis following an airway fire ?", options: ["A) Patient's age", "B) Time of day the fire occurred", "C) Extent of the fire and the injuries incurred", "D) Type of anesthesia used", "E) Previous medical history"], correct: 2 },
+                    { question: "Ignition sources include ?", options: ["A) Laser.", "B) Electrocautery.", "C) Heated probes", "D) Drills and burrs.", "E) All of the above"], correct: 4 },
+                    { question: "Which of the following is NOT listed as a fuel source for airway fires ?", options: ["A) Endotracheal tube", "B) Surgical drapes", "C) Breathing circuits", "D) Fiberoptic light sources", "E) Suction catheters"], correct: 3 },
+                    { question: "Fires in the airway have become less common due to discontinuing of ?", options: ["A) Ether and cyclopropane", "B) Halothane and nitrous oxide", "C) Oxygen and nitrous oxide", "D) Sevoflurane and desflurane", "E) None of the above"], correct: 0 },
+                    { question: "Airway fire predispose the patient to ?", options: ["A) Infection", "B) Loss of fluid and electrolytes", "C) Heat loss", "D) Life-threatening airway obstruction", "E) All of the above"], correct: 4 },
+                    { question: "The following are oxidizers in the operating room except ?", options: ["A) Supplemental oxygen.", "B) Nitrous oxide.", "C) IV cannula", "D) 02 by facemasks.", "E) 02 by nasal cannula"], correct: 2 },
+                    { question: "The common issue with the airway during loss of consciousness is ?", options: ["A) Decreased blood pressure", "B) Obstruction due to falling back of the tongue", "C) Increased heart rate", "D) Increased respiratory rate", "E) Excessive saliva production"], correct: 1 },
+                    { question: "Which endotracheal tube material is less flammable ?", options: ["A) Rubber", "B) Silicone", "C) Polyvinyl chloride (PVC)", "D) All equally flammable", "E) None of the above"], correct: 2 },
+                    { question: "Which surgical procedure is considered inherently risky for airway fires?", options: ["A) Tracheostomy formation", "B) Tonsillectomy", "C) Appendectomy", "D) Hernia repair", "E) All of the above"], correct: 1 }
+                ]
+            }
+        };
+
+         const lectureTitlesMap = {
+            "PreMedication": "محاضرة ( Drugs used in pre medication )",
+            "Laryngospasm": "محاضرة ( Laryngospasm and Bronchospasm )",
+            "HypoxiaMH": "محاضرة ( Hypoxia and Malignant Hyperthermia )",
+            "Fluids": "محاضرة ( Intravenous fluids )",
+            "Blood": "محاضرة ( Blood and blood products )",
+            "Positioning": "محاضرة ( Surgical position )",
+            "Monitoring": "محاضرة ( Intraoperative patient monitoring )",
+            "CPR": "محاضرة ( CPR )",
+            "Safety": "محاضرة ( Safety measure operating room )"
+        };
+
+
+        let currentQuestions = [];
+        let currentQuizCategory = '';
+        let currentQuizLecture = '';
+        let lastSubButtonsPageId = 'main-buttons-page';
+        const allPages = document.querySelectorAll('.page');
+        const quizContainer = document.querySelector("#quiz-page .container");
+        const quizTitleElement = document.getElementById('quiz-title');
+        const loadingTextElement = document.querySelector('.loading-text');
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const bodyElement = document.body;
+        const toggleIcon = darkModeToggle.querySelector('i');
+
+        function showPage(pageId) {
+            allPages.forEach(page => page.classList.remove('visible'));
+            setTimeout(() => {
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    if (targetPage.classList.contains('sub-buttons-page')) {
+                        lastSubButtonsPageId = pageId;
+                    } else if (pageId === 'main-buttons-page') {
+                         lastSubButtonsPageId = 'main-buttons-page';
+                    }
+                    targetPage.classList.add('visible');
+                    window.scrollTo(0, 0);
+                } else {
+                    console.error("Page not found:", pageId);
+                    document.getElementById('main-buttons-page').classList.add('visible');
+                }
+            }, 50);
+        }
+
+
+        function loadQuiz(category, lectureKey) {
+            currentQuizCategory = category;
+            currentQuizLecture = lectureKey;
+            currentQuestions = quizData[category]?.[lectureKey] || [];
+
+            const displayLectureTitle = lectureTitlesMap[lectureKey] || lectureKey;
+            quizTitleElement.innerHTML = `<i class="fas fa-notes-medical"></i> ${displayLectureTitle}`;
+
+            quizContainer.innerHTML = '';
+            loadingTextElement.style.display = 'block';
+            showPage('quiz-page');
+
+            setTimeout(() => {
+                loadingTextElement.style.display = 'none';
+                if (currentQuestions.length > 0) {
+                    currentQuestions.forEach((q, index) => {
+                        const questionDiv = createQuestionElement(q, index);
+                        quizContainer.appendChild(questionDiv);
+                    });
+                } else {
+                    quizContainer.innerHTML = "<p style='text-align: center; color: var(--text-light);'>عذرًا، لا توجد أسئلة متاحة لهذه المحاضرة حاليًا.</p>";
+                }
+                 const quizBackButton = document.querySelector('#quiz-page .back-button');
+                 if (quizBackButton) {
+                    quizBackButton.onclick = () => showPage(lastSubButtonsPageId || 'ministerial-questions-sub-page'); // Ensure fallback
+                 }
+
+            }, 300);
+        }
+
+        function createQuestionElement(q, index) {
+             const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+            questionDiv.style.setProperty('--question-index', index);
+            questionDiv.innerHTML = `<h2 class="original-question">(${index + 1}) ${q.question}</h2>
+                                     <h2 class="translated-question" style="display: none;"></h2>`;
+
+            const optionsList = document.createElement("ul");
+            optionsList.classList.add("options");
+
+            q.options.forEach((option, i) => {
+                const button = document.createElement("button");
+                button.innerHTML = `<span class="original-option">${option}</span>
+                                    <span class="translated-option" style="display: none;"></span>`;
+                button.addEventListener("click", () => handleAnswer(button, i, q.correct, optionsList));
+                const listItem = document.createElement("li");
+                listItem.appendChild(button);
+                optionsList.appendChild(listItem);
+            });
+
+            questionDiv.appendChild(optionsList);
+
+            const translateContainer = document.createElement("div");
+            translateContainer.classList.add("translate-container");
+
+            const translateButton = document.createElement("button");
+            translateButton.classList.add("translate-button");
+            translateButton.textContent = "ترجمة";
+            translateButton.onclick = () => translateQuestion(questionDiv, q.question, q.options);
+            translateContainer.appendChild(translateButton);
+
+            const untranslateButton = document.createElement("button");
+            untranslateButton.classList.add("untranslate-button");
+            untranslateButton.textContent = "الغاء الترجمة";
+            untranslateButton.onclick = () => untranslateQuestion(questionDiv);
+             untranslateButton.style.display = 'none';
+            translateContainer.appendChild(untranslateButton);
+
+            questionDiv.appendChild(translateContainer);
+
+            return questionDiv;
+        }
+
+
+        function handleAnswer(selectedButton, selectedIndex, correctAnswerIndex, optionsList) {
+            const buttons = optionsList.querySelectorAll("button");
+            buttons.forEach((button, index) => {
+                button.disabled = true;
+                if (index === correctAnswerIndex) {
+                    button.classList.add("correct");
+                } else if (button === selectedButton) {
+                    button.classList.add("wrong");
+                }
+            });
+
+            const nextQuestion = optionsList.closest('.question').nextElementSibling;
+             if(nextQuestion && nextQuestion.classList.contains('question')){
+                setTimeout(() => {
+                    nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 600);
+             }
+        }
+
+        async function translateText(text, targetLang = 'ar', sourceLang = 'en') {
+            if (!text || text.trim() === '') return '';
+
+            const proxyUrl = 'https://corsproxy.io/?';
+            const googleTranslateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
+            const requestUrl = proxyUrl + googleTranslateUrl;
+
+            try {
+                const response = await fetch(requestUrl);
+                if (!response.ok) {
+                    let errorBody = `Status: ${response.status}`;
+                    try { errorBody = await response.text(); } catch (_) {}
+                    throw new Error(`HTTP error! ${errorBody}`);
+                }
+                const data = await response.json();
+
+                const translation = data?.[0]?.[0]?.[0];
+                if (typeof translation === 'string') {
+                    return translation;
+                } else {
+                     console.warn("Unexpected translation response structure:", data);
+                     return `[Translation Format Error]`;
+                }
+            } catch (error) {
+                console.error("Translation failed:", error);
+                 return `[Translation Error - Check Console]`;
+            }
+        }
+
+
+        async function translateQuestion(questionDiv, originalQuestion, originalOptions) {
+            const translateButton = questionDiv.querySelector(".translate-button");
+            const untranslateButton = questionDiv.querySelector(".untranslate-button");
+            const translatedQuestionEl = questionDiv.querySelector(".translated-question");
+            const originalQuestionEl = questionDiv.querySelector(".original-question");
+            const optionButtons = questionDiv.querySelectorAll(".options button");
+            const questionNumberMatch = originalQuestionEl.textContent.match(/^\((\d+)\)/);
+            const questionNumberPrefix = questionNumberMatch ? questionNumberMatch[0] + ' ' : '';
+
+            translateButton.disabled = true;
+            translateButton.textContent = "جاري...";
+
+            originalQuestionEl.style.display = "none";
+            translatedQuestionEl.style.display = "block";
+
+            if (!translatedQuestionEl.dataset.translated || translatedQuestionEl.textContent.startsWith('[')) {
+                translatedQuestionEl.textContent = `${questionNumberPrefix}جاري ترجمة السؤال...`;
+                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, '');
+                const translatedQText = await translateText(questionTextToTranslate);
+                translatedQuestionEl.textContent = `${questionNumberPrefix}${translatedQText}`;
+                if (!translatedQText.startsWith('[')) {
+                   translatedQuestionEl.dataset.translated = "true";
+                }
+            }
+
+            const translationPromises = Array.from(optionButtons).map(async (button, index) => {
+                const originalOptionEl = button.querySelector(".original-option");
+                const translatedOptionEl = button.querySelector(".translated-option");
+
+                originalOptionEl.style.display = "none";
+                translatedOptionEl.style.display = "inline";
+
+                 if (!translatedOptionEl.dataset.translated || translatedOptionEl.textContent.startsWith('[')) {
+                    translatedOptionEl.textContent = '...';
+                    const optionTextToTranslate = originalOptions[index].replace(/^[a-zA-Z][).]?\s*/, '').trim();
+                    const translatedOptText = await translateText(optionTextToTranslate);
+                    translatedOptionEl.textContent = translatedOptText;
+                     if (!translatedOptText.startsWith('[')) {
+                         translatedOptionEl.dataset.translated = "true";
+                     }
+                 }
+            });
+
+             await Promise.all(translationPromises);
+
+            translateButton.disabled = false;
+            translateButton.textContent = "ترجمة";
+            translateButton.style.display = 'none';
+            untranslateButton.style.display = 'inline-flex';
+        }
+
+        function untranslateQuestion(questionDiv) {
+            const translateButton = questionDiv.querySelector(".translate-button");
+            const untranslateButton = questionDiv.querySelector(".untranslate-button");
+            const translatedQuestionEl = questionDiv.querySelector(".translated-question");
+            const originalQuestionEl = questionDiv.querySelector(".original-question");
+            const optionButtons = questionDiv.querySelectorAll(".options button");
+
+            translatedQuestionEl.style.display = 'none';
+            originalQuestionEl.style.display = 'block';
+
+            optionButtons.forEach((button) => {
+                button.querySelector(".original-option").style.display = 'inline';
+                button.querySelector(".translated-option").style.display = 'none';
+            });
+
+            untranslateButton.style.display = 'none';
+            translateButton.style.display = 'inline-flex';
+        }
+
+        function setDarkMode(isDark) {
+             if (isDark) {
+                bodyElement.classList.add('dark-mode');
+                toggleIcon.classList.remove('fa-sun');
+                toggleIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                bodyElement.classList.remove('dark-mode');
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            setDarkMode(!bodyElement.classList.contains('dark-mode'));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                 setDarkMode(true);
+             } else {
+                 setDarkMode(false);
+             }
+
+            showPage('main-buttons-page');
+        });
+
+    </script>
+
+</body>
+</html>
