@@ -128,14 +128,21 @@
             width: 100%;
             text-decoration: none;
         }
-        .button:hover {
+        .button:hover:not(:disabled) { /* Added :not(:disabled) */
             background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 25px var(--hover-shadow-color);
         }
-        .button:active {
+        .button:active:not(:disabled) { /* Added :not(:disabled) */
             transform: translateY(0) scale(1);
             box-shadow: 0 4px 15px var(--shadow-color);
+        }
+        .button:disabled { /* Style for disabled button */
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: linear-gradient(135deg, #adb5bd, #ced4da); /* Gray gradient */
+            box-shadow: none;
+            transform: none;
         }
         .button i {
             font-size: 1.1em;
@@ -157,6 +164,45 @@
              width: 100%;
              max-width: 450px;
         }
+
+        /* --- NEW CHECKBOX STYLES --- */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px; /* Increased margin */
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+            border-radius: var(--border-radius-md);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px; /* Match button width */
+        }
+        .checkbox-container input[type="checkbox"] {
+            margin-inline-end: 12px; /* More space */
+            transform: scale(1.5); /* Larger checkbox */
+            cursor: pointer;
+            accent-color: var(--primary-color); /* Color the checkmark */
+        }
+        .checkbox-container label {
+            font-size: 1.15em; /* Slightly larger label */
+            font-weight: 600; /* Bolder */
+            cursor: pointer;
+            color: var(--text-color); /* Use text color variable */
+            transition: color 0.4s ease;
+        }
+        body.dark-mode .checkbox-container {
+            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark */
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+        }
+        body.dark-mode .checkbox-container label {
+             color: var(--dark-text-color); /* Use dark text color variable */
+        }
+         body.dark-mode .checkbox-container input[type="checkbox"] {
+             accent-color: var(--dark-accent-color); /* Use dark mode accent */
+         }
+        /* --- END OF NEW CHECKBOX STYLES --- */
+
 
         .sub-buttons-page h2 {
              font-family: var(--font-family);
@@ -566,6 +612,9 @@
          body.dark-mode .floating-btn:hover {
              box-shadow: 0 8px 20px var(--dark-hover-shadow-color);
          }
+         body.dark-mode .button:disabled { /* Dark mode disabled button */
+            background: linear-gradient(135deg, #495057, #5a6268);
+        }
 
 
         @media (max-width: 768px) {
@@ -574,6 +623,7 @@
              #main-buttons-page h1 { font-size: 1.7em; }
              .sub-buttons-page h2 { font-size: 1.6em; }
              .button { padding: 14px 25px; font-size: 1.1em; }
+             .checkbox-container label { font-size: 1.1em; } /* Adjust checkbox label size */
              .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* Adjust breakpoint */
              .sub-button { font-size: 0.95em; padding: 10px 12px; min-height: 70px; }
              .sub-button i { font-size: 1.2em; }
@@ -595,6 +645,8 @@
              #main-buttons-page h1 { font-size: 1.5em; }
               .sub-buttons-page h2 { font-size: 1.4em; }
              .button { padding: 12px 20px; font-size: 1em; }
+             .checkbox-container label { font-size: 1em; } /* Adjust checkbox label size */
+             .checkbox-container input[type="checkbox"] { transform: scale(1.3); } /* Adjust checkbox size */
              .sub-buttons-container { grid-template-columns: 1fr; } /* Single column */
               .sub-button { font-size: 1em; padding: 12px 15px; }
               .sub-button i { font-size: 1.3em; }
@@ -611,7 +663,15 @@
 
     <div id="main-buttons-page" class="page">
         <h1><i class="fas fa-stethoscope"></i> الاسئلة الوزارية الدور الاول والثاني <br> اعداد عبدالرحمن حسن</h1>
-        <button class="button main-button" onclick="showPage('ministerial-questions-sub-page')">
+
+        <!-- === START: Added Checkbox === -->
+        <div class="checkbox-container">
+            <input type="checkbox" id="success-checkbox" name="success-check">
+            <label for="success-checkbox">يارب تنجح عبدالرحمن حسن باسس التخدير</label>
+        </div>
+        <!-- === END: Added Checkbox === -->
+
+        <button class="button main-button" id="show-lectures-button" onclick="handleShowLecturesClick()">
             <i class="fas fa-book-medical"></i>
             عرض محاضرات الاسئلة الوزارية
         </button>
@@ -881,18 +941,18 @@
                     { question: "Basic life support is?", options: ["A) Support with endotracheal tube", "B) Support with defibrillator", "C) Support with ECG monitor", "D) Respiratory support", "E) Cardiac and respiratory support"], correct: 4 },
                     { question: "What is the recommended compression rate per minute ?", options: ["A) 80-100", "B) 100-120", "C) 120-150", "D) 150-170", "E) 50-60"], correct: 1 },
                     { question: "An intubated patient developed rapid desaturation (all the following are true except one?", options: ["A) Check the position of tube", "B) The most common cause is esophageal intubation", "C) Check blood pressure", "D) Check ECG", "E) Give long-acting muscle relaxant"], correct: 4 },
-                    { question: "What is recommended technique for chest compressions during CPR?", options: ["A) Using only one hand to compress the chest", "B) Positioning the shoulders away from the hands", "C) Depressing the sternum at any level", "D) Performing compressions at a rate of 60-80 per minute", "E) Performing compressions with a ratio of 15 compressions to 1 ventilation"], correct: 4 },
+                    { question: "What is recommended technique for chest compressions during CPR?", options: ["A) Using only one hand to compress the chest", "B) Positioning the shoulders away from the hands", "C) Depressing the sternum at any level", "D) Performing compressions at a rate of 60-80 per minute", "E) Performing compressions with a ratio of 15 compressions to 1 ventilation"], correct: 4 }, // Note: Correct answer based on provided code, but guidelines often say 30:2
                     { question: "When is the finger sweep technique advised for airway patency?", options: ["A) In conscious patients", "B) In patients with a strong cough reflex", "C) In convulsing patients", "D) In patients with a foreign body in the mouth", "E) In patients with a blocked nose"], correct: 3 }
                  ],
                  "Safety": [
                     { question: "Why should nitrous oxide be avoided during surgeries where airway fires are a concern?", options: ["A) It supports combustion as readily as oxygen", "B) Has a cooling effect, reducing the risk of fires", "C) It is less flammable than other anesthetic gases", "D) It does not contribute to the oxygen-enriched environment in the airway", "E) None of the above"], correct: 0 },
                     { question: "Why should surgical instruments and surrounding surfaces be non-reflective during laser procedures?", options: ["A) To increase the visibility of the surgical site", "B) To improve the accuracy of incisions", "C) To minimize reflection of the laser beam", "D) To improve oxygen delivery", "E) To facilitate tissue healing"], correct: 2 },
                     { question: "What is an airway fire ?", options: ["A) A fire that occurs outside the operating room", "B) A fire that involves only the patient's skin", "C) A fire that occurs within a patient's airway or involves an in-situ airway device or contiguous breathing circuit", "D) A fire that occurs during recovery room procedures", "E) A fire that originates from surgical instruments"], correct: 2 },
-                    { question: "The use of the following may pose significant safety concerns during airway surgery (all true except one)?", options: ["A) Supplemental oxygen delivered to the patient", "B) Nitrous oxide as a carrier gas delivered to the patient", "C) Helium as a carrier gas delivered to the patient", "D) An open breathing circuit for delivery of gases to the patient", "E) Nitrogen gas in close proximity to the patient/surgical field"], correct: 4 },
+                    { question: "The use of the following may pose significant safety concerns during airway surgery (all true except one)?", options: ["A) Supplemental oxygen delivered to the patient", "B) Nitrous oxide as a carrier gas delivered to the patient", "C) Helium as a carrier gas delivered to the patient", "D) An open breathing circuit for delivery of gases to the patient", "E) Nitrogen gas in close proximity to the patient/surgical field"], correct: 4 }, // Note: Correct answer based on provided code, Helium is inert but C might be intended as wrong depending on context (e.g., displacement of O2)
                     { question: "Regarding safety measurement in surgical laser (all are true except) ?", options: ["A) Put near bronchoscopes and endotracheal tubes.", "B) The active tip should be visible at all time.", "C) Deactivated before removal from the surgical site", "D) Using of special types of endotracheal tubes for laser surgery", "E) Placed in a sheath away from the patient when not in use"], correct: 0 },
                     { question: "Regarding airway fire, only one is true ?", options: ["A) Electrocautery should be used whenever possible", "B) Cutting diathermy mode poses less risk", "C) Unipolar is preferable over bipolar", "D) Electrocautery should be operated by single person", "E) Electrocautery can be used with any inspired O2 concentration"], correct: 3 },
                     { question: "immediate coordinated response for airway fire includes all of following except ?", options: ["A) Increase the concentration of O2 flow for the patient.", "B) Whoever notices the fire first must announce it out loud immediately", "C) The surgeon should stop the procedure immediately. The anesthetist should stop the flow of all airway gases.", "D) Another team member should extinguish the fire by flooding the site with sterile saline", "E) The surgeon should remove any segments of burnt airway"], correct: 0 },
-                    { question: "Which measure is NOT recommended for preventing airway fires?", options: ["A) Using laser-resistant endotracheal tubes", "B) Minimizing the use of electrocautery where possible", "C) Tightly sealing of surgical drapes around the surgical site.", "D) Avoiding high fractional inspired oxygen concentrations", "E) Using silicone or rubber tubes."], correct: 4 },
+                    { question: "Which measure is NOT recommended for preventing airway fires?", options: ["A) Using laser-resistant endotracheal tubes", "B) Minimizing the use of electrocautery where possible", "C) Tightly sealing of surgical drapes around the surgical site.", "D) Avoiding high fractional inspired oxygen concentrations", "E) Using silicone or rubber tubes."], correct: 4 }, // Note: Silicone/rubber tubes ARE fuel sources, so avoiding them might be better. Assuming 'E' means *preferring* them.
                     { question: "The safety used of electrocautery include all except ?", options: ["A) It should be avoid where possible", "B) Monopolar better than bipolar", "C) Cutting diathermy mode carry high risk", "D) It should be avoid when inspired O2 more than 50%", "E) It should be operated by single person"], correct: 1 },
                     { question: "What immediate action should be taken if the situation remains unsafe for the patient or staff during an airway fire?", options: ["A) Active alarms", "B) Use a carbon dioxide extinguisher without delay", "C) Call for help from other team members", "D) The theater should be evacuated", "E) Cut the oxygen source"], correct: 3 },
                     { question: "What determines the prognosis following an airway fire ?", options: ["A) Patient's age", "B) Time of day the fire occurred", "C) Extent of the fire and the injuries incurred", "D) Type of anesthesia used", "E) Previous medical history"], correct: 2 },
@@ -933,24 +993,47 @@
         const bodyElement = document.body;
         const toggleIcon = darkModeToggle.querySelector('i');
 
+        // --- NEW: Get checkbox and button elements ---
+        const successCheckbox = document.getElementById('success-checkbox');
+        const showLecturesButton = document.getElementById('show-lectures-button');
+        // --- END NEW ---
+
         function showPage(pageId) {
             allPages.forEach(page => page.classList.remove('visible'));
             setTimeout(() => {
                 const targetPage = document.getElementById(pageId);
                 if (targetPage) {
-                    if (targetPage.classList.contains('sub-buttons-page')) {
+                     // --- NEW: Update button state when showing main page ---
+                     if (pageId === 'main-buttons-page') {
+                        showLecturesButton.disabled = !successCheckbox.checked;
+                        lastSubButtonsPageId = 'main-buttons-page'; // Reset last page history
+                    } else if (targetPage.classList.contains('sub-buttons-page')) {
                         lastSubButtonsPageId = pageId;
-                    } else if (pageId === 'main-buttons-page') {
-                         lastSubButtonsPageId = 'main-buttons-page';
                     }
+                    // --- END NEW ---
+
                     targetPage.classList.add('visible');
                     window.scrollTo(0, 0);
                 } else {
                     console.error("Page not found:", pageId);
                     document.getElementById('main-buttons-page').classList.add('visible');
+                    // --- NEW: Ensure button state is correct even on error fallback ---
+                    showLecturesButton.disabled = !successCheckbox.checked;
+                    // --- END NEW ---
                 }
             }, 50);
         }
+
+        // --- NEW: Handle click on the main button ---
+        function handleShowLecturesClick() {
+            if (!successCheckbox.checked) {
+                 // Optional: Show an alert or message
+                 // alert("يرجى تأكيد الدعاء لعبد الرحمن أولاً!");
+                return; // Do nothing if checkbox is not checked
+            }
+            showPage('ministerial-questions-sub-page');
+        }
+        // --- END NEW ---
 
 
         function loadQuiz(category, lectureKey) {
@@ -962,11 +1045,11 @@
             quizTitleElement.innerHTML = `<i class="fas fa-notes-medical"></i> ${displayLectureTitle}`;
 
             quizContainer.innerHTML = '';
-            loadingTextElement.style.display = 'block';
+            if (loadingTextElement) loadingTextElement.style.display = 'block'; // Check if element exists
             showPage('quiz-page');
 
             setTimeout(() => {
-                loadingTextElement.style.display = 'none';
+                if (loadingTextElement) loadingTextElement.style.display = 'none'; // Check if element exists
                 if (currentQuestions.length > 0) {
                     currentQuestions.forEach((q, index) => {
                         const questionDiv = createQuestionElement(q, index);
@@ -1058,20 +1141,21 @@
                 if (!response.ok) {
                     let errorBody = `Status: ${response.status}`;
                     try { errorBody = await response.text(); } catch (_) {}
-                    throw new Error(`HTTP error! ${errorBody}`);
+                    console.error(`Translation API Error: ${errorBody}`); // Log detailed error
+                    throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const data = await response.json();
 
-                const translation = data?.[0]?.[0]?.[0];
-                if (typeof translation === 'string') {
-                    return translation;
+                // Enhanced check for valid translation data
+                if (data && Array.isArray(data[0]) && data[0].length > 0 && Array.isArray(data[0][0]) && data[0][0].length > 0 && typeof data[0][0][0] === 'string') {
+                    return data[0][0][0];
                 } else {
-                     console.warn("Unexpected translation response structure:", data);
-                     return `[Translation Format Error]`;
+                     console.warn("Unexpected translation response structure:", JSON.stringify(data));
+                     return `[خطأ في تنسيق الترجمة]`;
                 }
             } catch (error) {
                 console.error("Translation failed:", error);
-                 return `[Translation Error - Check Console]`;
+                 return `[خطأ في الترجمة - تحقق من الكونسول]`;
             }
         }
 
@@ -1091,13 +1175,16 @@
             originalQuestionEl.style.display = "none";
             translatedQuestionEl.style.display = "block";
 
+            // Translate question if not already translated or if previous attempt failed
             if (!translatedQuestionEl.dataset.translated || translatedQuestionEl.textContent.startsWith('[')) {
                 translatedQuestionEl.textContent = `${questionNumberPrefix}جاري ترجمة السؤال...`;
-                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, '');
+                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, ''); // Remove number prefix for translation
                 const translatedQText = await translateText(questionTextToTranslate);
                 translatedQuestionEl.textContent = `${questionNumberPrefix}${translatedQText}`;
                 if (!translatedQText.startsWith('[')) {
-                   translatedQuestionEl.dataset.translated = "true";
+                   translatedQuestionEl.dataset.translated = "true"; // Mark as successfully translated
+                } else {
+                   translatedQuestionEl.dataset.translated = "false"; // Mark as failed
                 }
             }
 
@@ -1108,18 +1195,28 @@
                 originalOptionEl.style.display = "none";
                 translatedOptionEl.style.display = "inline";
 
+                 // Translate option if not already translated or if previous attempt failed
                  if (!translatedOptionEl.dataset.translated || translatedOptionEl.textContent.startsWith('[')) {
                     translatedOptionEl.textContent = '...';
+                    // Remove A), B), etc. prefix before translating
                     const optionTextToTranslate = originalOptions[index].replace(/^[a-zA-Z][).]?\s*/, '').trim();
                     const translatedOptText = await translateText(optionTextToTranslate);
                     translatedOptionEl.textContent = translatedOptText;
                      if (!translatedOptText.startsWith('[')) {
                          translatedOptionEl.dataset.translated = "true";
+                     } else {
+                         translatedOptionEl.dataset.translated = "false";
                      }
                  }
             });
 
-             await Promise.all(translationPromises);
+             try {
+                await Promise.all(translationPromises);
+             } catch (error) {
+                 console.error("Error during option translations:", error);
+                 // Optionally display a general error message to the user
+             }
+
 
             translateButton.disabled = false;
             translateButton.textContent = "ترجمة";
@@ -1160,6 +1257,14 @@
             }
         }
 
+        // --- NEW: Event listener for the checkbox ---
+        if (successCheckbox) {
+            successCheckbox.addEventListener('change', () => {
+                 showLecturesButton.disabled = !successCheckbox.checked;
+            });
+        }
+        // --- END NEW ---
+
         darkModeToggle.addEventListener('click', () => {
             setDarkMode(!bodyElement.classList.contains('dark-mode'));
         });
@@ -1173,6 +1278,12 @@
              } else {
                  setDarkMode(false);
              }
+
+            // --- NEW: Initialize button state on load ---
+            if(showLecturesButton && successCheckbox) {
+                 showLecturesButton.disabled = !successCheckbox.checked;
+            }
+            // --- END NEW ---
 
             showPage('main-buttons-page');
         });
