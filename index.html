@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاسئلة الوزارية الدور الاول والثاني - اعداد عبدالرحمن حسن</title>
+    <title>اسئلة اجهزة التخدير بـ 3 مستويات - اعداد عبدالرحمن حسن</title>
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +51,14 @@
             --dark-hover-shadow-color: rgba(0, 0, 0, 0.5);
             --dark-primary-hover: #0056b3; /* Darker Blue for hover */
             --dark-accent-color: #34d399; /* Brighter Green for Dark Mode */
+
+            /* New colors for difficulty buttons */
+            --easy-color-start: #28a745; /* Green */
+            --easy-color-end: #20c997;   /* Tealish Green */
+            --medium-color-start: #ffc107; /* Amber */
+            --medium-color-end: #fd7e14;  /* Orange */
+            --hard-color-start: #dc3545;  /* Red */
+            --hard-color-end: #b02a37;   /* Darker Red */
         }
 
         * {
@@ -106,54 +115,111 @@
              top: 30px;
          }
 
-
+        /* Enhanced Button Styles */
         .button {
-            padding: 15px 30px;
-            margin-bottom: 15px;
+            padding: 18px 35px; /* Increased padding */
+            margin-bottom: 20px; /* Increased margin */
             border: none;
             border-radius: var(--border-radius-lg);
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: var(--text-on-primary);
-            font-size: 1.2em;
+            font-size: 1.25em; /* Slightly larger font */
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-color);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
             font-family: var(--font-family);
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px; /* Increased gap */
             width: 100%;
             text-decoration: none;
+            position: relative;
+            overflow: hidden; /* For pseudo-element effects */
         }
-        .button:hover:not(:disabled) { /* Added :not(:disabled) */
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px var(--hover-shadow-color);
+
+        .button::before { /* Shine effect */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: all 0.5s ease;
         }
-        .button:active:not(:disabled) { /* Added :not(:disabled) */
-            transform: translateY(0) scale(1);
-            box-shadow: 0 4px 15px var(--shadow-color);
+
+        .button:hover::before {
+            left: 100%;
         }
-        .button:disabled { /* Style for disabled button */
+
+        .button:hover:not(:disabled) {
+            transform: translateY(-4px) scale(1.03); /* More pronounced hover */
+            box-shadow: 0 10px 30px var(--hover-shadow-color);
+        }
+        .button:active:not(:disabled) {
+            transform: translateY(-1px) scale(0.98); /* Subtle active state */
+            box-shadow: 0 6px 20px var(--hover-shadow-color);
+        }
+        .button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            background: linear-gradient(135deg, #adb5bd, #ced4da); /* Gray gradient */
+            background: linear-gradient(135deg, #adb5bd, #ced4da);
             box-shadow: none;
             transform: none;
         }
         .button i {
-            font-size: 1.1em;
+            font-size: 1.2em; /* Larger icon */
+        }
+
+        /* Specific styles for difficulty buttons */
+        .button.easy-level {
+            background: linear-gradient(135deg, var(--easy-color-start), var(--easy-color-end));
+            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
+        }
+        .button.easy-level:hover {
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+        body.dark-mode .button.easy-level {
+            background: linear-gradient(135deg, #228b22, #2e8b57 ); /* Darker green for dark mode */
+        }
+
+
+        .button.medium-level {
+            background: linear-gradient(135deg, var(--medium-color-start), var(--medium-color-end));
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+        }
+         .button.medium-level:hover {
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+        }
+        body.dark-mode .button.medium-level {
+            background: linear-gradient(135deg, #b8860b, #cc5500); /* Darker orange for dark mode */
+        }
+
+
+        .button.hard-level {
+            background: linear-gradient(135deg, var(--hard-color-start), var(--hard-color-end));
+            box-shadow: 0 5px 20px rgba(220, 53, 69, 0.3);
+        }
+        .button.hard-level:hover {
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+        }
+         body.dark-mode .button.hard-level {
+            background: linear-gradient(135deg, #8b0000, #a52a2a); /* Darker red for dark mode */
         }
 
 
         #main-buttons-page h1 {
             font-family: var(--font-family);
-            font-size: 2.0em; /* Slightly smaller for longer title */
+            font-size: 2.0em;
             font-weight: 900;
-            margin-bottom: 30px;
+            margin-bottom: 35px; /* Increased margin */
             color: var(--primary-color);
             text-align: center;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -162,46 +228,8 @@
         }
         .main-button {
              width: 100%;
-             max-width: 450px;
+             max-width: 480px; /* Slightly wider */
         }
-
-        /* --- NEW CHECKBOX STYLES --- */
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px; /* Increased margin */
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-            border-radius: var(--border-radius-md);
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 450px; /* Match button width */
-        }
-        .checkbox-container input[type="checkbox"] {
-            margin-inline-end: 12px; /* More space */
-            transform: scale(1.5); /* Larger checkbox */
-            cursor: pointer;
-            accent-color: var(--primary-color); /* Color the checkmark */
-        }
-        .checkbox-container label {
-            font-size: 1.15em; /* Slightly larger label */
-            font-weight: 600; /* Bolder */
-            cursor: pointer;
-            color: var(--text-color); /* Use text color variable */
-            transition: color 0.4s ease;
-        }
-        body.dark-mode .checkbox-container {
-            background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent dark */
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
-        }
-        body.dark-mode .checkbox-container label {
-             color: var(--dark-text-color); /* Use dark text color variable */
-        }
-         body.dark-mode .checkbox-container input[type="checkbox"] {
-             accent-color: var(--dark-accent-color); /* Use dark mode accent */
-         }
-        /* --- END OF NEW CHECKBOX STYLES --- */
 
 
         .sub-buttons-page h2 {
@@ -215,7 +243,7 @@
         }
         .sub-buttons-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* Wider minmax */
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
             width: 100%;
@@ -224,23 +252,23 @@
             background: var(--card-bg);
             color: var(--primary-color);
             border: 2px solid var(--primary-color);
-            font-size: 1.0em; /* Slightly smaller for potentially longer titles */
+            font-size: 1.0em;
             font-weight: 700;
-            padding: 12px 15px; /* Adjusted padding */
+            padding: 12px 15px;
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             border-radius: var(--border-radius-md);
             line-height: 1.4;
             display: flex;
-            flex-direction: column; /* Stack icon and text */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             gap: 8px;
-            min-height: 80px; /* Ensure consistent height */
+            min-height: 80px;
         }
          .sub-button i {
-            font-size: 1.3em; /* Larger icon */
+            font-size: 1.3em;
             margin-bottom: 5px;
         }
         .sub-button:hover {
@@ -273,7 +301,7 @@
         }
         header h1 {
             margin: 0;
-            font-size: 1.8em; /* Adjusted for potentially long lecture titles */
+            font-size: 1.8em;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -531,11 +559,11 @@
         }
 
         body.dark-mode #main-buttons-page h1 {
-            color: var(--secondary-color);
+            color: var(--secondary-color); /* Keep distinct for dark mode */
             text-shadow: none;
         }
          body.dark-mode .sub-buttons-page h2 {
-             color: var(--accent-color);
+             color: var(--accent-color); /* Use accent color for sub-page title */
          }
 
         body.dark-mode .sub-button {
@@ -569,12 +597,12 @@
         }
 
         body.dark-mode .options button {
-            background-color: #495057; /* Lighter dark gray */
+            background-color: #495057;
             border-color: var(--dark-border-color);
             color: var(--dark-text-color);
         }
         body.dark-mode .options button:hover:not(:disabled) {
-            background-color: #6c757d; /* Medium gray */
+            background-color: #6c757d;
             border-color: var(--accent-color);
         }
         body.dark-mode .options button:disabled {
@@ -595,12 +623,12 @@
         body.dark-mode footer { color: var(--dark-text-light); }
 
         body.dark-mode .back-button {
-            background: #5a6268; /* Darker Gray */
+            background: #5a6268;
             color: var(--dark-text-color);
             box-shadow: 0 2px 8px var(--dark-shadow-color);
         }
         body.dark-mode .back-button:hover {
-            background: #6c757d; /* Medium Gray */
+            background: #6c757d;
             box-shadow: 0 4px 12px var(--dark-hover-shadow-color);
         }
 
@@ -612,7 +640,7 @@
          body.dark-mode .floating-btn:hover {
              box-shadow: 0 8px 20px var(--dark-hover-shadow-color);
          }
-         body.dark-mode .button:disabled { /* Dark mode disabled button */
+         body.dark-mode .button:disabled {
             background: linear-gradient(135deg, #495057, #5a6268);
         }
 
@@ -622,9 +650,8 @@
              #main-buttons-page, #ministerial-questions-sub-page { top: 20px; }
              #main-buttons-page h1 { font-size: 1.7em; }
              .sub-buttons-page h2 { font-size: 1.6em; }
-             .button { padding: 14px 25px; font-size: 1.1em; }
-             .checkbox-container label { font-size: 1.1em; } /* Adjust checkbox label size */
-             .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* Adjust breakpoint */
+             .button { padding: 16px 30px; font-size: 1.15em; } /* Adjusted padding for main buttons */
+             .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
              .sub-button { font-size: 0.95em; padding: 10px 12px; min-height: 70px; }
              .sub-button i { font-size: 1.2em; }
             header { padding: 20px 15px; }
@@ -644,10 +671,8 @@
         @media (max-width: 480px) {
              #main-buttons-page h1 { font-size: 1.5em; }
               .sub-buttons-page h2 { font-size: 1.4em; }
-             .button { padding: 12px 20px; font-size: 1em; }
-             .checkbox-container label { font-size: 1em; } /* Adjust checkbox label size */
-             .checkbox-container input[type="checkbox"] { transform: scale(1.3); } /* Adjust checkbox size */
-             .sub-buttons-container { grid-template-columns: 1fr; } /* Single column */
+             .button { padding: 14px 25px; font-size: 1.05em; } /* Adjusted padding for main buttons */
+             .sub-buttons-container { grid-template-columns: 1fr; }
               .sub-button { font-size: 1em; padding: 12px 15px; }
               .sub-button i { font-size: 1.3em; }
             header h1 { font-size: 1.3em; }
@@ -662,51 +687,26 @@
 <body>
 
     <div id="main-buttons-page" class="page">
-        <h1><i class="fas fa-stethoscope"></i> الاسئلة الوزارية الدور الاول والثاني <br> اعداد عبدالرحمن حسن</h1>
+        <h1><i class="fas fa-stethoscope"></i> اسئلة اجهزة التخدير بـ 3 مستويات <br> اعداد عبدالرحمن حسن</h1>
 
-        <!-- === START: Added Checkbox === -->
-        <div class="checkbox-container">
-            <input type="checkbox" id="success-checkbox" name="success-check">
-            <label for="success-checkbox">يارب تنجح عبدالرحمن حسن باسس التخدير</label>
-        </div>
-        <!-- === END: Added Checkbox === -->
-
-        <button class="button main-button" id="show-lectures-button" onclick="handleShowLecturesClick()">
-            <i class="fas fa-book-medical"></i>
-            عرض محاضرات الاسئلة الوزارية
+        <button class="button main-button easy-level" onclick="navigateToLectureSelection('Easy')">
+            <i class="fas fa-brain"></i>
+            أسئلة المستوى السهل
+        </button>
+        <button class="button main-button medium-level" onclick="navigateToLectureSelection('Medium')">
+            <i class="fas fa-layer-group"></i>
+            أسئلة المستوى المتوسط
+        </button>
+        <button class="button main-button hard-level" onclick="navigateToLectureSelection('Hard')">
+            <i class="fas fa-graduation-cap"></i>
+            أسئلة المستوى الصعب
         </button>
     </div>
 
     <div id="ministerial-questions-sub-page" class="page sub-buttons-page">
-        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة</h2>
-        <div class="sub-buttons-container">
-            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'PreMedication')">
-                <i class="fas fa-pills"></i> pre-medication
-            </button>
-            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Laryngospasm')">
-                <i class="fas fa-lungs"></i> Laryngospasm and Bronchospasm
-            </button>
-            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'HypoxiaMH')">
-                <i class="fas fa-temperature-high"></i> Hypoxia and Malignant Hyperthermia
-            </button>
-            <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Fluids')">
-                <i class="fas fa-vial"></i> Intravenous fluids
-            </button>
-             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Blood')">
-                <i class="fas fa-tint"></i> Blood and blood products
-            </button>
-             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Positioning')">
-                <i class="fas fa-bed-pulse"></i> Surgical position
-            </button>
-             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Monitoring')">
-                <i class="fas fa-heart-pulse"></i> Intraoperative patient monitoring
-            </button>
-             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'CPR')">
-                <i class="fas fa-lungs-virus"></i> CPR
-            </button>
-             <button class="button sub-button" onclick="loadQuiz('MinisterialQuestions', 'Safety')">
-                <i class="fas fa-shield-alt"></i> Safety measure operating room
-            </button>
+        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة <span id="difficulty-level-title"></span></h2>
+        <div class="sub-buttons-container" id="lecture-buttons-container">
+            <!-- Lecture buttons will be dynamically inserted here -->
         </div>
         <div class="back-button-container">
             <button class="button back-button" onclick="showPage('main-buttons-page')">رجوع</button>
@@ -735,249 +735,267 @@
 
     <script>
          const quizData = {
-             "MinisterialQuestions": {
-                "PreMedication": [
-                    { question: "About midazolam ?", options: ["A) The elimination half-life is (1.5-3.5) hours", "B) Acts on GABA receptor", "C) Has a good hemodynamic stability", "D) A benzodiazepine drug", "E) All of the above"], correct: 4 },
-                    { question: "What is the primary mechanism of action of opioid analgesics?", options: ["A) COX inhibition", "B) Norepinephrine reuptake inhibition", "C) Mu receptor agonism", "D) NMDA receptor antagonism", "E) None of the above ."], correct: 2 },
-                    { question: "Which anxiolytic drug is characterized by rapid absorption when given orally?", options: ["A) Diazepam", "B) Midazolam", "C) Lorazepam", "D) Alprazolam", "E) Morphine"], correct: 0 },
-                    { question: "Which one of the following is commonly used to treat bradycardia?", options: ["A) Atropine", "B) Aminophylline", "C) Adrenaline", "D) Salbutamol", "E) None of the above ."], correct: 0 },
-                    { question: "All the following are analgesic drugs except ?", options: ["A) Ketamine", "B) Fentanyl", "C) Pethidine", "D) Paracetamol", "E) Propofol"], correct: 4 },
-                    { question: "Which opioid is known for its ultra-short-acting synthetic nature and is antagonized by naloxone ?", options: ["A) Fentanyl", "B) Morphine", "C) Pethidine", "D) Remifentanil", "E) Codeine"], correct: 3 },
-                    { question: "Metoclopramide (All true except one)?", options: ["A) The most common used antiemetic drug", "B) Act centrally as dopaminergic antagonist on the vomiting center in the medulla", "C) Act peripherally by decreasing the rate of gastric emptying", "D) Increasing in the gut peristalsis", "E) May produce oculogyric (extrapyramidal) side effect"], correct: 2 },
-                    { question: "What is the main purpose of using antacid drugs preoperatively?", options: ["A) Increase the volume of gastric juice", "B) Increase the pH of gastric content", "C) Prevent postoperative nausea and vomiting", "D) Stimulate gastric peristalsis", "E) Enhance pulmonary aspiration risk"], correct: 1 },
-                    { question: "Ondansetron ( all true except one) ?", options: ["A) Ondansetron is a selective 5-HT3 serotonin-receptor antagonist", "B) Used for its antiemetic properties", "C) Ondansetron acts both centrally and peripherally to prevent and treat nausea and vomiting", "D) Has effects peripherally by acting on the laryngeal nerve", "E) The peripheral actions of ondansetron are thought to be the mechanism for its antiemetic effects"], correct: 3 },
-                    { question: "Atropine is : ( all true except one) ?", options: ["A) Has vagal inhibition", "B) CNS depressant", "C) The dose of atropine is 0.3-0.4 mg IV", "D) Antisialagogues (decrease salivation)", "E) Increases heart rate"], correct: 1 },
-                    { question: "All of the following drugs are benzodiazepines except ?", options: ["A) Omeprazole", "B) Midazolam", "C) Diazepam", "D) Lorazepam", "E) Alprazolam"], correct: 0 },
-                    { question: "Drug that causes tachycardia is ?", options: ["A) Morphine", "B) Beta blockers", "C) Remifentanil", "D) Ketamine", "E) Halothane"], correct: 3 },
-                    { question: "Regarding Pethidine versus morphine, all choices are true except one?", options: ["A) Less spasmodic action in smooth muscles", "B) Less miosis, constipation, and urinary retention", "C) Rapid but short duration of action (2-3 hrs)", "D) Vagolytic effect", "E) Bradycardia"], correct: 4 },
-                    { question: "How does metoclopramide primarily act to prevent nausea and vomiting?", options: ["A) By blocking dopamine receptors in the medulla", "B) By enhancing serotonin release in the gut", "C) By increasing gastric acidity", "D) By inhibiting 5-HT3 serotonin receptors centrally", "E) By suppressing vagal nerve activity"], correct: 0 },
-                    { question: "Diazepam, Midazolam,and Atropine are ?", options: ["A) Postoperative analgesics", "B) Intraoperative analgesics", "C) Preanesthetic medications", "D) TIVA", "E) Antiemetic medications"], correct: 2 },
-                    { question: "How does fentanyl compare to morphine in terms of analgesic potency ?", options: ["A) Equipotent", "B) Half as potent", "C) Twice as potent", "D) 100 times more potent", "E) 10 times more potent"], correct: 3 },
-                    { question: "All the following are true regarding Glycopyrrolate except one?", options: ["A) Anticholinergic drug", "B) Increase heart rate", "C) Causes sedation", "D) Not pass blood brain barrier", "E) No antiemetic effects"], correct: 2 },
-                    { question: "Which of the following statements about anxiolytic drugs is true?", options: ["A) They primarily act on serotonin receptors", "B) They commonly cause nausea and vomiting", "C) They lack analgesic effects", "D) They do not cross the placenta", "E) Do not cause cardiac and respiratory depression"], correct: 2 },
-                    { question: "Which of the following drugs is known as H2-blockers and used as antacids?", options: ["A) Ranitidine", "B) Omeprazole", "C) Hyoscine", "D) Lansoprazole", "E) None of the above"], correct: 0 },
-                    { question: "Which of the following statements about antacid drugs is true?", options: ["A) They decrease the pH of gastric juice", "B) They are recommended for patients with no risk of aspiration", "C) They primarily act by increasing gastric volume", "D) Sodium citrate is commonly administered intravenously", "E) Histamine H2 receptor antagonists increase the pH of gastric content"], correct: 4 },
-                    { question: "The aim of premedication ?", options: ["A) Analgesia", "B) Anti-anxiety", "C) Amnesia", "D) Antiemetic", "E) All of the above"], correct: 4 },
-                    { question: "Drugs used in the presence of acute severe pain ?", options: ["A) Corticosteroids", "B) NSAIDs", "C) Opioid analgesics", "D) Anti-autonomic drugs", "E) Antiemetic drugs"], correct: 2 },
-                    { question: "All the following are true regarding fentanyl, except one ?", options: ["A) Cause less nausea and vomiting", "B) Can be reversed by physostigmine", "C) Rapid onset", "D) Short duration", "E) Should be used with caution in COPD patient"], correct: 1 },
-                    { question: "The primary mechanism of action of ondansetron is by ?", options: ["A) Inhibition of opioid receptors", "B) Stimulation of acetylcholine receptors", "C) Blockade of histamine receptors", "D) Inhibition of 5-HT3 serotonin receptors", "E) Activation of dopamine receptors"], correct: 3 },
-                    { question: "Which opioid produces less miosis, constipation, and urinary retention compared to morphine ?", options: ["A) Pethidine", "B) Codeine", "C) Remifentanil", "D) Fentanyl", "E) Morphine"], correct: 0 },
-                    { question: "NSAIDs are?", options: ["A) Analgesic drugs", "B) Sedation drugs", "C) Anti-autonomic drugs", "D) Antiemetic drugs", "E) None of the above"], correct: 0 },
-                    { question: "Regarding Remifentanil, all are true except one?", options: ["A) Is a potent ultra-short-acting synthetic opioid given to patients during surgery for pain relief", "B) Remifentanil is a specific mu-type-opioid receptor agonist", "C) Causes respiratory depression and analgesia", "D) Is antagonized by flumazenil", "E) The analgesic effects of remifentanil are rapid in onset and offset"], correct: 3 },
-                    { question: "Most common side effect of remifentanil is ?", options: ["A) Hypertension", "B) Tachycardia", "C) Thrombophlebitis", "D) Vomiting.", "E) Hypotension ."], correct: 4 }
+            "Easy": {
+                "Lecture1_Tracheostomy": [
+                    { question: "What is the main topic discussed in Lec no.1 of the 2nd course by Dr. Mustafa M. Al-Zubaidy?", options: ["Anesthesia techniques", "Respiratory system", "Tracheostomy Tube", "Airway inspection"], correct: 2 },
+                    { question: "According to slide 1, which of these is NOT an emphasized topic in the lecture?", options: ["Tracheostomy indications", "Tracheostomy benefits", "Surgical techniques for tracheostomy", "Tracheostomy complications"], correct: 2 },
+                    { question: "Tracheostomy tubes are typically made of what material, as suggested by slide 2?", options: ["Metal", "Silicone", "Plastic", "Rubber"], correct: 2 },
+                    { question: "Where are tracheostomy tubes usually inserted, according to slide 2?", options: ["Between the first and second tracheal cartilage rings", "Through the second, third, and fourth tracheal cartilage rings", "Below the fifth tracheal cartilage ring", "Directly into the cricothyroid membrane"], correct: 1 },
+                    { question: "What part of a cuffed tracheostomy tube indicates the cuff is inflated?", options: ["The fenestration", "The inner cannula", "The pilot balloon", "The obturator"], correct: 2 },
+                    { question: "What is a primary advantage of the tip of a tracheostomy tube being cut square?", options: ["Easier insertion", "Better suctioning access", "Decreases risk of obstruction against the tracheal wall", "Allows for speech"], correct: 2 },
+                    { question: "Tracheostomy tubes are available in sizes to fit which patient populations?", options: ["Adults only", "Children only", "Neonates to adults", "Neonates only"], correct: 2 },
+                    { question: "What is the general direction of airflow for 'In breath' with a tracheostomy tube?", options: ["From lungs", "To lungs", "Out of trachea", "Around the tube"], correct: 1 },
+                    { question: "Which of these is a listed indication for tracheostomy?", options: ["Short-term (1-2 days) ventilation", "Mild sore throat", "Long-term intermittent positive pressure ventilation", "A common cold"], correct: 2 },
+                    { question: "Can tracheostomy be used for upper airway obstruction?", options: ["No, only for lower airway issues", "Yes, if it cannot be bypassed with an oral/nasal tube", "Only if the obstruction is partial", "No, intubation is always preferred"], correct: 1 },
+                    { question: "One benefit of tracheostomy is increased patient:", options: ["Anxiety", "Sedation need", "Comfort", "Airway resistance"], correct: 2 },
+                    { question: "Does tracheostomy typically lead to less or more need for sedation?", options: ["More need", "Less need", "No change in need", "Depends on the tube type"], correct: 1 },
+                    { question: "Which of these is an immediate complication of tracheostomy?", options: ["Tracheal stenosis", "Hemorrhage", "Scar formation", "Granulomata"], correct: 1 },
+                    { question: "Pneumothorax is listed as what type of complication?", options: ["Delayed", "Late", "Immediate", "Not a complication"], correct: 2 },
+                    { question: "What is the function of a fenestration in a tracheostomy tube?", options: ["To secure the tube", "To inflate the cuff", "To allow the patient to speak", "To measure pressure"], correct: 2 },
+                    { question: "For a patient with a fenestrated tube to speak, what must usually be done with the cuff?", options: ["It must be hyperinflated", "It must be deflated", "It must be partially inflated", "It doesn't matter"], correct: 1 },
+                    { question: "Is 'Inspection of airway' mentioned as a topic of emphasis in this lecture?", options: ["No, only tracheostomy", "Yes, it is listed twice", "Yes, but only for upper airway", "Only in the context of complications"], correct: 1 },
+                    { question: "An additional suctioning lumen on some tracheostomy tubes opens just above the:", options: ["Tip", "Fenestration", "Cuff", "Neck plate"], correct: 2 },
+                    { question: "'Impaired pharyngeal or laryngeal reflexes' can be an indication for tracheostomy to protect the:", options: ["Esophagus", "Lungs", "Stomach", "Vocal cords directly"], correct: 1 },
+                    { question: "'Reduced dead space' is listed as a:", options: ["Complication", "Benefit", "Indication", "Contraindication"], correct: 1 },
+                    { question: "Infection of the stoma is what type of complication?", options: ["Immediate", "Delayed", "Late", "Not a true complication"], correct: 1 },
+                    { question: "Tracheal dilatation is what type of complication?", options: ["Immediate", "Delayed", "Late", "A benefit"], correct: 2 },
+                    { question: "After deflation of the cuff, a fenestrated tube allows breathing through the fenestration and the:", options: ["Pilot balloon", "Inner cannula only", "Stoma", "Esophagus"], correct: 2 },
+                    { question: "The lecture is from which department at Al-Hadba University?", options: ["Department of Surgery", "Department of Internal Medicine", "Department of Anesthesia techniques", "Department of Radiology"], correct: 2 },
+                    { question: "Tracheostomy can aid in bronchial:", options: ["Dilation", "Constriction", "Suctioning", "Biopsy"], correct: 2 }
                 ],
-                "Laryngospasm": [
-                    { question: "All of the following are true about bronchospasm manifestations except ?", options: ["A) An inspiratory wheeze", "B) Prolonged expiration", "C) Change in capnogram", "D) Low oxygen saturation", "E) Hypoventilation"], correct: 0 },
-                    { question: "During management of laryngospasm (all are true except) ?", options: ["A) Trying 20% of induction dose", "B) Using CPAP", "C) Always using Guedel airway", "D) 100% O2", "E) If all failed, use suxamethonium"], correct: 2 },
-                    { question: "Precipitating causes of laryngospasm include all the following except ?", options: ["A) Blood in pharynx", "B) Steroids", "C) Surgical stimulation", "D) Irritant volatile agent", "E) Airway manipulation"], correct: 1 },
-                    { question: "Laryngospasm may increase ?", options: ["A) Bronchodilation", "B) Risk of kidney failure", "C) Risk of pulmonary edema", "D) Risk of allergy", "E) The possibility of wound infection"], correct: 2 },
-                    { question: "............. is the only tensor of the vocal cords. Gentle stretching of this muscle may overcome moderate laryngospasm ?", options: ["A) Cricothyroid muscle", "B) Internal intercostal muscle", "C) External intercostal", "D) Buccinators muscle", "E) Diaphragm"], correct: 0 },
-                    { question: "Signs of laryngospasm (all are true except one)?", options: ["A) Paradoxical chest/abdominal movements", "B) Inspiratory stridor/airway obstruction", "C) Decreased inspiratory efforts", "D) Bradycardia", "E) Desaturation"], correct: 2 },
-                    { question: "By which mechanism can anaphylaxis produce bronchospasm?", options: ["A) Serotonin release", "B) Dopamine release", "C) Histamine release", "D) Oxytocin release", "E) Aldosterone release"], correct: 2 },
-                    { question: "End tidal CO2 reading increase in case of ?", options: ["A) Rebreathing", "B) Hypoventilation", "C) Increased CO2 production", "D) All of the above", "E) None of the above"], correct: 3 },
-                    { question: "Risk factors for laryngospasm include all the following except?", options: ["A) Difficult intubation", "B) Nasal and anal surgery", "C) Pharyngeal surgery", "D) Children with asthma", "E) Slim patients"], correct: 4 },
-                    { question: "Signs of severe bronchospasm (all true except one) ?", options: ["A) Silent on auscultation", "B) Low oxygen saturation", "C) Hypoventilation", "D) Hypotension", "E) Decreased airway pressure"], correct: 4 },
-                    { question: "Causes of bronchospasm include ?", options: ["A) Anaphylaxis", "B) Misplacement of endotracheal tube", "C) Aspiration of gastric contents", "D) Pulmonary oedema", "E) All of the above"], correct: 4 },
-                    { question: "The management of bronchospasm includes: (all true except)?", options: ["A) 100% O2", "B) Stop stimulation", "C) Give morphine", "D) Try gentle chin lift", "E) Deepen anesthesia"], correct: 2 },
-                    { question: "By which mechanism can bronchospasm cause hypotension?", options: ["A) Increase thoracic pressure and decrease venous return", "B) Vasoconstriction", "C) Decrease ICP", "D) All of the above", "E) None of the above"], correct: 0 },
-                    { question: "Regarding using suxamethonium for laryngospasm management, one of the following is correct?", options: ["A) Can trigger laryngospasm during surgery", "B) Cannot be used for intubation", "C) Intramuscular administration should be avoided", "D) It can cause tachycardia", "E) The dose for relieving laryngospasm is 0.5 mg/kg intravenously"], correct: 4 },
-                    { question: "Which drug is recommended for nebulization in the management of bronchospasm?", options: ["A) Adrenaline", "B) Salbutamol", "C) Hydrocortisone", "D) Aminophylline", "E) Noradrenaline"], correct: 1 },
-                    { question: "Bronchospasm cause hypoxia by affecting ?", options: ["A) Tissue perfusion", "B) Upper airway obstruction", "C) Decreasing cardiac output", "D) Prevent O2 from reaching the lungs", "E) Equipment related"], correct: 3 },
-                    { question: "The management of anaphylaxis that occurs during anesthesia include ?", options: ["A) Administer 40% O2", "B) Bronchodilators and an antihistamine", "C) Stop administration of intravenous saline", "D) Give metoprolol", "E) Continue administration of anesthetic agent"], correct: 1 },
-                    { question: "The cause of bronchospasm during induction of anesthesia includes the following except ?", options: ["A) Anaphylaxis", "B) Misplacement of ETT", "C) Pulmonary edema", "D) Unknown cause", "E) All of the above"], correct: 4 },
-                    { question: "Which statement about the administration of suxamethonium for laryngospasm management is correct?", options: ["A) Delay in relieving severe laryngospasm was associated with post-obstructive pulmonary edema", "B) Suxamethonium can be used for pediatric patients only", "C) It is not recommended for patients with laryngospasm", "D) It should be the first step for management", "E) Suxamethonium administration always requires intubation as a follow-up procedure"], correct: 0 },
-                    { question: "When administering atropine during laryngospasm management, what dosage should be used to prevent bradycardia?", options: ["A) 0.1 mg/kg", "B) 0.01 mg/kg", "C) 0.5 mg/kg", "D) 0.05 mg/kg", "E) 0.001 mg/kg"], correct: 1 },
-                    { question: "Management of laryngospasm all true except ?", options: ["A) 100% oxygen", "B) Jaw thrust", "C) Call for help", "D) Continue the surgery", "E) Clear the airway"], correct: 3 },
-                    { question: "Signs of laryngospasm (all true except one)?", options: ["A) Expiratory stridor", "B) Increased inspiratory efforts", "C) Paradoxical chest", "D) Desaturation", "E) Central cyanosis"], correct: 0 },
-                    { question: "Precipitating causes of laryngospasm include all the following except ?", options: ["A) Airway manipulation", "B) Regurgitation", "C) Deep anesthesia", "D) Moving patient", "E) Pain"], correct: 2 },
-                    { question: "What is the recommended dosage of salbutamol for adult patients experiencing bronchospasm during anesthesia ?", options: ["A) 0.001 mg/kg bolus", "B) 0.1 ml/kg of 1:10,000 solution", "C) 1 ml (5 mg) solution nebulized", "D) 0.0015 mg/kg/min infusion", "E) 0.2 mg/kg bolus"], correct: 2 },
-                    { question: "Which phase of anesthesia is most likely to be identified with unilateral bronchospasm and pulmonary edema ?", options: ["A) Maintenance", "B) Emergence or recovery", "C) Pre-operative", "D) Induction", "E) All of the above"], correct: 1 },
-                    { question: "If you cannot ventilate the patient with bronchospasm, the possible causes include ?", options: ["A) Misplaced tube", "B) Kinked tube", "C) Aspiration", "D) Pneumothorax", "E) All of the above"], correct: 4 }
+                "Lecture2_TheaterPollution": [
+                    { question: "What is the main topic of the second lecture?", options: ["Surgical techniques", "Anesthesia drugs", "Theater Pollution", "Patient safety in general"], correct: 2 },
+                    { question: "Since the late 1960s, there has been speculation about the harmful effects of what on operating theatre personnel?", options: ["Radiation", "Trace anaesthetic gases/vapours", "Loud noises", "Long working hours"], correct: 1 },
+                    { question: "What is one part of a 'prudent plan for minimizing exposure' to anaesthetic gases?", options: ["Using older equipment", "Maintenance of equipment", "Avoiding patient monitoring", "Increasing room temperature"], correct: 1 },
+                    { question: "What is the major source of contamination in the operating room, especially in clean surgical procedures?", options: ["The ceiling tiles", "The floor", "Patient's skin and airborne particles from personnel", "Visitors"], correct: 2 },
+                    { question: "Which of these is a listed 'risk of theater pollution'?", options: ["Increased fertility", "Decreased risk of spontaneous abortion", "Renal and liver dysfunction", "Improved mental acuity"], correct: 2 },
+                    { question: "What is a known effect of chronic exposure to nitrous oxide?", options: ["Improved lung function", "Bone marrow depression", "Stronger bones", "Hair growth"], correct: 1 },
+                    { question: "One of the most important factors in reducing pollution is adequate theatre:", options: ["Lighting", "Ventilation and air conditioning", "Staffing", "Storage space"], correct: 1 },
+                    { question: "How many times per hour should circulating air be changed in a well-ventilated theatre?", options: ["1-2 times", "5-10 times", "15-20 times", "Over 30 times"], correct: 2 },
+                    { question: "Is a recirculating ventilation system generally recommended for theatres?", options: ["Yes, it's the best option", "No, it is not recommended", "Only for short procedures", "Yes, if filters are changed daily"], correct: 1 },
+                    { question: "Which breathing system's use is listed as a method to decrease theatre pollution?", options: ["Open drop ether", "Mapleson A", "Circle breathing system", "Insufflation"], correct: 2 },
+                    { question: "Does the circle system recycle CO2?", options: ["No, it vents it", "Yes, it recycles the absorbing CO2 (error in slide, it absorbs CO2)", "Only partially", "It converts CO2 to Oxygen"], correct: 1 },
+                    { question: "Which anesthesia technique is listed as a method to decrease pollution by avoiding inhalational agents?", options: ["High-flow sevoflurane", "Total intravenous anesthesia", "Nitrous oxide-oxygen mix", "Ether anesthesia"], correct: 1 },
+                    { question: "What should be avoided during vaporizer filling to reduce pollution?", options: ["Using gloves", "Spillage", "Checking the agent level", "Filling it completely"], correct: 1 },
+                    { question: "What system is specifically designed to remove waste anaesthetic gases?", options: ["Humidification system", "Scavenging system", "Oxygen flush system", "Air conditioning unit"], correct: 1 },
+                    { question: "The lecture mentions currently available studies conclude what about occupational exposure to TRACE levels of waste anesthetic vapors?", options: ["Strong link to severe adverse health effects", "No association with adverse health effects", "Mild, temporary effects only", "Only affects sensitive individuals"], correct: 1 },
+                    { question: "Is it considered desirable to vent out exhaled anaesthetic vapours?", options: ["No, it's unnecessary", "Yes, it is desirable", "Only in pediatric cases", "Only if nitrous oxide is used"], correct: 1 },
+                    { question: "Training of personnel is part of a prudent plan for:", options: ["Increasing anaesthetic gas use", "Minimizing exposure", "Billing procedures", "Patient scheduling"], correct: 1 },
+                    { question: "What is one of the listed risks associated with theater pollution for females?", options: ["Increased risk of spontaneous abortion", "Enhanced fertility", "Stronger immune system", "Better sleep quality"], correct: 0 },
+                    { question: "Can theater pollution potentially affect mental performance?", options: ["No, it only affects physical health", "Yes, it's listed as a risk", "Only if exposed for more than 20 years", "This is not mentioned"], correct: 1 },
+                    { question: "In labour wards using Entonox, rooms should be well ventilated with a minimum of how many air changes per hour?", options: ["One", "Five", "Ten", "Fifteen"], correct: 1 },
+                    { question: "Theatres that are unventilated are how many times more contaminated than properly ventilated ones?", options: ["Two times", "Four times", "Six times", "Ten times"], correct: 1 },
+                    { question: "Use of regional anesthesia is listed as a method to:", options: ["Increase theatre pollution", "Decrease theatre pollution", "Test the ventilation system", "Calibrate vaporizers"], correct: 1 },
+                    { question: "Modern vaporizers use special agent specific filling devices to reduce:", options: ["Cost of anesthetic", "Time to fill", "Spillage and pollution", "Vaporizer temperature"], correct: 2 },
+                    { question: "Does the lecture suggest that all operating theatre personnel are definitely harmed by trace gases?", options: ["Yes, definitively", "No, current studies suggest no association for trace levels", "Only anesthesia providers are harmed", "Only surgeons are harmed"], correct: 1 },
+                    { question: "One of the three key elements for minimizing exposure, besides equipment maintenance and training, is:", options: ["Longer coffee breaks", "Routine exposure monitoring", "Using scented candles", "Playing loud music"], correct: 1 }
                 ],
-                 "HypoxiaMH": [
-                    { question: "Causes of hypoxia under general anesthesia (all true except one)?", options: ["A) Pneumothorax", "B) Laryngospasm", "C) Anaphylaxis", "D) Inadequate reversal of muscle relaxant", "E) Drugs like salbutamol"], correct: 4 },
-                    { question: "Regarding malignant hyperthermia, all are true except ?", options: ["A) Is a hyper-metabolic response to potent inhalation agents", "B) The depolarizing muscle relaxant succinylcholine can cause MH", "C) Unexplained decrease of end-tidal", "D) It can occur during the surgery", "E) Tachycardia is a sign"], correct: 2 },
-                    { question: "The following are diagnostic criteria for malignant hyperthermia except ?", options: ["A) Muscle rigidity", "B) Tachycardia", "C) Hyperthermia", "D) Unexplained increase of EtCO2", "E) Alkalosis"], correct: 4 },
-                    { question: "One of following is incorrect regarding anesthetic drugs causing hypoxia ?", options: ["A) Light anesthesia", "B) A drop in blood pressure", "C) Muscle relaxants", "D) Anaphylaxis", "E) None of the above"], correct: 0 },
-                    { question: "How can anaphylaxis cause hypoxia ?", options: ["A) By central respiratory depression", "B) Causing upper airway obstruction", "C) Producing bronchospasm and low cardiac output", "D) Produce muscle paralysis", "E) Both A & B"], correct: 2 },
-                    { question: "What can cause splinting of the diaphragm and interfere with breathing in infants?", options: ["A) Pneumothorax", "B) Facemask ventilation", "C) Lung consolidation", "D) Tracheal intubation", "E) Opioid administration"], correct: 1 },
-                    { question: "All the following are late signs of malignant hyperthermia except one?", options: ["A) Cola-colored urine", "B) Increased serum creatinine kinase", "C) Hyperkalemia", "D) Decrease Spo2", "E) Coagulopathy"], correct: 3 },
-                    { question: "Traction on the peritoneum or eye can cause ?", options: ["A) Blood loss", "B) Hypoxia", "C) Hypothermia", "D) Bradycardia", "E) Increase EtCO2"], correct: 3 },
-                    { question: "Malignant hyperthermia treatment by a drug known as ?", options: ["A) Metoclopramide", "B) Dantrolene", "C) Dexamethasone", "D) Atropine", "E) Neostigmine"], correct: 1 },
-                    { question: "All the following are drug-related causes of hypoxemia except ?", options: ["A) Deep anesthesia", "B) Muscle relaxant", "C) Hypotension", "D) Chronic use of hyperglycemic drugs", "E) Anaphylaxis"], correct: 3 },
-                    { question: "All are causes of malignant hyperthermia except one?", options: ["A) Non-depolarizing muscle relaxant", "B) Halothane", "C) Sevoflurane", "D) Stress", "E) Desflurane"], correct: 0 },
-                    { question: "Regarding management of malignant hyperthermia, mannitol is used to ?", options: ["A) Maintain high blood pressure", "B) Maintain diuresis", "C) Decrease CO2 production", "D) Reduction of metabolic factors", "E) All of the above"], correct: 1 },
-                    { question: "All the following are early signs of malignant hyperthermia except one?", options: ["A) Masseter spasm", "B) Elevated EtCO2", "C) Acidosis", "D) Tachycardia", "E) Arrhythmia"], correct: 2 },
-                    { question: "How is the diagnosis of malignant hyperthermia typically confirmed?", options: ["A) Clinical presentation", "B) Blood glucose levels", "C) Electrocardiogram (ECG)", "D) Serum creatinine levels", "E) Chest X-ray"], correct: 0 },
-                    { question: "Which one is not related to the signs of developing malignant hyperthermia?", options: ["A) Hyperkalemia", "B) Hypernatremia", "C) CVS instability", "D) Acidosis", "E) None of the above"], correct: 1 },
-                    { question: "Regarding circulation in the management of hypoxia (all true except) ?", options: ["A) Feel for a pulse", "B) Check the blood pressure", "C) Check the peripheral perfusion and capillary refill time", "D) Inspection of the chest movements and tidal volume", "E) Is anesthesia too deep? Is there a high spinal block"], correct: 3 },
-                    { question: "Decreased venous return leads to hypoxia by causing ?", options: ["A) Hypotension", "B) Splint the diaphragm", "C) Airway obstruction", "D) Pneumothorax", "E) None of the above"], correct: 0 },
-                    { question: "All are causes of intraoperative hypoxia except ?", options: ["A) Disconnection of endotracheal tube", "B) Obstruction by secretion", "C) Severe anemia", "D) Hypervolemia", "E) Empty O2 cylinder"], correct: 3 },
-                    { question: "Management of hypoxia during anesthesia ?", options: ["A) Reposition of LMA", "B) Reposition of probe of oximeter", "C) Check blood pressure", "D) Fluid replacement", "E) All the above"], correct: 4 },
-                    { question: "Regarding the management of hypoxia, what action is recommended if there is doubt about the position of the endotracheal tube?", options: ["A) Secure it firmly in place", "B) Increase the ventilator rate", "C) Administer a bronchodilator", "D) Remove the tube", "E) Check the oxygen saturation level"], correct: 3 },
-                    { question: "By which mechanism can high spinal anesthesia cause hypoxia?", options: ["A) Causes airway obstruction", "B) Causes inadequate breathing", "C) Central respiratory depression", "D) Severe bronchospasm", "E) None of the above"], correct: 1 },
-                    { question: "Malignant hyperthermia ( all true except one)?", options: ["A) Is a hypermetabolic response to potent inhalation agents", "B) There is no specific diagnostic testing", "C) The key diagnostic features include an unexplained elevation of expired carbon dioxide", "D) Bradycardia occurs", "E) Acidosis"], correct: 3 },
-                    { question: "What is the laboratory finding used to confirm the diagnosis of malignant hyperthermia?", options: ["A) Increase Hb", "B) Blood glucose levels", "C) Serum magnesium level", "D) Serum creatinine levels", "E) None of the above"], correct: 3 },
-                    { question: "All the following are treatments of malignant hyperthermia except ?", options: ["A) Dantrolene", "B) Maintain urine output > 2 ml/min", "C) Maintain anesthesia with TIVA", "D) Cool the patient", "E) Serial ABG"], correct: 2 },
-                    { question: "All the following are early signs of malignant hyperthermia except one?", options: ["A) Masseter spasm", "B) Elevated EtCO2", "C) Tachycardia", "D) Arrhythmia", "E) Acidosis"], correct: 4 },
-                    { question: "following are complications of hypothermia during anesthesia except ?", options: ["A) Longer hospital stay", "B) Hypertension", "C) Poor wound healing", "D) Wound infection", "E) Shivering"], correct: 1 },
-                    { question: "Active cooling of a patient with malignant hyperthermia includes all the following Except ?", options: ["A) Intra-abdominal lavage with saline at (4°C)", "B) Paracetamol", "C) Cool sponging and ice pack", "D) Lowering theater temperature", "E) Cold IV fluid"], correct: 1 },
-                    { question: "The management of anaphylaxis that occurs during anesthesia includes ?", options: ["A) Administer 40% O2", "B) Bronchodilators and an antihistamine", "C) Stop administration of intravenous saline", "D) Give metoprolol", "E) Continue administration of anesthetic agent"], correct: 1 },
-                    { question: "How does spinal anesthesia potentially affect body temperature?", options: ["A) It has no effect on body temperature", "B) It causes a marked increase in core temperature", "C) It may lead to hypothermia due to autonomic impairment", "D) It directly measures core temperature", "E) All of the above"], correct: 2 },
-                    { question: "Unrecognized inadvertent intubation morbidity and mortality is a major cause of anesthetic-related issues?", options: ["A) Tracheal", "B) Endobronchial", "C) Esophageal", "D) Both A & B", "E) Both A & C"], correct: 2 }
-                 ],
-                "Fluids": [
-                    { question: "The primary function of Albumin solution is ?", options: ["A) Buffering", "B) Antioxidant", "C) Transport protein", "D) All of the above", "E) None of the above"], correct: 3 },
-                    { question: "What is the colloid oncotic pressure (COP) of gelatins ?", options: ["A) 27-34 mmHg", "B) 45-50 mmHg", "C) 15-25 mmHg", "D) 5-10 mmHg", "E) 55-70 mmHg"], correct: 0 },
-                    { question: "The elimination half-life of hydroxyethyl starch is ?", options: ["A) 30 days", "B) 40 days", "C) 10 days", "D) 1 day", "E) 17 days"], correct: 4 },
-                    { question: "The example of colloids ?", options: ["A) Normal saline", "B) Ringer lactate", "C) Glucose water", "D) Glucose saline", "E) Plasma"], correct: 4 },
-                    { question: "What is the main use of hypertonic saline ?", options: ["A) Fluid replacement in trauma", "B) Treatment of severe brain edema", "C) Treatment of hypokalemia", "D) Correction of metabolic alkalosis", "E) Treatment of hypernatremia"], correct: 1 },
-                    { question: "Which intravenous fluid is commonly used for burn patients ?", options: ["A) Hypertonic saline", "B) Lactated Ringer's", "C) Dextrose solutions", "D) Dextran", "E) Starch solution"], correct: 1 },
-                    { question: "Additional fluid losses include all ?", options: ["A) Polyuria", "B) Nasogastric aspirates", "C) Vomit", "D) Diarrhea", "E) All of the above"], correct: 4 },
-                    { question: "According to the distribution of dextrose solutions, which percent remains in the intravascular space ?", options: ["A) 5%", "B) <10%", "C) >50%", "D) <50%", "E) 30%"], correct: 1 },
-                    { question: "How much of infused 5% albumin remains intravascular ?", options: ["A) 25%", "B) 30%", "C) 75%", "D) 100%", "E) 50%"], correct: 4 },
-                    { question: "Which synthetic colloid has the shortest duration of action due to rapid renal excretion?", options: ["A) Dextran", "B) Gelofusine", "C) Hydroxyethyl starches", "D) Human albumin 20%", "E) Human albumin 5%"], correct: 1 },
-                    { question: "Best for parenteral maintenance fluids rather than aggressive intravascular volume repletion ?", options: ["A) 0.9% normal saline", "B) 0.45% sodium chloride", "C) Dextrose 5%", "D) Ringer Lactate", "E) Albumin"], correct: 1 },
-                    { question: "What is the main indication for 0.9% normal saline infusion ?", options: ["A) Metabolic alkalosis treatment", "B) Hyperkalemia treatment", "C) Intracellular fluid replacement", "D) Nutritional support", "E) Extracellular fluid replacement"], correct: 4 },
-                    { question: "What is the primary disadvantage of rapid administration of large amounts of crystalloids ?", options: ["A) Tissue edema", "B) Inadequate volume expansion", "C) Blood coagulation dysfunction", "D) Tissue healing impairment", "E) None of the above"], correct: 0 },
-                    { question: "Which solution is used as a maintenance fluid for patients with water deficit and hypernatremia?", options: ["A) Dextrose 5% solutions", "B) Hypertonic saline", "C) Lactated Ringer's", "D) Albumin", "E) Plasma"], correct: 0 },
-                    { question: "All of the following are main indications for intravenous fluid except ?", options: ["A) Prophylaxis", "B) Resuscitation", "C) Replacement", "D) Maintenance", "E) None of the above"], correct: 0 },
-                    { question: "One of the crystalloid intravenous fluids is Ringer lactate, also called ?", options: ["A) Dextran", "B) Normal saline", "C) Mannitol solution", "D) Hartman solution", "E) Starch"], correct: 3 },
-                    { question: "The main difference between crystalloid and colloid solutions ?", options: ["A) Crystalloids contain large molecular weight particles", "B) Colloids have a shorter half-life", "C) Crystalloids pass through diffusional barriers more readily than colloids", "D) Colloids have no effect on intravascular volume", "E) Colloids are cheaper"], correct: 2 },
-                    { question: "Indication for using 3% hypertonic saline ?", options: ["A) Treatment of metabolic alkalosis", "B) Replacement fluid in hyperkalemia", "C) Fluid resuscitation in patients with severe hypoalbuminemia", "D) Therapy of severe symptomatic hyponatremia", "E) Maintenance fluid for patients with hypernatremia"], correct: 3 },
-                    { question: "Colloid fluid ( which one is true)?", options: ["A) Natural colloid is albumin", "B) Rate of replacement 1:3", "C) Do not pass membrane readily", "D) No risk for anaphylaxis", "E) Cheaper than crystalloid"], correct: 2 },
-                    { question: "Crystalloid Solutions, all true except ?", options: ["A) Composed of water and small solutes such as electrolytes and glucose.", "B) Its particles act as glue in water.", "C) Its particles easily pass across semipermeable membranes.", "D) Crystalloid solutions can be further categorized as hypotonic, isotonic, or hypertonic.", "E) intravascular half-life of a crystalloid solution is shorter than a colloid solution."], correct: 1 },
-                    { question: "Which of the following statements about colloids is true?", options: ["A) Primarily provide calories.", "B) Expand intravascular volume.", "C) Isotonic solutions.", "D) Colloids are a type of crystalloid.", "E) The intravascular half-lives between 3 and 6 hours."], correct: 4 },
-                    { question: "All of the following are colloids except ?", options: ["A) Gelatin", "B) Starch", "C) Dextrose 50%", "D) Gelofusine", "E) HES"], correct: 2 },
-                    { question: "What is the primary indication for the administration of dextran?", options: ["A) Hemophilia", "B) Hypofibrinogenemia", "C) Thrombocytopenia", "D) Massive hemorrhage", "E) Acute coronary syndrome"], correct: 3 },
-                    { question: "one of the following is not true regarding gelatin ?", options: ["A) COP of 27-34 mmHg", "B) Rapidly excreted by the kidneys", "C) Associated with anaphylactic reactions", "D) The cheapest colloid available", "E) Duration is 10-15"], correct: 4 },
-                    { question: "Lactated Ringer's solution is contraindicated as a diluent for blood transfusions because ?", options: ["A) Calcium binding to the citrated anticoagulant in blood products can inactivate the anticoagulant.", "B) It can lead to hypokalemia.", "C) It may cause metabolic alkalosis.", "D) It may cause sodium retention.", "E) None of the above."], correct: 0 },
-                    { question: "Indications of normal saline include all the following except?", options: ["A) Hypoglycemia", "B) Hypovolemia", "C) Dehydration", "D) Metabolic alkalosis", "E) Sepsis"], correct: 0 },
-                    { question: "What disadvantage is associated with glucose infusions?", options: ["A) Hyperglycemia", "B) Increased CO2 production", "C) Risk of infection and neuropathy", "D) Aggravation of ischemic brain injury", "E) All of the above"], correct: 4 },
-                    { question: "implications of rapid administration of large amounts of crystalloid solutions include ?", options: ["A) Associated with tissue edema", "B) Delay return of bowel function", "C) Can impair oxygen transport", "D) Delay tissue healing", "E) All of the above"], correct: 4 }
+                "Lecture3_GasSupply": [
+                    { question: "Medical gas supply takes the form of either cylinders or a:", options: ["Generator system", "Piped gas system", "Tanker truck system", "Portable canister system"], correct: 1 },
+                    { question: "Cylinders are made of thin-walled seamless:", options: ["Aluminum", "Molybdenum steel", "Titanium", "Copper"], correct: 1 },
+                    { question: "The top end of a cylinder with a tapered screw thread for valve attachment is called the:", options: ["Base", "Body", "Neck", "Shoulder"], correct: 2 },
+                    { question: "What does the plastic disc around the cylinder neck indicate?", options: ["Gas type", "Cylinder pressure", "Last examination year", "Manufacturer"], correct: 2 },
+                    { question: "Which cylinder sizes are specified as NOT for medical gases?", options: ["C and D", "E and F", "A and H", "J and K"], correct: 2 },
+                    { question: "Size E cylinders are used for:", options: ["Cylinder manifolds", "Home oxygen therapy", "Anesthetic machines", "Scuba diving"], correct: 2 },
+                    { question: "How is Oxygen stored in cylinders?", options: ["As a liquid", "As a gas", "As a solid", "As a cryogenic fluid"], correct: 1 },
+                    { question: "How is Nitrous Oxide stored in cylinders?", options: ["As a gas only", "As a liquid + vapor", "As a solid", "Only as a vapor at high pressure"], correct: 1 },
+                    { question: "How often are tests, like internal endoscopic examination, performed on cylinders?", options: ["Every year", "Every 3 years", "Every 5 years", "Every 10 years"], correct: 2 },
+                    { question: "Which of these is a test performed on cylinders?", options: ["Taste test", "Smell test", "Tensile test", "Color match test"], correct: 2 },
+                    { question: "Which of these is a mark engraved on a cylinder?", options: ["User's name", "Test pressure", "Date of first use", "Hospital department"], correct: 1 },
+                    { question: "What is one of the labelling requirements for a cylinder?", options: ["Price of gas", "Name, chemical symbol", "Name of the delivery driver", "Previous contents"], correct: 1 },
+                    { question: "What safety system prevents incorrect cylinder attachment?", options: ["Color coding system", "Pin-Index System", "Thread type system", "Barcode system"], correct: 1 },
+                    { question: "Color coding on cylinders helps to:", options: ["Make them look attractive", "Reduce accidental misuse", "Indicate cylinder size", "Show the filling date"], correct: 1 },
+                    { question: "Full and empty cylinders should be stored:", options: ["Together to save space", "Separated", "In a warm room", "Outdoors"], correct: 1 },
+                    { question: "Cylinder valves are typically made of:", options: ["Plastic", "Stainless steel", "Brass/chromium-plated material", "Aluminum"], correct: 2 },
+                    { question: "What is the function of the on/off spindle on a cylinder valve?", options: ["To adjust gas flow rate", "To open or close the gas pathway", "To secure the valve to the cylinder", "To connect the pressure gauge"], correct: 1 },
+                    { question: "The Bodok seal is a:", options: ["Type of cylinder", "Pressure relief device", "Compressible washer", "Color code"], correct: 2 },
+                    { question: "When opening a cylinder valve, it should be done slowly to prevent:", options: ["Gas leakage", "Valve damage", "Pressure/temperature spikes", "Noise"], correct: 2 },
+                    { question: "During use, a cylinder valve should ideally be kept:", options: ["Slightly open", "Half open", "Fully open", "Almost closed"], correct: 2 },
+                    { question: "What is the oxygen pin-index configuration?", options: ["1,5", "3,5", "2,5", "1,6"], correct: 2 },
+                    { question: "What is the air pin-index configuration?", options: ["1,5", "2,5", "3,5", "7"], correct: 0 },
+                    { question: "What material provides a lightweight option for cylinders?", options: ["Cast iron", "Lead", "Aluminum alloy with fiberglass/epoxy resin", "Thick steel"], correct: 2 },
+                    { question: "What is the approximate pressure of Oxygen in a full cylinder?", options: ["4,400 kPa", "13,700 kPa", "22,000 kPa", "1,000 kPa"], correct: 1 },
+                    { question: "Over-pressurized cylinders should be:", options: ["Used carefully", "Vented by the user", "Reported to the manufacturer", "Stored in a cold place"], correct: 2 }
+                ]
+            },
+            "Medium": {
+                "Lecture1_Tracheostomy": [
+                    { question: "The lecture on Tracheostomy Tube is part of which course level?", options: ["1st course", "2nd course", "3rd course", "Postgraduate course"], correct: 1 },
+                    { question: "What is the purpose of the cuff on a tracheostomy tube?", options: ["To make the tube more comfortable", "To seal the airway for positive pressure ventilation or to prevent aspiration", "To help the patient speak", "To secure the tube to the skin"], correct: 1 },
+                    { question: "Why is a beveled tip on a tracheostomy tube generally avoided?", options: ["It makes suctioning difficult", "It increases the risk of the tip lying against the tracheal wall and causing obstruction", "It is harder to manufacture", "It causes more trauma during insertion"], correct: 1 },
+                    { question: "The additional suctioning lumen in some modern tracheostomy tubes is designed to remove secretions from where?", options: ["Below the cuff", "Within the inner cannula", "Above the cuff", "From the oral cavity"], correct: 2 },
+                    { question: "A tracheostomy might be indicated for upper airway obstruction if:", options: ["The patient has a mild cough", "The obstruction can be easily bypassed with an oral tracheal tube", "The obstruction cannot be bypassed with an oral/nasal tracheal tube", "The patient prefers it over intubation"], correct: 2 },
+                    { question: "How does tracheostomy contribute to protecting the lungs in patients with impaired pharyngeal reflexes?", options: ["By strengthening the reflexes", "By bypassing the pharynx and allowing cuff inflation to prevent aspiration", "By increasing salivary production", "By making coughing more effective"], correct: 1 },
+                    { question: "One reason tracheostomy facilitates ventilator weaning is a reduction in:", options: ["Patient cooperation", "The need for humidification", "Anatomical dead space", "The FiO2 requirement"], correct: 2 },
+                    { question: "'Improved access for oral hygiene' is a benefit of tracheostomy compared to:", options: ["Nasal cannula oxygen", "Oral endotracheal intubation", "Non-invasive ventilation", "No airway intervention"], correct: 1 },
+                    { question: "'Reduced risk of glottic trauma' is a benefit primarily because a tracheostomy tube:", options: ["Is softer than an endotracheal tube", "Bypasses the glottis (vocal cords)", "Is always uncuffed", "Is shorter"], correct: 1 },
+                    { question: "Tube misplacement into a main bronchus is an example of which category of complication?", options: ["Immediate", "Delayed", "Late", "Technical error, not a complication"], correct: 0 },
+                    { question: "Occlusion of the tube by cuff herniation is considered:", options: ["A late complication", "A benefit of cuffed tubes", "An immediate complication", "A sign of correct placement"], correct: 2 },
+                    { question: "Blockage of the tube by secretions, if it occurs, is usually classified as:", options: ["An immediate complication", "A delayed complication", "A late complication", "An unavoidable event"], correct: 1 },
+                    { question: "Mucosal ulceration due to excessive cuff pressures is what type of complication?", options: ["Immediate", "Delayed", "Late", "Expected side effect"], correct: 1 },
+                    { question: "Granulomata of the trachea causing respiratory difficulty after extubation is a:", options: ["Sign of healing", "Late complication", "Benefit of long-term tracheostomy", "Delayed complication"], correct: 1 },
+                    { question: "Tracheal stenosis at the cuff site is classified as what type of complication?", options: ["Immediate", "Delayed", "Late", "An indication for tracheostomy"], correct: 2 },
+                    { question: "For a fenestrated tracheostomy tube to assist in weaning, the patient should be:", options: ["Heavily sedated", "Paralyzed", "Spontaneously breathing", "Mechanically ventilated with high pressures"], correct: 2 },
+                    { question: "How does a fenestrated tube, after cuff deflation, reduce airway resistance?", options: ["By making the tube lumen larger", "By allowing breathing around the cuff and through the fenestration/stoma, offering multiple pathways", "By stiffening the trachea", "By increasing turbulence"], correct: 1 },
+                    { question: "What is a potential consequence of over-inflation of the tracheostomy tube cuff mentioned in 'Delayed Complications'?", options: ["Tube dislodgement", "Improved seal", "Ulceration and distension of the trachea", "Faster weaning"], correct: 2 },
+                    { question: "Laryngectomy surgery is mentioned as a situation where tracheostomy helps in:", options: ["Voice restoration", "Maintenance of an airway and lung protection", "Improving swallowing immediately", "Reducing neck scar"], correct: 1 },
+                    { question: "The possibility of oral nutrition is a listed benefit, likely because:", options: ["The tube provides a route for feeding", "It reduces aspiration risk compared to oral ETT and may allow safer swallowing trials", "Patients with tracheostomies are always less ill", "The tube directly stimulates appetite"], correct: 1 },
+                    { question: "A persistent sinus at the tracheostomy site is what type of complication?", options: ["Immediate", "Delayed", "Late", "A sign of good healing"], correct: 2 },
+                    { question: "Which of these complications is most directly related to the surgical procedure itself?", options: ["Tracheal stenosis at cuff site", "Hemorrhage", "Blockage by secretions", "Granulomata after extubation"], correct: 1 },
+                    { question: "'Inspection of airway' is listed twice under 'This lecture will emphasize on:'. This likely signifies:", options: ["A typographical error", "Its significant importance in the context of anesthesia and airway management", "Two different methods of inspection", "Inspection before and after tracheostomy"], correct: 1 },
+                    { question: "Why might patients tolerate tracheostomy tubes better than oral/nasal tracheal tubes, leading to reduced sedation?", options: ["Tracheostomy tubes are always smaller.", "Less irritation of the upper airway, pharynx, and larynx.", "Tracheostomy tubes provide better oxygenation.", "The neck incision is less painful than throat irritation."], correct: 1 },
+                    { question: "Which factor is crucial for preventing blockage of the tube by secretions?", options: ["Using only uncuffed tubes", "Adequate humidification and suction", "Keeping the patient NPO", "Administering antibiotics prophylactically"], correct: 1 }
                 ],
-                "Blood": [
-                     { question: "When plasma is stored at a temperature of 2-6°C, the labile clotting activity of Factors V and VIII will decline to 10-20% within...?", options: ["A) 8 hours", "B) 48 hours", "C) 24 hours", "D) 36 hours", "E) One hour"], correct: 1 },
-                     { question: "One of the following is related to the effects of storage on whole blood ?", options: ["A) Increase the pH", "B) Decrease plasma potassium concentration", "C) Progressive decrease in red cell content of2,3diphosphoglycerate (2,3 DPG)", "D) Increase RBC count", "E) Increase in Factor VIII to 10-20% of normal within 48 hours of donation"], correct: 2 },
-                     { question: "Indications of plasma transfusion are?", options: ["A) Anticipated invasive procedure or surgery", "B) Massive hemorrhage (over one blood volume)", "C) The correction of coagulopathy associated with liver disease", "D) All the above are true", "E) None of the above are true"], correct: 3 },
-                     { question: "What is the primary indication for red blood cell (RBC) transfusion?", options: ["A) Treatment of hemophilia A", "B) Correction of severe hyperfibrinogenemia", "C) Thrombocytopenia", "D) Ongoing bleeding with incompletely responsive to 2-3 L crystalloid", "E) Hypovolemia"], correct: 3 },
-                     { question: "Which of the following is not related to delay hemolytic reaction?", options: ["A) Extravascular hemolysis", "B) Caused by antibodies to non D antigen of Rh system", "C) Delayed 2-3 month", "D) Jaundice", "E) Fever"], correct: 2 },
-                     { question: "Packed red blood cells prior to transfusion better diluted with?", options: ["A) 0.9% normal saline", "B) Dextrose", "C) Ringer's lactate", "D) Albumin", "E) Dextran"], correct: 0 },
-                     { question: "The following are immune complications of blood transfusion except ?", options: ["A) Graft versus host disease", "B) Anaphylactic reaction", "C) Hepatitis C", "D) Hemolytic reactions", "E) Non-hemolytic reactions"], correct: 2 },
-                     { question: "Regarding whole blood ?", options: ["A) Dose: 6 ml/kg of WB raise Hemoglobin level 1 g/dl", "B) During donation, blood is collected into a sterile pack", "C) The sterile pack needs an anticoagulant-preservative", "D) Preservative solution usually contains citrate, phosphate, dextrose, and often adenine (CPDA)", "E) All of the above"], correct: 4 },
-                     { question: "All the following are indications for plasma transfusion except ?", options: ["A) INR >1.5 without active bleeding", "B) Massive hemorrhage (over one blood volume)", "C) Emergent reversal of anticoagulant (warfarin) therapy", "D) Anticipated invasive procedure or surgery", "E) Treatment of isolated factor deficiencies"], correct: 0 },
-                     { question: "Function of CPDA in blood collection bag all true except ?", options: ["A) Anticoagulant", "B) Acid-base balance", "C) Provide energy", "D) Maintain the RBC membrane", "E) Support metabolism"], correct: 1 },
-                     { question: "PRBCs transfusion guidelines, the correct answer is ?", options: ["A) ICU patient HB > 7", "B) Post-operative HB > 8", "C) Transfusion rapid first 15 min", "D) Transfusion complete within 4 hours", "E) Cardiovascular disease HB > 8"], correct: 3 },
-                     { question: "All true about cryoprecipitate except ?", options: ["A) Obtain from multiple donations", "B) Rich in factor VIII", "C) Rich in factor XIII", "D) Fibrinogen", "E) Von Willebrand factor"], correct: 0 },
-                     { question: "What is the primary function of platelet transfusion?", options: ["A) To enhance red cell mass", "B) To correct coagulopathies", "C) To provide clotting factors", "D) To increase platelet count and function", "E) None of the above"], correct: 3 },
-                     { question: "Regarding complications of massive blood transfusion (all are true except) ?", options: ["A) Coagulopathy", "B) Hypothermia", "C) Hypernatremia", "D) Citrate Toxicity", "E) Acid-Base Balance disturbance"], correct: 2 },
-                     { question: "Which of the following is true about whole blood transfusion?", options: ["A) It is commonly available in most blood banks.", "B) One unit raises the hemoglobin level by 2 g/dL.", "C) It is stored without any preservative solution.", "D) Metabolism continues in red cells and platelets during storage.", "E) It is the preferred form of blood product for most transfusion needs."], correct: 3 },
-                     { question: "The function of phosphate as anticoagulant preservative in solution of blood collection pack is ?", options: ["A) Exchange sodium salt", "B) Support metabolism of red cells to ensure they release oxygen readily at tissue level", "C) Maintained the red cell membrane", "D) Provide energy source", "E) None of the above"], correct: 1 },
-                     { question: "Which blood product is primarily indicated for thrombocytopenia ?", options: ["A) Fresh frozen plasma", "B) Cryoprecipitate", "C) Platelets", "D) Red blood cells", "E) Dextran"], correct: 2 },
-                     { question: "Regarding cryoprecipitate ?", options: ["A) Is rich in factor VIII, von Willebrand factor (VWF), factor XIII, and fibrinogen.", "B) Cryoprecipitate is obtained from a single donation of FFP at about 4°C.", "C) Cryoprecipitate is usually administered as a transfusion of 10 single unit.", "D) Can use in hemophilia A.", "E) All of the above."], correct: 4 },
-                     { question: "Regarding management of hemolytic reaction (all are true except)?", options: ["A) transfusion should be stopped immediately and the blood bank should be notified.", "B) Blood should be drawn to identify hemoglobin in plasma, to repeat compatibility testing.", "C) Urinary catheter should be avoided.", "D) Osmotic diuresis should be initiated with mannitol and intravenous fluids.", "E) The urine should be checked for hemoglobin."], correct: 2 },
-                     { question: "Acute hemolytic reaction that occurs after blood transfusion, in anesthetized patients is manifested by ?", options: ["A) Hypertension", "B) Disseminated intravascular coagulation", "C) Hypothermia", "D) Bradycardia", "E) Normal urine output"], correct: 1 },
-                     { question: "Non-hemolytic immune reactions all true except ?", options: ["A) Usually due to ABO blood incompatibility.", "B) Post-Transfusion Purpura", "C) Febrile Reactions.", "D) Graft-Versus-Host Disease", "E) Transfusion-Related Acute Lung Injury"], correct: 0 },
-                     { question: "The anticoagulant preservative solutions contents are ?", options: ["A) Sodium citrate.", "B) Phosphate.", "C) Dextrose", "D) Adenine.", "E) All of the above"], correct: 4 }
-                 ],
-                 "Positioning": [
-                     { question: "What is the hemodynamic risk associated withclassic supine position ?", options: ["A) Supine hypotensive syndrome", "B) Bradycardia", "C) Increase ejection fraction", "D) Increase FRC", "E) All of the above"], correct: 0 },
-                     { question: "Regarding positioning of elderly patients, all are true except ?", options: ["A) Fragile surfaces", "B) Limited range of motion", "C) Dragging or sliding rather than lifting", "D) Adequate padding for bony prominence", "E) Arthritic joints"], correct: 2 },
-                     { question: "In craniotomy, the main position-related risk is ?", options: ["A) Bronchospasm", "B) Hypotension", "C) Tachycardia", "D) Air embolism", "E) Desaturation"], correct: 3 },
-                     { question: "Which position may result in nerve damage from pressure exerted by stirrups ?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Prone position", "E) Lateral position"], correct: 2 },
-                     { question: "Position for laminectomy is ?", options: ["A) Supine position", "B) Lateral position", "C) Prone position", "D) Trendelenburg", "E) Reverse Trendelenburg"], correct: 2 },
-                     { question: "it is the most common surgery position?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Prone position", "E) Lateral position"], correct: 0 },
-                     { question: "Lateral position, all true except one?", options: ["A) Used in some operations such as kidney", "B) It may result in asymmetrical lung ventilation", "C) Used in thoracic surgeries with incompletely responsive to 2-3 L crystalloid", "D) The body laid flat on the back", "E) The pelvis and shoulders must be supported to prevent from rolling"], correct: 3 },
-                     { question: "Which offollowing positions is most commonly associated with decreased FRC ?", options: ["A) Lithotomy position", "B) Lateral position", "C) Supine position", "D) Reverse Trendelenburg position", "E) None of the above"], correct: 0 },
-                     { question: "The goals of position include all the following except ?", options: ["A) Maximum surgical exposure", "B) Prevent injury", "C) Adequate access to monitoring", "D) Satisfactory surgical result", "E) Overextension of the"], correct: 4 },
-                     { question: "The false answer for the position of old patient is ?", options: ["A) Fragile skin", "B) Use adhesive tape", "C) Arthritis joint", "D) Limited range of motion.", "E) Padding of bony prominence"], correct: 1 },
-                     { question: "Position for pelvis and lower abdomen surgery(such as: anal and cysto) ?", options: ["A) Lithotomy position", "B) Lateral position", "C) Supine position", "D) Sitting position", "E) Trendelenburg"], correct: 0 },
-                     { question: "Trendelenburg position?", options: ["A) Used in hypertensive patient", "B) The patient is in lateral position", "C) Head is up and legs down", "D) The head is down and legs up", "E) Has no effect on hemodynamics"], correct: 3 },
-                     { question: "One of the following positions used for neck and head surgery and gynecological procedures because it reduces flow of blood to those areas ?", options: ["A) Prone position", "B) Supine position", "C) Lithotomy and Lloyd Davis position", "D) Reverse Trendelenburg position", "E) Seated position: (Sitting position"], correct: 3 },
-                     { question: "In prone position all true except ?", options: ["A) Excessive extension of shoulder should be avoided", "B) Patient lying on right or left side", "C) Face and eyes should be protected from trauma", "D) Tracheal tube must be secured", "E) Support beneath shoulder and iliac crest"], correct: 1 },
-                     { question: "Lateral position, all true except one?", options: ["A) Used in some operations such as kidney and thoracic surgeries", "B) The body laid flat on the back", "C) The patient is lying on his right or left side", "D) The pelvis and shoulders must be supported to prevent from rolling", "E) It may result in asymmetrical lung ventilation"], correct: 1 },
-                     { question: "In which position are the occiput, sacrum, and heel at risk of pressure sores?", options: ["A) Supine position", "B) Sitting position", "C) Lithotomy position", "D) Trendelenburg position", "E) Lateral position"], correct: 0 },
-                     { question: "Air embolism is a common complication of ?", options: ["A) Supine position", "B) Lateral position", "C) Lithotomy position", "D) Sitting position", "E) All of the above"], correct: 3 },
-                     { question: "Position of the pediatric patient (all true except one)?", options: ["A) Think of appropriate size", "B) Right size for bed and attachments", "C) Don't use safety strap", "D) Never overextended limbs or keep in one position for longer periods", "E) Children are prone to and have greater risk of physiologically compromised"], correct: 2 },
-                     { question: "The regions that are accessible with supine position?", options: ["A) Peritoneal & thoracic & pericardial", "B) Head and neck", "C) Lumbar region", "D) Both A & B", "E) None of the above"], correct: 3 },
-                     { question: "What is a potential complication of the lithotomy position?", options: ["A) Nerve damage in the leg", "B) Abdominal compression", "C) Asymmetrical lung ventilation", "D) Brachial plexus damage", "E) None of the above"], correct: 0 }
-                 ],
-                 "Monitoring": [
-                    { question: "What do you have to do regarding abnormal heart rhythm on ECG?", options: ["A) Assess the vital signs A.B.C", "B) Listen for equal air entry", "C) Check the airway patency", "D) Check pulse, blood pressure", "E) All of the above should be done"], correct: 4 },
-                    { question: "Which lead is most commonly used for detecting cardiac arrhythmias during anesthesia?", options: ["A) Lead I", "B) Lead II", "C) Lead III", "D) CM5 lead", "E) CB5 lead"], correct: 1 },
-                    { question: "End tidal CO2 reading increases in case of ?", options: ["A) Rebreathing", "B) Hypoventilation", "C) Increased CO2 production", "D) All of the above", "E) None of the above"], correct: 3 },
-                    { question: "What is the primary purpose of intraoperative monitoring?", options: ["A) To administer medications", "B) To facilitate surgical access", "C) Both A and B", "D) To ensure surgical accuracy", "E) To monitor physiological status"], correct: 4 },
-                    { question: "A normal EtCO2 reading is ?", options: ["A) 4.5-6.0mmHg or 35-45Kpа.", "B) 4.5-6.0kPa or 35-45mmHg", "C) 5.5-8.0kPa or 45-55mmHg", "D) 2.5-5.0kPa or 30-85mmHg", "E) None of the above"], correct: 1 },
-                    { question: "Drug that causes tachycardia is ?", options: ["A) Morphine", "B) Beta blockers", "C) Remifentanil", "D) Ketamine", "E) Halothane"], correct: 3 },
-                    { question: "The wave of capnography that can be seen during cardiac arrest is ?", options: ["A) Flat wave.", "B) Elevated wave.", "C) Low wave", "D) Irregular wave.", "E) Curare cleft wave"], correct: 0 },
-                    { question: "One of the following complications of hypothermia commonly increases 02 consumption ?", options: ["A) Coagulation system dysfunction", "B) Wound infections", "C) Poor wound healing", "D) Patient discomfort and shivering", "E) All of the above"], correct: 3 },
-                    { question: "All following are risk factors for arrhythmia during anesthesia except one?", options: ["A) The presence of cardiac disease", "B) Alkalosis", "C) Low CO2 level", "D) Hypoxia", "E) Electrolyte disturbances"], correct: 2 },
-                    { question: "Which of the Ffollowing statements accurately describes the implications of end-tidal carbon dioxide (ETCO2) readings?", options: ["A) A low ETCO2 reading is always indicative of hypothermia.", "B) Hyperventilation leads to a progressive rise in ETCO2 levels.", "C) Rebreathing CO2 can result in a progressive drop in ETCO2 levels.", "D) An airway obstruction typically results in a sudden rise in ETCO2 levels.", "E) A sudden rise in ETCO2 could indicate return of spontaneous circulation (ROSC) following CPR for cardiorespiratory arrest."], correct: 4 },
-                    { question: "A low EtCO2 reading may indicate ?", options: ["A) Hyperthermia", "B) Esophageal intubation", "C) Hyperventilation", "D) Both A & B", "E) All of the above"], correct: 2 },
-                    { question: "All of the following abnormalities can be detected by ECG ?", options: ["A) Arrhythmias", "B) Myocardial ischemia", "C) Hypertension", "D) Pericarditis", "E) Left ventricular hypertrophy"], correct: 2 },
-                    { question: "Which of the following statements is correct regarding the effects of drugs and other factors on cardiac rhythm during anesthesia ?", options: ["A) Halothane and nitrous oxide commonly cause sinus bradycardia.", "B) Catecholamines have no effect on impulse conduction.", "C) Hypoxia and acidosis decrease the likelihood of arrhythmias during anesthesia.", "D) Ventricular ectopic beats are rare during anesthesia.", "E) Cardiac disease, hypoxia, acidosis, hypercarbia, and electrolyte disturbances Increase the likelihood of arrhythmias during anesthesia."], correct: 4 },
-                    { question: "Which parameter is NOT routinely measured during most surgical procedures?", options: ["A) Blood glucose level.", "B) Blood pressure.", "C) Heart's electrical activity", "D) Arterial blood oxygen level.", "E) None of the above"], correct: 0 }
-                 ],
-                 "CPR": [
-                    { question: "Golden rules in CPR include ?", options: ["A) Ensure high quality chest compressions: rate, depth recoil", "B) Plan actions before interrupting CPR", "C) Minimize interruption of chest compressions", "D) Early defibrillation of shockable rhythm", "E) All of the above"], correct: 4 },
-                    { question: "Regarding anesthesia and arrhythmia, which one is common during thoracic surgery?", options: ["A) Ventricular fibrillation", "B) Atrial fibrillation", "C) Supraventricular tachycardia", "D) Pulseless electrical activity", "E) None of the above"], correct: 1 },
-                    { question: "Which one of the following could be indicative of ROSC following CPR for cardiorespiratory arrest, as the patient starts breathing again?", options: ["A) Sudden rise in CO2", "B) Low ETCO2", "C) Absent waveform", "D) Hyperventilation", "E) None of the above"], correct: 0 },
-                    { question: "How can inadequate circulation be identified?", options: ["A) Pulse oximeter showing a loss or reduction of pulsatile waveform", "B) Decreased respiratory rate", "C) Increased capillary refill time", "D) Elevated blood pressure", "E) Audible wheezing"], correct: 0 },
-                    { question: "A patient with CPR may have the following complications except ?", options: ["A) Rib fracture", "B) Sternum fracture", "C) Lung contusion", "D) Pneumothorax", "E) Bowel injury"], correct: 4 },
-                    { question: "Use of adrenaline in cardiac arrest (all true except one)?", options: ["A) Adrenaline 1mg IV (10ml of 1:10,000)", "B) Non-shockable rhythm: give after fifth shock (during CPR)", "C) Flush with 20ml saline", "D) Non-shockable rhythm: give as soon as IV access is established", "E) Repeat adrenaline dose during every other CPR cycle thereafter (i.e., repeat every 3-5 Minutes once given, regardless of rhythm)"], correct: 1 },
-                    { question: "The drugs that are used in CPR include all of the following except ?", options: ["A) Adrenaline", "B) Amiodarone", "C) Magnesium", "D) Dantrolene", "E) Calcium"], correct: 3 },
-                    { question: "Which one of the following is shockable rhythm ?", options: ["A) AF", "B) VF", "C) SVT", "D) Ectopic beats", "E) PEA"], correct: 1 },
-                    { question: "In CPR we avoid one of the following which is redistributed away from the intravascular space rapidly ?", options: ["A) Normal saline", "B) Dextrose", "C) Mannitol", "D) Albumin", "E) Ringer"], correct: 1 },
-                    { question: "What type of IV fluid is recommended for rapid infusion during CPR if hypovolemia is Suspected ?", options: ["A) Dextrose", "B) Ringer's solution", "C) 5% NaCl", "D) Lactated Ringer's solution", "E) Hypertonic saline"], correct: 1 },
-                    { question: "Sodium bicarbonate is used in ?", options: ["A) Severe metabolic alkalosis (pH > 7.1)", "B) Life-threatening hyperkalemia", "C) Tricyclic antidepressant overdose", "D) Both B & C", "E) All of the above"], correct: 3 },
-                    { question: "Sodium bicarbonate is avoided to use routinely because the complications include ?", options: ["A) Increase CO2 load", "B) Impaired myocardial contractility", "C) Hypernatremia", "D) Inhibit release of 02 to the tissue", "E) All of the above"], correct: 4 },
-                    { question: "Dose of vasopressin (ADH) administered during CPR ?", options: ["A) 40 IU once", "B) 50 IU once", "C) 60 IU once", "D) 70 IU once", "E) 80 IU once"], correct: 0 },
-                    { question: "One of the following is not considered the Golden Rule in CPR (Chest compressions)?", options: ["A) Ensure high quality chest compressions rate, depth recoil", "B) Plan actions before interrupting CPR", "C) Chest compression by one hand", "D) Minimize interruption of chest compressions", "E) Early defibrillation of shockable rhythm"], correct: 2 },
-                    { question: "About magnesium that is used in CPR, all true except ?", options: ["A) Give to VF with hypomagnesaemia", "B) Give in pulmonary embolism", "C) Used in torsade de pointes", "D) Digoxin toxicity", "E) Dose 2 mg IV"], correct: 1 },
-                    { question: "What is the role of atropine in CPR ?", options: ["A) Treatment of ventricular fibrillation", "B) Treatment of asystole", "C) Routine use in pulseless electrical activity (PEA)", "D) Treatment of sinus bradycardia causing hemodynamic instability", "E) Routine use in tricyclic antidepressant overdose"], correct: 3 },
-                    { question: "Signs of restored ventilation and circulation during CPR include ?", options: ["A) Struggling movements", "B) Improved color", "C) Return of systemic blood pressure", "D) Return of or strong pulse", "E) All the above"], correct: 4 },
-                    { question: "When does a person have a 40% chance of survival if CPR is started promptly and defibrillation is provided within 10 minutes ?", options: ["A) Within 2 minutes of cardiac arrest", "B) Within 4 minutes of cardiac arrest", "C) Within 12 minutes of cardiac arrest", "D) Within 15 minutes of cardiac arrest", "E) Within 20 minutes of cardiac arrest"], correct: 1 },
-                    { question: "What is the voltage range of electricity discharge typically used for defibrillation ?", options: ["A) 50-100 joules", "B) 150-360 joules (biphasic)", "C) 200-500 joules", "D) 50-200 joules (monophasic)", "E) 100-300 joules"], correct: 1 },
-                    { question: "Basic life support is?", options: ["A) Support with endotracheal tube", "B) Support with defibrillator", "C) Support with ECG monitor", "D) Respiratory support", "E) Cardiac and respiratory support"], correct: 4 },
-                    { question: "What is the recommended compression rate per minute ?", options: ["A) 80-100", "B) 100-120", "C) 120-150", "D) 150-170", "E) 50-60"], correct: 1 },
-                    { question: "An intubated patient developed rapid desaturation (all the following are true except one?", options: ["A) Check the position of tube", "B) The most common cause is esophageal intubation", "C) Check blood pressure", "D) Check ECG", "E) Give long-acting muscle relaxant"], correct: 4 },
-                    { question: "What is recommended technique for chest compressions during CPR?", options: ["A) Using only one hand to compress the chest", "B) Positioning the shoulders away from the hands", "C) Depressing the sternum at any level", "D) Performing compressions at a rate of 60-80 per minute", "E) Performing compressions with a ratio of 15 compressions to 1 ventilation"], correct: 4 }, // Note: Correct answer based on provided code, but guidelines often say 30:2
-                    { question: "When is the finger sweep technique advised for airway patency?", options: ["A) In conscious patients", "B) In patients with a strong cough reflex", "C) In convulsing patients", "D) In patients with a foreign body in the mouth", "E) In patients with a blocked nose"], correct: 3 }
-                 ],
-                 "Safety": [
-                    { question: "Why should nitrous oxide be avoided during surgeries where airway fires are a concern?", options: ["A) It supports combustion as readily as oxygen", "B) Has a cooling effect, reducing the risk of fires", "C) It is less flammable than other anesthetic gases", "D) It does not contribute to the oxygen-enriched environment in the airway", "E) None of the above"], correct: 0 },
-                    { question: "Why should surgical instruments and surrounding surfaces be non-reflective during laser procedures?", options: ["A) To increase the visibility of the surgical site", "B) To improve the accuracy of incisions", "C) To minimize reflection of the laser beam", "D) To improve oxygen delivery", "E) To facilitate tissue healing"], correct: 2 },
-                    { question: "What is an airway fire ?", options: ["A) A fire that occurs outside the operating room", "B) A fire that involves only the patient's skin", "C) A fire that occurs within a patient's airway or involves an in-situ airway device or contiguous breathing circuit", "D) A fire that occurs during recovery room procedures", "E) A fire that originates from surgical instruments"], correct: 2 },
-                    { question: "The use of the following may pose significant safety concerns during airway surgery (all true except one)?", options: ["A) Supplemental oxygen delivered to the patient", "B) Nitrous oxide as a carrier gas delivered to the patient", "C) Helium as a carrier gas delivered to the patient", "D) An open breathing circuit for delivery of gases to the patient", "E) Nitrogen gas in close proximity to the patient/surgical field"], correct: 4 }, // Note: Correct answer based on provided code, Helium is inert but C might be intended as wrong depending on context (e.g., displacement of O2)
-                    { question: "Regarding safety measurement in surgical laser (all are true except) ?", options: ["A) Put near bronchoscopes and endotracheal tubes.", "B) The active tip should be visible at all time.", "C) Deactivated before removal from the surgical site", "D) Using of special types of endotracheal tubes for laser surgery", "E) Placed in a sheath away from the patient when not in use"], correct: 0 },
-                    { question: "Regarding airway fire, only one is true ?", options: ["A) Electrocautery should be used whenever possible", "B) Cutting diathermy mode poses less risk", "C) Unipolar is preferable over bipolar", "D) Electrocautery should be operated by single person", "E) Electrocautery can be used with any inspired O2 concentration"], correct: 3 },
-                    { question: "immediate coordinated response for airway fire includes all of following except ?", options: ["A) Increase the concentration of O2 flow for the patient.", "B) Whoever notices the fire first must announce it out loud immediately", "C) The surgeon should stop the procedure immediately. The anesthetist should stop the flow of all airway gases.", "D) Another team member should extinguish the fire by flooding the site with sterile saline", "E) The surgeon should remove any segments of burnt airway"], correct: 0 },
-                    { question: "Which measure is NOT recommended for preventing airway fires?", options: ["A) Using laser-resistant endotracheal tubes", "B) Minimizing the use of electrocautery where possible", "C) Tightly sealing of surgical drapes around the surgical site.", "D) Avoiding high fractional inspired oxygen concentrations", "E) Using silicone or rubber tubes."], correct: 4 }, // Note: Silicone/rubber tubes ARE fuel sources, so avoiding them might be better. Assuming 'E' means *preferring* them.
-                    { question: "The safety used of electrocautery include all except ?", options: ["A) It should be avoid where possible", "B) Monopolar better than bipolar", "C) Cutting diathermy mode carry high risk", "D) It should be avoid when inspired O2 more than 50%", "E) It should be operated by single person"], correct: 1 },
-                    { question: "What immediate action should be taken if the situation remains unsafe for the patient or staff during an airway fire?", options: ["A) Active alarms", "B) Use a carbon dioxide extinguisher without delay", "C) Call for help from other team members", "D) The theater should be evacuated", "E) Cut the oxygen source"], correct: 3 },
-                    { question: "What determines the prognosis following an airway fire ?", options: ["A) Patient's age", "B) Time of day the fire occurred", "C) Extent of the fire and the injuries incurred", "D) Type of anesthesia used", "E) Previous medical history"], correct: 2 },
-                    { question: "Ignition sources include ?", options: ["A) Laser.", "B) Electrocautery.", "C) Heated probes", "D) Drills and burrs.", "E) All of the above"], correct: 4 },
-                    { question: "Which of the following is NOT listed as a fuel source for airway fires ?", options: ["A) Endotracheal tube", "B) Surgical drapes", "C) Breathing circuits", "D) Fiberoptic light sources", "E) Suction catheters"], correct: 3 },
-                    { question: "Fires in the airway have become less common due to discontinuing of ?", options: ["A) Ether and cyclopropane", "B) Halothane and nitrous oxide", "C) Oxygen and nitrous oxide", "D) Sevoflurane and desflurane", "E) None of the above"], correct: 0 },
-                    { question: "Airway fire predispose the patient to ?", options: ["A) Infection", "B) Loss of fluid and electrolytes", "C) Heat loss", "D) Life-threatening airway obstruction", "E) All of the above"], correct: 4 },
-                    { question: "The following are oxidizers in the operating room except ?", options: ["A) Supplemental oxygen.", "B) Nitrous oxide.", "C) IV cannula", "D) 02 by facemasks.", "E) 02 by nasal cannula"], correct: 2 },
-                    { question: "The common issue with the airway during loss of consciousness is ?", options: ["A) Decreased blood pressure", "B) Obstruction due to falling back of the tongue", "C) Increased heart rate", "D) Increased respiratory rate", "E) Excessive saliva production"], correct: 1 },
-                    { question: "Which endotracheal tube material is less flammable ?", options: ["A) Rubber", "B) Silicone", "C) Polyvinyl chloride (PVC)", "D) All equally flammable", "E) None of the above"], correct: 2 },
-                    { question: "Which surgical procedure is considered inherently risky for airway fires?", options: ["A) Tracheostomy formation", "B) Tonsillectomy", "C) Appendectomy", "D) Hernia repair", "E) All of the above"], correct: 1 }
+                "Lecture2_TheaterPollution": [
+                    { question: "The concern about trace anaesthetic gases dates back to which decade?", options: ["1950s", "1960s", "1970s", "1980s"], correct: 1 },
+                    { question: "While current studies show 'no association' for TRACE level exposure, why is it still desirable to vent exhaled anaesthetic vapours?", options: ["To comply with outdated regulations", "As a precautionary measure and to maintain a cleaner environment, acknowledging historical concerns and potential for higher-than-trace levels.", "Primarily for patient comfort", "To improve the smell of the operating room"], correct: 1 },
+                    { question: "A 'prudent plan for minimizing exposure' includes maintenance of equipment, training of personnel, and:", options: ["Using the oldest anesthesia machines", "Routine exposure monitoring", "Discouraging the use of scavenging systems", "Working shorter shifts"], correct: 1 },
+                    { question: "Airborne particles from operating room personnel are considered a main source of contamination particularly in:", options: ["Dirty surgical procedures", "Emergency rooms", "Clean surgical procedures", "Post-operative recovery rooms"], correct: 2 },
+                    { question: "Increased risk of spontaneous abortion in females is linked to:", options: ["Surgical stress", "Theater pollution", "Anesthetic drugs themselves", "Poor surgical technique"], correct: 1 },
+                    { question: "Besides bone marrow depression, chronic nitrous oxide exposure can contribute to an increase in:", options: ["Muscle strength", "The incidence of fetal anomalies", "Cognitive function", "Blood pressure"], correct: 1 },
+                    { question: "What is the primary reason a non-recirculating ventilation system is preferred in theatres?", options: ["Lower installation cost", "It prevents recirculation of contaminants like anaesthetic gases", "It is quieter", "It requires less maintenance"], correct: 1 },
+                    { question: "How does a circle breathing system reduce the amount of inhalational agents used?", options: ["By absorbing the agent and releasing it slowly", "By requiring very low fresh gas flow due to rebreathing of exhaled gases (after CO2 absorption)", "By converting exhaled agents into harmless substances", "By having a larger reservoir bag"], correct: 1 },
+                    { question: "Why were older methods of vaporizer filling a more significant contributor to pollution?", options: ["Vaporizers were larger", "Older agents were more volatile", "Filling systems were often open, leading to more spillage and vapor escape", "Anesthetic circuits were always leaky"], correct: 2 },
+                    { question: "The incidence of lymphoid and reticuloendothelial malignancy was found to be how much greater in exposed persons compared to others?", options: ["Slightly greater", "Two to three times greater", "Ten times greater", "No difference found"], correct: 1 },
+                    { question: "'Functional disturbances of the Central Nervous System' are listed as a risk. This implies effects on:", options: ["Only peripheral nerves", "Brain and spinal cord function", "Only the autonomic nervous system", "Muscular coordination only"], correct: 1 },
+                    { question: "If a theatre's ventilation provides 10 air changes per hour, this is:", options: ["Ideal according to the lecture", "Above the recommended range", "Below the recommended range of 15-20 times per hour", "Acceptable only for very short procedures"], correct: 2 },
+                    { question: "The use of total intravenous anesthesia (TIVA) is a method to decrease theatre pollution because:", options: ["IV agents are not exhaled as gases", "IV agents are less potent", "TIVA requires less monitoring", "TIVA is only for short cases"], correct: 0 },
+                    { question: "What is the role of a scavenging system in relation to anaesthetic vapours?", options: ["It humidifies the anaesthetic vapours", "It collects and removes waste anaesthetic vapours from the breathing circuit/room", "It analyzes the concentration of anaesthetic vapours", "It cools the anaesthetic vapours"], correct: 1 },
+                    { question: "Entonox (a mix of nitrous oxide and oxygen) use in labour wards necessitates:", options: ["No special ventilation", "Well-ventilated rooms with at least five air changes per hour", "Use of a circle system", "Complete avoidance of scavenging"], correct: 1 },
+                    { question: "The statement that 'unventilated theatres are four times as contaminated' highlights the importance of:", options: ["Anesthetic drug choice", "Proper ventilation", "Scavenging system efficiency", "Vaporizer maintenance"], correct: 1 },
+                    { question: "Modern vaporizers using agent-specific filling devices primarily aim to reduce pollution and:", options: ["Increase vaporizer output", "Act as a safety feature (preventing incorrect agent filling)", "Reduce the cost of anesthetic agents", "Allow for faster induction"], correct: 1 },
+                    { question: "'Routine exposure monitoring' helps to:", options: ["Identify faulty scavenging systems or high ambient gas levels", "Directly reduce spillage", "Train staff on vaporizer filling", "Choose the correct anesthetic agent"], correct: 0 },
+                    { question: "If a hospital wants to reduce anaesthetic gas pollution, which strategy is explicitly supported by the lecture?", options: ["Increasing the use of inhalational anesthesia", "Promoting regional anesthesia and TIVA", "Disabling scavenging systems to save energy", "Reducing air exchange rates in ORs"], correct: 1 },
+                    { question: "The main sources of contamination in clean surgical procedures are the patient's skin and:", options: ["Surgical drapes", "Airborne particles from operating room personnel", "Anesthesia machine surfaces", "Contaminated instruments from sterile processing"], correct: 1 },
+                    { question: "Which of the following risks is NOT explicitly mentioned in the 'Risk of theater pollution' slide?", options: ["Decreased fertility", "Increased hearing loss", "Potential increase in hematological malignancy", "Renal and liver dysfunction"], correct: 1 },
+                    { question: "The use of fume cupboards is specifically recommended for what activity to reduce pollution?", options: ["During patient extubation", "While connecting the breathing circuit", "During vaporizer filling", "When cleaning the anesthesia machine"], correct: 2 },
+                    { question: "Adequate theatre ventilation is described as one of the most important factors in:", options: ["Ensuring sterility", "Reducing pollution", "Maintaining patient temperature", "Increasing staff comfort"], correct: 1 },
+                    { question: "If a circle system is used with very high fresh gas flows, how does this impact its pollution-reducing benefit?", options: ["It enhances it further", "It negates much of the benefit, as more gas (and agent) is vented through the scavenger", "It has no impact", "It makes the CO2 absorber more efficient"], correct: 1 },
+                    { question: "The overall message regarding theatre pollution, despite some studies on TRACE levels, is one of:", options: ["Complete dismissal of risks", "Continued prudence and efforts to minimize exposure", "Focusing only on nitrous oxide risks", "Shifting responsibility to manufacturers"], correct: 1 }
+                ],
+                "Lecture3_GasSupply": [
+                    { question: "The material molybdenum steel is used for cylinders due to its ability to:", options: ["Be lightweight", "Withstand high internal pressure", "Change color with temperature", "Resist corrosion from all gases"], correct: 1 },
+                    { question: "The thread on the cylinder neck is sealed with a material that melts if the cylinder is exposed to intense heat. This is a safety feature to:", options: ["Indicate overheating", "Allow gas to escape and reduce explosion risk", "Seal the valve more tightly", "Prevent refilling"], correct: 1 },
+                    { question: "What does the shape/color of the plastic disc around the cylinder neck primarily convey?", options: ["The type of gas inside", "The current pressure of the cylinder", "The last hydraulic test/examination year", "The cylinder manufacturer's batch number"], correct: 2 },
+                    { question: "An E-size oxygen cylinder contains approximately 680 L of oxygen. An E-size N2O cylinder contains approximately:", options: ["680 L", "1800 L", "3400 L", "4400 L"], correct: 1 },
+                    { question: "Size J cylinders are typically used for:", options: ["Anesthetic machines directly", "Cylinder manifolds", "Portable emergency kits", "Dental clinics"], correct: 1 },
+                    { question: "The reason for partially filling cylinders with liquid (like N2O) is to:", options: ["Make them lighter", "Reduce the cost", "Minimize dangerous pressure increases with ambient temperature rise", "Allow for faster emptying"], correct: 2 },
+                    { question: "The pressure in a gas-only cylinder (e.g., Oxygen) as it empties will:", options: ["Remain constant until almost empty", "Decrease linearly with the amount of gas used", "Increase as the volume decreases", "Fluctuate randomly"], correct: 1 },
+                    { question: "The pressure in a liquid+vapor cylinder (e.g., N2O) as it empties (while liquid is still present) will:", options: ["Decrease linearly", "Remain relatively constant", "Increase steadily", "Drop sharply then recover"], correct: 1 },
+                    { question: "The pressure test subjects a cylinder to about 22,000 kPa, which is significantly:", options: ["Below its normal working pressure", "Equal to its normal working pressure", "Above its normal working pressure (more than 50% above)", "The pressure at which it's designed to rupture"], correct: 2 },
+                    { question: "'Tare weight' is an engraved mark particularly important for which type of gas cylinder to determine remaining content?", options: ["Oxygen", "Air", "Nitrous Oxide", "Helium"], correct: 2 },
+                    { question: "Which of these is NOT typically part of the cylinder labelling requirements?", options: ["Nominal contents (L)", "Max pressure (bar)", "Name of the intended patient", "Filling date, expiry, usage directions"], correct: 2 },
+                    { question: "Storing cylinders in a dry, ventilated, fireproof room with full/empty ones separated is a:", options: ["Labelling requirement", "Safety feature/problem prevention measure", "Method of testing cylinders", "Component of the valve"], correct: 1 },
+                    { question: "Sizes C/D/E cylinders are recommended to be stored:", options: ["Upright only", "Horizontally on non-abrasive shelves", "In any position", "Suspended from the ceiling"], correct: 1 },
+                    { question: "The safety relief device in a cylinder valve is designed to:", options: ["Prevent incorrect attachment", "Filter the gas", "Vent excess pressure from the cylinder if it over-pressurizes", "Indicate when the cylinder is empty"], correct: 2 },
+                    { question: "The Pin-Index system is primarily used for which sizes of cylinders?", options: ["A and H", "J and large manifold cylinders", "E/F/G-size cylinders (those typically attached to anesthesia machines or portable units)", "All cylinder sizes"], correct: 2 },
+                    { question: "Standard, In-line Residual Pressure, and Off-line Residual Pressure are types of:", options: ["Cylinder materials", "Cylinder tests", "Cylinder valves", "Cylinder color codes"], correct: 2 },
+                    { question: "What is the primary function of the Bodok seal when connecting a cylinder to an apparatus?", options: ["To filter the gas", "To ensure a gas-tight connection", "To regulate the pressure", "To prevent over-tightening"], correct: 1 },
+                    { question: "Why should a cylinder valve be kept fully open during use, rather than partially?", options: ["To prevent whistling noises", "To ensure accurate pressure reading on some gauges and prevent 'streaming' damage to the valve seat", "To make it easier to close quickly", "Partial opening increases gas purity"], correct: 1 },
+                    { question: "The pin-index configuration for Nitrous Oxide is:", options: ["2,5", "1,5", "3,5", "1,6"], correct: 2 },
+                    { question: "The pin-index configuration for Carbon Dioxide is:", options: ["2,5", "1,5", "3,5", "1,6"], correct: 3 },
+                    { question: "The pressure of Nitrous Oxide in a full cylinder is approximately:", options: ["13,700 kPa", "4,400 kPa", "22,000 kPa", "760 kPa"], correct: 1 },
+                    { question: "'Dry Gases: Avoid water vapor' is a safety precaution because water vapor can:", options: ["Corrode the cylinder", "Freeze and block ports/valves upon pressure reduction", "React with the medical gas", "Increase the cylinder weight significantly"], correct: 1 },
+                    { question: "If a cylinder is found to be over-pressurized, the correct action is to:", options: ["Use it quickly", "Cool it rapidly with ice", "Report it to the manufacturer/supplier", "Slowly vent some pressure"], correct: 2 },
+                    { question: "What does 'tare weight' specifically refer to?", options: ["The weight of the gas in a full cylinder", "The weight of an empty N2O (or other liquefiable gas) cylinder", "The maximum permissible weight of a full cylinder", "The weight of the valve assembly"], correct: 1 },
+                    { question: "The aluminum alloy with fiberglass/epoxy resin construction for cylinders offers the primary advantage of:", options: ["Higher pressure resistance than steel", "Being significantly lighter than steel cylinders", "Better insulation against temperature changes", "Lower manufacturing cost"], correct: 1 }
+                ]
+            },
+            "Hard": {
+                "Lecture1_Tracheostomy": [
+                    { question: "The emphasis on 'Inspection of airway' repeated on slide 1 for a lecture on tracheostomy tubes suggests:", options: ["Tracheostomy is only performed after a failed inspection.", "Airway assessment is a critical component both before considering and after placing a tracheostomy.", "The lecture will only cover visual inspection methods.", "This is a minor point, likely a formatting issue."], correct: 1 },
+                    { question: "The design of a tracheostomy tube tip being 'cut square, rather than beveled' primarily mitigates which specific mechanical risk?", options: ["Difficult insertion through tough tissues.", "Kinking of the tube during head movement.", "Obstruction due to the tip orifice pressing directly against the tracheal wall.", "Damage to the vocal cords during insertion."], correct: 2 },
+                    { question: "The additional suctioning lumen opening 'just above the cuff' is strategically placed to:", options: ["Allow pre-oxygenation before suctioning the main lumen.", "Facilitate the removal of pooled secretions that could lead to microaspiration and VAP.", "Provide an alternative pathway for ventilation if the main lumen is blocked.", "Enable speech when the main cuff is inflated."], correct: 1 },
+                    { question: "A key reason tracheostomy is preferred for 'long-term intermittent positive pressure ventilation' over prolonged endotracheal intubation relates to:", options: ["Lower cost of tracheostomy tubes.", "Reduced risk of laryngeal/tracheal injury, improved patient comfort, and easier oral care.", "Tracheostomy tubes inherently providing higher FiO2.", "Simpler insertion technique for tracheostomy."], correct: 1 },
+                    { question: "If a patient requires protection of the lungs due to 'impaired pharyngeal or laryngeal reflexes' after major head and neck surgery (e.g., laryngectomy), the tracheostomy (or stoma) primarily serves to:", options: ["Provide a permanent route for nutritional support.", "Ensure a patent airway and allow cuff sealing to prevent aspiration of oral/pharyngeal contents.", "Facilitate immediate post-operative speech.", "Reduce the need for post-operative pain medication."], correct: 1 },
+                    { question: "The reduction in 'anatomical dead space' with a tracheostomy contributes to easier ventilator weaning because:", options: ["It increases the patient's tidal volume.", "A smaller portion of each breath ventilates non-gas-exchanging airways, making ventilation more efficient.", "It directly strengthens respiratory muscles.", "It reduces the partial pressure of CO2 in the blood."], correct: 1 },
+                    { question: "Comparing immediate vs. delayed complications, 'hemorrhage' is immediate, while 'blockage of the tube by secretions' is delayed. This temporal difference often reflects:", options: ["Hemorrhage being a direct result of surgical trauma, while secretion blockage develops over time due to physiological responses/care deficits.", "Hemorrhage being less severe than secretion blockage.", "Secretion blockage only occurring in uncuffed tubes.", "Hemorrhage being an allergic reaction."], correct: 0 },
+                    { question: "'Occlusion of the tube tip against carina or tracheal wall' (immediate complication) versus 'tracheal stenosis at the cuff site' (late complication) highlights damage from:", options: ["Cuff pressure only vs. tube tip pressure only.", "Acute malposition/mechanical obstruction vs. chronic pressure-induced tissue injury and healing response.", "Infection vs. allergic reaction.", "Cuff herniation vs. granuloma formation."], correct: 1 },
+                    { question: "The ability of a fenestrated tracheostomy tube (cuff deflated) to reduce airway resistance and assist weaning is because it:", options: ["Actively forces air into the lungs.", "Allows airflow through multiple paths (around tube, through fenestration, through stoma), more closely mimicking natural upper airway breathing.", "Stimulates the cough reflex more effectively.", "Secretes a substance that dilates the bronchi."], correct: 1 },
+                    { question: "For a patient with a fenestrated tracheostomy tube to speak effectively, not only must the cuff be deflated, but also:", options: ["The inner cannula must be fenestrated or removed (if applicable and safe).", "The patient must be on positive pressure ventilation.", "The stoma must be partially occluded.", "A speaking valve must always be used."], correct: 0 },
+                    { question: "'Reduced risk of glottic trauma' as a benefit of tracheostomy implies that prolonged endotracheal intubation carries a significant risk of:", options: ["Sinusitis.", "Injury to the vocal cords and surrounding laryngeal structures.", "Dental damage only.", "Nasal septal erosion."], correct: 1 },
+                    { question: "Overinflation of the cuff leading to 'ulceration and distension of the trachea' can be a precursor to which LATE complication?", options: ["Pneumothorax", "Tracheal stenosis or tracheomalacia", "Hemorrhage", "Tube displacement"], correct: 1 },
+                    { question: "A patient with 'long-term control of excessive bronchial secretions' issues and 'reduced level of consciousness' benefits from tracheostomy mainly due to:", options: ["Improved ability to speak and communicate needs.", "Easier and more effective access for pulmonary toilet/suctioning.", "Spontaneous resolution of unconsciousness.", "Reduced need for nutritional support."], correct: 1 },
+                    { question: "The benefit of 'Increased patient comfort' with a tracheostomy compared to an ETT is significant because it can lead to:", options: ["Increased need for analgesia.", "Reduced agitation, potentially less sedation, and earlier mobilization.", "Higher risk of tube dislodgement.", "More difficult communication."], correct: 1 },
+                    { question: "Scar formation is a late complication. The clinical significance of this primarily depends on:", options: ["The type of plastic used for the tube.", "The cosmetic appearance and any functional impairment (e.g., tracheal stenosis from internal scarring).", "The duration of the tracheostomy.", "The patient's age."], correct: 1 },
+                    { question: "If a patient with a tracheostomy develops sudden respiratory distress, and 'occlusion of tube by cuff herniation' is suspected, the immediate action would involve:", options: ["Increasing ventilator pressures.", "Deflating the cuff and attempting to reposition/replace the tube.", "Administering a bronchodilator.", "Performing an urgent chest X-ray."], correct: 1 },
+                    { question: "The lecture emphasizes benefits such as 'Improved access for oral hygiene' and 'Possibility of oral nutrition.' These are particularly important for:", options: ["Patients expected to have very short-term tracheostomies.", "Patients requiring long-term airway management, improving quality of life and reducing VAP risk.", "All post-operative patients regardless of airway.", "Neonatal patients exclusively."], correct: 1 },
+                    { question: "A 'persistent sinus at the tracheostomy site' after decannulation is a late complication that might require:", options: ["Antibiotics only.", "Further surgical closure.", "Re-insertion of the tracheostomy tube.", "Observation only, as it always resolves."], correct: 1 },
+                    { question: "The statement 'patients tolerate tracheostomy tubes better than tracheal tubes' (oral/nasal ETTs) is a key factor in:", options: ["Increasing the anatomical dead space.", "Facilitating weaning by allowing reduced sedation and more patient participation.", "The higher cost of tracheostomy procedures.", "The increased risk of pneumothorax with tracheostomies."], correct: 1 },
+                    { question: "If 'granulomata of the trachea' cause respiratory difficulty AFTER extubation (decannulation), it implies the granuloma is:", options: ["Located externally at the stoma site.", "Obstructing the airway internally, likely at a previous tube irritation site.", "A normal part of the healing process.", "Always benign and self-resolving."], correct: 1 },
+                    { question: "The choice between a cuffed and uncuffed tracheostomy tube primarily depends on:", options: ["Patient preference.", "The need for positive pressure ventilation and/or protection against aspiration.", "The surgeon's preference.", "The availability of tube sizes."], correct: 1 },
+                    { question: "A key difference between 'tracheal dilatation' (late complication) and 'tracheal stenosis' (late complication) is:", options: ["Dilatation is narrowing, stenosis is widening.", "Dilatation is widening of the trachea, often at the stoma or cuff site due to tissue weakness; stenosis is narrowing.", "Dilatation is always symptomatic, stenosis is not.", "Stenosis occurs only with fenestrated tubes."], correct: 1 },
+                    { question: "The phrase 'Important questions for Respiratory system' being listed on slide 1 suggests the lecture will connect tracheostomy management to broader:", options: ["Cardiovascular principles.", "Neurological assessments.", "Respiratory physiology and pathology assessments.", "Renal function monitoring."], correct: 2 },
+                    { question: "Effective suctioning of secretions above the cuff, facilitated by newer designs, directly aims to prevent:", options: ["Cuff leakage.", "Tracheal stenosis.", "Ventilator-associated pneumonia (VAP) by reducing microaspiration of contaminated secretions.", "Tube displacement."], correct: 2 },
+                    { question: "Comparing the risks, 'pneumothorax' (immediate) is a procedural risk of insertion, while 'tracheal stenosis at the cuff site' (late) is a risk from:", options: ["Incorrect tube size.", "Prolonged pressure effect of the cuff on the tracheal wall.", "Inadequate humidification.", "Patient coughing."], correct: 1 }
+                ],
+                "Lecture2_TheaterPollution": [
+                    { question: "The statement 'no association between occupational exposure to TRACE levels ... and adverse health effects' from 'currently available studies' should be interpreted with caution because:", options: ["'Trace levels' may not always be maintained, and historical or higher exposures could have effects.", "'Currently available studies' might have limitations or may not capture all long-term outcomes.", "The 'no association' might be statistically insignificant rather than a definitive absence of any risk.", "All of the above."], correct: 3 },
+                    { question: "A 'prudent plan for minimizing exposure' including equipment maintenance, personnel training, and routine monitoring implies that theatre pollution is:", options: ["An unavoidable and accepted risk.", "A manageable issue through proactive measures.", "Solely the responsibility of the equipment manufacturers.", "Only a concern in older operating rooms."], correct: 1 },
+                    { question: "The main sources of contamination (patient skin, airborne particles from personnel) being especially problematic in 'clean surgical procedures' suggests that:", options: ["In dirty procedures, these sources are negligible compared to the wound itself.", "The threshold for infection is lower in clean surgery, making these ubiquitous sources more significant.", "Clean surgical procedures use more anaesthetic gases.", "Personnel are less careful during clean procedures."], correct: 1 },
+                    { question: "An 'increased risk of spontaneous abortion in females' and 'decreased fertility' due to theatre pollution point towards potential:", options: ["Carcinogenic effects", "Teratogenic or reproductive toxic effects", "Neurotoxic effects", "Hepatotoxic effects only"], correct: 1 },
+                    { question: "Bone marrow depression from chronic nitrous oxide exposure is a serious hematological concern because it can lead to:", options: ["Increased blood viscosity.", "Pancytopenia (deficiency of all types of blood cells).", "Polycythemia (excess red blood cells).", "Enhanced immune response."], correct: 1 },
+                    { question: "The recommendation of 15-20 air changes per hour in theatres, compared to 5 in labour wards with Entonox, suggests:", options: ["Entonox is less polluting than general anaesthetic gases.", "The potential concentration and variety of pollutants are higher in main operating theatres.", "Labour wards are generally smaller.", "Patients in labour are less susceptible."], correct: 1 },
+                    { question: "A non-recirculating ventilation system is preferred over a recirculating one because the latter may:", options: ["Be too noisy for surgical procedures.", "Fail to adequately remove and instead redistribute airborne contaminants, including gases and microbes.", "Require more energy to operate.", "Not provide adequate temperature control."], correct: 1 },
+                    { question: "The circle breathing system's efficiency in reducing pollution is most compromised when:", options: ["CO2 absorbent is fresh.", "Fresh gas flows are kept very high, negating the rebreathing advantage.", "The patient is breathing spontaneously.", "Intravenous agents are also used."], correct: 1 },
+                    { question: "Modern vaporizers with agent-specific filling devices reduce spillage. This is a crucial improvement because spillage represents:", options: ["A minor financial loss only.", "A direct release of concentrated anaesthetic agent into the local environment.", "A problem only if the agent is flammable.", "An issue that only affects the vaporizer's calibration."], correct: 1 },
+                    { question: "The finding of a 'two to three times greater' incidence of lymphoid and reticuloendothelial malignancy in exposed persons, if causative, indicates a significant:", options: ["Mutagenic potential of anaesthetic agents.", "Carcinogenic or co-carcinogenic risk associated with chronic exposure.", "Acute inflammatory response.", "Benign proliferative effect."], correct: 1 },
+                    { question: "'Functional disturbances of the Central Nervous System' from theatre pollution could manifest as:", options: ["Only severe psychiatric disorders.", "Subtle cognitive changes, fatigue, or coordination issues with chronic exposure.", "Improved reaction times.", "Increased REM sleep."], correct: 1 },
+                    { question: "If a theatre relies solely on a high-efficiency scavenging system but has poor general room ventilation (e.g., 5 air changes/hour), what is a likely outcome?", options: ["No pollution issues, as scavenging is sufficient.", "Build-up of gases not captured by the scavenger (e.g., from leaks, patient skin) and other airborne contaminants.", "Over-efficiency of the scavenging system, leading to negative pressure.", "Reduced effectiveness of the CO2 absorber."], correct: 1 },
+                    { question: "Using Total Intravenous Anesthesia (TIVA) or Regional Anesthesia as methods to decrease theatre pollution highlights that the primary concern is:", options: ["The cost of inhalational agents.", "The atmospheric contamination by volatile/gaseous anaesthetic agents.", "The flammability of anaesthetic agents.", "The difficulty in monitoring depth of anesthesia with inhalational agents."], correct: 1 },
+                    { question: "An effective scavenging system should ideally capture waste gases from:", options: ["Only the expiratory limb of the breathing circuit.", "The adjustable pressure-limiting (APL) valve and the ventilator spill valve.", "The room air generally.", "The vaporizer filling port only."], correct: 1 },
+                    { question: "The four-fold higher contamination in unventilated theatres implies that dilution and removal by ventilation is a cornerstone of:", options: ["Sterility assurance.", "Anaesthetic gas pollution control.", "Temperature regulation.", "Humidity control."], correct: 1 },
+                    { question: "Which scenario poses the highest risk for anaesthetic gas spillage during vaporizer filling?", options: ["Using a modern, keyed, agent-specific filling system correctly.", "Using an older, unkeyed 'pour-fill' vaporizer, especially if rushing or distracted.", "Filling a vaporizer that is already nearly full.", "Filling a vaporizer in a very cold room."], correct: 1 },
+                    { question: "'Routine exposure monitoring' for theatre personnel is analogous to what practice in other industries with hazardous airborne substances?", options: ["Annual performance reviews.", "Occupational hygiene monitoring and dosimetry.", "Fire safety drills.", "Equipment calibration schedules."], correct: 1 },
+                    { question: "If a hospital is designing a new OR suite, which ventilation feature would be critical for minimizing anaesthetic gas pollution based on this lecture?", options: ["A high percentage of recirculated air with HEPA filtration.", "A non-recirculating system with frequent air changes (15-20/hr) and effective scavenging.", "Minimal air changes to conserve energy, relying solely on scavenging.", "A system that primarily introduces air from the floor level."], correct: 1 },
+                    { question: "The historical concern about trace anaesthetic gases and adverse health effects, despite current studies on 'trace levels,' justifies:", options: ["Abandoning the use of all inhalational anaesthetics.", "Adherence to the ALARA (As Low As Reasonably Achievable) principle for exposure.", "Requiring all OR staff to wear personal respirators at all times.", "Conducting surgery only in open-air environments."], correct: 1 },
+                    { question: "The fact that 'patient's skin and airborne particles from operating room personnel' are major sources of contamination, particularly in clean surgery, underscores the importance of:", options: ["Effective anaesthetic gas scavenging.", "Aseptic techniques, OR attire, and theatre discipline in addition to air quality control.", "The choice of anaesthetic agent.", "The type of surgical instruments used."], correct: 1 },
+                    { question: "If a new anaesthetic gas is introduced with a very high blood/gas solubility coefficient, its potential for theatre pollution via patient exhalation post-procedure would be:", options: ["Lower, as it's quickly eliminated.", "Higher and more prolonged, as it's released slowly from tissues.", "Unchanged compared to low solubility agents.", "Dependent only on the fresh gas flow used during the case."], correct: 1 },
+                    { question: "The method of 'Use of the circle breathing system' to decrease pollution relies on its ability to:", options: ["Chemically neutralize anaesthetic agents.", "Allow low fresh gas flows, thus reducing the total amount of volatile agent vaporized and needing to be scavenged.", "Filter out anaesthetic agents before exhalation.", "Increase the patient's uptake of anaesthetic agent, leaving less to be exhaled."], correct: 1 },
+                    { question: "The increased incidence of fetal anomalies linked to theatre pollution would be of greatest concern for:", options: ["All operating room staff.", "Pregnant operating room personnel, particularly during early gestation.", "Male operating room staff planning families.", "Only staff directly administering anaesthesia."], correct: 1 },
+                    { question: "A failure in the 'maintenance of equipment' (e.g., a leaky high-pressure hose in the anaesthesia machine) would lead to:", options: ["Reduced patient anaesthetic depth.", "Increased theatre pollution, potentially bypassing the scavenging system.", "Improved CO2 absorption.", "Lower fresh gas flow requirements."], correct: 1 },
+                    { question: "The overall approach to theatre pollution described – ventilation, specific anaesthetic techniques, equipment features, and scavenging – represents a:", options: ["Single, fail-safe solution.", "Multi-faceted strategy to control a complex environmental hazard.", "Temporary measure until safer anaesthetics are developed.", "Cost-prohibitive set of recommendations for most hospitals."], correct: 1 }
+                ],
+                "Lecture3_GasSupply": [
+                    { question: "The use of 'thin-walled seamless molybdenum steel' for cylinders balances the need for high tensile strength with:", options: ["Maximum possible weight for stability.", "Minimizing cylinder weight for portability and handling.", "Inherent color-coding properties.", "Resistance to external impact only."], correct: 1 },
+                    { question: "The melting seal on the cylinder neck is a critical safety feature designed to act before what catastrophic event?", options: ["The cylinder running empty.", "The cylinder valve freezing.", "The cylinder rupturing due to excessive internal pressure from external heat.", "The paint peeling off the cylinder."], correct: 2 },
+                    { question: "While the plastic disc offers a quick visual for the last examination year, the definitive and legally recognized test date is found:", options: ["On a sticker applied by the gas supplier.", "Engraved on the cylinder shoulder/neck.", "In the hospital's inventory database only.", "Via a QR code on the cylinder."], correct: 1 },
+                    { question: "The significant difference in capacity between an E-size O2 cylinder (~680L) and an E-size N2O cylinder (~1800L) at their respective full pressures is primarily due to:", options: ["Oxygen being a much lighter gas.", "Nitrous oxide being stored predominantly as a liquid, which is much denser than compressed gas.", "Different manufacturing standards for the two gas types.", "Higher filling pressure for N2O."], correct: 1 },
+                    { question: "The 'Filling Ratio' (Weight of fluid ÷ weight of water to fill) for liquefiable gases like N2O is crucial. A ratio that is too high (overfilling) could lead to:", options: ["The cylinder being too light.", "Insufficient vapor pressure.", "Liquid expansion completely filling the cylinder upon temperature rise, causing hydrostatic rupture.", "The gas liquefying too slowly during use."], correct: 2 },
+                    { question: "For a N2O cylinder, the pressure gauge will read a relatively constant pressure (around 4400 kPa or ~750 psi at room temp) as long as liquid N2O is present. The gauge will only start to fall rapidly when:", options: ["The cylinder is half empty.", "All the liquid N2O has vaporized, and only gas remains.", "The ambient temperature drops significantly.", "The flow rate is very high."], correct: 1 },
+                    { question: "The pressure test at ~22,000 kPa (over 3000 psi) is a test of the cylinder's:", options: ["Valve integrity only.", "Ability to withstand pressures well in excess of normal working pressure, ensuring a safety margin.", "Resistance to corrosion.", "Color fastness."], correct: 1 },
+                    { question: "'Tare weight' is critical for N2O cylinders because remaining content is determined by subtracting current weight from full weight (or tare weight from current weight to get gas weight). This is because:", options: ["N2O is sold by weight.", "Pressure is an unreliable indicator of remaining N2O content until all liquid is gone.", "Oxygen cylinders do not have a tare weight.", "N2O expands more with temperature than O2."], correct: 1 },
+                    { question: "The Pin-Index Safety System prevents incorrect cylinder attachment by using a specific pattern of pins on the yoke that must align with holes on the valve. This system primarily guards against:", options: ["Connecting a full cylinder to an empty yoke.", "Connecting a cylinder of the wrong gas type to a specific gas inlet.", "Leaks at the cylinder-yoke interface.", "Over-tightening the cylinder in the yoke."], correct: 1 },
+                    { question: "Storing full and empty cylinders separately, and in a fireproof, ventilated room, mitigates risks including:", options: ["Accidental administration of an empty cylinder and fire/explosion hazards.", "Cylinders becoming too cold.", "Color fading of the cylinders.", "Tampering with cylinder valves."], correct: 0 },
+                    { question: "The safety relief device in a cylinder valve (e.g., bursting disc or fusible plug) is designed to vent gas if the cylinder pressure becomes dangerously high. This is a *different* mechanism from:", options: ["The on/off spindle.", "The Pin-Index system.", "The Bodok seal.", "The pressure regulator attached downstream."], correct: 3 },
+                    { question: "'In-line Residual Pressure Valves' and 'Off-line Residual Pressure Valves' are designed to:", options: ["Increase the outlet pressure from the cylinder.", "Prevent complete emptying of the cylinder, thereby reducing the risk of contaminants being drawn back in.", "Allow for two cylinders to be connected simultaneously.", "Automatically switch to a new cylinder when one is empty."], correct: 1 },
+                    { question: "A damaged Bodok seal would most likely result in:", options: ["Inability to open the cylinder valve.", "A significant gas leak at the connection between the cylinder valve and the apparatus (e.g., anesthesia machine yoke).", "Incorrect gas being delivered.", "The cylinder pressure reading incorrectly."], correct: 1 },
+                    { question: "Keeping the cylinder valve fully open during use, rather than partially, is recommended to:", options: ["Prevent the valve from vibrating shut.", "Ensure accurate operation of some types of attached regulators and prevent valve seat damage from high-velocity gas flow through a small opening ('streaming').", "Conserve gas.", "Make the pin-index system engage more securely."], correct: 1 },
+                    { question: "If an Entonox (N2O/O2 mix) cylinder is exposed to cold temperatures (below -7°C), a phenomenon called 'lamination' or 'layering' can occur. This results in:", options: ["The cylinder becoming brittle.", "Initially delivering a gas mixture too rich in oxygen, and later too rich in nitrous oxide (or vice-versa depending on draw-off point), potentially leading to hypoxia.", "The pin-index system failing.", "The cylinder pressure increasing dramatically."], correct: 1 },
+                    { question: "The primary hazard of water vapor in medical gas cylinders ('Dry Gases: Avoid water vapor') is that:", options: ["It dilutes the medical gas, reducing its potency.", "As gas expands and cools (e.g., passing through a regulator), the water vapor can freeze, forming ice and obstructing gas flow.", "It causes rapid corrosion of molybdenum steel.", "It makes the gas more flammable."], correct: 1 },
+                    { question: "A lightweight cylinder made of aluminum alloy with fiberglass/epoxy resin is likely to have different handling characteristics and potentially different:", options: ["Gas purity standards.", "Resistance to internal pressure (though designed to be safe).", "Susceptibility to damage from sharp impacts compared to steel.", "Pin-index configurations."], correct: 2 },
+                    { question: "The 'flattening, bend, and impact tests' performed on cylinders are designed to assess their:", options: ["Gas holding capacity.", "Valve functionality.", "Malleability, ductility, and resistance to physical deformation and fracture.", "Color adherence."], correct: 2 },
+                    { question: "If a pipeline supply fails, E-cylinders on an anesthesia machine serve as a backup. The duration for which an E-cylinder of oxygen can supply a typical flow rate (e.g., 5 L/min) is crucial. This duration is calculated based on:", options: ["Cylinder color.", "Remaining pressure (for O2) and known cylinder volume factor (L/psi or L/kPa).", "Cylinder weight only.", "The last test date."], correct: 1 },
+                    { question: "The thread on the cylinder neck for valve attachment is tapered. This design helps to:", options: ["Make the valve easily removable by hand.", "Create a high-pressure, gas-tight metal-to-metal seal when the valve is screwed in.", "Allow for different types of valves to be attached.", "Reduce the weight of the cylinder."], correct: 1 },
+                    { question: "When changing a cylinder on an anaesthesia machine, after closing the empty cylinder and opening the new one, it is crucial to check for leaks around the Bodok seal. A common method is:", options: ["Listening for a hiss and/or using a leak detection solution (e.g., Snoop).", "Observing the pressure gauge for a rapid drop.", "Smelling for gas.", "Ensuring the cylinder is cold to the touch."], correct: 0 },
+                    { question: "The 'tensile test' performed on cylinder material assesses its:", options: ["Ability to withstand crushing forces.", "Resistance to stretching or pulling forces before fracturing.", "Hardness and resistance to scratching.", "Chemical inertness."], correct: 1 },
+                    { question: "The specification 'nominal contents (L)' on a cylinder label refers to:", options: ["The internal volume of the cylinder itself.", "The volume of gas the cylinder can deliver at standard atmospheric pressure and temperature when full.", "The minimum guaranteed volume.", "The volume of water the cylinder can hold."], correct: 1 },
+                    { question: "Storing F/G/J size cylinders upright is important for stability and also because:", options: ["Their valves are designed for vertical gas withdrawal, especially if they contain any liquid phase or particulate.", "Horizontal storage can damage the pressure relief valve on larger cylinders.", "It makes them easier to read the labels.", "They are too heavy to store horizontally."], correct: 0 },
+                    { question: "If an anesthetic machine yoke has pins for Oxygen (2,5), and a user attempts to fit a Nitrous Oxide cylinder (pins 3,5), what prevents connection?", options: ["The diameter of the N2O cylinder valve is different.", "The N2O cylinder is a different color.", "The misaligned pin (pin 3 on N2O valve vs. expectation of pin 2 on yoke) will physically obstruct full seating and sealing.", "The Bodok seal for N2O is incompatible with the O2 yoke."], correct: 2 }
                 ]
             }
-        };
+         };
 
          const lectureTitlesMap = {
-            "PreMedication": "محاضرة ( Drugs used in pre medication )",
-            "Laryngospasm": "محاضرة ( Laryngospasm and Bronchospasm )",
-            "HypoxiaMH": "محاضرة ( Hypoxia and Malignant Hyperthermia )",
-            "Fluids": "محاضرة ( Intravenous fluids )",
-            "Blood": "محاضرة ( Blood and blood products )",
-            "Positioning": "محاضرة ( Surgical position )",
-            "Monitoring": "محاضرة ( Intraoperative patient monitoring )",
-            "CPR": "محاضرة ( CPR )",
-            "Safety": "محاضرة ( Safety measure operating room )"
+            "Lecture1_Tracheostomy": "محاضرة (Tracheostomy Tube)",
+            "Lecture2_TheaterPollution": "محاضرة (Theater Pollution)",
+            "Lecture3_GasSupply": "محاضرة (Gas Supply)"
+        };
+
+        const lectureIconsMap = {
+            "Lecture1_Tracheostomy": "fas fa-lungs-virus",
+            "Lecture2_TheaterPollution": "fas fa-biohazard",
+            "Lecture3_GasSupply": "fas fa-gas-pump"
         };
 
 
@@ -992,64 +1010,71 @@
         const darkModeToggle = document.getElementById('darkModeToggle');
         const bodyElement = document.body;
         const toggleIcon = darkModeToggle.querySelector('i');
+        const lectureButtonsContainer = document.getElementById('lecture-buttons-container');
+        const difficultyLevelTitleElement = document.getElementById('difficulty-level-title');
 
-        // --- NEW: Get checkbox and button elements ---
-        const successCheckbox = document.getElementById('success-checkbox');
-        const showLecturesButton = document.getElementById('show-lectures-button');
-        // --- END NEW ---
 
         function showPage(pageId) {
             allPages.forEach(page => page.classList.remove('visible'));
             setTimeout(() => {
                 const targetPage = document.getElementById(pageId);
                 if (targetPage) {
-                     // --- NEW: Update button state when showing main page ---
                      if (pageId === 'main-buttons-page') {
-                        showLecturesButton.disabled = !successCheckbox.checked;
-                        lastSubButtonsPageId = 'main-buttons-page'; // Reset last page history
+                        lastSubButtonsPageId = 'main-buttons-page';
                     } else if (targetPage.classList.contains('sub-buttons-page')) {
                         lastSubButtonsPageId = pageId;
                     }
-                    // --- END NEW ---
-
                     targetPage.classList.add('visible');
                     window.scrollTo(0, 0);
                 } else {
                     console.error("Page not found:", pageId);
                     document.getElementById('main-buttons-page').classList.add('visible');
-                    // --- NEW: Ensure button state is correct even on error fallback ---
-                    showLecturesButton.disabled = !successCheckbox.checked;
-                    // --- END NEW ---
                 }
             }, 50);
         }
 
-        // --- NEW: Handle click on the main button ---
-        function handleShowLecturesClick() {
-            if (!successCheckbox.checked) {
-                 // Optional: Show an alert or message
-                 // alert("يرجى تأكيد الدعاء لعبد الرحمن أولاً!");
-                return; // Do nothing if checkbox is not checked
+        function navigateToLectureSelection(difficulty) {
+            currentQuizCategory = difficulty;
+            lectureButtonsContainer.innerHTML = '';
+
+            let difficultyArabic = '';
+            if (difficulty === 'Easy') difficultyArabic = 'للمستوى السهل';
+            else if (difficulty === 'Medium') difficultyArabic = 'للمستوى المتوسط';
+            else if (difficulty === 'Hard') difficultyArabic = 'للمستوى الصعب';
+            difficultyLevelTitleElement.textContent = difficultyArabic;
+
+
+            const lecturesForDifficulty = quizData[difficulty];
+            if (lecturesForDifficulty && Object.keys(lecturesForDifficulty).length > 0) {
+                Object.keys(lecturesForDifficulty).forEach(lectureKey => {
+                    const button = document.createElement("button");
+                    button.classList.add("button", "sub-button");
+                    const lectureTitle = lectureTitlesMap[lectureKey] || lectureKey.replace(/_/g, ' ');
+                    const lectureIcon = lectureIconsMap[lectureKey] || "fas fa-book";
+                    button.innerHTML = `<i class="${lectureIcon}"></i> ${lectureTitle.replace('محاضرة (', '').replace(')', '')}`;
+                    button.onclick = () => loadQuiz(difficulty, lectureKey);
+                    lectureButtonsContainer.appendChild(button);
+                });
+            } else {
+                 lectureButtonsContainer.innerHTML = `<p style='text-align: center; color: var(--text-light); width: 100%;'>لا توجد محاضرات متاحة لهذا المستوى حاليًا.</p>`;
             }
             showPage('ministerial-questions-sub-page');
         }
-        // --- END NEW ---
 
 
         function loadQuiz(category, lectureKey) {
-            currentQuizCategory = category;
             currentQuizLecture = lectureKey;
             currentQuestions = quizData[category]?.[lectureKey] || [];
 
-            const displayLectureTitle = lectureTitlesMap[lectureKey] || lectureKey;
+            const displayLectureTitle = lectureTitlesMap[lectureKey] || lectureKey.replace(/_/g, ' ');
             quizTitleElement.innerHTML = `<i class="fas fa-notes-medical"></i> ${displayLectureTitle}`;
 
             quizContainer.innerHTML = '';
-            if (loadingTextElement) loadingTextElement.style.display = 'block'; // Check if element exists
+            if (loadingTextElement) loadingTextElement.style.display = 'block';
             showPage('quiz-page');
 
             setTimeout(() => {
-                if (loadingTextElement) loadingTextElement.style.display = 'none'; // Check if element exists
+                if (loadingTextElement) loadingTextElement.style.display = 'none';
                 if (currentQuestions.length > 0) {
                     currentQuestions.forEach((q, index) => {
                         const questionDiv = createQuestionElement(q, index);
@@ -1060,7 +1085,7 @@
                 }
                  const quizBackButton = document.querySelector('#quiz-page .back-button');
                  if (quizBackButton) {
-                    quizBackButton.onclick = () => showPage(lastSubButtonsPageId || 'ministerial-questions-sub-page'); // Ensure fallback
+                    quizBackButton.onclick = () => showPage(lastSubButtonsPageId || 'ministerial-questions-sub-page');
                  }
 
             }, 300);
@@ -1141,24 +1166,24 @@
                 if (!response.ok) {
                     let errorBody = `Status: ${response.status}`;
                     try { errorBody = await response.text(); } catch (_) {}
-                    console.error(`Translation API Error: ${errorBody}`); // Log detailed error
-                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    console.error(`Translation API Error for text "${text}": ${errorBody}`);
+                    return `[خطأ في الترجمة: ${response.status}]`;
                 }
                 const data = await response.json();
 
-                // Enhanced check for valid translation data
                 if (data && Array.isArray(data[0]) && data[0].length > 0 && Array.isArray(data[0][0]) && data[0][0].length > 0 && typeof data[0][0][0] === 'string') {
                     return data[0][0][0];
+                } else if (data && data.translatedText) {
+                    return data.translatedText;
                 } else {
                      console.warn("Unexpected translation response structure:", JSON.stringify(data));
                      return `[خطأ في تنسيق الترجمة]`;
                 }
             } catch (error) {
-                console.error("Translation failed:", error);
-                 return `[خطأ في الترجمة - تحقق من الكونسول]`;
+                console.error("Translation failed for text \""+ text + "\":", error);
+                return `[خطأ في الاتصال بالترجمة]`;
             }
         }
-
 
         async function translateQuestion(questionDiv, originalQuestion, originalOptions) {
             const translateButton = questionDiv.querySelector(".translate-button");
@@ -1170,22 +1195,17 @@
             const questionNumberPrefix = questionNumberMatch ? questionNumberMatch[0] + ' ' : '';
 
             translateButton.disabled = true;
-            translateButton.textContent = "جاري...";
+            translateButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري...`;
 
             originalQuestionEl.style.display = "none";
             translatedQuestionEl.style.display = "block";
 
-            // Translate question if not already translated or if previous attempt failed
-            if (!translatedQuestionEl.dataset.translated || translatedQuestionEl.textContent.startsWith('[')) {
+            if (!translatedQuestionEl.dataset.translated || translatedQuestionEl.textContent.startsWith('[خطأ')) {
                 translatedQuestionEl.textContent = `${questionNumberPrefix}جاري ترجمة السؤال...`;
-                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, ''); // Remove number prefix for translation
+                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, '');
                 const translatedQText = await translateText(questionTextToTranslate);
                 translatedQuestionEl.textContent = `${questionNumberPrefix}${translatedQText}`;
-                if (!translatedQText.startsWith('[')) {
-                   translatedQuestionEl.dataset.translated = "true"; // Mark as successfully translated
-                } else {
-                   translatedQuestionEl.dataset.translated = "false"; // Mark as failed
-                }
+                translatedQuestionEl.dataset.translated = !translatedQText.startsWith('[خطأ') ? "true" : "false";
             }
 
             const translationPromises = Array.from(optionButtons).map(async (button, index) => {
@@ -1195,18 +1215,12 @@
                 originalOptionEl.style.display = "none";
                 translatedOptionEl.style.display = "inline";
 
-                 // Translate option if not already translated or if previous attempt failed
-                 if (!translatedOptionEl.dataset.translated || translatedOptionEl.textContent.startsWith('[')) {
-                    translatedOptionEl.textContent = '...';
-                    // Remove A), B), etc. prefix before translating
+                 if (!translatedOptionEl.dataset.translated || translatedOptionEl.textContent.startsWith('[خطأ')) {
+                    translatedOptionEl.textContent = '...ترجمة';
                     const optionTextToTranslate = originalOptions[index].replace(/^[a-zA-Z][).]?\s*/, '').trim();
                     const translatedOptText = await translateText(optionTextToTranslate);
                     translatedOptionEl.textContent = translatedOptText;
-                     if (!translatedOptText.startsWith('[')) {
-                         translatedOptionEl.dataset.translated = "true";
-                     } else {
-                         translatedOptionEl.dataset.translated = "false";
-                     }
+                    translatedOptionEl.dataset.translated = !translatedOptText.startsWith('[خطأ') ? "true" : "false";
                  }
             });
 
@@ -1214,12 +1228,10 @@
                 await Promise.all(translationPromises);
              } catch (error) {
                  console.error("Error during option translations:", error);
-                 // Optionally display a general error message to the user
              }
 
-
             translateButton.disabled = false;
-            translateButton.textContent = "ترجمة";
+            translateButton.innerHTML = `ترجمة`;
             translateButton.style.display = 'none';
             untranslateButton.style.display = 'inline-flex';
         }
@@ -1257,14 +1269,6 @@
             }
         }
 
-        // --- NEW: Event listener for the checkbox ---
-        if (successCheckbox) {
-            successCheckbox.addEventListener('change', () => {
-                 showLecturesButton.disabled = !successCheckbox.checked;
-            });
-        }
-        // --- END NEW ---
-
         darkModeToggle.addEventListener('click', () => {
             setDarkMode(!bodyElement.classList.contains('dark-mode'));
         });
@@ -1278,13 +1282,6 @@
              } else {
                  setDarkMode(false);
              }
-
-            // --- NEW: Initialize button state on load ---
-            if(showLecturesButton && successCheckbox) {
-                 showLecturesButton.disabled = !successCheckbox.checked;
-            }
-            // --- END NEW ---
-
             showPage('main-buttons-page');
         });
 
