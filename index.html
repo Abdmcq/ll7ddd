@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اسئلة اجهزة التخدير بـ 3 مستويات - اعداد عبدالرحمن حسن</title>
-    <link rel="icon" href="icon.png" type="image/png">
+    <title>اسئلة محاضرات الفسلجة</title>
+    <link rel="icon" href="icon.png" type="image/png"> <!-- تأكد من وجود هذا الملف أو قم بتغييره -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
@@ -22,43 +22,40 @@
 </script>
     <style>
         :root {
-            --primary-color: #007bff; /* Medical Blue */
-            --secondary-color: #17a2b8; /* Cyan Info */
-            --accent-color: #28a745; /* Success Green */
-            --background-start: #f8f9fa; /* Light Gray */
-            --background-end: #e9ecef;   /* Lighter Gray */
+            --primary-color: #007bff;
+            --secondary-color: #17a2b8;
+            --accent-color: #28a745;
+            --background-start: #f0f4f8; /* لون خلفية فاتح ومريح أكثر */
+            --background-end: #e2e8f0;
             --card-bg: #ffffff;
-            --text-color: #343a40; /* Dark Gray */
-            --text-light: #6c757d; /* Medium Gray */
+            --text-color: #2d3748; /* لون نص أغمق قليلاً لتحسين القراءة */
+            --text-light: #718096;
             --text-on-primary: #ffffff;
-            --correct-color: #28a745; /* Green */
-            --wrong-color: #dc3545; /* Red */
-            --border-color: #dee2e6;
-            --shadow-color: rgba(0, 123, 255, 0.15);
-            --hover-shadow-color: rgba(0, 123, 255, 0.3);
+            --correct-color: #28a745;
+            --wrong-color: #dc3545;
+            --border-color: #cbd5e0; /* لون حدود أفتح */
+            --shadow-color: rgba(0, 123, 255, 0.1); /* ظل أخف */
+            --hover-shadow-color: rgba(0, 123, 255, 0.2);
             --font-family: 'Cairo', sans-serif;
             --border-radius-sm: 6px;
             --border-radius-md: 10px;
             --border-radius-lg: 15px;
 
-            --dark-bg-start: #212529; /* Dark Gray */
-            --dark-bg-end: #343a40;   /* Darker Gray */
-            --dark-card-bg: #495057; /* Lighter Dark Gray */
-            --dark-text-color: #f8f9fa; /* Light Gray */
-            --dark-text-light: #adb5bd; /* Medium Light Gray */
-            --dark-border-color: #6c757d; /* Medium Gray Border */
+            --dark-bg-start: #1a202c;
+            --dark-bg-end: #2d3748;
+            --dark-card-bg: #4a5568;
+            --dark-text-color: #e2e8f0;
+            --dark-text-light: #a0aec0;
+            --dark-border-color: #718096;
             --dark-shadow-color: rgba(0, 0, 0, 0.3);
-            --dark-hover-shadow-color: rgba(0, 0, 0, 0.5);
-            --dark-primary-hover: #0056b3; /* Darker Blue for hover */
-            --dark-accent-color: #34d399; /* Brighter Green for Dark Mode */
+            --dark-hover-shadow-color: rgba(0, 0, 0, 0.4);
+            --dark-accent-color: #48bb78; /* أخضر أفتح للوضع الداكن */
 
-            /* New colors for difficulty buttons */
-            --easy-color-start: #28a745; /* Green */
-            --easy-color-end: #20c997;   /* Tealish Green */
-            --medium-color-start: #ffc107; /* Amber */
-            --medium-color-end: #fd7e14;  /* Orange */
-            --hard-color-start: #dc3545;  /* Red */
-            --hard-color-end: #b02a37;   /* Darker Red */
+            /* New colors for question type buttons */
+            --natural-color-start: #3498db; /* أزرق فاتح */
+            --natural-color-end: #2980b9;   /* أزرق أغمق */
+            --critical-color-start: #e74c3c; /* أحمر فاتح */
+            --critical-color-end: #c0392b;  /* أحمر أغمق */
         }
 
         * {
@@ -80,7 +77,7 @@
             align-items: center;
             min-height: 100vh;
             justify-content: space-between;
-            padding-top: 30px;
+            padding-top: 20px; /* تقليل المسافة العلوية */
             overflow-x: hidden;
             transition: background 0.4s ease, color 0.4s ease;
         }
@@ -96,7 +93,7 @@
             visibility: hidden;
             transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
             position: absolute;
-            top: 80px;
+            top: 70px; /* تقليل المسافة العلوية للصفحات الداخلية */
             left: 50%;
             transform: translateX(-50%);
         }
@@ -109,20 +106,39 @@
             top: auto;
             left: auto;
             transform: none;
-            margin-bottom: 40px;
+            margin-bottom: 30px; /* تقليل المسافة السفلية */
         }
         #main-buttons-page, #ministerial-questions-sub-page {
-             top: 30px;
+             top: 20px; /* تعديل ليتناسب مع التغيير في body padding-top */
          }
+
+        .logo-container {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .logo {
+            max-width: 180px; /* حجم مناسب للشعار */
+            height: auto;
+            border-radius: 12px; /* زوايا دائرية للشعار */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        body.dark-mode .logo {
+            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+        }
+
 
         /* Enhanced Button Styles */
         .button {
-            padding: 18px 35px; /* Increased padding */
-            margin-bottom: 20px; /* Increased margin */
+            padding: 18px 35px;
+            margin-bottom: 20px;
             border: none;
             border-radius: var(--border-radius-lg);
             color: var(--text-on-primary);
-            font-size: 1.25em; /* Slightly larger font */
+            font-size: 1.25em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -132,14 +148,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px; /* Increased gap */
+            gap: 12px;
             width: 100%;
             text-decoration: none;
             position: relative;
-            overflow: hidden; /* For pseudo-element effects */
+            overflow: hidden;
         }
 
-        .button::before { /* Shine effect */
+        .button::before {
             content: "";
             position: absolute;
             top: 0;
@@ -160,11 +176,11 @@
         }
 
         .button:hover:not(:disabled) {
-            transform: translateY(-4px) scale(1.03); /* More pronounced hover */
+            transform: translateY(-4px) scale(1.03);
             box-shadow: 0 10px 30px var(--hover-shadow-color);
         }
         .button:active:not(:disabled) {
-            transform: translateY(-1px) scale(0.98); /* Subtle active state */
+            transform: translateY(-1px) scale(0.98);
             box-shadow: 0 6px 20px var(--hover-shadow-color);
         }
         .button:disabled {
@@ -175,43 +191,31 @@
             transform: none;
         }
         .button i {
-            font-size: 1.2em; /* Larger icon */
+            font-size: 1.2em;
         }
 
-        /* Specific styles for difficulty buttons */
-        .button.easy-level {
-            background: linear-gradient(135deg, var(--easy-color-start), var(--easy-color-end));
-            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
+        /* Specific styles for question type buttons */
+        .button.natural-questions-btn {
+            background: linear-gradient(135deg, var(--natural-color-start), var(--natural-color-end));
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
         }
-        .button.easy-level:hover {
-            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        .button.natural-questions-btn:hover {
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
         }
-        body.dark-mode .button.easy-level {
-            background: linear-gradient(135deg, #228b22, #2e8b57 ); /* Darker green for dark mode */
-        }
-
-
-        .button.medium-level {
-            background: linear-gradient(135deg, var(--medium-color-start), var(--medium-color-end));
-            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
-        }
-         .button.medium-level:hover {
-            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
-        }
-        body.dark-mode .button.medium-level {
-            background: linear-gradient(135deg, #b8860b, #cc5500); /* Darker orange for dark mode */
+        body.dark-mode .button.natural-questions-btn {
+            background: linear-gradient(135deg, #2980b9, #1f618d );
         }
 
 
-        .button.hard-level {
-            background: linear-gradient(135deg, var(--hard-color-start), var(--hard-color-end));
-            box-shadow: 0 5px 20px rgba(220, 53, 69, 0.3);
+        .button.critical-questions-btn {
+            background: linear-gradient(135deg, var(--critical-color-start), var(--critical-color-end));
+            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
         }
-        .button.hard-level:hover {
-            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+         .button.critical-questions-btn:hover {
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
         }
-         body.dark-mode .button.hard-level {
-            background: linear-gradient(135deg, #8b0000, #a52a2a); /* Darker red for dark mode */
+        body.dark-mode .button.critical-questions-btn {
+            background: linear-gradient(135deg, #c0392b, #a93226);
         }
 
 
@@ -219,7 +223,7 @@
             font-family: var(--font-family);
             font-size: 2.0em;
             font-weight: 900;
-            margin-bottom: 35px; /* Increased margin */
+            margin-bottom: 20px; /* تقليل المسافة السفلية للعنوان */
             color: var(--primary-color);
             text-align: center;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
@@ -228,7 +232,7 @@
         }
         .main-button {
              width: 100%;
-             max-width: 480px; /* Slightly wider */
+             max-width: 480px;
         }
 
 
@@ -559,11 +563,11 @@
         }
 
         body.dark-mode #main-buttons-page h1 {
-            color: var(--secondary-color); /* Keep distinct for dark mode */
+            color: var(--secondary-color);
             text-shadow: none;
         }
          body.dark-mode .sub-buttons-page h2 {
-             color: var(--accent-color); /* Use accent color for sub-page title */
+             color: var(--accent-color);
          }
 
         body.dark-mode .sub-button {
@@ -646,11 +650,12 @@
 
 
         @media (max-width: 768px) {
-            .page { padding: 15px; top: 70px; }
-             #main-buttons-page, #ministerial-questions-sub-page { top: 20px; }
+            .page { padding: 15px; top: 60px; } /* Adjusted top */
+             #main-buttons-page, #ministerial-questions-sub-page { top: 15px; } /* Adjusted top */
              #main-buttons-page h1 { font-size: 1.7em; }
+             .logo { max-width: 150px; } /* Adjusted logo size */
              .sub-buttons-page h2 { font-size: 1.6em; }
-             .button { padding: 16px 30px; font-size: 1.15em; } /* Adjusted padding for main buttons */
+             .button { padding: 16px 30px; font-size: 1.15em; }
              .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
              .sub-button { font-size: 0.95em; padding: 10px 12px; min-height: 70px; }
              .sub-button i { font-size: 1.2em; }
@@ -670,8 +675,9 @@
 
         @media (max-width: 480px) {
              #main-buttons-page h1 { font-size: 1.5em; }
+             .logo { max-width: 120px; } /* Further adjusted logo size */
               .sub-buttons-page h2 { font-size: 1.4em; }
-             .button { padding: 14px 25px; font-size: 1.05em; } /* Adjusted padding for main buttons */
+             .button { padding: 14px 25px; font-size: 1.05em; }
              .sub-buttons-container { grid-template-columns: 1fr; }
               .sub-button { font-size: 1em; padding: 12px 15px; }
               .sub-button i { font-size: 1.3em; }
@@ -687,24 +693,23 @@
 <body>
 
     <div id="main-buttons-page" class="page">
-        <h1><i class="fas fa-stethoscope"></i> اسئلة اجهزة التخدير بـ 3 مستويات <br> اعداد عبدالرحمن حسن</h1>
+        <div class="logo-container">
+            <img src="https://files.catbox.moe/570d00.png" alt="الشعار" class="logo">
+        </div>
+        <h1><i class="fas fa-stethoscope"></i> اسئلة محاضرات الفسلجة<br> بنمط مختلف</h1>
 
-        <button class="button main-button easy-level" onclick="navigateToLectureSelection('Easy')">
-            <i class="fas fa-brain"></i>
-            أسئلة المستوى السهل
+        <button class="button main-button natural-questions-btn" onclick="navigateToLectureSelection('NaturalQuestions')">
+            <i class="fas fa-leaf"></i>
+            اسئلة طبيعية عادية
         </button>
-        <button class="button main-button medium-level" onclick="navigateToLectureSelection('Medium')">
-            <i class="fas fa-layer-group"></i>
-            أسئلة المستوى المتوسط
-        </button>
-        <button class="button main-button hard-level" onclick="navigateToLectureSelection('Hard')">
-            <i class="fas fa-graduation-cap"></i>
-            أسئلة المستوى الصعب
+        <button class="button main-button critical-questions-btn" onclick="navigateToLectureSelection('CriticalThinkingQuestions')">
+            <i class="fas fa-lightbulb"></i>
+            اسئلة فكرية
         </button>
     </div>
 
     <div id="ministerial-questions-sub-page" class="page sub-buttons-page">
-        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة <span id="difficulty-level-title"></span></h2>
+        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة <span id="question-type-title"></span></h2>
         <div class="sub-buttons-container" id="lecture-buttons-container">
             <!-- Lecture buttons will be dynamically inserted here -->
         </div>
@@ -735,272 +740,276 @@
 
     <script>
          const quizData = {
-            "Easy": {
-                "Lecture1_Tracheostomy": [
-                    { question: "What is the main topic discussed in Lec no.1 of the 2nd course by Dr. Mustafa M. Al-Zubaidy?", options: ["Anesthesia techniques", "Respiratory system", "Tracheostomy Tube", "Airway inspection"], correct: 2 },
-                    { question: "According to slide 1, which of these is NOT an emphasized topic in the lecture?", options: ["Tracheostomy indications", "Tracheostomy benefits", "Surgical techniques for tracheostomy", "Tracheostomy complications"], correct: 2 },
-                    { question: "Tracheostomy tubes are typically made of what material, as suggested by slide 2?", options: ["Metal", "Silicone", "Plastic", "Rubber"], correct: 2 },
-                    { question: "Where are tracheostomy tubes usually inserted, according to slide 2?", options: ["Between the first and second tracheal cartilage rings", "Through the second, third, and fourth tracheal cartilage rings", "Below the fifth tracheal cartilage ring", "Directly into the cricothyroid membrane"], correct: 1 },
-                    { question: "What part of a cuffed tracheostomy tube indicates the cuff is inflated?", options: ["The fenestration", "The inner cannula", "The pilot balloon", "The obturator"], correct: 2 },
-                    { question: "What is a primary advantage of the tip of a tracheostomy tube being cut square?", options: ["Easier insertion", "Better suctioning access", "Decreases risk of obstruction against the tracheal wall", "Allows for speech"], correct: 2 },
-                    { question: "Tracheostomy tubes are available in sizes to fit which patient populations?", options: ["Adults only", "Children only", "Neonates to adults", "Neonates only"], correct: 2 },
-                    { question: "What is the general direction of airflow for 'In breath' with a tracheostomy tube?", options: ["From lungs", "To lungs", "Out of trachea", "Around the tube"], correct: 1 },
-                    { question: "Which of these is a listed indication for tracheostomy?", options: ["Short-term (1-2 days) ventilation", "Mild sore throat", "Long-term intermittent positive pressure ventilation", "A common cold"], correct: 2 },
-                    { question: "Can tracheostomy be used for upper airway obstruction?", options: ["No, only for lower airway issues", "Yes, if it cannot be bypassed with an oral/nasal tube", "Only if the obstruction is partial", "No, intubation is always preferred"], correct: 1 },
-                    { question: "One benefit of tracheostomy is increased patient:", options: ["Anxiety", "Sedation need", "Comfort", "Airway resistance"], correct: 2 },
-                    { question: "Does tracheostomy typically lead to less or more need for sedation?", options: ["More need", "Less need", "No change in need", "Depends on the tube type"], correct: 1 },
-                    { question: "Which of these is an immediate complication of tracheostomy?", options: ["Tracheal stenosis", "Hemorrhage", "Scar formation", "Granulomata"], correct: 1 },
-                    { question: "Pneumothorax is listed as what type of complication?", options: ["Delayed", "Late", "Immediate", "Not a complication"], correct: 2 },
-                    { question: "What is the function of a fenestration in a tracheostomy tube?", options: ["To secure the tube", "To inflate the cuff", "To allow the patient to speak", "To measure pressure"], correct: 2 },
-                    { question: "For a patient with a fenestrated tube to speak, what must usually be done with the cuff?", options: ["It must be hyperinflated", "It must be deflated", "It must be partially inflated", "It doesn't matter"], correct: 1 },
-                    { question: "Is 'Inspection of airway' mentioned as a topic of emphasis in this lecture?", options: ["No, only tracheostomy", "Yes, it is listed twice", "Yes, but only for upper airway", "Only in the context of complications"], correct: 1 },
-                    { question: "An additional suctioning lumen on some tracheostomy tubes opens just above the:", options: ["Tip", "Fenestration", "Cuff", "Neck plate"], correct: 2 },
-                    { question: "'Impaired pharyngeal or laryngeal reflexes' can be an indication for tracheostomy to protect the:", options: ["Esophagus", "Lungs", "Stomach", "Vocal cords directly"], correct: 1 },
-                    { question: "'Reduced dead space' is listed as a:", options: ["Complication", "Benefit", "Indication", "Contraindication"], correct: 1 },
-                    { question: "Infection of the stoma is what type of complication?", options: ["Immediate", "Delayed", "Late", "Not a true complication"], correct: 1 },
-                    { question: "Tracheal dilatation is what type of complication?", options: ["Immediate", "Delayed", "Late", "A benefit"], correct: 2 },
-                    { question: "After deflation of the cuff, a fenestrated tube allows breathing through the fenestration and the:", options: ["Pilot balloon", "Inner cannula only", "Stoma", "Esophagus"], correct: 2 },
-                    { question: "The lecture is from which department at Al-Hadba University?", options: ["Department of Surgery", "Department of Internal Medicine", "Department of Anesthesia techniques", "Department of Radiology"], correct: 2 },
-                    { question: "Tracheostomy can aid in bronchial:", options: ["Dilation", "Constriction", "Suctioning", "Biopsy"], correct: 2 }
+            "NaturalQuestions": {
+                "Lecture2_RBC": [
+                    { question: "What is the typical diameter of a Red Blood Cell (RBC)?", options: ["A. 2-4 µm", "B. 6-8 µm", "C. 10-12 µm", "D. 15-20 µm"], correct: 1 },
+                    { question: "Which of the following best describes the shape of an RBC?", options: ["A. Spherical", "B. Bi-Concave disk", "C. Cuboidal", "D. Irregular"], correct: 1 },
+                    { question: "Are mature mammalian RBCs nucleated?", options: ["A. Yes, always", "B. No, they are non-nucleated", "C. Only in certain species", "D. Only during development"], correct: 1 },
+                    { question: "What percentage of an RBC is typically water?", options: ["A. 30-40%", "B. 50%", "C. 60-70%", "D. 80-90%"], correct: 2 },
+                    { question: "What is the approximate normal range of RBCs per cubic mm in humans?", options: ["A. 1-2 million", "B. 2.5-3.5 million", "C. 4.5-5 million", "D. 7-8 million"], correct: 2 },
+                    { question: "What is the primary function of haemoglobin in RBCs?", options: ["A. Fighting infection", "B. Transporting oxygen and carbon dioxide", "C. Blood clotting", "D. Maintaining osmotic balance"], correct: 1 },
+                    { question: "The heme group in haemoglobin contains which metal ion that temporarily links to oxygen?", options: ["A. Magnesium", "B. Calcium", "C. Iron", "D. Copper"], correct: 2 },
+                    { question: "What percentage of an erythrocyte's solid material is typically haemoglobin?", options: ["A. About 50%", "B. About 70%", "C. Most 90%", "D. About 30%"], correct: 2 },
+                    { question: "Which compound acts to store oxygen in muscle fiber and is related to haemoglobin?", options: ["A. Myosin", "B. Actin", "C. Myoglobin", "D. Ferritin"], correct: 2 },
+                    { question: "Which organ acts as a limited reservoir of red blood cells in humans but is more significant in dogs and horses?", options: ["A. Liver", "B. Kidneys", "C. Spleen", "D. Bone marrow"], correct: 2 },
+                    { question: "Which condition stimulates RBC production from bone marrow?", options: ["A. Hyperoxia", "B. Hypoxia", "C. Alkalosis", "D. Acidosis"], correct: 1 },
+                    { question: "Which vitamin, along with stimulating bone marrow, is listed as a factor promoting erythropoiesis?", options: ["A. Vitamin D", "B. Vitamin K", "C. Vitamin C", "D. Vitamin B12 (not explicitly listed on page 1, but Vit C is)"], correct: 2 },
+                    { question: "What is the role of HCL gastric juice in promoting erythropoiesis?", options: ["A. Stimulates bone marrow directly", "B. Helps in liberation of iron in inorganic form", "C. Acts as an antioxidant", "D. Enhances oxygen carrying capacity"], correct: 1 },
+                    { question: "Which of the following is NOT listed as a function of erythrocytes on page 2?", options: ["A. Oxygen carrier to all parts of the body tissues", "B. Carry CO2 from body tissues to lungs for excretion", "C. Production of antibodies", "D. Help in maintain ionic balance"], correct: 2 },
+                    { question: "What is the approximate lifespan of an erythrocyte?", options: ["A. 30 days", "B. 60 days", "C. 120 days", "D. 180 days"], correct: 2 },
+                    { question: "Where are the main sites of destruction for aging red blood cells?", options: ["A. Bone marrow and thymus", "B. Lungs and kidneys", "C. Liver and spleen", "D. Stomach and intestines"], correct: 2 },
+                    { question: "The heme constituent of hemoglobin is eventually excreted as what?", options: ["A. Urea", "B. Creatinine", "C. Bilirubin", "D. Uric acid"], correct: 2 },
+                    { question: "Approximately how many hemoglobin molecules does each red cell contain?", options: ["A. 100 million", "B. 320 million", "C. 640 million", "D. 1 billion"], correct: 2 },
+                    { question: "Normal adult hemoglobin (HbA) consists of how many polypeptide chains?", options: ["A. Two (α2)", "B. Two (β2)", "C. Four (α2β2)", "D. Six (α2β2γ2)"], correct: 2 },
+                    { question: "What are the proteins on the surface of red blood cells that determine blood groups called?", options: ["A. Antibodies", "B. Antigens", "C. Haptens", "D. Cytokines"], correct: 1 },
+                    { question: "If a person has type A antigens on their RBCs, what antibodies will they have in their plasma?", options: ["A. Anti-A antibodies", "B. Anti-B antibodies", "C. Both Anti-A and Anti-B antibodies", "D. No antibodies"], correct: 1 },
+                    { question: "A person with blood group O has which antigens on their RBCs?", options: ["A. A antigens", "B. B antigens", "C. Both A and B antigens", "D. Neither A nor B antigens"], correct: 3 },
+                    { question: "What does 'Rhesus positive' mean?", options: ["A. The person has Rhesus antibodies in their plasma.", "B. The person has Rhesus antigens on their red blood cells.", "C. The person lacks Rhesus antigens.", "D. The person produces Rhesus factor."], correct: 1 },
+                    { question: "A person with A- (A negative) blood group has:", options: ["A. A antigens and Rhesus antigens", "B. A antigens but no Rhesus antigens", "C. B antigens and Rhesus antigens", "D. Neither A nor Rhesus antigens"], correct: 1 },
+                    { question: "Which blood group is characterized by having both A and B antigens but no Rhesus antigens?", options: ["A. AB+", "B. O-", "C. AB-", "D. A-"], correct: 2 }
                 ],
-                "Lecture2_TheaterPollution": [
-                    { question: "What is the main topic of the second lecture?", options: ["Surgical techniques", "Anesthesia drugs", "Theater Pollution", "Patient safety in general"], correct: 2 },
-                    { question: "Since the late 1960s, there has been speculation about the harmful effects of what on operating theatre personnel?", options: ["Radiation", "Trace anaesthetic gases/vapours", "Loud noises", "Long working hours"], correct: 1 },
-                    { question: "What is one part of a 'prudent plan for minimizing exposure' to anaesthetic gases?", options: ["Using older equipment", "Maintenance of equipment", "Avoiding patient monitoring", "Increasing room temperature"], correct: 1 },
-                    { question: "What is the major source of contamination in the operating room, especially in clean surgical procedures?", options: ["The ceiling tiles", "The floor", "Patient's skin and airborne particles from personnel", "Visitors"], correct: 2 },
-                    { question: "Which of these is a listed 'risk of theater pollution'?", options: ["Increased fertility", "Decreased risk of spontaneous abortion", "Renal and liver dysfunction", "Improved mental acuity"], correct: 2 },
-                    { question: "What is a known effect of chronic exposure to nitrous oxide?", options: ["Improved lung function", "Bone marrow depression", "Stronger bones", "Hair growth"], correct: 1 },
-                    { question: "One of the most important factors in reducing pollution is adequate theatre:", options: ["Lighting", "Ventilation and air conditioning", "Staffing", "Storage space"], correct: 1 },
-                    { question: "How many times per hour should circulating air be changed in a well-ventilated theatre?", options: ["1-2 times", "5-10 times", "15-20 times", "Over 30 times"], correct: 2 },
-                    { question: "Is a recirculating ventilation system generally recommended for theatres?", options: ["Yes, it's the best option", "No, it is not recommended", "Only for short procedures", "Yes, if filters are changed daily"], correct: 1 },
-                    { question: "Which breathing system's use is listed as a method to decrease theatre pollution?", options: ["Open drop ether", "Mapleson A", "Circle breathing system", "Insufflation"], correct: 2 },
-                    { question: "Does the circle system recycle CO2?", options: ["No, it vents it", "Yes, it recycles the absorbing CO2 (error in slide, it absorbs CO2)", "Only partially", "It converts CO2 to Oxygen"], correct: 1 },
-                    { question: "Which anesthesia technique is listed as a method to decrease pollution by avoiding inhalational agents?", options: ["High-flow sevoflurane", "Total intravenous anesthesia", "Nitrous oxide-oxygen mix", "Ether anesthesia"], correct: 1 },
-                    { question: "What should be avoided during vaporizer filling to reduce pollution?", options: ["Using gloves", "Spillage", "Checking the agent level", "Filling it completely"], correct: 1 },
-                    { question: "What system is specifically designed to remove waste anaesthetic gases?", options: ["Humidification system", "Scavenging system", "Oxygen flush system", "Air conditioning unit"], correct: 1 },
-                    { question: "The lecture mentions currently available studies conclude what about occupational exposure to TRACE levels of waste anesthetic vapors?", options: ["Strong link to severe adverse health effects", "No association with adverse health effects", "Mild, temporary effects only", "Only affects sensitive individuals"], correct: 1 },
-                    { question: "Is it considered desirable to vent out exhaled anaesthetic vapours?", options: ["No, it's unnecessary", "Yes, it is desirable", "Only in pediatric cases", "Only if nitrous oxide is used"], correct: 1 },
-                    { question: "Training of personnel is part of a prudent plan for:", options: ["Increasing anaesthetic gas use", "Minimizing exposure", "Billing procedures", "Patient scheduling"], correct: 1 },
-                    { question: "What is one of the listed risks associated with theater pollution for females?", options: ["Increased risk of spontaneous abortion", "Enhanced fertility", "Stronger immune system", "Better sleep quality"], correct: 0 },
-                    { question: "Can theater pollution potentially affect mental performance?", options: ["No, it only affects physical health", "Yes, it's listed as a risk", "Only if exposed for more than 20 years", "This is not mentioned"], correct: 1 },
-                    { question: "In labour wards using Entonox, rooms should be well ventilated with a minimum of how many air changes per hour?", options: ["One", "Five", "Ten", "Fifteen"], correct: 1 },
-                    { question: "Theatres that are unventilated are how many times more contaminated than properly ventilated ones?", options: ["Two times", "Four times", "Six times", "Ten times"], correct: 1 },
-                    { question: "Use of regional anesthesia is listed as a method to:", options: ["Increase theatre pollution", "Decrease theatre pollution", "Test the ventilation system", "Calibrate vaporizers"], correct: 1 },
-                    { question: "Modern vaporizers use special agent specific filling devices to reduce:", options: ["Cost of anesthetic", "Time to fill", "Spillage and pollution", "Vaporizer temperature"], correct: 2 },
-                    { question: "Does the lecture suggest that all operating theatre personnel are definitely harmed by trace gases?", options: ["Yes, definitively", "No, current studies suggest no association for trace levels", "Only anesthesia providers are harmed", "Only surgeons are harmed"], correct: 1 },
-                    { question: "One of the three key elements for minimizing exposure, besides equipment maintenance and training, is:", options: ["Longer coffee breaks", "Routine exposure monitoring", "Using scented candles", "Playing loud music"], correct: 1 }
+                "Lecture1_Endocrine": [
+                    { question: "Hormones are described as potent chemical signaling substances also known as:", options: ["A. Enzymes", "B. Neurotransmitters", "C. Messengers", "D. Antigens"], correct: 2 },
+                    { question: "Endocrine glands secrete their products into:", options: ["A. Ducts leading to cavities", "B. The blood capillary", "C. The lumen of an organ", "D. The outer surface of the body"], correct: 1 },
+                    { question: "Which gland is described as the major integrating link between the nervous and endocrine system?", options: ["A. Pituitary gland", "B. Thyroid gland", "C. Hypothalamus", "D. Adrenal gland"], correct: 2 },
+                    { question: "The anterior pituitary gland accounts for what percentage of the total weight of the pituitary gland?", options: ["A. 25%", "B. 50%", "C. 75%", "D. 90%"], correct: 2 },
+                    { question: "The posterior pituitary gland contains axons and axon terminals of neurons whose cell bodies are located in the:", options: ["A. Cerebral cortex", "B. Cerebellum", "C. Supraoptic and paraventricular nuclei of the hypothalamus", "D. Thalamus"], correct: 2 },
+                    { question: "Where is the thyroid gland located?", options: ["A. In the brain, attached to the hypothalamus", "B. In the front of the neck below the Adams' apple", "C. On top of the kidneys", "D. Behind the stomach"], correct: 1 },
+                    { question: "Parathyroid glands produce which hormone?", options: ["A. Thyroxine", "B. Calcitonin", "C. Parathyroid hormone", "D. Aldosterone"], correct: 2 },
+                    { question: "The adrenal glands are also known as:", options: ["A. Parotid glands", "B. Pineal glands", "C. Supra renal glands", "D. Thymus glands"], correct: 2 },
+                    { question: "The adrenal cortex is divided into three zones. Which of the following is NOT one of them?", options: ["A. Zona glomerulosa", "B. Zona fasciculata", "C. Zona medullaris", "D. Zona reticularis"], correct: 2 },
+                    { question: "The pancreas is known as a mixed gland because it has:", options: ["A. Multiple lobes", "B. Both endocrine and exocrine functions", "C. Secretes both peptide and steroid hormones", "D. Produces both enzymes and mucus"], correct: 1 },
+                    { question: "Alpha cells (A cells) in the pancreatic islets secrete which hormone?", options: ["A. Insulin", "B. Glucagon", "C. Somatostatin", "D. Gastrin"], correct: 1 },
+                    { question: "Beta cells (b cells) in the pancreatic islets secrete which hormone that decreases blood glucose concentration?", options: ["A. Glucagon", "B. Somatostatin", "C. Insulin", "D. Adrenaline"], correct: 2 },
+                    { question: "What percentage of pancreatic islet cells are typically beta cells?", options: ["A. 20%", "B. 5%", "C. 75%", "D. 50%"], correct: 2 },
+                    { question: "Which female sex hormones are secreted by the ovaries?", options: ["A. Testosterone and Androgen", "B. Oestrogen and Progesterone", "C. FSH and LH", "D. Cortisol and Aldosterone"], correct: 1 },
+                    { question: "Leydig cells in the testes make and secrete testosterone in response to which hormone from the pituitary gland?", options: ["A. FSH (Follicle-Stimulating Hormone)", "B. LH (Luteinizing Hormone)", "C. ACTH (Adrenocorticotropic Hormone)", "D. TSH (Thyroid-Stimulating Hormone)"], correct: 1 },
+                    { question: "Sertoli cells in the testes help in the process of:", options: ["A. Hormone secretion", "B. Spermatogenesis (production of sperm)", "C. Testosterone storage", "D. Blood-testis barrier formation"], correct: 1 },
+                    { question: "The pineal gland is attached to the roof of which part of the brain?", options: ["A. First ventricle", "B. Second ventricle", "C. Third ventricle", "D. Fourth ventricle"], correct: 2 },
+                    { question: "What hormone is secreted by the pineal gland?", options: ["A. Serotonin", "B. Dopamine", "C. Melatonin", "D. Oxytocin"], correct: 2 },
+                    { question: "What is the primary role attributed to melatonin?", options: ["A. Regulating metabolism", "B. Promoting sleepiness and setting the biological clock", "C. Stimulating growth", "D. Controlling calcium levels"], correct: 1 },
+                    { question: "Exocrine glands deliver their secretion into:", options: ["A. Bloodstream directly", "B. Lymphatic system", "C. Ducts, cavities, lumen of an organ, or outer body", "D. Interstitial fluid"], correct: 2 },
+                    { question: "Hormones are divided into which two main types based on their chemical structure mentioned in the lecture?", options: ["A. Amines and Eicosanoids", "B. Peptides hormones and steroid hormones", "C. Glycoproteins and Lipoproteins", "D. Neurohormones and Paracrine hormones"], correct: 1 },
+                    { question: "The pituitary gland (hypophysis) lies in the:", options: ["A. Foramen magnum", "B. Sella turcica of the sphenoid bone", "C. Cranial cavity generally", "D. Medulla oblongata"], correct: 1 },
+                    { question: "Which cells in the pancreas secrete somatostatin?", options: ["A. Alpha cells", "B. Beta cells", "C. Delta cells", "D. Gamma cells"], correct: 2 },
+                    { question: "The thyroid gland consists of two lobes connected by a(n):", options: ["A. Ligament", "B. Isthmus", "C. Fissure", "D. Septum"], correct: 1 },
+                    { question: "Steroid hormones are produced by which part of the adrenal gland?", options: ["A. Adrenal medulla", "B. Adrenal cortex", "C. Both cortex and medulla", "D. Zona reticularis only"], correct: 1 }
                 ],
-                "Lecture3_GasSupply": [
-                    { question: "Medical gas supply takes the form of either cylinders or a:", options: ["Generator system", "Piped gas system", "Tanker truck system", "Portable canister system"], correct: 1 },
-                    { question: "Cylinders are made of thin-walled seamless:", options: ["Aluminum", "Molybdenum steel", "Titanium", "Copper"], correct: 1 },
-                    { question: "The top end of a cylinder with a tapered screw thread for valve attachment is called the:", options: ["Base", "Body", "Neck", "Shoulder"], correct: 2 },
-                    { question: "What does the plastic disc around the cylinder neck indicate?", options: ["Gas type", "Cylinder pressure", "Last examination year", "Manufacturer"], correct: 2 },
-                    { question: "Which cylinder sizes are specified as NOT for medical gases?", options: ["C and D", "E and F", "A and H", "J and K"], correct: 2 },
-                    { question: "Size E cylinders are used for:", options: ["Cylinder manifolds", "Home oxygen therapy", "Anesthetic machines", "Scuba diving"], correct: 2 },
-                    { question: "How is Oxygen stored in cylinders?", options: ["As a liquid", "As a gas", "As a solid", "As a cryogenic fluid"], correct: 1 },
-                    { question: "How is Nitrous Oxide stored in cylinders?", options: ["As a gas only", "As a liquid + vapor", "As a solid", "Only as a vapor at high pressure"], correct: 1 },
-                    { question: "How often are tests, like internal endoscopic examination, performed on cylinders?", options: ["Every year", "Every 3 years", "Every 5 years", "Every 10 years"], correct: 2 },
-                    { question: "Which of these is a test performed on cylinders?", options: ["Taste test", "Smell test", "Tensile test", "Color match test"], correct: 2 },
-                    { question: "Which of these is a mark engraved on a cylinder?", options: ["User's name", "Test pressure", "Date of first use", "Hospital department"], correct: 1 },
-                    { question: "What is one of the labelling requirements for a cylinder?", options: ["Price of gas", "Name, chemical symbol", "Name of the delivery driver", "Previous contents"], correct: 1 },
-                    { question: "What safety system prevents incorrect cylinder attachment?", options: ["Color coding system", "Pin-Index System", "Thread type system", "Barcode system"], correct: 1 },
-                    { question: "Color coding on cylinders helps to:", options: ["Make them look attractive", "Reduce accidental misuse", "Indicate cylinder size", "Show the filling date"], correct: 1 },
-                    { question: "Full and empty cylinders should be stored:", options: ["Together to save space", "Separated", "In a warm room", "Outdoors"], correct: 1 },
-                    { question: "Cylinder valves are typically made of:", options: ["Plastic", "Stainless steel", "Brass/chromium-plated material", "Aluminum"], correct: 2 },
-                    { question: "What is the function of the on/off spindle on a cylinder valve?", options: ["To adjust gas flow rate", "To open or close the gas pathway", "To secure the valve to the cylinder", "To connect the pressure gauge"], correct: 1 },
-                    { question: "The Bodok seal is a:", options: ["Type of cylinder", "Pressure relief device", "Compressible washer", "Color code"], correct: 2 },
-                    { question: "When opening a cylinder valve, it should be done slowly to prevent:", options: ["Gas leakage", "Valve damage", "Pressure/temperature spikes", "Noise"], correct: 2 },
-                    { question: "During use, a cylinder valve should ideally be kept:", options: ["Slightly open", "Half open", "Fully open", "Almost closed"], correct: 2 },
-                    { question: "What is the oxygen pin-index configuration?", options: ["1,5", "3,5", "2,5", "1,6"], correct: 2 },
-                    { question: "What is the air pin-index configuration?", options: ["1,5", "2,5", "3,5", "7"], correct: 0 },
-                    { question: "What material provides a lightweight option for cylinders?", options: ["Cast iron", "Lead", "Aluminum alloy with fiberglass/epoxy resin", "Thick steel"], correct: 2 },
-                    { question: "What is the approximate pressure of Oxygen in a full cylinder?", options: ["4,400 kPa", "13,700 kPa", "22,000 kPa", "1,000 kPa"], correct: 1 },
-                    { question: "Over-pressurized cylinders should be:", options: ["Used carefully", "Vented by the user", "Reported to the manufacturer", "Stored in a cold place"], correct: 2 }
+                "Lecture5_Organelles": [
+                    { question: "The Golgi Apparatus is typically composed of how many stacked layers of vesicles?", options: ["A. One or two", "B. Two or three", "C. Four or more", "D. Ten or more"], correct: 2 },
+                    { question: "Where is the Golgi apparatus usually located within the cell?", options: ["A. Scattered throughout the cytoplasm", "B. Near one side of the nucleus", "C. Attached to the endoplasmic reticulum", "D. Inside the mitochondria"], correct: 1 },
+                    { question: "Substances entrapped in ER vesicles are transported to which organelle for processing?", options: ["A. Lysosomes", "B. Mitochondria", "C. Golgi apparatus", "D. Nucleus"], correct: 2 },
+                    { question: "Which of the following can be formed from the Golgi apparatus?", options: ["A. Mitochondria", "B. Ribosomes", "C. Lysosomes, secretory vesicles", "D. Endoplasmic reticulum"], correct: 2 },
+                    { question: "Lysosomes are described as:", options: ["A. Membranous tubules", "B. Vesicular organelles", "C. Non-membranous structures", "D. Filamentous networks"], correct: 1 },
+                    { question: "How do lysosomes primarily form?", options: ["A. By budding off from the mitochondria", "B. By breaking off from the Golgi apparatus", "C. Assembled from free ribosomes", "D. Synthesized directly from the nucleus"], correct: 1 },
+                    { question: "What primary function do lysosomes provide for the cell?", options: ["A. Energy production", "B. Protein synthesis", "C. Intracellular digestive system", "D. Lipid storage"], correct: 2 },
+                    { question: "Which of these can be digested by lysosomes?", options: ["A. Only damaged cellular structures", "B. Only ingested food particles", "C. Only unwanted bacteria", "D. All of the above (damaged structures, food particles, bacteria)"], correct: 3 },
+                    { question: "Mitochondria are also called the:", options: ["A. 'Control centers' of the cell", "B. 'Protein factories' of the cell", "C. 'Power houses' of the cell", "D. 'Storage units' of the cell"], correct: 2 },
+                    { question: "What would happen if cells were without mitochondria?", options: ["A. Protein synthesis would cease", "B. They would be unable to extract enough energy from nutrients", "C. DNA replication would stop", "D. They would lose their shape"], correct: 1 },
+                    { question: "The liberated energy in mitochondria is used to synthesize what 'high-energy' substance?", options: ["A. Glucose", "B. Adenosine triphosphate (ATP)", "C. Cyclic AMP (cAMP)", "D. NADH"], correct: 1 },
+                    { question: "The number of mitochondria per cell varies according to:", options: ["A. Cell size only", "B. Cell function", "C. The age of the organism", "D. The type of nucleus"], correct: 1 },
+                    { question: "Mitochondria are composed mainly of how many lipid bilayer-protein membranes?", options: ["A. One", "B. Two (an outer and an inner membrane)", "C. Three", "D. Four"], correct: 1 },
+                    { question: "The infoldings of the inner mitochondrial membrane form shelves called:", options: ["A. Grana", "B. Thylakoids", "C. Cristae", "D. Lamellae"], correct: 2 },
+                    { question: "What is found attached to the cristae of mitochondria?", options: ["A. Ribosomes", "B. Oxidative enzymes", "C. DNA", "D. Storage granules"], correct: 1 },
+                    { question: "The nucleus is a membrane-bound organelle that contains:", options: ["A. Ribosomes", "B. Genetic material (DNA)", "C. ATP", "D. Lysosomal enzymes"], correct: 1 },
+                    { question: "One of the functions of the nucleus is to maintain the integrity of the cell by facilitating:", options: ["A. Only transcription processes", "B. Only replication processes", "C. Transcription and replication processes", "D. Energy production"], correct: 2 },
+                    { question: "What is the largest organelle inside the cell, taking up about a tenth of the entire cell?", options: ["A. Mitochondrion", "B. Golgi apparatus", "C. Nucleus", "D. Endoplasmic reticulum"], correct: 2 },
+                    { question: "Which of the following is NOT listed as a component of the nucleus?", options: ["A. Nuclear membrane", "B. Nucleoplasm", "C. Centriole", "D. Nucleolus"], correct: 2 },
+                    { question: "Chromatin is a component of the:", options: ["A. Cytoplasm", "B. Mitochondria", "C. Nucleus", "D. Golgi apparatus"], correct: 2 },
+                    { question: "Which of these is a main function of the nucleus?", options: ["A. ATP synthesis", "B. Lipid metabolism", "C. Protein synthesis, cell division, and differentiation", "D. Detoxification"], correct: 2 },
+                    { question: "The nucleus controls the synthesis of enzymes involved in:", options: ["A. Only DNA replication", "B. Cellular metabolism", "C. Only cell division", "D. Only protein export"], correct: 1 },
+                    { question: "Where are chromosomes located in eukaryotic cells?", options: ["A. In the cytoplasm", "B. In the mitochondria", "C. In the nucleus", "D. In the Golgi apparatus"], correct: 2 },
+                    { question: "Chromosomes are made up of strands of:", options: ["A. RNA", "B. Proteins", "C. DNA", "D. Lipids"], correct: 2 },
+                    { question: "Which of the following is NOT listed as a main part of a chromosome?", options: ["A. Kinetochores", "B. Telomeres", "C. Spindle fibers", "D. Chromatids"], correct: 2 }
+                ],
+                "Lecture4_Digestion": [
+                    { question: "What are the two main functions of the digestive system?", options: ["A. Respiration and circulation", "B. Digestion and absorption", "C. Excretion and filtration", "D. Sensation and movement"], correct: 1 },
+                    { question: "Which of the following is NOT one of the four stages of food processing in animals?", options: ["A. Ingestion", "B. Digestion", "C. Excretion", "D. Elimination"], correct: 2 },
+                    { question: "Mechanical digestion primarily involves:", options: ["A. Enzymes breaking down macromolecules", "B. Larger pieces of food broken down into smaller pieces", "C. Absorption of nutrients into the bloodstream", "D. Hormonal regulation of appetite"], correct: 1 },
+                    { question: "Where does chemical breakdown of starch begin?", options: ["A. Stomach", "B. Small intestine", "C. Mouth", "D. Large intestine"], correct: 2 },
+                    { question: "Which enzyme, produced by salivary glands, begins starch breakdown?", options: ["A. Pepsin", "B. Lipase", "C. Salivary amylase", "D. Trypsin"], correct: 2 },
+                    { question: "Which of these is NOT a salivary gland?", options: ["A. Parotid gland", "B. Submandibular gland", "C. Pineal gland", "D. Sublingual gland"], correct: 2 },
+                    { question: "The stomach is located on which side of the abdominal cavity?", options: ["A. Right side", "B. Left side", "C. Centrally", "D. Posteriorly"], correct: 1 },
+                    { question: "Food enters the stomach through a muscular valve called the:", options: ["A. Pyloric sphincter", "B. Ileocecal valve", "C. Lower esophageal sphincter", "D. Sphincter of Oddi"], correct: 2 },
+                    { question: "Which cells in the stomach secrete gastric HCl?", options: ["A. Chief cells", "B. Mucus cells", "C. Parietal cells (oxyntic cells)", "D. G-cells"], correct: 2 },
+                    { question: "Chief cells in the stomach synthesize and secrete:", options: ["A. Gastrin", "B. Intrinsic factor", "C. Pepsinogen", "D. Mucus"], correct: 2 },
+                    { question: "Pepsinogen is activated into pepsin by:", options: ["A. Salivary amylase", "B. Gastric HCl", "C. Trypsin", "D. Bile"], correct: 1 },
+                    { question: "What is the typical pH of gastric juice?", options: ["A. 0.5-1.0", "B. 1-3", "C. 4-5", "D. 6-7"], correct: 1 },
+                    { question: "Which phase of gastric secretion occurs before food enters the stomach?", options: ["A. Gastric phase", "B. Intestinal phase", "C. Cephalic phase", "D. Absorptive phase"], correct: 2 },
+                    { question: "Which hormone causes an increase in the secretion of HCl, pepsinogen, and intrinsic factor from the stomach?", options: ["A. Secretin", "B. Cholecystokinin (CCK)", "C. Gastrin", "D. Somatostatin"], correct: 2 },
+                    { question: "Cholecystokinin (CCK) has its most significant effect on the:", options: ["A. Stomach", "B. Gall bladder", "C. Salivary glands", "D. Esophagus"], correct: 1 },
+                    { question: "Where does most chemical and mechanical digestion and absorption take place?", options: ["A. Stomach", "B. Large intestine", "C. Small intestine", "D. Esophagus"], correct: 2 },
+                    { question: "Tiny projections called ____ line the small intestine and absorb digested food.", options: ["A. Cilia", "B. Flagella", "C. Villi", "D. Rugae"], correct: 2 },
+                    { question: "Which duct is composed of the liver duct and bile duct, draining into the duodenum?", options: ["A. Pancreatic duct", "B. Cystic duct", "C. Common duct (Common bile duct)", "D. Hepatic portal vein"], correct: 2 },
+                    { question: "What is the first and shortest part of the small intestine?", options: ["A. Jejunum", "B. Ileum", "C. Duodenum", "D. Cecum"], correct: 2 },
+                    { question: "The primary function of the ileum is to absorb:", options: ["A. Water and electrolytes", "B. Vitamin B12 and bile salts", "C. Sugars and amino acids", "D. Iron and calcium"], correct: 1 },
+                    { question: "Which organ plays a major role in metabolism and produces bile?", options: ["A. Pancreas", "B. Spleen", "C. Liver", "D. Gallbladder"], correct: 2 },
+                    { question: "Bile is temporarily stored in the:", options: ["A. Liver", "B. Pancreas", "C. Gallbladder", "D. Duodenum"], correct: 2 },
+                    { question: "Which hormones stimulate the liver to produce bile?", options: ["A. Gastrin and GIP", "B. Insulin and glucagon", "C. Secretin and cholecystokinin (CCK)", "D. Somatostatin and motilin"], correct: 2 },
+                    { question: "What is the main function of bile juice in digestion?", options: ["A. Digesting proteins", "B. Emulsification of ingested fat", "C. Digesting carbohydrates", "D. Neutralizing stomach acid primarily"], correct: 1 },
+                    { question: "The exocrine secretion of the pancreas, pancreatic juice, has a pH of approximately:", options: ["A. 2", "B. 5", "C. 8", "D. 10"], correct: 2 }
+                ],
+                "Lecture3_WBC": [
+                    { question: "White blood cells are also known as:", options: ["A. Erythrocytes", "B. Thrombocytes", "C. Leukocytes", "D. Hepatocytes"], correct: 2 },
+                    { question: "All white blood cells are produced and derived from multipotent cells in the bone marrow known as:", options: ["A. Myocytes", "B. Osteocytes", "C. Hematopoietic stem cells", "D. Chondrocytes"], correct: 2 },
+                    { question: "What distinguishes white blood cells from red blood cells and platelets, as mentioned in the text?", options: ["A. Their size", "B. Their shape", "C. The presence of nuclei", "D. Their color"], correct: 2 },
+                    { question: "The normal white cell count in an adult is usually between:", options: ["A. 1,000 - 3,000 /L", "B. 4 x 10^9/L and 1.1 x 10^10/L (4,000 - 11,000 /µL)", "C. 15 x 10^9/L and 20 x 10^10/L", "D. 500 - 1,000 /µL"], correct: 1 },
+                    { question: "An increase in the number of leukocytes over the upper limits is called:", options: ["A. Leukopenia", "B. Anemia", "C. Leukocytosis", "D. Thrombocytopenia"], correct: 2 },
+                    { question: "Which type of white blood cell is the most common in the body, constituting 60-70% of circulating leukocytes?", options: ["A. Lymphocytes", "B. Monocytes", "C. Eosinophils", "D. Neutrophils"], correct: 3 },
+                    { question: "The process by which neutrophils migrate toward sites of infection or inflammation is called:", options: ["A. Phagocytosis", "B. Degranulation", "C. Chemotaxis", "D. Opsonization"], correct: 2 },
+                    { question: "For targets to be recognized by neutrophils for phagocytosis, they must be coated in opsonins, a process known as:", options: ["A. Antibody neutralization", "B. Antibody opsonization", "C. Complement activation", "D. Antigen presentation"], correct: 1 },
+                    { question: "The life span of a circulating human neutrophil is about:", options: ["A. 12 hours", "B. 1-2 days", "C. 4-5 days", "D. 10-14 days"], correct: 2 },
+                    { question: "Which white blood cells compose about 2-4% of the WBC total and rise in response to allergies and parasitic infections?", options: ["A. Basophils", "B. Neutrophils", "C. Eosinophils", "D. Monocytes"], correct: 2 },
+                    { question: "Basophils are chiefly responsible for allergic and antigen response by releasing which chemical?", options: ["A. Interferon", "B. Interleukin", "C. Histamine", "D. Lysozyme"], correct: 2 },
+                    { question: "Heparin, released by basophils, is an:", options: ["A. Anticoagulant", "B. Procoagulant", "C. Vasoconstrictor", "D. Antibiotic"], correct: 0 },
+                    { question: "Mast cells are derived from which type of stem cell?", options: ["A. Lymphoid stem cell", "B. Myeloid stem cell", "C. Erythroid stem cell", "D. Megakaryocytic stem cell"], correct: 1 },
+                    { question: "Which type of lymphocyte plays a central role in cell-mediated immunity and has a T-cell receptor on its surface?", options: ["A. B cells", "B. NK cells", "C. T cells", "D. Plasma cells"], correct: 2 },
+                    { question: "T cells are so named because they mature primarily in the:", options: ["A. Thyroid", "B. Tonsils", "C. Thymus", "D. Thorax"], correct: 2 },
+                    { question: "Which are the largest type of WBCs that eventually leave the bloodstream and become tissue macrophages?", options: ["A. Neutrophils", "B. Lymphocytes", "C. Basophils", "D. Monocytes"], correct: 3 },
+                    { question: "Monocytes have which characteristic shape of nucleus?", options: ["A. Round", "B. Multi-lobed", "C. Kidney-shaped", "D. Bi-lobed"], correct: 2 },
+                    { question: "The normal WBC count for newborns is approximately:", options: ["A. 4,000 to 11,000 /mcL", "B. 6,200 to 17,000 /mcL", "C. 9,000 to 30,000 /mcL", "D. 1,000 to 4,800 /mcL"], correct: 2 },
+                    { question: "Which of the following is NOT listed as a symptom of a low WBC count?", options: ["A. Body aches", "B. Fever", "C. Increased appetite", "D. Headaches"], correct: 2 },
+                    { question: "WBC proliferative disorders causing excessive numbers can be classed as:", options: ["A. Only myeloproliferative", "B. Only lymphoproliferative", "C. Myeloproliferative and lymphoproliferative", "D. Only autoimmune"], correct: 2 },
+                    { question: "A decrease in white blood cells below the lower limit is called:", options: ["A. Leukocytosis", "B. Polycythemia", "C. Leukopenia", "D. Thrombocytosis"], correct: 2 },
+                    { question: "Neutrophil-cagers function by:", options: ["A. Directly killing bacteria with enzymes", "B. Attaching to blood vessel walls to block germs", "C. Producing antibodies", "D. Releasing histamine to cause inflammation"], correct: 1 },
+                    { question: "Eosinophils secrete chemicals that destroy:", options: ["A. Small bacteria", "B. Viruses", "C. Large parasites like hookworms", "D. Fungal cells"], correct: 2 },
+                    { question: "B cells are lymphocytes that primarily:", options: ["A. Perform phagocytosis", "B. Mature in the thymus", "C. Make antibodies", "D. Directly kill infected cells"], correct: 2 },
+                    { question: "White blood cells make up approximately what percentage of the total blood volume in a healthy adult?", options: ["A. 1%", "B. 5%", "C. 10%", "D. 20%"], correct: 0 }
                 ]
             },
-            "Medium": {
-                "Lecture1_Tracheostomy": [
-                    { question: "The lecture on Tracheostomy Tube is part of which course level?", options: ["1st course", "2nd course", "3rd course", "Postgraduate course"], correct: 1 },
-                    { question: "What is the purpose of the cuff on a tracheostomy tube?", options: ["To make the tube more comfortable", "To seal the airway for positive pressure ventilation or to prevent aspiration", "To help the patient speak", "To secure the tube to the skin"], correct: 1 },
-                    { question: "Why is a beveled tip on a tracheostomy tube generally avoided?", options: ["It makes suctioning difficult", "It increases the risk of the tip lying against the tracheal wall and causing obstruction", "It is harder to manufacture", "It causes more trauma during insertion"], correct: 1 },
-                    { question: "The additional suctioning lumen in some modern tracheostomy tubes is designed to remove secretions from where?", options: ["Below the cuff", "Within the inner cannula", "Above the cuff", "From the oral cavity"], correct: 2 },
-                    { question: "A tracheostomy might be indicated for upper airway obstruction if:", options: ["The patient has a mild cough", "The obstruction can be easily bypassed with an oral tracheal tube", "The obstruction cannot be bypassed with an oral/nasal tracheal tube", "The patient prefers it over intubation"], correct: 2 },
-                    { question: "How does tracheostomy contribute to protecting the lungs in patients with impaired pharyngeal reflexes?", options: ["By strengthening the reflexes", "By bypassing the pharynx and allowing cuff inflation to prevent aspiration", "By increasing salivary production", "By making coughing more effective"], correct: 1 },
-                    { question: "One reason tracheostomy facilitates ventilator weaning is a reduction in:", options: ["Patient cooperation", "The need for humidification", "Anatomical dead space", "The FiO2 requirement"], correct: 2 },
-                    { question: "'Improved access for oral hygiene' is a benefit of tracheostomy compared to:", options: ["Nasal cannula oxygen", "Oral endotracheal intubation", "Non-invasive ventilation", "No airway intervention"], correct: 1 },
-                    { question: "'Reduced risk of glottic trauma' is a benefit primarily because a tracheostomy tube:", options: ["Is softer than an endotracheal tube", "Bypasses the glottis (vocal cords)", "Is always uncuffed", "Is shorter"], correct: 1 },
-                    { question: "Tube misplacement into a main bronchus is an example of which category of complication?", options: ["Immediate", "Delayed", "Late", "Technical error, not a complication"], correct: 0 },
-                    { question: "Occlusion of the tube by cuff herniation is considered:", options: ["A late complication", "A benefit of cuffed tubes", "An immediate complication", "A sign of correct placement"], correct: 2 },
-                    { question: "Blockage of the tube by secretions, if it occurs, is usually classified as:", options: ["An immediate complication", "A delayed complication", "A late complication", "An unavoidable event"], correct: 1 },
-                    { question: "Mucosal ulceration due to excessive cuff pressures is what type of complication?", options: ["Immediate", "Delayed", "Late", "Expected side effect"], correct: 1 },
-                    { question: "Granulomata of the trachea causing respiratory difficulty after extubation is a:", options: ["Sign of healing", "Late complication", "Benefit of long-term tracheostomy", "Delayed complication"], correct: 1 },
-                    { question: "Tracheal stenosis at the cuff site is classified as what type of complication?", options: ["Immediate", "Delayed", "Late", "An indication for tracheostomy"], correct: 2 },
-                    { question: "For a fenestrated tracheostomy tube to assist in weaning, the patient should be:", options: ["Heavily sedated", "Paralyzed", "Spontaneously breathing", "Mechanically ventilated with high pressures"], correct: 2 },
-                    { question: "How does a fenestrated tube, after cuff deflation, reduce airway resistance?", options: ["By making the tube lumen larger", "By allowing breathing around the cuff and through the fenestration/stoma, offering multiple pathways", "By stiffening the trachea", "By increasing turbulence"], correct: 1 },
-                    { question: "What is a potential consequence of over-inflation of the tracheostomy tube cuff mentioned in 'Delayed Complications'?", options: ["Tube dislodgement", "Improved seal", "Ulceration and distension of the trachea", "Faster weaning"], correct: 2 },
-                    { question: "Laryngectomy surgery is mentioned as a situation where tracheostomy helps in:", options: ["Voice restoration", "Maintenance of an airway and lung protection", "Improving swallowing immediately", "Reducing neck scar"], correct: 1 },
-                    { question: "The possibility of oral nutrition is a listed benefit, likely because:", options: ["The tube provides a route for feeding", "It reduces aspiration risk compared to oral ETT and may allow safer swallowing trials", "Patients with tracheostomies are always less ill", "The tube directly stimulates appetite"], correct: 1 },
-                    { question: "A persistent sinus at the tracheostomy site is what type of complication?", options: ["Immediate", "Delayed", "Late", "A sign of good healing"], correct: 2 },
-                    { question: "Which of these complications is most directly related to the surgical procedure itself?", options: ["Tracheal stenosis at cuff site", "Hemorrhage", "Blockage by secretions", "Granulomata after extubation"], correct: 1 },
-                    { question: "'Inspection of airway' is listed twice under 'This lecture will emphasize on:'. This likely signifies:", options: ["A typographical error", "Its significant importance in the context of anesthesia and airway management", "Two different methods of inspection", "Inspection before and after tracheostomy"], correct: 1 },
-                    { question: "Why might patients tolerate tracheostomy tubes better than oral/nasal tracheal tubes, leading to reduced sedation?", options: ["Tracheostomy tubes are always smaller.", "Less irritation of the upper airway, pharynx, and larynx.", "Tracheostomy tubes provide better oxygenation.", "The neck incision is less painful than throat irritation."], correct: 1 },
-                    { question: "Which factor is crucial for preventing blockage of the tube by secretions?", options: ["Using only uncuffed tubes", "Adequate humidification and suction", "Keeping the patient NPO", "Administering antibiotics prophylactically"], correct: 1 }
+            "CriticalThinkingQuestions": {
+                "Lecture2_RBC": [
+                    { question: "If a substance interfered with the spleen's ability to effectively store and release RBCs, which group of mammals mentioned would likely experience a more significant acute negative impact on their oxygen transport capacity during sudden, high-demand exertion?", options: ["A. Humans, due to their already limited splenic reservoir.", "B. Dogs and horses, because their spleen stores a larger number of RBCs for such demands.", "C. All mammals equally, as the spleen's role is universally critical.", "D. Neither, as bone marrow response is always primary for acute needs."], correct: 1 },
+                    { question: "A patient presents with chronic fatigue and is found to have iron-deficiency anemia despite adequate dietary iron intake. If the cause is related to one of the \"Factor Promoting erythrocytes\" involving iron availability, which factor is most likely dysfunctional?", options: ["A. Insufficient Vitamin C to stimulate bone marrow.", "B. Reduced thyroxin secretion.", "C. Impaired HCL gastric juice production affecting iron liberation.", "D. Lack of traces of copper."], correct: 2 },
+                    { question: "Considering the diverse functions listed for erythrocytes (page 2), which function is LEAST directly dependent on the physical presence of hemoglobin within the RBC?", options: ["A. Oxygen carrier to all parts of the body tissues.", "B. Carry CO2 from body tissues to lungs for excrete.", "C. Help in maintain ionic balance.", "D. Hb act as important buffer."], correct: 2 },
+                    { question: "A new experimental drug causes mature RBCs to become perfectly spherical and rigid, losing their biconcave shape and flexibility. Which critical aspect of RBC function would be most immediately and severely compromised?", options: ["A. Their ability to carry oxygen via hemoglobin.", "B. Their lifespan of 120 days.", "C. Their ability to navigate narrow capillaries and deliver oxygen to tissues.", "D. Their role in maintaining blood viscosity."], correct: 2 },
+                    { question: "Based on the antigen-antibody relationships described for ABO blood groups (page 5), why can an individual with Type O blood donate RBCs to individuals with Type A, B, or AB blood (considering only ABO compatibility)?", options: ["A. Type O RBCs have both A and B antigens, making them universally compatible.", "B. Type O individuals have no anti-A or anti-B antibodies in their plasma.", "C. Type O RBCs lack A and B antigens, so they won't be attacked by the recipient's antibodies.", "D. Type O plasma contains universal antibodies that protect the donated cells."], correct: 2 },
+                    { question: "If a condition causes the average lifespan of erythrocytes to be reduced to 60 days, but the rate of erythropoiesis (RBC production) remains normal, what is the most likely overall consequence for the patient's blood parameters?", options: ["A. An increase in the total number of circulating RBCs due to faster turnover.", "B. A decrease in the total number of circulating RBCs and potentially signs of anemia.", "C. No significant change in RBC count as production matches the shortened lifespan.", "D. An increase in the size of individual RBCs to compensate."], correct: 1 },
+                    { question: "The structure of normal adult hemoglobin (HbA) as α2β2, with each of the four polypeptide chains having its own heme group, is crucial for its function. What advantage does this multi-subunit, multi-heme structure provide for oxygen transport?", options: ["A. It allows each RBC to carry only one type of gas, either oxygen or carbon dioxide.", "B. It enables each hemoglobin molecule to bind multiple oxygen molecules, increasing carrying capacity.", "C. It makes the hemoglobin molecule more resistant to degradation by phagocytes.", "D. It ensures that carbon dioxide is exclusively carried by the globin chains."], correct: 1 },
+                    { question: "If a disorder led to an uncontrolled, excessive production of RBCs (polycythemia), significantly above the normal 4.5-5 million per cubic mm, which listed function of erythrocytes (page 2) might be adversely affected, leading to circulatory problems?", options: ["A. Oxygen carrier capacity would be diminished.", "B. Hb acting as an important buffer would be impaired.", "C. Ability to maintain blood viscosity would be compromised (viscosity would dangerously increase).", "D. Help in maintaining ionic balance would be lost."], correct: 2 },
+                    { question: "An individual has a congenital condition resulting in a non-functional liver and a severely impaired spleen. Based on the information about RBC aging and destruction, what would be a primary consequence regarding their red blood cells?", options: ["A. RBCs would be produced at a much slower rate by the bone marrow.", "B. Aging RBCs would circulate for a shorter period and be destroyed in the kidneys.", "C. There would be an accumulation of aging, less functional RBCs, and impaired bilirubin processing.", "D. RBCs would become nucleated to compensate for the lack of destruction sites."], correct: 2 },
+                    { question: "The non-nucleated nature of mature mammalian RBCs is a key characteristic. How does this feature most directly contribute to their primary function of oxygen transport?", options: ["A. It allows RBCs to synthesize their own hemoglobin continuously.", "B. It provides more intracellular space for hemoglobin molecules and increases flexibility.", "C. It enables RBCs to actively participate in immune responses.", "D. It makes RBCs more resistant to osmotic changes in the plasma."], correct: 1 },
+                    { question: "A specific toxin inhibits the incorporation of iron into the heme group during hemoglobin synthesis, although globin chain production is unaffected. What would be the most direct and critical consequence for the RBC's primary function?", options: ["A. RBCs would be unable to transport carbon dioxide effectively.", "B. RBCs would lose their biconcave shape and become spherical.", "C. RBCs would be unable to bind and transport oxygen.", "D. RBCs would have a significantly shortened lifespan."], correct: 2 },
+                    { question: "The text mentions that RBCs in venous blood have a \"bigger size\" than those in arterial blood. This size increase is most likely a consequence of which physiological process occurring as blood passes through the tissues?", options: ["A. The uptake of oxygen by the RBCs, causing them to swell.", "B. The uptake of carbon dioxide and associated ionic shifts (e.g., chloride shift, not detailed but implied by gas exchange).", "C. The loss of water from RBCs into the tissue fluid.", "D. The synthesis of new hemoglobin within the RBCs in the venous system."], correct: 1 },
+                    { question: "If a person has a total deficiency of hemoglobin, but their plasma composition remains normal, how would the transport of carbon dioxide from tissues to lungs be affected, according to the text?", options: ["A. CO2 transport would cease completely as Hb is essential.", "B. CO2 transport would be significantly impaired, as Hb carries a portion, but most CO2 is transported in plasma, so some transport would still occur.", "C. CO2 transport would be enhanced as plasma would compensate for the lack of Hb.", "D. There would be no effect on CO2 transport, only on oxygen transport."], correct: 1 },
+                    { question: "How does the total amount of iron stored within the body's red blood cells compare to the iron stored in all other tissues combined?", options: ["A. Roughly equal amounts in RBCs and other tissues.", "B. Significantly less iron in RBCs compared to other tissues.", "C. More than five times the amount of iron is stored in RBCs than in all other tissues combined.", "D. Iron is exclusively stored in red blood cells."], correct: 2 },
+                    { question: "A Rhesus negative woman is pregnant for the second time. Her first child was Rhesus positive. Why is there a significant concern during this second pregnancy that was not present (or was less of a concern) during her first pregnancy with an Rh+ fetus?", options: ["A. The mother's immune system will reject any Rh- fetus.", "B. The mother may have developed anti-Rhesus antibodies during the first pregnancy/delivery, which can now cross the placenta and attack the Rh+ fetus's RBCs.", "C. The Rhesus negative mother will naturally produce Rhesus antigens during the second pregnancy.", "D. The second Rh+ fetus will develop antibodies against the mother's Rh- cells."], correct: 1 },
+                    { question: "A severe deficiency in Vitamin C, according to the factors promoting erythropoiesis listed on page 1, could indirectly lead to reduced oxygen-carrying capacity by:", options: ["A. Directly interfering with iron's ability to bind oxygen.", "B. Causing RBCs to become less flexible and unable to pass through capillaries.", "C. Impairing the bone marrow's stimulation for RBC production.", "D. Preventing the liberation of iron from inorganic forms."], correct: 2 },
+                    { question: "The statement that the spleen's role as an RBC reservoir is \"limited in human\" implies that for acute increases in oxygen demand, humans primarily rely on:", options: ["A. A rapid increase in the size of existing RBCs.", "B. A more rapid and sustained increase in RBC production from bone marrow rather than immediate large-volume splenic release.", "C. Borrowing RBCs from the lymphatic system.", "D. Converting white blood cells into red blood cells."], correct: 1 },
+                    { question: "An individual's blood type is O positive (O+). According to the descriptions of ABO and Rhesus systems, this means their red blood cells have:", options: ["A. A antigens, B antigens, and Rhesus antigens.", "B. No A antigens, no B antigens, but do have Rhesus antigens.", "C. A antigens, no B antigens, and no Rhesus antigens.", "D. No A antigens, no B antigens, and no Rhesus antigens."], correct: 1 },
+                    { question: "The description of each red cell as a \"sort of fluid droplet having Haemoglobin...and electrolytes...having delicate elastic membrane\" primarily emphasizes:", options: ["A. The cell's role in producing hormones and signaling molecules.", "B. The cell's rigid structure necessary for maintaining blood pressure.", "C. The cell's deformable nature and specialized contents, crucial for its passage through capillaries and gas transport.", "D. The cell's ability to actively synthesize proteins and repair itself."], correct: 2 },
+                    { question: "The fact that the iron molecule in hemoglobin \"temporarily\" links oxygen molecules is critical for its function because:", options: ["A. It allows iron to be easily replaced if it becomes damaged.", "B. It ensures that oxygen can be efficiently loaded in the high-oxygen environment of the lungs and unloaded in the lower-oxygen environment of the tissues.", "C. It prevents oxygen from permanently altering the structure of the hemoglobin molecule.", "D. It allows hemoglobin to also bind carbon monoxide with higher affinity."], correct: 1 }
                 ],
-                "Lecture2_TheaterPollution": [
-                    { question: "The concern about trace anaesthetic gases dates back to which decade?", options: ["1950s", "1960s", "1970s", "1980s"], correct: 1 },
-                    { question: "While current studies show 'no association' for TRACE level exposure, why is it still desirable to vent exhaled anaesthetic vapours?", options: ["To comply with outdated regulations", "As a precautionary measure and to maintain a cleaner environment, acknowledging historical concerns and potential for higher-than-trace levels.", "Primarily for patient comfort", "To improve the smell of the operating room"], correct: 1 },
-                    { question: "A 'prudent plan for minimizing exposure' includes maintenance of equipment, training of personnel, and:", options: ["Using the oldest anesthesia machines", "Routine exposure monitoring", "Discouraging the use of scavenging systems", "Working shorter shifts"], correct: 1 },
-                    { question: "Airborne particles from operating room personnel are considered a main source of contamination particularly in:", options: ["Dirty surgical procedures", "Emergency rooms", "Clean surgical procedures", "Post-operative recovery rooms"], correct: 2 },
-                    { question: "Increased risk of spontaneous abortion in females is linked to:", options: ["Surgical stress", "Theater pollution", "Anesthetic drugs themselves", "Poor surgical technique"], correct: 1 },
-                    { question: "Besides bone marrow depression, chronic nitrous oxide exposure can contribute to an increase in:", options: ["Muscle strength", "The incidence of fetal anomalies", "Cognitive function", "Blood pressure"], correct: 1 },
-                    { question: "What is the primary reason a non-recirculating ventilation system is preferred in theatres?", options: ["Lower installation cost", "It prevents recirculation of contaminants like anaesthetic gases", "It is quieter", "It requires less maintenance"], correct: 1 },
-                    { question: "How does a circle breathing system reduce the amount of inhalational agents used?", options: ["By absorbing the agent and releasing it slowly", "By requiring very low fresh gas flow due to rebreathing of exhaled gases (after CO2 absorption)", "By converting exhaled agents into harmless substances", "By having a larger reservoir bag"], correct: 1 },
-                    { question: "Why were older methods of vaporizer filling a more significant contributor to pollution?", options: ["Vaporizers were larger", "Older agents were more volatile", "Filling systems were often open, leading to more spillage and vapor escape", "Anesthetic circuits were always leaky"], correct: 2 },
-                    { question: "The incidence of lymphoid and reticuloendothelial malignancy was found to be how much greater in exposed persons compared to others?", options: ["Slightly greater", "Two to three times greater", "Ten times greater", "No difference found"], correct: 1 },
-                    { question: "'Functional disturbances of the Central Nervous System' are listed as a risk. This implies effects on:", options: ["Only peripheral nerves", "Brain and spinal cord function", "Only the autonomic nervous system", "Muscular coordination only"], correct: 1 },
-                    { question: "If a theatre's ventilation provides 10 air changes per hour, this is:", options: ["Ideal according to the lecture", "Above the recommended range", "Below the recommended range of 15-20 times per hour", "Acceptable only for very short procedures"], correct: 2 },
-                    { question: "The use of total intravenous anesthesia (TIVA) is a method to decrease theatre pollution because:", options: ["IV agents are not exhaled as gases", "IV agents are less potent", "TIVA requires less monitoring", "TIVA is only for short cases"], correct: 0 },
-                    { question: "What is the role of a scavenging system in relation to anaesthetic vapours?", options: ["It humidifies the anaesthetic vapours", "It collects and removes waste anaesthetic vapours from the breathing circuit/room", "It analyzes the concentration of anaesthetic vapours", "It cools the anaesthetic vapours"], correct: 1 },
-                    { question: "Entonox (a mix of nitrous oxide and oxygen) use in labour wards necessitates:", options: ["No special ventilation", "Well-ventilated rooms with at least five air changes per hour", "Use of a circle system", "Complete avoidance of scavenging"], correct: 1 },
-                    { question: "The statement that 'unventilated theatres are four times as contaminated' highlights the importance of:", options: ["Anesthetic drug choice", "Proper ventilation", "Scavenging system efficiency", "Vaporizer maintenance"], correct: 1 },
-                    { question: "Modern vaporizers using agent-specific filling devices primarily aim to reduce pollution and:", options: ["Increase vaporizer output", "Act as a safety feature (preventing incorrect agent filling)", "Reduce the cost of anesthetic agents", "Allow for faster induction"], correct: 1 },
-                    { question: "'Routine exposure monitoring' helps to:", options: ["Identify faulty scavenging systems or high ambient gas levels", "Directly reduce spillage", "Train staff on vaporizer filling", "Choose the correct anesthetic agent"], correct: 0 },
-                    { question: "If a hospital wants to reduce anaesthetic gas pollution, which strategy is explicitly supported by the lecture?", options: ["Increasing the use of inhalational anesthesia", "Promoting regional anesthesia and TIVA", "Disabling scavenging systems to save energy", "Reducing air exchange rates in ORs"], correct: 1 },
-                    { question: "The main sources of contamination in clean surgical procedures are the patient's skin and:", options: ["Surgical drapes", "Airborne particles from operating room personnel", "Anesthesia machine surfaces", "Contaminated instruments from sterile processing"], correct: 1 },
-                    { question: "Which of the following risks is NOT explicitly mentioned in the 'Risk of theater pollution' slide?", options: ["Decreased fertility", "Increased hearing loss", "Potential increase in hematological malignancy", "Renal and liver dysfunction"], correct: 1 },
-                    { question: "The use of fume cupboards is specifically recommended for what activity to reduce pollution?", options: ["During patient extubation", "While connecting the breathing circuit", "During vaporizer filling", "When cleaning the anesthesia machine"], correct: 2 },
-                    { question: "Adequate theatre ventilation is described as one of the most important factors in:", options: ["Ensuring sterility", "Reducing pollution", "Maintaining patient temperature", "Increasing staff comfort"], correct: 1 },
-                    { question: "If a circle system is used with very high fresh gas flows, how does this impact its pollution-reducing benefit?", options: ["It enhances it further", "It negates much of the benefit, as more gas (and agent) is vented through the scavenger", "It has no impact", "It makes the CO2 absorber more efficient"], correct: 1 },
-                    { question: "The overall message regarding theatre pollution, despite some studies on TRACE levels, is one of:", options: ["Complete dismissal of risks", "Continued prudence and efforts to minimize exposure", "Focusing only on nitrous oxide risks", "Shifting responsibility to manufacturers"], correct: 1 }
+                "Lecture1_Endocrine": [
+                    { question: "A patient has a tumor specifically destroying the nerve cell bodies located in the supraoptic and paraventricular nuclei of the hypothalamus. Which endocrine gland's ability to release its stored hormones would be most directly and significantly impaired?", options: ["A. Anterior pituitary gland.", "B. Posterior pituitary gland.", "C. Adrenal cortex.", "D. Thyroid gland."], correct: 1 },
+                    { question: "If a novel drug is developed that universally blocks all hormone receptors on the surface of target cells without affecting hormone production or secretion, what would be the primary consequence for endocrine system function?", options: ["A. Hormones would accumulate in the bloodstream, leading to toxicity without direct cellular effects.", "B. The endocrine glands would cease hormone production due to lack of feedback.", "C. Body processes regulated by these hormones would become dysregulated despite normal hormone levels, as hormones could not signal target cells.", "D. Target cells would adapt by internalizing hormones through alternative pathways."], correct: 2 },
+                    { question: "Considering the dual exocrine and endocrine roles of the pancreas, if a disease selectively destroys only the Islets of Langerhans, leaving the acinar cells (exocrine part) intact, which vital bodily function would be most critically affected?", options: ["A. The digestion of carbohydrates, proteins, and lipids in the small intestine.", "B. The regulation of blood glucose levels.", "C. The secretion of bicarbonate to neutralize stomach acid in the duodenum.", "D. The production of enzymes that assist in gastric digestion."], correct: 1 },
+                    { question: "A patient is diagnosed with a condition where their adrenal cortex fails to produce its characteristic hormones, but the adrenal medulla functions normally. Which specific class of hormones, essential for various metabolic and stress responses, would be deficient?", options: ["A. Peptide hormones like adrenaline.", "B. Steroid hormones like cortisol and potentially aldosterone.", "C. Glycoprotein hormones like TSH.", "D. Amine hormones like melatonin."], correct: 1 },
+                    { question: "The hypothalamus is described as a \"major integrating link\" between the nervous and endocrine systems. This implies its function is more complex than a typical endocrine gland primarily because:", options: ["A. It is the largest endocrine gland in the body.", "B. It receives neural input and translates it into hormonal signals that control other key endocrine glands, particularly the pituitary.", "C. It secretes only steroid hormones, which have widespread effects.", "D. It directly innervates all other endocrine glands in the body."], correct: 1 },
+                    { question: "A patient presents with symptoms of gigantism and metabolic disturbances. A diagnostic scan reveals a tumor in the sella turcica, significantly enlarging the pituitary gland. Given that the anterior lobe accounts for 75% of the gland's weight and is known to produce growth hormone, which lobe is most likely the primary site of the tumor causing these effects?", options: ["A. The posterior lobe, due to its direct connection to the hypothalamus.", "B. The anterior lobe, due to its size and known role in producing tropic hormones including growth hormone.", "C. The intermediate lobe (not explicitly detailed but sometimes considered), responsible for MSH.", "D. Both lobes equally, as tumors typically affect the entire gland."], correct: 1 },
+                    { question: "If the secretion of Luteinizing Hormone (LH) from the anterior pituitary is completely blocked, which specific hormone production process in the male gonads would be most directly and significantly impaired, according to the text?", options: ["A. Production of inhibin by Sertoli cells.", "B. Production and secretion of testosterone by Leydig cells.", "C. Maturation of sperm within the seminiferous tubules.", "D. Production of FSH by the pituitary itself."], correct: 1 },
+                    { question: "A newly synthesized toxin is found to specifically disrupt the function of glands that secrete their products into ducts. Which of the following glands/secretions mentioned in the text would be most directly affected?", options: ["A. The pituitary gland secreting growth hormone.", "B. Sweat glands secreting sweat.", "C. The adrenal cortex secreting cortisol.", "D. The Islets of Langerhans secreting insulin."], correct: 1 },
+                    { question: "Disruption of melatonin secretion from the pineal gland, leading to erratic levels, would most significantly impact which of the following physiological processes?", options: ["A. The body's primary metabolic rate.", "B. The regulation of blood calcium levels.", "C. The establishment and maintenance of the biological clock and sleep-wake cycles.", "D. The stress response mediated by the adrenal glands."], correct: 2 },
+                    { question: "The thyroid and parathyroid glands, though both located in the neck, have distinct primary roles. Based on their hormone products (thyroxine by thyroid, parathyroid hormone by parathyroid), how do their main regulatory functions differ?", options: ["A. Thyroid primarily regulates blood sugar; parathyroid primarily regulates reproductive functions.", "B. Thyroid primarily regulates overall metabolism; parathyroid primarily regulates calcium homeostasis (though calcium role not explicit for PTH here, its distinction is clear).", "C. Both primarily regulate the body's response to stress.", "D. Thyroid primarily regulates sleep cycles; parathyroid primarily regulates digestive processes."], correct: 1 },
+                    { question: "If Follicle-Stimulating Hormone (FSH) acts on Sertoli cells to support spermatogenesis, and a patient has normal FSH levels and normal testosterone but a very low sperm count, this suggests a potential dysfunction primarily within the:", options: ["A. Leydig cells' response to LH.", "B. Hypothalamus's production of releasing hormones.", "C. Sertoli cells' ability to support sperm development despite FSH stimulation.", "D. Anterior pituitary's ability to produce LH."], correct: 2 },
+                    { question: "The adrenal cortex is described as having three distinct zones (glomerulosa, fasciculata, reticularis). What does this zonal arrangement strongly suggest about the steroid hormones produced by the cortex?", options: ["A. All three zones produce identical steroid hormones, just in different quantities.", "B. Each zone likely specializes in producing different types or classes of steroid hormones with distinct functions.", "C. Steroid hormones are produced in the medulla and stored in these cortical zones.", "D. The zones represent different developmental stages of a single hormone-producing cell type."], correct: 1 },
+                    { question: "How does the fundamental mechanism of product delivery by endocrine glands (e.g., pituitary) differ from that of exocrine glands (e.g., sweat glands)?", options: ["A. Endocrine glands use ducts to deliver hormones locally; exocrine glands release products directly into blood.", "B. Endocrine glands release hormones into the bloodstream for systemic distribution; exocrine glands use ducts to deliver products to specific locations or externally.", "C. Both use ducts, but endocrine ducts are internal and exocrine ducts are external.", "D. Endocrine glands store products indefinitely; exocrine glands release products immediately."], correct: 1 },
+                    { question: "Hormones are broadly classified as \"peptides hormones and steroid hormones.\" If a newly discovered hormone is found to be synthesized on ribosomes and processed through the endoplasmic reticulum and Golgi apparatus, to which class does it most likely belong, and why?", options: ["A. Steroid hormone, because all hormones require extensive processing.", "B. Peptide hormone, because this synthesis pathway is characteristic of protein/peptide production.", "C. It could be either, as both classes follow this pathway.", "D. Neither, as hormones are synthesized by specialized enzymes, not ribosomes."], correct: 1 },
+                    { question: "The ovaries are described as secreting oestrogen and progesterone, which are responsible for the \"development and maintenance of female sexual characteristics.\" This implies these hormones primarily act by:", options: ["A. Directly controlling ovulation and fertilization.", "B. Influencing gene expression and cellular differentiation in target tissues to produce these characteristics.", "C. Providing the primary energy source for reproductive organs.", "D. Regulating blood flow to the pelvic cavity."], correct: 1 },
+                    { question: "Why is the pancreas uniquely referred to as a \"mixed gland\" in the context of its secretions, a term not typically applied with the same emphasis to a gland like the thyroid?", options: ["A. The pancreas secretes multiple hormones, whereas the thyroid secretes only one.", "B. The pancreas has both endocrine (hormones into blood) and exocrine (digestive enzymes into a duct) functions, while the thyroid is primarily endocrine.", "C. The pancreas is physically larger and more complex in structure than the thyroid.", "D. The pancreas's secretions are essential for life, while the thyroid's are not."], correct: 1 },
+                    { question: "The anterior pituitary constitutes 75% of the pituitary gland's total weight. What does this disproportionate size most likely suggest about its functional complexity or output compared to the posterior pituitary?", options: ["A. It primarily serves as a storage site for hormones produced in the hypothalamus.", "B. It is less active than the smaller, more densely packed posterior pituitary.", "C. It likely synthesizes and secretes a larger number and variety of hormones, or regulates more downstream endocrine functions.", "D. Its larger size is mainly due to connective tissue and blood supply, not functional cells."], correct: 2 },
+                    { question: "A male patient exhibits normal levels of Luteinizing Hormone (LH) and Follicle-Stimulating Hormone (FSH), but his testosterone levels are abnormally low and sperm count is also reduced. This pattern suggests a primary dysfunction at the level of the:", options: ["A. Hypothalamus, failing to stimulate the pituitary.", "B. Anterior pituitary, failing to produce sufficient LH and FSH despite hypothalamic stimulation.", "C. Testes, specifically the Leydig cells (for testosterone) and possibly Sertoli cells (for spermatogenesis), failing to respond appropriately to LH and FSH.", "D. Adrenal glands, which also produce small amounts of androgens."], correct: 2 },
+                    { question: "Steroid hormones are known to be derived from cholesterol. If an individual has a genetic condition that severely impairs their body's ability to synthesize or absorb cholesterol, which of the following hormone productions would be most directly and significantly affected?", options: ["A. Insulin and glucagon from the pancreas.", "B. Adrenaline from the adrenal medulla.", "C. Cortisol from the adrenal cortex and sex hormones from the gonads.", "D. Thyroxine from the thyroid gland."], correct: 2 },
+                    { question: "The anatomical attachment of the pituitary gland to the hypothalamus is crucial for the hypothalamus's role as an \"integrating link.\" How does this physical proximity facilitate control?", options: ["A. It allows the hypothalamus to exert direct physical pressure on the pituitary to release hormones.", "B. It enables rapid diffusion of neurotransmitters from the hypothalamus directly into the systemic circulation to act as hormones.", "C. It provides a short pathway for hypothalamic releasing/inhibiting hormones to reach the anterior pituitary via a portal blood system, and for nerve axons to extend from the hypothalamus to the posterior pituitary.", "D. It allows the pituitary to mechanically control the blood flow to the hypothalamus."], correct: 2 }
                 ],
-                "Lecture3_GasSupply": [
-                    { question: "The material molybdenum steel is used for cylinders due to its ability to:", options: ["Be lightweight", "Withstand high internal pressure", "Change color with temperature", "Resist corrosion from all gases"], correct: 1 },
-                    { question: "The thread on the cylinder neck is sealed with a material that melts if the cylinder is exposed to intense heat. This is a safety feature to:", options: ["Indicate overheating", "Allow gas to escape and reduce explosion risk", "Seal the valve more tightly", "Prevent refilling"], correct: 1 },
-                    { question: "What does the shape/color of the plastic disc around the cylinder neck primarily convey?", options: ["The type of gas inside", "The current pressure of the cylinder", "The last hydraulic test/examination year", "The cylinder manufacturer's batch number"], correct: 2 },
-                    { question: "An E-size oxygen cylinder contains approximately 680 L of oxygen. An E-size N2O cylinder contains approximately:", options: ["680 L", "1800 L", "3400 L", "4400 L"], correct: 1 },
-                    { question: "Size J cylinders are typically used for:", options: ["Anesthetic machines directly", "Cylinder manifolds", "Portable emergency kits", "Dental clinics"], correct: 1 },
-                    { question: "The reason for partially filling cylinders with liquid (like N2O) is to:", options: ["Make them lighter", "Reduce the cost", "Minimize dangerous pressure increases with ambient temperature rise", "Allow for faster emptying"], correct: 2 },
-                    { question: "The pressure in a gas-only cylinder (e.g., Oxygen) as it empties will:", options: ["Remain constant until almost empty", "Decrease linearly with the amount of gas used", "Increase as the volume decreases", "Fluctuate randomly"], correct: 1 },
-                    { question: "The pressure in a liquid+vapor cylinder (e.g., N2O) as it empties (while liquid is still present) will:", options: ["Decrease linearly", "Remain relatively constant", "Increase steadily", "Drop sharply then recover"], correct: 1 },
-                    { question: "The pressure test subjects a cylinder to about 22,000 kPa, which is significantly:", options: ["Below its normal working pressure", "Equal to its normal working pressure", "Above its normal working pressure (more than 50% above)", "The pressure at which it's designed to rupture"], correct: 2 },
-                    { question: "'Tare weight' is an engraved mark particularly important for which type of gas cylinder to determine remaining content?", options: ["Oxygen", "Air", "Nitrous Oxide", "Helium"], correct: 2 },
-                    { question: "Which of these is NOT typically part of the cylinder labelling requirements?", options: ["Nominal contents (L)", "Max pressure (bar)", "Name of the intended patient", "Filling date, expiry, usage directions"], correct: 2 },
-                    { question: "Storing cylinders in a dry, ventilated, fireproof room with full/empty ones separated is a:", options: ["Labelling requirement", "Safety feature/problem prevention measure", "Method of testing cylinders", "Component of the valve"], correct: 1 },
-                    { question: "Sizes C/D/E cylinders are recommended to be stored:", options: ["Upright only", "Horizontally on non-abrasive shelves", "In any position", "Suspended from the ceiling"], correct: 1 },
-                    { question: "The safety relief device in a cylinder valve is designed to:", options: ["Prevent incorrect attachment", "Filter the gas", "Vent excess pressure from the cylinder if it over-pressurizes", "Indicate when the cylinder is empty"], correct: 2 },
-                    { question: "The Pin-Index system is primarily used for which sizes of cylinders?", options: ["A and H", "J and large manifold cylinders", "E/F/G-size cylinders (those typically attached to anesthesia machines or portable units)", "All cylinder sizes"], correct: 2 },
-                    { question: "Standard, In-line Residual Pressure, and Off-line Residual Pressure are types of:", options: ["Cylinder materials", "Cylinder tests", "Cylinder valves", "Cylinder color codes"], correct: 2 },
-                    { question: "What is the primary function of the Bodok seal when connecting a cylinder to an apparatus?", options: ["To filter the gas", "To ensure a gas-tight connection", "To regulate the pressure", "To prevent over-tightening"], correct: 1 },
-                    { question: "Why should a cylinder valve be kept fully open during use, rather than partially?", options: ["To prevent whistling noises", "To ensure accurate pressure reading on some gauges and prevent 'streaming' damage to the valve seat", "To make it easier to close quickly", "Partial opening increases gas purity"], correct: 1 },
-                    { question: "The pin-index configuration for Nitrous Oxide is:", options: ["2,5", "1,5", "3,5", "1,6"], correct: 2 },
-                    { question: "The pin-index configuration for Carbon Dioxide is:", options: ["2,5", "1,5", "3,5", "1,6"], correct: 3 },
-                    { question: "The pressure of Nitrous Oxide in a full cylinder is approximately:", options: ["13,700 kPa", "4,400 kPa", "22,000 kPa", "760 kPa"], correct: 1 },
-                    { question: "'Dry Gases: Avoid water vapor' is a safety precaution because water vapor can:", options: ["Corrode the cylinder", "Freeze and block ports/valves upon pressure reduction", "React with the medical gas", "Increase the cylinder weight significantly"], correct: 1 },
-                    { question: "If a cylinder is found to be over-pressurized, the correct action is to:", options: ["Use it quickly", "Cool it rapidly with ice", "Report it to the manufacturer/supplier", "Slowly vent some pressure"], correct: 2 },
-                    { question: "What does 'tare weight' specifically refer to?", options: ["The weight of the gas in a full cylinder", "The weight of an empty N2O (or other liquefiable gas) cylinder", "The maximum permissible weight of a full cylinder", "The weight of the valve assembly"], correct: 1 },
-                    { question: "The aluminum alloy with fiberglass/epoxy resin construction for cylinders offers the primary advantage of:", options: ["Higher pressure resistance than steel", "Being significantly lighter than steel cylinders", "Better insulation against temperature changes", "Lower manufacturing cost"], correct: 1 }
-                ]
-            },
-            "Hard": {
-                "Lecture1_Tracheostomy": [
-                    { question: "The emphasis on 'Inspection of airway' repeated on slide 1 for a lecture on tracheostomy tubes suggests:", options: ["Tracheostomy is only performed after a failed inspection.", "Airway assessment is a critical component both before considering and after placing a tracheostomy.", "The lecture will only cover visual inspection methods.", "This is a minor point, likely a formatting issue."], correct: 1 },
-                    { question: "The design of a tracheostomy tube tip being 'cut square, rather than beveled' primarily mitigates which specific mechanical risk?", options: ["Difficult insertion through tough tissues.", "Kinking of the tube during head movement.", "Obstruction due to the tip orifice pressing directly against the tracheal wall.", "Damage to the vocal cords during insertion."], correct: 2 },
-                    { question: "The additional suctioning lumen opening 'just above the cuff' is strategically placed to:", options: ["Allow pre-oxygenation before suctioning the main lumen.", "Facilitate the removal of pooled secretions that could lead to microaspiration and VAP.", "Provide an alternative pathway for ventilation if the main lumen is blocked.", "Enable speech when the main cuff is inflated."], correct: 1 },
-                    { question: "A key reason tracheostomy is preferred for 'long-term intermittent positive pressure ventilation' over prolonged endotracheal intubation relates to:", options: ["Lower cost of tracheostomy tubes.", "Reduced risk of laryngeal/tracheal injury, improved patient comfort, and easier oral care.", "Tracheostomy tubes inherently providing higher FiO2.", "Simpler insertion technique for tracheostomy."], correct: 1 },
-                    { question: "If a patient requires protection of the lungs due to 'impaired pharyngeal or laryngeal reflexes' after major head and neck surgery (e.g., laryngectomy), the tracheostomy (or stoma) primarily serves to:", options: ["Provide a permanent route for nutritional support.", "Ensure a patent airway and allow cuff sealing to prevent aspiration of oral/pharyngeal contents.", "Facilitate immediate post-operative speech.", "Reduce the need for post-operative pain medication."], correct: 1 },
-                    { question: "The reduction in 'anatomical dead space' with a tracheostomy contributes to easier ventilator weaning because:", options: ["It increases the patient's tidal volume.", "A smaller portion of each breath ventilates non-gas-exchanging airways, making ventilation more efficient.", "It directly strengthens respiratory muscles.", "It reduces the partial pressure of CO2 in the blood."], correct: 1 },
-                    { question: "Comparing immediate vs. delayed complications, 'hemorrhage' is immediate, while 'blockage of the tube by secretions' is delayed. This temporal difference often reflects:", options: ["Hemorrhage being a direct result of surgical trauma, while secretion blockage develops over time due to physiological responses/care deficits.", "Hemorrhage being less severe than secretion blockage.", "Secretion blockage only occurring in uncuffed tubes.", "Hemorrhage being an allergic reaction."], correct: 0 },
-                    { question: "'Occlusion of the tube tip against carina or tracheal wall' (immediate complication) versus 'tracheal stenosis at the cuff site' (late complication) highlights damage from:", options: ["Cuff pressure only vs. tube tip pressure only.", "Acute malposition/mechanical obstruction vs. chronic pressure-induced tissue injury and healing response.", "Infection vs. allergic reaction.", "Cuff herniation vs. granuloma formation."], correct: 1 },
-                    { question: "The ability of a fenestrated tracheostomy tube (cuff deflated) to reduce airway resistance and assist weaning is because it:", options: ["Actively forces air into the lungs.", "Allows airflow through multiple paths (around tube, through fenestration, through stoma), more closely mimicking natural upper airway breathing.", "Stimulates the cough reflex more effectively.", "Secretes a substance that dilates the bronchi."], correct: 1 },
-                    { question: "For a patient with a fenestrated tracheostomy tube to speak effectively, not only must the cuff be deflated, but also:", options: ["The inner cannula must be fenestrated or removed (if applicable and safe).", "The patient must be on positive pressure ventilation.", "The stoma must be partially occluded.", "A speaking valve must always be used."], correct: 0 },
-                    { question: "'Reduced risk of glottic trauma' as a benefit of tracheostomy implies that prolonged endotracheal intubation carries a significant risk of:", options: ["Sinusitis.", "Injury to the vocal cords and surrounding laryngeal structures.", "Dental damage only.", "Nasal septal erosion."], correct: 1 },
-                    { question: "Overinflation of the cuff leading to 'ulceration and distension of the trachea' can be a precursor to which LATE complication?", options: ["Pneumothorax", "Tracheal stenosis or tracheomalacia", "Hemorrhage", "Tube displacement"], correct: 1 },
-                    { question: "A patient with 'long-term control of excessive bronchial secretions' issues and 'reduced level of consciousness' benefits from tracheostomy mainly due to:", options: ["Improved ability to speak and communicate needs.", "Easier and more effective access for pulmonary toilet/suctioning.", "Spontaneous resolution of unconsciousness.", "Reduced need for nutritional support."], correct: 1 },
-                    { question: "The benefit of 'Increased patient comfort' with a tracheostomy compared to an ETT is significant because it can lead to:", options: ["Increased need for analgesia.", "Reduced agitation, potentially less sedation, and earlier mobilization.", "Higher risk of tube dislodgement.", "More difficult communication."], correct: 1 },
-                    { question: "Scar formation is a late complication. The clinical significance of this primarily depends on:", options: ["The type of plastic used for the tube.", "The cosmetic appearance and any functional impairment (e.g., tracheal stenosis from internal scarring).", "The duration of the tracheostomy.", "The patient's age."], correct: 1 },
-                    { question: "If a patient with a tracheostomy develops sudden respiratory distress, and 'occlusion of tube by cuff herniation' is suspected, the immediate action would involve:", options: ["Increasing ventilator pressures.", "Deflating the cuff and attempting to reposition/replace the tube.", "Administering a bronchodilator.", "Performing an urgent chest X-ray."], correct: 1 },
-                    { question: "The lecture emphasizes benefits such as 'Improved access for oral hygiene' and 'Possibility of oral nutrition.' These are particularly important for:", options: ["Patients expected to have very short-term tracheostomies.", "Patients requiring long-term airway management, improving quality of life and reducing VAP risk.", "All post-operative patients regardless of airway.", "Neonatal patients exclusively."], correct: 1 },
-                    { question: "A 'persistent sinus at the tracheostomy site' after decannulation is a late complication that might require:", options: ["Antibiotics only.", "Further surgical closure.", "Re-insertion of the tracheostomy tube.", "Observation only, as it always resolves."], correct: 1 },
-                    { question: "The statement 'patients tolerate tracheostomy tubes better than tracheal tubes' (oral/nasal ETTs) is a key factor in:", options: ["Increasing the anatomical dead space.", "Facilitating weaning by allowing reduced sedation and more patient participation.", "The higher cost of tracheostomy procedures.", "The increased risk of pneumothorax with tracheostomies."], correct: 1 },
-                    { question: "If 'granulomata of the trachea' cause respiratory difficulty AFTER extubation (decannulation), it implies the granuloma is:", options: ["Located externally at the stoma site.", "Obstructing the airway internally, likely at a previous tube irritation site.", "A normal part of the healing process.", "Always benign and self-resolving."], correct: 1 },
-                    { question: "The choice between a cuffed and uncuffed tracheostomy tube primarily depends on:", options: ["Patient preference.", "The need for positive pressure ventilation and/or protection against aspiration.", "The surgeon's preference.", "The availability of tube sizes."], correct: 1 },
-                    { question: "A key difference between 'tracheal dilatation' (late complication) and 'tracheal stenosis' (late complication) is:", options: ["Dilatation is narrowing, stenosis is widening.", "Dilatation is widening of the trachea, often at the stoma or cuff site due to tissue weakness; stenosis is narrowing.", "Dilatation is always symptomatic, stenosis is not.", "Stenosis occurs only with fenestrated tubes."], correct: 1 },
-                    { question: "The phrase 'Important questions for Respiratory system' being listed on slide 1 suggests the lecture will connect tracheostomy management to broader:", options: ["Cardiovascular principles.", "Neurological assessments.", "Respiratory physiology and pathology assessments.", "Renal function monitoring."], correct: 2 },
-                    { question: "Effective suctioning of secretions above the cuff, facilitated by newer designs, directly aims to prevent:", options: ["Cuff leakage.", "Tracheal stenosis.", "Ventilator-associated pneumonia (VAP) by reducing microaspiration of contaminated secretions.", "Tube displacement."], correct: 2 },
-                    { question: "Comparing the risks, 'pneumothorax' (immediate) is a procedural risk of insertion, while 'tracheal stenosis at the cuff site' (late) is a risk from:", options: ["Incorrect tube size.", "Prolonged pressure effect of the cuff on the tracheal wall.", "Inadequate humidification.", "Patient coughing."], correct: 1 }
+                "Lecture5_Organelles": [
+                    { question: "A cell line is engineered to have a dysfunctional Endoplasmic Reticulum that cannot properly fold or modify proteins, nor form transport vesicles. How would this most critically impact the Golgi apparatus's primary functions as described?", options: ["A. The Golgi would enlarge due to an accumulation of unprocessed materials from the cytoplasm.", "B. The Golgi would be unable to receive proteins from the ER, thereby halting its processing activities and formation of lysosomes/secretory vesicles.", "C. The Golgi would switch to synthesizing its own proteins and lipids to compensate for the ER's failure.", "D. The Golgi's function would be unaffected as it primarily processes carbohydrates."], correct: 1 },
+                    { question: "A specific neurotoxin is found to disrupt the lipid bilayer structure of the inner mitochondrial membrane but leaves the outer membrane intact. What would be the most immediate and severe consequence for cellular energy production?", options: ["A. The mitochondria would be unable to import pyruvate from the cytoplasm.", "B. The electron transport chain and chemiosmosis would be disrupted, halting ATP synthesis by oxidative phosphorylation.", "C. The Krebs cycle (citric acid cycle) within the mitochondrial matrix would cease immediately.", "D. The outer membrane would rupture due to osmotic imbalance."], correct: 1 },
+                    { question: "If a cell's entire population of lysosomes were to simultaneously rupture and release their enzymatic contents into the cytosol, what would be the most probable and immediate outcome for the cell?", options: ["A. The cell would rapidly synthesize new lysosomes to contain the damage.", "B. The released digestive enzymes would begin to break down cellular components, leading to autodigestion and likely cell death.", "C. The cell would enter a state of dormancy until the enzymes are neutralized.", "D. The pH of the cytoplasm would increase significantly, inactivating the enzymes."], correct: 1 },
+                    { question: "A genetic disorder results in the formation of chromosomes that lack functional kinetochores. During which critical cellular process, directly linked to a primary function of the nucleus, would this defect manifest most disastrously?", options: ["A. During transcription of RNA from DNA.", "B. During the process of protein synthesis on ribosomes.", "C. During cell division (mitosis/meiosis), specifically in the segregation of chromatids.", "D. During the storage of DNA strands and proteins within the nucleoplasm."], correct: 2 },
+                    { question: "The structural organization of the inner mitochondrial membrane, characterized by extensive folding into cristae, is a key adaptation. This feature directly enhances ATP production by:", options: ["A. Decreasing the overall volume of the mitochondrion, concentrating reactants.", "B. Providing a rigid framework that prevents mitochondrial collapse.", "C. Significantly increasing the surface area available for embedding components of the electron transport chain and ATP synthase.", "D. Facilitating the direct transfer of ATP into the nucleus."], correct: 2 },
+                    { question: "A specialized secretory cell, such as a pancreatic acinar cell producing digestive enzymes (proteins), would be expected to have a particularly high abundance and activity of which two organelles involved in the synthesis, processing, and packaging of these enzymes?", options: ["A. Lysosomes and peroxisomes.", "B. Mitochondria and the nucleus.", "C. The Endoplasmic Reticulum (specifically rough ER) and the Golgi apparatus.", "D. Smooth ER and ribosomes only."], correct: 2 },
+                    { question: "The nucleus is described as maintaining \"the integrity of the cell by facilitating transcription and replication processes.\" How do these two processes collectively ensure cellular integrity and proper function over time?", options: ["A. By generating sufficient ATP to power all cellular activities.", "B. By directly repairing physical damage to the cell membrane.", "C. By ensuring the accurate synthesis of proteins (via transcription) and the faithful transmission of genetic information to daughter cells (via replication).", "D. By controlling the import and export of all substances across the nuclear membrane."], correct: 2 },
+                    { question: "Comparing the primary roles of lysosomes and mitochondria, if a cell ingests a complex nutrient particle, how would these two organelles interact with it or its products sequentially?", options: ["A. Mitochondria would first break it down, and lysosomes would extract energy.", "B. Lysosomes would digest the complex particle into simpler molecules, which could then be used by mitochondria for energy extraction.", "C. Both organelles would simultaneously digest and extract energy from the particle.", "D. Mitochondria would package the particle, and lysosomes would transport it out of the cell."], correct: 1 },
+                    { question: "If a eukaryotic cell were to completely lack a Golgi apparatus, but its Endoplasmic Reticulum and ribosomes remained functional, what would be the most likely fate of proteins normally destined for secretion or for incorporation into lysosomes?", options: ["A. These proteins would accumulate in the cytoplasm in a non-functional state or be misdirected.", "B. The ER would adapt to perform all Golgi functions, including final packaging.", "C. Lysosomes would form directly from the ER without Golgi involvement.", "D. Secretory proteins would be immediately degraded by cytoplasmic proteases."], correct: 0 },
+                    { question: "The \"scattered\" arrangement of cells within most connective tissues, as opposed to the \"crowded\" nature of epithelial cells with \"little to no extracellular matrix surrounding them,\" reflects a fundamental difference in their primary functions. This structural difference suggests that:", options: ["A. Connective tissues primarily function in rapid cell-to-cell communication, while epithelial tissues are for storage.", "B. The functional properties of many connective tissues (e.g., strength, elasticity) are largely determined by their abundant extracellular matrix, rather than direct cell-cell interactions, unlike epithelia which often form barriers.", "C. Epithelial cells are less metabolically active than connective tissue cells.", "D. Connective tissue cells are designed for rapid proliferation, while epithelial cells are terminally differentiated."], correct: 1 },
+                    { question: "A phagocytic immune cell engulfs a bacterium. Trace the correct sequence of organelle involvement, as described or implied by their functions, leading to the bacterium's destruction.", options: ["A. Bacterium -> Mitochondria (energy for engulfment) -> Golgi (packaging) -> Lysosome (destruction).", "B. Bacterium -> Engulfment vesicle -> Fusion with Lysosome (containing Golgi-processed enzymes) -> Digestion.", "C. Bacterium -> Nucleus (recognition) -> ER (antibody synthesis) -> Lysosome (destruction).", "D. Bacterium -> Lysosome (initial contact) -> Golgi (transport to ER) -> ER (destruction)."], correct: 1 },
+                    { question: "The nucleolus, a prominent structure within the nucleus, is primarily responsible for ribosome biogenesis (synthesis of ribosomal RNA and assembly of ribosomal subunits). How would a defect specifically impairing nucleolar function indirectly impact the cell's overall capacity for \"protein synthesis,\" a listed major nuclear function?", options: ["A. It would prevent the DNA from being transcribed into mRNA.", "B. It would directly inhibit the function of existing ribosomes in the cytoplasm.", "C. It would lead to a reduced number of functional ribosomes available for translating mRNA, thus limiting protein synthesis capacity.", "D. It would cause mRNA to be degraded before it can leave the nucleus."], correct: 2 },
+                    { question: "The text states the Golgi apparatus processes substances to form lysosomes, secretory vesicles, and \"other cytoplasmic components.\" This latter phrase suggests a broader role for the Golgi beyond just degradation and secretion. This might include:", options: ["A. Synthesizing ATP for cytoplasmic use.", "B. Directly replicating DNA for cell division.", "C. Modifying and sorting proteins and lipids for delivery to other organelles like the cell membrane or ER.", "D. Storing genetic information in the cytoplasm."], correct: 2 },
+                    { question: "If a cell's nuclear DNA sustains significant damage (e.g., from radiation) that impairs its ability to be accurately transcribed, how would this most directly affect the nucleus's role in \"control the synthesis of enzymes involved in cellular metabolism\"?", options: ["A. The cell would switch to using RNA as its primary genetic material for enzyme synthesis.", "B. Damaged DNA would lead to faulty or absent mRNA, resulting in non-functional or missing metabolic enzymes.", "C. The ribosomes would compensate by directly translating DNA without mRNA.", "D. Metabolic enzymes already present in the cytoplasm would become hyperactive."], correct: 1 },
+                    { question: "The double membrane structure of the mitochondrion, with distinct outer and inner membranes, is crucial for its function in ATP synthesis. This compartmentalization primarily allows for:", options: ["A. The storage of large quantities of glucose within the intermembrane space.", "B. The establishment of a proton gradient across the inner membrane, which drives ATP synthase.", "C. The protection of the mitochondrial DNA from cytoplasmic enzymes.", "D. The direct fusion of mitochondria with the nucleus for energy transfer."], correct: 1 },
+                    { question: "If a eukaryotic cell, like an immature red blood cell (reticulocyte), expels its nucleus to become a mature erythrocyte but remains metabolically active for a period, which of the listed primary functions of the nucleus would be most immediately and completely lost upon nuclear expulsion?", options: ["A. Storage of pre-existing RNA and proteins that were in the nucleus.", "B. Control of ongoing transcription of new RNA molecules.", "C. The physical space occupied by the nucleus within the cell.", "D. Maintenance of the cell's overall shape and structure."], correct: 1 },
+                    { question: "Lysosomes are described as \"vesicular organelles\" that \"form by breaking off from the Golgi apparatus.\" This origin implies what about the initial biochemical contents and membrane composition of a newly formed lysosome?", options: ["A. They initially contain only water and ions, acquiring enzymes later from the cytoplasm.", "B. Their membrane is derived from the Golgi membrane, and they are pre-loaded with digestive enzymes that were processed and packaged by the Golgi.", "C. They are essentially empty vesicles that randomly engulf cytoplasmic enzymes.", "D. Their membrane is synthesized de novo in the cytoplasm, and enzymes are imported from mitochondria."], correct: 1 },
+                    { question: "Mitochondria are dubbed \"power houses\" because they \"extract enough energy from the nutrients.\" What is the primary form of \"nutrient\" fuel that enters the mitochondrial pathways (e.g., pyruvate from glucose, fatty acids – implied general biology), and what is the main \"high-energy\" currency produced?", options: ["A. Fuel: ATP; Currency: Glucose.", "B. Fuel: Proteins; Currency: Heat.", "C. Fuel: Products of cytoplasmic nutrient breakdown (e.g., pyruvate, fatty acids); Currency: ATP.", "D. Fuel: Oxygen; Currency: Carbon dioxide."], correct: 2 },
+                    { question: "A cell type with an exceptionally high rate of protein synthesis and secretion, such as a plasma cell producing antibodies, would likely exhibit a very prominent and extensive:", options: ["A. Lysosomal network.", "B. Mitochondrial cristae development.", "C. Golgi apparatus and rough endoplasmic reticulum.", "D. Nuclear chromatin condensation."], correct: 2 },
+                    { question: "The structural characteristic of the Golgi apparatus – \"four or more stacked layers of thin, flat, enclosed vesicles\" – is well-suited for its function in processing and packaging. This stacked arrangement likely facilitates:", options: ["A. The random diffusion of substances throughout all layers simultaneously for rapid processing.", "B. The sequential modification of proteins and lipids as they pass through successive cisternae (stacks), each potentially containing different enzymes.", "C. The storage of large volumes of water for cellular hydration.", "D. The direct synthesis of DNA and RNA within its vesicles."], correct: 1 }
                 ],
-                "Lecture2_TheaterPollution": [
-                    { question: "The statement 'no association between occupational exposure to TRACE levels ... and adverse health effects' from 'currently available studies' should be interpreted with caution because:", options: ["'Trace levels' may not always be maintained, and historical or higher exposures could have effects.", "'Currently available studies' might have limitations or may not capture all long-term outcomes.", "The 'no association' might be statistically insignificant rather than a definitive absence of any risk.", "All of the above."], correct: 3 },
-                    { question: "A 'prudent plan for minimizing exposure' including equipment maintenance, personnel training, and routine monitoring implies that theatre pollution is:", options: ["An unavoidable and accepted risk.", "A manageable issue through proactive measures.", "Solely the responsibility of the equipment manufacturers.", "Only a concern in older operating rooms."], correct: 1 },
-                    { question: "The main sources of contamination (patient skin, airborne particles from personnel) being especially problematic in 'clean surgical procedures' suggests that:", options: ["In dirty procedures, these sources are negligible compared to the wound itself.", "The threshold for infection is lower in clean surgery, making these ubiquitous sources more significant.", "Clean surgical procedures use more anaesthetic gases.", "Personnel are less careful during clean procedures."], correct: 1 },
-                    { question: "An 'increased risk of spontaneous abortion in females' and 'decreased fertility' due to theatre pollution point towards potential:", options: ["Carcinogenic effects", "Teratogenic or reproductive toxic effects", "Neurotoxic effects", "Hepatotoxic effects only"], correct: 1 },
-                    { question: "Bone marrow depression from chronic nitrous oxide exposure is a serious hematological concern because it can lead to:", options: ["Increased blood viscosity.", "Pancytopenia (deficiency of all types of blood cells).", "Polycythemia (excess red blood cells).", "Enhanced immune response."], correct: 1 },
-                    { question: "The recommendation of 15-20 air changes per hour in theatres, compared to 5 in labour wards with Entonox, suggests:", options: ["Entonox is less polluting than general anaesthetic gases.", "The potential concentration and variety of pollutants are higher in main operating theatres.", "Labour wards are generally smaller.", "Patients in labour are less susceptible."], correct: 1 },
-                    { question: "A non-recirculating ventilation system is preferred over a recirculating one because the latter may:", options: ["Be too noisy for surgical procedures.", "Fail to adequately remove and instead redistribute airborne contaminants, including gases and microbes.", "Require more energy to operate.", "Not provide adequate temperature control."], correct: 1 },
-                    { question: "The circle breathing system's efficiency in reducing pollution is most compromised when:", options: ["CO2 absorbent is fresh.", "Fresh gas flows are kept very high, negating the rebreathing advantage.", "The patient is breathing spontaneously.", "Intravenous agents are also used."], correct: 1 },
-                    { question: "Modern vaporizers with agent-specific filling devices reduce spillage. This is a crucial improvement because spillage represents:", options: ["A minor financial loss only.", "A direct release of concentrated anaesthetic agent into the local environment.", "A problem only if the agent is flammable.", "An issue that only affects the vaporizer's calibration."], correct: 1 },
-                    { question: "The finding of a 'two to three times greater' incidence of lymphoid and reticuloendothelial malignancy in exposed persons, if causative, indicates a significant:", options: ["Mutagenic potential of anaesthetic agents.", "Carcinogenic or co-carcinogenic risk associated with chronic exposure.", "Acute inflammatory response.", "Benign proliferative effect."], correct: 1 },
-                    { question: "'Functional disturbances of the Central Nervous System' from theatre pollution could manifest as:", options: ["Only severe psychiatric disorders.", "Subtle cognitive changes, fatigue, or coordination issues with chronic exposure.", "Improved reaction times.", "Increased REM sleep."], correct: 1 },
-                    { question: "If a theatre relies solely on a high-efficiency scavenging system but has poor general room ventilation (e.g., 5 air changes/hour), what is a likely outcome?", options: ["No pollution issues, as scavenging is sufficient.", "Build-up of gases not captured by the scavenger (e.g., from leaks, patient skin) and other airborne contaminants.", "Over-efficiency of the scavenging system, leading to negative pressure.", "Reduced effectiveness of the CO2 absorber."], correct: 1 },
-                    { question: "Using Total Intravenous Anesthesia (TIVA) or Regional Anesthesia as methods to decrease theatre pollution highlights that the primary concern is:", options: ["The cost of inhalational agents.", "The atmospheric contamination by volatile/gaseous anaesthetic agents.", "The flammability of anaesthetic agents.", "The difficulty in monitoring depth of anesthesia with inhalational agents."], correct: 1 },
-                    { question: "An effective scavenging system should ideally capture waste gases from:", options: ["Only the expiratory limb of the breathing circuit.", "The adjustable pressure-limiting (APL) valve and the ventilator spill valve.", "The room air generally.", "The vaporizer filling port only."], correct: 1 },
-                    { question: "The four-fold higher contamination in unventilated theatres implies that dilution and removal by ventilation is a cornerstone of:", options: ["Sterility assurance.", "Anaesthetic gas pollution control.", "Temperature regulation.", "Humidity control."], correct: 1 },
-                    { question: "Which scenario poses the highest risk for anaesthetic gas spillage during vaporizer filling?", options: ["Using a modern, keyed, agent-specific filling system correctly.", "Using an older, unkeyed 'pour-fill' vaporizer, especially if rushing or distracted.", "Filling a vaporizer that is already nearly full.", "Filling a vaporizer in a very cold room."], correct: 1 },
-                    { question: "'Routine exposure monitoring' for theatre personnel is analogous to what practice in other industries with hazardous airborne substances?", options: ["Annual performance reviews.", "Occupational hygiene monitoring and dosimetry.", "Fire safety drills.", "Equipment calibration schedules."], correct: 1 },
-                    { question: "If a hospital is designing a new OR suite, which ventilation feature would be critical for minimizing anaesthetic gas pollution based on this lecture?", options: ["A high percentage of recirculated air with HEPA filtration.", "A non-recirculating system with frequent air changes (15-20/hr) and effective scavenging.", "Minimal air changes to conserve energy, relying solely on scavenging.", "A system that primarily introduces air from the floor level."], correct: 1 },
-                    { question: "The historical concern about trace anaesthetic gases and adverse health effects, despite current studies on 'trace levels,' justifies:", options: ["Abandoning the use of all inhalational anaesthetics.", "Adherence to the ALARA (As Low As Reasonably Achievable) principle for exposure.", "Requiring all OR staff to wear personal respirators at all times.", "Conducting surgery only in open-air environments."], correct: 1 },
-                    { question: "The fact that 'patient's skin and airborne particles from operating room personnel' are major sources of contamination, particularly in clean surgery, underscores the importance of:", options: ["Effective anaesthetic gas scavenging.", "Aseptic techniques, OR attire, and theatre discipline in addition to air quality control.", "The choice of anaesthetic agent.", "The type of surgical instruments used."], correct: 1 },
-                    { question: "If a new anaesthetic gas is introduced with a very high blood/gas solubility coefficient, its potential for theatre pollution via patient exhalation post-procedure would be:", options: ["Lower, as it's quickly eliminated.", "Higher and more prolonged, as it's released slowly from tissues.", "Unchanged compared to low solubility agents.", "Dependent only on the fresh gas flow used during the case."], correct: 1 },
-                    { question: "The method of 'Use of the circle breathing system' to decrease pollution relies on its ability to:", options: ["Chemically neutralize anaesthetic agents.", "Allow low fresh gas flows, thus reducing the total amount of volatile agent vaporized and needing to be scavenged.", "Filter out anaesthetic agents before exhalation.", "Increase the patient's uptake of anaesthetic agent, leaving less to be exhaled."], correct: 1 },
-                    { question: "The increased incidence of fetal anomalies linked to theatre pollution would be of greatest concern for:", options: ["All operating room staff.", "Pregnant operating room personnel, particularly during early gestation.", "Male operating room staff planning families.", "Only staff directly administering anaesthesia."], correct: 1 },
-                    { question: "A failure in the 'maintenance of equipment' (e.g., a leaky high-pressure hose in the anaesthesia machine) would lead to:", options: ["Reduced patient anaesthetic depth.", "Increased theatre pollution, potentially bypassing the scavenging system.", "Improved CO2 absorption.", "Lower fresh gas flow requirements."], correct: 1 },
-                    { question: "The overall approach to theatre pollution described – ventilation, specific anaesthetic techniques, equipment features, and scavenging – represents a:", options: ["Single, fail-safe solution.", "Multi-faceted strategy to control a complex environmental hazard.", "Temporary measure until safer anaesthetics are developed.", "Cost-prohibitive set of recommendations for most hospitals."], correct: 1 }
+                "Lecture4_Digestion": [
+                    { question: "A patient has a complete obstruction of the common bile duct, but their cystic duct and gallbladder are functional, and the liver continues to produce bile. After a fatty meal, what is the most significant immediate disruption in the digestive process?", options: ["A. Pancreatic lipase secretion will be inhibited due to lack of bile.", "B. Bile will accumulate in the liver, causing jaundice, but fat digestion in the duodenum will proceed normally via pancreatic enzymes alone.", "C. Fats will not be emulsified in the duodenum, severely impairing the efficiency of pancreatic lipase and subsequent fat absorption, even if bile is stored in the gallbladder.", "D. The stomach will increase acid production to compensate for the lack of duodenal bile."], correct: 2 },
+                    { question: "A rare genetic condition causes G-cells in the stomach to be constitutively active, releasing high levels of gastrin irrespective of stomach pH or food presence. Beyond excessive HCl secretion, what other gastric function regulated by gastrin would likely be pathologically overstimulated?", options: ["A. The secretion of somatostatin by D-cells.", "B. The absorption of Vitamin B12.", "C. The motility of the stomach, potentially leading to rapid, uncoordinated emptying.", "D. The production of mucus by goblet cells."], correct: 2 },
+                    { question: "If a patient experiences a complete loss of the exocrine function of the pancreas (e.g., due to severe pancreatitis destroying acinar cells) while retaining normal endocrine function (Islets of Langerhans intact), which specific stage of macronutrient digestion would be most profoundly impaired?", options: ["A. The initial breakdown of starch in the mouth by salivary amylase.", "B. The digestion of proteins by pepsin in the stomach.", "C. The comprehensive enzymatic breakdown of carbohydrates, fats, and proteins into absorbable units within the small intestine.", "D. The absorption of glucose from the bloodstream into cells, regulated by insulin."], correct: 2 },
+                    { question: "A new drug is developed that specifically blocks the binding of secretin to its receptors on pancreatic ductal cells, without affecting CCK receptors. Following the entry of acidic chyme into the duodenum, which characteristic of the secreted pancreatic juice would be most significantly altered?", options: ["A. The concentration of digestive enzymes like amylase and lipase would be greatly reduced.", "B. The volume of juice secreted would increase, but its pH would remain highly acidic.", "C. The secretion of bicarbonate would be substantially diminished, leading to inadequate neutralization of duodenal acidity.", "D. The release of glucagon from pancreatic alpha cells would be inhibited."], correct: 2 },
+                    { question: "How does the mechanical action of stomach churning by its muscular walls specifically enhance the chemical digestion of proteins by pepsin?", options: ["A. It directly activates pepsinogen to pepsin without the need for HCl.", "B. It denatures proteins through physical force, making peptide bonds more accessible to pepsin, and increases the contact between pepsin and its substrate.", "C. It selectively moves undigested fats away from proteins to prevent interference.", "D. It raises the pH of the stomach contents to the optimal range for pepsin activity."], correct: 1 },
+                    { question: "A patient with severe liver cirrhosis exhibits impaired synthesis of blood proteins, including several coagulation factors. What is the most critical non-digestive systemic consequence likely to arise from this specific impairment?", options: ["A. An inability to store glucose as glycogen, leading to hyperglycemia.", "B. An increased susceptibility to infections due to reduced antibody production.", "C. A tendency for excessive bleeding and bruising due to deficient blood clotting.", "D. Impaired detoxification of metabolic waste products, leading to encephalopathy."], correct: 2 },
+                    { question: "If an individual ingests a potent, irreversible inhibitor of salivary amylase that has no effect on pancreatic amylase or any other digestive enzyme, how would the overall process of carbohydrate digestion be impacted from mouth to absorption?", options: ["A. Carbohydrate digestion would be completely blocked, leading to malabsorption.", "B. Starch digestion would not commence in the mouth, but would still occur efficiently in the small intestine due to pancreatic amylase, with minimal overall impact on absorption.", "C. Only simple sugar absorption would be affected, not starch digestion.", "D. The stomach would adapt by secreting its own amylase to compensate."], correct: 1 },
+                    { question: "The highly acidic environment of the stomach (pH 1-3) is essential for pepsin activity. Beyond activating pepsinogen, what other crucial role does this low pH play in the initial stages of protein digestion within the stomach?", options: ["A. It directly hydrolyzes peptide bonds in proteins without enzymatic assistance.", "B. It causes the denaturation (unfolding) of dietary proteins, exposing more peptide bonds to pepsin attack.", "C. It neutralizes any alkaline substances ingested with food.", "D. It stimulates the secretion of intrinsic factor for vitamin B12 absorption."], correct: 1 },
+                    { question: "The intestinal phase of gastric secretion is described as \"blocking the effect of the cephalic and gastric phases.\" What is the primary physiological advantage of this inhibitory feedback mechanism?", options: ["A. To conserve energy by halting all digestive processes once food leaves the stomach.", "B. To prevent excessive gastric acid and enzyme secretion that could damage the duodenal mucosa and to allow optimal conditions for intestinal digestion.", "C. To stimulate appetite for the next meal by emptying the stomach rapidly.", "D. To redirect blood flow from the stomach to the small intestine."], correct: 1 },
+                    { question: "Compare the primary trigger for gastrin release leading to increased gastric acid secretion with the primary trigger for cholecystokinin (CCK) release from the duodenum that influences pancreatic secretion.", options: ["A. Gastrin: presence of fats in stomach; CCK: presence of acid in duodenum.", "B. Gastrin: distension of stomach/presence of food/low pH; CCK: presence of fats and proteins in duodenum.", "C. Gastrin: sight/smell of food; CCK: high blood sugar.", "D. Gastrin: presence of carbohydrates in duodenum; CCK: distension of gallbladder."], correct: 1 },
+                    { question: "If the structural integrity of the villi in the jejunum is severely compromised (e.g., blunting due to celiac disease), leading to a dramatically reduced surface area, which fundamental process of the small intestine would be most directly and negatively impacted?", options: ["A. The secretion of digestive enzymes by the intestinal glands.", "B. The mechanical segmentation and peristalsis movements.", "C. The absorption of the final products of digestion (monosaccharides, amino acids, fatty acids).", "D. The production of gastrointestinal hormones like secretin and CCK."], correct: 2 },
+                    { question: "The liver's function of storing glucose as glycogen, coupled with the regulatory actions of pancreatic hormones insulin and glucagon, is a cornerstone of metabolic homeostasis. This coordinated system primarily serves to:", options: ["A. Ensure a constant supply of bile for fat digestion.", "B. Maintain relatively stable blood glucose concentrations despite intermittent food intake and varying energy demands.", "C. Regulate the body's core temperature through metabolic heat generation.", "D. Control the synthesis and breakdown of blood proteins."], correct: 1 },
+                    { question: "If the lower esophageal sphincter (LES) becomes chronically incompetent and fails to maintain adequate closure, what is the most likely pathological consequence arising from the normal physiological environment of the stomach?", options: ["A. A peptic ulcer in the duodenum due to excessive acid reaching it.", "B. Gastroesophageal reflux disease (GERD), where acidic stomach contents damage the esophageal lining.", "C. Impaired protein digestion in the stomach due to loss of acidity.", "D. Accelerated gastric emptying leading to dumping syndrome."], correct: 1 },
+                    { question: "Both Cholecystokinin (CCK) and Gastric Inhibitory Peptide (GIP)/enteroglucagon exert inhibitory effects on gastric function once chyme enters the small intestine. What is the shared physiological purpose of these hormones in modulating stomach activity at this stage?", options: ["A. To rapidly increase gastric acid secretion to prepare for the next meal.", "B. To slow down gastric emptying and reduce gastric secretions, allowing the small intestine adequate time and optimal conditions to process the incoming chyme.", "C. To stimulate vigorous stomach contractions to ensure all contents are expelled.", "D. To promote the absorption of nutrients directly from the stomach lining."], correct: 1 },
+                    { question: "The text mentions that protein digestion into peptides and amino acids \"principally occurs in the stomach but some also occurs in the small intestine.\" How do the enzymatic actions in these two locations complement each other for complete protein breakdown?", options: ["A. Stomach pepsin completely digests proteins to amino acids; small intestine enzymes absorb them.", "B. Stomach pepsin initiates protein breakdown into larger polypeptides; pancreatic and intestinal proteases in the small intestine further hydrolyze these into smaller peptides and amino acids.", "C. Small intestine enzymes denature proteins; stomach pepsin then digests them.", "D. Both locations use identical enzymes, but the stomach works faster due to higher acidity."], correct: 1 },
+                    { question: "The stimulation of pancreatic exocrine secretion by the parasympathetic nervous system during the cephalic phase (before food ingestion) illustrates what principle of digestive physiology?", options: ["A. The digestive system only responds to direct physical contact with food.", "B. The body initiates anticipatory digestive responses based on sensory cues (sight, smell, thought of food) to prepare for incoming nutrients.", "C. Hormonal control is always secondary to nervous control in digestion.", "D. Pancreatic secretion is primarily a mechanism to neutralize stomach acid after it's produced."], correct: 1 },
+                    { question: "Sodium bicarbonate is a crucial component of pancreatic juice. Its primary importance for effective duodenal digestion lies in its ability to:", options: ["A. Directly activate pancreatic lipase and amylase.", "B. Emulsify dietary fats into smaller droplets.", "C. Neutralize the acidic chyme from the stomach, creating an optimal pH environment for pancreatic enzyme activity and protecting the duodenal mucosa.", "D. Stimulate the release of CCK from the duodenal wall."], correct: 2 },
+                    { question: "If an individual has their gallbladder surgically removed (cholecystectomy), how might their ability to digest a particularly large, high-fat meal be affected compared to someone with a functioning gallbladder, even if liver bile production is normal?", options: ["A. Fat digestion will be completely unimpaired as the liver produces sufficient bile.", "B. They may experience difficulty and discomfort (e.g., steatorrhea) because concentrated bile cannot be released in a large bolus to efficiently emulsify the large fat load; continuous, less concentrated bile flow from the liver may be insufficient.", "C. Protein and carbohydrate digestion will also be severely impaired.", "D. They will be unable to absorb any fat-soluble vitamins."], correct: 1 },
+                    { question: "The liver's role in \"detoxifying blood\" is critical. Considering the circulatory pathways associated with the digestive system, the blood being detoxified by the liver in this context has primarily just passed through which anatomical region, collecting absorbed substances?", options: ["A. The systemic arterial circulation supplying the liver itself.", "B. The capillary beds of the lungs.", "C. The capillary beds of the small and large intestines (via the hepatic portal system).", "D. The renal tubules of the kidneys."], correct: 2 },
+                    { question: "The text states, \"Somatostatin: inhibits the function of insulin. Produced if the body is getting too much glucose.\" This statement, when taken in isolation regarding glucose regulation, presents a potential physiological paradox because:", options: ["A. High glucose should normally stimulate insulin release to lower glucose, so inhibiting insulin under high glucose conditions would exacerbate hyperglycemia.", "B. Somatostatin typically enhances insulin's action on glucose uptake.", "C. Insulin's primary role is to increase blood glucose, which somatostatin would then counter.", "D. \"Too much glucose\" should actually inhibit somatostatin production to allow insulin to work."], correct: 0 }
                 ],
-                "Lecture3_GasSupply": [
-                    { question: "The use of 'thin-walled seamless molybdenum steel' for cylinders balances the need for high tensile strength with:", options: ["Maximum possible weight for stability.", "Minimizing cylinder weight for portability and handling.", "Inherent color-coding properties.", "Resistance to external impact only."], correct: 1 },
-                    { question: "The melting seal on the cylinder neck is a critical safety feature designed to act before what catastrophic event?", options: ["The cylinder running empty.", "The cylinder valve freezing.", "The cylinder rupturing due to excessive internal pressure from external heat.", "The paint peeling off the cylinder."], correct: 2 },
-                    { question: "While the plastic disc offers a quick visual for the last examination year, the definitive and legally recognized test date is found:", options: ["On a sticker applied by the gas supplier.", "Engraved on the cylinder shoulder/neck.", "In the hospital's inventory database only.", "Via a QR code on the cylinder."], correct: 1 },
-                    { question: "The significant difference in capacity between an E-size O2 cylinder (~680L) and an E-size N2O cylinder (~1800L) at their respective full pressures is primarily due to:", options: ["Oxygen being a much lighter gas.", "Nitrous oxide being stored predominantly as a liquid, which is much denser than compressed gas.", "Different manufacturing standards for the two gas types.", "Higher filling pressure for N2O."], correct: 1 },
-                    { question: "The 'Filling Ratio' (Weight of fluid ÷ weight of water to fill) for liquefiable gases like N2O is crucial. A ratio that is too high (overfilling) could lead to:", options: ["The cylinder being too light.", "Insufficient vapor pressure.", "Liquid expansion completely filling the cylinder upon temperature rise, causing hydrostatic rupture.", "The gas liquefying too slowly during use."], correct: 2 },
-                    { question: "For a N2O cylinder, the pressure gauge will read a relatively constant pressure (around 4400 kPa or ~750 psi at room temp) as long as liquid N2O is present. The gauge will only start to fall rapidly when:", options: ["The cylinder is half empty.", "All the liquid N2O has vaporized, and only gas remains.", "The ambient temperature drops significantly.", "The flow rate is very high."], correct: 1 },
-                    { question: "The pressure test at ~22,000 kPa (over 3000 psi) is a test of the cylinder's:", options: ["Valve integrity only.", "Ability to withstand pressures well in excess of normal working pressure, ensuring a safety margin.", "Resistance to corrosion.", "Color fastness."], correct: 1 },
-                    { question: "'Tare weight' is critical for N2O cylinders because remaining content is determined by subtracting current weight from full weight (or tare weight from current weight to get gas weight). This is because:", options: ["N2O is sold by weight.", "Pressure is an unreliable indicator of remaining N2O content until all liquid is gone.", "Oxygen cylinders do not have a tare weight.", "N2O expands more with temperature than O2."], correct: 1 },
-                    { question: "The Pin-Index Safety System prevents incorrect cylinder attachment by using a specific pattern of pins on the yoke that must align with holes on the valve. This system primarily guards against:", options: ["Connecting a full cylinder to an empty yoke.", "Connecting a cylinder of the wrong gas type to a specific gas inlet.", "Leaks at the cylinder-yoke interface.", "Over-tightening the cylinder in the yoke."], correct: 1 },
-                    { question: "Storing full and empty cylinders separately, and in a fireproof, ventilated room, mitigates risks including:", options: ["Accidental administration of an empty cylinder and fire/explosion hazards.", "Cylinders becoming too cold.", "Color fading of the cylinders.", "Tampering with cylinder valves."], correct: 0 },
-                    { question: "The safety relief device in a cylinder valve (e.g., bursting disc or fusible plug) is designed to vent gas if the cylinder pressure becomes dangerously high. This is a *different* mechanism from:", options: ["The on/off spindle.", "The Pin-Index system.", "The Bodok seal.", "The pressure regulator attached downstream."], correct: 3 },
-                    { question: "'In-line Residual Pressure Valves' and 'Off-line Residual Pressure Valves' are designed to:", options: ["Increase the outlet pressure from the cylinder.", "Prevent complete emptying of the cylinder, thereby reducing the risk of contaminants being drawn back in.", "Allow for two cylinders to be connected simultaneously.", "Automatically switch to a new cylinder when one is empty."], correct: 1 },
-                    { question: "A damaged Bodok seal would most likely result in:", options: ["Inability to open the cylinder valve.", "A significant gas leak at the connection between the cylinder valve and the apparatus (e.g., anesthesia machine yoke).", "Incorrect gas being delivered.", "The cylinder pressure reading incorrectly."], correct: 1 },
-                    { question: "Keeping the cylinder valve fully open during use, rather than partially, is recommended to:", options: ["Prevent the valve from vibrating shut.", "Ensure accurate operation of some types of attached regulators and prevent valve seat damage from high-velocity gas flow through a small opening ('streaming').", "Conserve gas.", "Make the pin-index system engage more securely."], correct: 1 },
-                    { question: "If an Entonox (N2O/O2 mix) cylinder is exposed to cold temperatures (below -7°C), a phenomenon called 'lamination' or 'layering' can occur. This results in:", options: ["The cylinder becoming brittle.", "Initially delivering a gas mixture too rich in oxygen, and later too rich in nitrous oxide (or vice-versa depending on draw-off point), potentially leading to hypoxia.", "The pin-index system failing.", "The cylinder pressure increasing dramatically."], correct: 1 },
-                    { question: "The primary hazard of water vapor in medical gas cylinders ('Dry Gases: Avoid water vapor') is that:", options: ["It dilutes the medical gas, reducing its potency.", "As gas expands and cools (e.g., passing through a regulator), the water vapor can freeze, forming ice and obstructing gas flow.", "It causes rapid corrosion of molybdenum steel.", "It makes the gas more flammable."], correct: 1 },
-                    { question: "A lightweight cylinder made of aluminum alloy with fiberglass/epoxy resin is likely to have different handling characteristics and potentially different:", options: ["Gas purity standards.", "Resistance to internal pressure (though designed to be safe).", "Susceptibility to damage from sharp impacts compared to steel.", "Pin-index configurations."], correct: 2 },
-                    { question: "The 'flattening, bend, and impact tests' performed on cylinders are designed to assess their:", options: ["Gas holding capacity.", "Valve functionality.", "Malleability, ductility, and resistance to physical deformation and fracture.", "Color adherence."], correct: 2 },
-                    { question: "If a pipeline supply fails, E-cylinders on an anesthesia machine serve as a backup. The duration for which an E-cylinder of oxygen can supply a typical flow rate (e.g., 5 L/min) is crucial. This duration is calculated based on:", options: ["Cylinder color.", "Remaining pressure (for O2) and known cylinder volume factor (L/psi or L/kPa).", "Cylinder weight only.", "The last test date."], correct: 1 },
-                    { question: "The thread on the cylinder neck for valve attachment is tapered. This design helps to:", options: ["Make the valve easily removable by hand.", "Create a high-pressure, gas-tight metal-to-metal seal when the valve is screwed in.", "Allow for different types of valves to be attached.", "Reduce the weight of the cylinder."], correct: 1 },
-                    { question: "When changing a cylinder on an anaesthesia machine, after closing the empty cylinder and opening the new one, it is crucial to check for leaks around the Bodok seal. A common method is:", options: ["Listening for a hiss and/or using a leak detection solution (e.g., Snoop).", "Observing the pressure gauge for a rapid drop.", "Smelling for gas.", "Ensuring the cylinder is cold to the touch."], correct: 0 },
-                    { question: "The 'tensile test' performed on cylinder material assesses its:", options: ["Ability to withstand crushing forces.", "Resistance to stretching or pulling forces before fracturing.", "Hardness and resistance to scratching.", "Chemical inertness."], correct: 1 },
-                    { question: "The specification 'nominal contents (L)' on a cylinder label refers to:", options: ["The internal volume of the cylinder itself.", "The volume of gas the cylinder can deliver at standard atmospheric pressure and temperature when full.", "The minimum guaranteed volume.", "The volume of water the cylinder can hold."], correct: 1 },
-                    { question: "Storing F/G/J size cylinders upright is important for stability and also because:", options: ["Their valves are designed for vertical gas withdrawal, especially if they contain any liquid phase or particulate.", "Horizontal storage can damage the pressure relief valve on larger cylinders.", "It makes them easier to read the labels.", "They are too heavy to store horizontally."], correct: 0 },
-                    { question: "If an anesthetic machine yoke has pins for Oxygen (2,5), and a user attempts to fit a Nitrous Oxide cylinder (pins 3,5), what prevents connection?", options: ["The diameter of the N2O cylinder valve is different.", "The N2O cylinder is a different color.", "The misaligned pin (pin 3 on N2O valve vs. expectation of pin 2 on yoke) will physically obstruct full seating and sealing.", "The Bodok seal for N2O is incompatible with the O2 yoke."], correct: 2 }
+                "Lecture3_WBC": [
+                    { question: "A patient with a rare genetic disorder is unable to produce functional Interleukin-8 (IL-8) and Interferon-gamma (IFN-γ). Which specific critical function of neutrophils would be most significantly impaired, leading to increased susceptibility to localized infections?", options: ["A. Their ability to phagocytose opsonized bacteria.", "B. Their capacity for degranulation and release of antimicrobial proteins.", "C. Their chemotactic migration from blood vessels to the site of infection/inflammation.", "D. Their intrinsic ability to produce superoxides for killing microbes."], correct: 2 },
+                    { question: "If a person has a specific defect in their neutrophils that prevents the \"burst of superoxides\" during phagocytosis, but all other aspects of engulfment and lysosomal function are normal, how would their defense against certain intracellular bacteria be compromised?", options: ["A. Neutrophils would be unable to recognize or engulf the bacteria.", "B. Bacteria would be engulfed but might survive and even replicate within the neutrophil due to impaired intracellular killing mechanisms.", "C. Lysosomes would fail to fuse with the phagosomes containing the bacteria.", "D. Neutrophils would die immediately upon contact with the bacteria."], correct: 1 },
+                    { question: "Considering the distinct characteristics of neutrophils (short-lived, cannot renew lysosomes) versus monocytes (longer-lived, can replace lysosomal contents, become macrophages), which cell type would be more effective in resolving a chronic, walled-off abscess with a large accumulation of dead cells and persistent bacteria?", options: ["A. Neutrophils, due to their rapid response and high numbers in acute inflammation.", "B. Monocytes/macrophages, due to their sustained phagocytic capacity, ability to clear debris, and longer active life.", "C. Eosinophils, because of their ability to handle large particulate matter.", "D. Basophils, by releasing heparin to improve access to the abscess."], correct: 1 },
+                    { question: "A novel immunosuppressive drug selectively blocks the expression of T-cell receptors on the surface of T lymphocytes without affecting B cell function or innate immunity. Which specific arm of the adaptive immune response would be most profoundly disabled?", options: ["A. Humoral immunity mediated by antibody production.", "B. The inflammatory response orchestrated by mast cells.", "C. Cell-mediated immunity, including the direct killing of infected cells and regulation of other immune cells.", "D. The complement system's ability to lyse pathogens."], correct: 2 },
+                    { question: "If a mutation in hematopoietic stem cells specifically blocks the differentiation pathway leading to all granulocytes (neutrophils, eosinophils, basophils), but development of lymphocytes and monocytes remains unaffected, which of these broad immune functions would be most severely compromised?", options: ["A. Antibody production and antigen presentation by B cells.", "B. The initial rapid response to bacterial infections, allergic reactions, and defense against parasites typically mediated by these cells.", "C. The development of immunological memory by T cells.", "D. Phagocytosis by macrophages derived from monocytes."], correct: 1 },
+                    { question: "A patient with severe protein-calorie malnutrition (a cause of \"malnutrition\" listed on page 1) presents with leukopenia. This reduction in WBC count is most likely due to:", options: ["A. An autoimmune attack on circulating white blood cells.", "B. Insufficient availability of amino acids and energy required for the synthesis and proliferation of hematopoietic stem cells and their progeny.", "C. A specific viral infection that targets only white blood cells.", "D. Increased destruction of white blood cells by an overactive spleen."], correct: 1 },
+                    { question: "An individual consistently suffers from severe, debilitating helminth (parasitic worm) infections, despite having normal counts of neutrophils, lymphocytes, and monocytes. This clinical picture strongly suggests a potential dysfunction or deficiency primarily in which type of white blood cell?", options: ["A. Basophils, due to their role in histamine release.", "B. Natural Killer (NK) cells, for viral defense.", "C. Eosinophils, which are specialized in secreting chemicals to destroy large parasites.", "D. B cells, as antibody production is key for all infections."], correct: 2 },
+                    { question: "Systemic anaphylaxis involves widespread mast cell degranulation. How do the described \"local responses\" (increased permeability of blood vessels, contraction of smooth muscles, increased mucus production) escalate to become life-threatening when they occur systemically?", options: ["A. Localized swelling simply spreads, compressing vital organs.", "B. Widespread vasodilation and permeability cause a catastrophic drop in blood pressure (shock), while widespread bronchial smooth muscle contraction severely impairs breathing.", "C. Increased mucus production primarily blocks the digestive tract.", "D. The neuroimmune effects directly cause cardiac arrest."], correct: 1 },
+                    { question: "A 5-year-old child's routine blood test reveals a total lymphocyte count of 7,000 cells/µL. The adult reference range is 1,000-4,800 cells/µL. Based only on the ranges provided in the text, what is the most accurate initial interpretation?", options: ["A. This is definitively indicative of a lymphoproliferative disorder.", "B. This is significantly below the normal range for a child and suggests immunodeficiency.", "C. This count falls within the normal lymphocyte range provided for children (3,000-9,500/µL) and may not be abnormal.", "D. Lymphocyte counts are not age-dependent."], correct: 2 },
+                    { question: "How does the protective mechanism of \"neutrophil-cagers\" (attaching to vessel walls to block germs) fundamentally differ from the direct anti-microbial action of \"neutrophil-killers\" (phagocytosis and degranulation)?", options: ["A. Cagers primarily use chemical warfare, while killers use physical engulfment.", "B. Cagers form a passive physical barrier to prevent microbial entry/spread, while killers actively seek out, ingest, and destroy microbes.", "C. Cagers are a type of lymphocyte, while killers are true neutrophils.", "D. Cagers only function in the lymphatic system, killers in the blood."], correct: 1 },
+                    { question: "During a primary exposure to an allergen, B cells may be activated to produce IgE antibodies. If re-exposure to the same allergen occurs, how do these pre-existing IgE antibodies contribute to the rapid allergic response involving mast cells or basophils?", options: ["A. IgE antibodies directly neutralize the allergen in the bloodstream.", "B. IgE antibodies bind to receptors on mast cells/basophils; subsequent binding of the allergen to this cell-bound IgE triggers degranulation and mediator release.", "C. IgE antibodies suppress T cell activity, allowing mast cells to overreact.", "D. IgE antibodies transform into histamine and heparin upon allergen contact."], correct: 1 },
+                    { question: "Monocytes, upon differentiating into tissue macrophages, \"present pieces of pathogens to T cells.\" What is the critical immunological purpose of this antigen presentation, even if not fully elaborated in this text?", options: ["A. It serves to directly kill the T cells that recognize the pathogen.", "B. It enables T cells to identify and remember specific pathogens, leading to a more targeted and effective adaptive immune response (including T helper and cytotoxic T cell activation).", "C. It signals monocytes to increase their rate of phagocytosis.", "D. It is primarily a mechanism for monocytes to eliminate pathogens from their own cytoplasm."], correct: 1 },
+                    { question: "A patient is diagnosed with chronic lymphocytic leukemia, a \"proliferative disorder\" characterized by extremely high numbers of abnormal lymphocytes. How might this \"leukocytosis\" paradoxically lead to a weakened immune system and increased susceptibility to infections?", options: ["A. The abnormal lymphocytes actively destroy healthy immune cells.", "B. The sheer volume of abnormal cells physically obstructs blood flow to lymphoid organs.", "C. The abnormal, often dysfunctional, lymphocytes crowd out or impair the development and function of normal, effective lymphocytes and other immune cells.", "D. The high lymphocyte count triggers a systemic anti-inflammatory response that suppresses all immunity."], correct: 2 },
+                    { question: "Histamine released by basophils makes blood vessels more permeable. What is the primary benefit of this increased permeability at a site of localized infection?", options: ["A. It allows red blood cells to deliver more oxygen to the inflamed tissue.", "B. It facilitates the leakage of plasma proteins (like antibodies and complement) and the migration of other leukocytes (like neutrophils) from the blood into the infected tissue.", "C. It causes pain, alerting the individual to the infection.", "D. It directly kills bacteria by changing the osmotic environment."], correct: 1 },
+                    { question: "If a person has a genetic defect that significantly impairs the process of \"antibody opsonization\" (coating pathogens with antibodies), how would the phagocytic efficiency of neutrophils and monocytes be primarily affected?", options: ["A. These phagocytes would be unable to migrate to the site of infection.", "B. The pathogens would be too large for these cells to engulf.", "C. The phagocytes would have greatly reduced ability to recognize, bind to, and engulf the non-opsonized pathogens.", "D. The lysosomes within the phagocytes would be unable to digest any engulfed pathogens."], correct: 2 },
+                    { question: "The observation that eosinophils are \"numerous in the mucous membranes of the respiratory, digestive, and lower urinary tracts\" is strategically significant for their role because:", options: ["A. These locations are primary sites for oxygen absorption, which eosinophils facilitate.", "B. These tracts are major portals of entry for allergens and parasites, against which eosinophils are specialized to defend.", "C. Eosinophils mature in these mucous membranes before entering the bloodstream.", "D. These membranes are rich in the specific nutrients eosinophils require for survival."], correct: 1 },
+                    { question: "The text states that leukocytosis \"is normal when it is part of h^alfhy [healthy] immune responses, which happen frequently.\" Which of the following scenarios, explicitly mentioned as causing an increase in WBC count, best exemplifies such a normal, healthy response?", options: ["A. Leukocytosis associated with chronic anemia or malnutrition.", "B. Leukocytosis in response to an acute bacterial infection.", "C. Leukocytosis due to a neoplastic condition of the bone marrow.", "D. Leukocytosis as a side effect of certain immunosuppressive drugs."], correct: 1 },
+                    { question: "A patient undergoing chemotherapy for cancer (a treatment known to suppress bone marrow activity) develops a fever and other signs of infection. A blood test would most likely reveal which quantitative WBC abnormality, contributing to their susceptibility?", options: ["A. Significant leukocytosis, with an overproduction of immature WBCs.", "B. Leukopenia, a critically low total white blood cell count.", "C. A selective increase in basophils and eosinophils only.", "D. Normal WBC count but dysfunctional cells."], correct: 1 },
+                    { question: "Compare the primary effector mechanism of basophils/mast cells in initiating an acute allergic response (e.g., hay fever) versus the primary effector mechanism of eosinophils in combating a multicellular parasitic worm infection.", options: ["A. Basophils/mast cells phagocytose allergens; eosinophils release histamine.", "B. Basophils/mast cells release mediators (like histamine) causing vasodilation, permeability, and smooth muscle effects; eosinophils release cytotoxic chemicals directly onto the surface of large parasites.", "C. Both cell types primarily function by producing antibodies against the respective threat.", "D. Basophils/mast cells present allergen fragments to T cells; eosinophils engulf and digest worms intracellularly."], correct: 1 },
+                    { question: "If a pathogenic organism, like a large fungal hypha, is too large to be phagocytosed by a single neutrophil, which other granulocyte described in the text possesses a mechanism specifically suited for attacking such large extracellular targets?", options: ["A. Basophils, by releasing anticoagulants to isolate the fungus.", "B. Monocytes, by fusing to form giant cells around the fungus.", "C. Eosinophils, by releasing toxic proteins and enzymes from their granules onto the surface of the large pathogen.", "D. Lymphocytes, by directly lysing the fungal cell membrane through perforins."], correct: 2 }
                 ]
             }
          };
 
          const lectureTitlesMap = {
-            "Lecture1_Tracheostomy": "محاضرة (Tracheostomy Tube)",
-            "Lecture2_TheaterPollution": "محاضرة (Theater Pollution)",
-            "Lecture3_GasSupply": "محاضرة (Gas Supply)"
+            "Lecture2_RBC": "محاضرة (Red blood cell (Erythrocyte))",
+            "Lecture1_Endocrine": "محاضرة (THE ENDOCRINE SYSTEM)",
+            "Lecture5_Organelles": "محاضرة (Golgi Apparatus & Other Organelles)", // Adjusted title for brevity
+            "Lecture4_Digestion": "محاضرة (Digestion and Gastrointestinal physiology)",
+            "Lecture3_WBC": "محاضرة (White blood cells)"
         };
 
-        const lectureIconsMap = {
-            "Lecture1_Tracheostomy": "fas fa-lungs-virus",
-            "Lecture2_TheaterPollution": "fas fa-biohazard",
-            "Lecture3_GasSupply": "fas fa-gas-pump"
+        const lectureIconsMap = { // Assign appropriate icons
+            "Lecture2_RBC": "fas fa-tint", // Blood drop
+            "Lecture1_Endocrine": "fas fa-brain", // Brain for hypothalamus/pituitary focus
+            "Lecture5_Organelles": "fas fa-microscope", // Microscope for organelles
+            "Lecture4_Digestion": "fas fa-stomach", // Stomach for digestion
+            "Lecture3_WBC": "fas fa-shield-virus" // Shield for immunity
         };
 
 
         let currentQuestions = [];
-        let currentQuizCategory = '';
+        let currentQuizCategory = ''; // Will store 'NaturalQuestions' or 'CriticalThinkingQuestions'
         let currentQuizLecture = '';
         let lastSubButtonsPageId = 'main-buttons-page';
         const allPages = document.querySelectorAll('.page');
@@ -1011,7 +1020,7 @@
         const bodyElement = document.body;
         const toggleIcon = darkModeToggle.querySelector('i');
         const lectureButtonsContainer = document.getElementById('lecture-buttons-container');
-        const difficultyLevelTitleElement = document.getElementById('difficulty-level-title');
+        const questionTypeTitleElement = document.getElementById('question-type-title'); // Corrected ID
 
 
         function showPage(pageId) {
@@ -1033,30 +1042,29 @@
             }, 50);
         }
 
-        function navigateToLectureSelection(difficulty) {
-            currentQuizCategory = difficulty;
+        function navigateToLectureSelection(questionCategory) {
+            currentQuizCategory = questionCategory;
             lectureButtonsContainer.innerHTML = '';
 
-            let difficultyArabic = '';
-            if (difficulty === 'Easy') difficultyArabic = 'للمستوى السهل';
-            else if (difficulty === 'Medium') difficultyArabic = 'للمستوى المتوسط';
-            else if (difficulty === 'Hard') difficultyArabic = 'للمستوى الصعب';
-            difficultyLevelTitleElement.textContent = difficultyArabic;
+            let categoryArabic = '';
+            if (questionCategory === 'NaturalQuestions') categoryArabic = 'للأسئلة الطبيعية';
+            else if (questionCategory === 'CriticalThinkingQuestions') categoryArabic = 'للأسئلة الفكرية الدقيقة';
+            questionTypeTitleElement.textContent = categoryArabic;
 
 
-            const lecturesForDifficulty = quizData[difficulty];
-            if (lecturesForDifficulty && Object.keys(lecturesForDifficulty).length > 0) {
-                Object.keys(lecturesForDifficulty).forEach(lectureKey => {
+            const lecturesForCategory = quizData[questionCategory];
+            if (lecturesForCategory && Object.keys(lecturesForCategory).length > 0) {
+                Object.keys(lecturesForCategory).forEach(lectureKey => {
                     const button = document.createElement("button");
                     button.classList.add("button", "sub-button");
                     const lectureTitle = lectureTitlesMap[lectureKey] || lectureKey.replace(/_/g, ' ');
                     const lectureIcon = lectureIconsMap[lectureKey] || "fas fa-book";
                     button.innerHTML = `<i class="${lectureIcon}"></i> ${lectureTitle.replace('محاضرة (', '').replace(')', '')}`;
-                    button.onclick = () => loadQuiz(difficulty, lectureKey);
+                    button.onclick = () => loadQuiz(questionCategory, lectureKey);
                     lectureButtonsContainer.appendChild(button);
                 });
             } else {
-                 lectureButtonsContainer.innerHTML = `<p style='text-align: center; color: var(--text-light); width: 100%;'>لا توجد محاضرات متاحة لهذا المستوى حاليًا.</p>`;
+                 lectureButtonsContainer.innerHTML = `<p style='text-align: center; color: var(--text-light); width: 100%;'>لا توجد محاضرات متاحة لهذا النوع من الأسئلة حاليًا.</p>`;
             }
             showPage('ministerial-questions-sub-page');
         }
