@@ -1,1298 +1,745 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اسئلة محاضرات الفسلجة</title>
-    <link rel="icon" href="icon.png" type="image/png"> <!-- تأكد من وجود هذا الملف أو قم بتغييره -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>اسئلة الاحصاء</title>
+    <!-- Google Fonts: Inter (خط عصري متعدد الاستخدامات), Poppins (للعناوين) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-236N37LHFR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-236N37LHFR');
-</script>
     <style>
         :root {
-            --primary-color: #007bff;
-            --secondary-color: #17a2b8;
-            --accent-color: #28a745;
-            --background-start: #f0f4f8; /* لون خلفية فاتح ومريح أكثر */
-            --background-end: #e2e8f0;
-            --card-bg: #ffffff;
-            --text-color: #2d3748; /* لون نص أغمق قليلاً لتحسين القراءة */
-            --text-light: #718096;
-            --text-on-primary: #ffffff;
-            --correct-color: #28a745;
-            --wrong-color: #dc3545;
-            --border-color: #cbd5e0; /* لون حدود أفتح */
-            --shadow-color: rgba(0, 123, 255, 0.1); /* ظل أخف */
-            --hover-shadow-color: rgba(0, 123, 255, 0.2);
-            --font-family: 'Cairo', sans-serif;
-            --border-radius-sm: 6px;
-            --border-radius-md: 10px;
-            --border-radius-lg: 15px;
+            /* Light Mode (Default) */
+            --modern-bg-light: #F7F8FA; /* رمادي فاتح جداً ونظيف */
+            --modern-surface-light: #FFFFFF;
+            --modern-text-primary-light: #1A202C; /* أسود ناعم */
+            --modern-text-secondary-light: #4A5568; /* رمادي أغمق قليلاً */
+            --modern-accent-primary-light: #4F46E5; /* بنفسجي حيوي (Indigo) */
+            --modern-accent-secondary-light: #EC4899; /* وردي حيوي (Pink) */
+            --modern-border-light: #E2E8F0; /* رمادي فاتح للحدود */
+            --modern-success-light: #10B981; /* أخضر زمردي */
+            --modern-danger-light: #EF4444; /* أحمر */
 
-            --dark-bg-start: #1a202c;
-            --dark-bg-end: #2d3748;
-            --dark-card-bg: #4a5568;
-            --dark-text-color: #e2e8f0;
-            --dark-text-light: #a0aec0;
-            --dark-border-color: #718096;
-            --dark-shadow-color: rgba(0, 0, 0, 0.3);
-            --dark-hover-shadow-color: rgba(0, 0, 0, 0.4);
-            --dark-accent-color: #48bb78; /* أخضر أفتح للوضع الداكن */
+            /* Dark Mode */
+            --modern-bg-dark: #111827; /* رمادي داكن جداً (Almost Black) */
+            --modern-surface-dark: #1F2937; /* رمادي داكن للأسطح */
+            --modern-text-primary-dark: #F3F4F6; /* رمادي فاتح جداً للنص */
+            --modern-text-secondary-dark: #9CA3AF; /* رمادي متوسط للنص الثانوي */
+            --modern-accent-primary-dark: #6366F1; /* بنفسجي أفتح قليلاً */
+            --modern-accent-secondary-dark: #F472B6; /* وردي أفتح */
+            --modern-border-dark: #374151; /* رمادي داكن للحدود */
+            --modern-success-dark: #34D399; /* أخضر أفتح */
+            --modern-danger-dark: #F87171; /* أحمر أفتح */
 
-            /* New colors for question type buttons */
-            --natural-color-start: #3498db; /* أزرق فاتح */
-            --natural-color-end: #2980b9;   /* أزرق أغمق */
-            --critical-color-start: #e74c3c; /* أحمر فاتح */
-            --critical-color-end: #c0392b;  /* أحمر أغمق */
+            --font-heading: 'Poppins', 'Vazirmatn', sans-serif;
+            --font-body: 'Inter', 'Vazirmatn', sans-serif;
+
+            --border-radius-modern: 8px;
+            --shadow-modern: 0px 4px 6px -1px rgba(0, 0, 0, 0.07), 0px 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-modern-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.07), 0px 4px 6px -2px rgba(0, 0, 0, 0.03);
+            --transition-modern: 0.3s ease-in-out;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-family);
-            background: linear-gradient(135deg, var(--background-start), var(--background-end));
-            color: var(--text-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: var(--font-body);
+            line-height: 1.7;
+            background-color: var(--modern-bg-light);
+            color: var(--modern-text-primary-light);
+            direction: rtl;
             min-height: 100vh;
-            justify-content: space-between;
-            padding-top: 20px; /* تقليل المسافة العلوية */
-            overflow-x: hidden;
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-
-        .page {
-            width: 100%;
-            max-width: 850px;
-            padding: 20px;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
-            position: absolute;
-            top: 70px; /* تقليل المسافة العلوية للصفحات الداخلية */
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        .page.visible {
+            padding: 32px 24px;
             display: flex;
-            opacity: 1;
-            visibility: visible;
-            transition: opacity 0.5s ease-in-out;
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
-            margin-bottom: 30px; /* تقليل المسافة السفلية */
-        }
-        #main-buttons-page, #ministerial-questions-sub-page {
-             top: 20px; /* تعديل ليتناسب مع التغيير في body padding-top */
-         }
-
-        .logo-container {
-            margin-bottom: 25px;
-            text-align: center;
-        }
-        .logo {
-            max-width: 180px; /* حجم مناسب للشعار */
-            height: auto;
-            border-radius: 12px; /* زوايا دائرية للشعار */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        body.dark-mode .logo {
-            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
-        }
-
-
-        /* Enhanced Button Styles */
-        .button {
-            padding: 18px 35px;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: var(--border-radius-lg);
-            color: var(--text-on-primary);
-            font-size: 1.25em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-            font-family: var(--font-family);
-            text-align: center;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 12px;
-            width: 100%;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .button::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                120deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transition: all 0.5s ease;
-        }
-
-        .button:hover::before {
-            left: 100%;
-        }
-
-        .button:hover:not(:disabled) {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 10px 30px var(--hover-shadow-color);
-        }
-        .button:active:not(:disabled) {
-            transform: translateY(-1px) scale(0.98);
-            box-shadow: 0 6px 20px var(--hover-shadow-color);
-        }
-        .button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            background: linear-gradient(135deg, #adb5bd, #ced4da);
-            box-shadow: none;
-            transform: none;
-        }
-        .button i {
-            font-size: 1.2em;
-        }
-
-        /* Specific styles for question type buttons */
-        .button.natural-questions-btn {
-            background: linear-gradient(135deg, var(--natural-color-start), var(--natural-color-end));
-            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
-        }
-        .button.natural-questions-btn:hover {
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-        }
-        body.dark-mode .button.natural-questions-btn {
-            background: linear-gradient(135deg, #2980b9, #1f618d );
-        }
-
-
-        .button.critical-questions-btn {
-            background: linear-gradient(135deg, var(--critical-color-start), var(--critical-color-end));
-            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.3);
-        }
-         .button.critical-questions-btn:hover {
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
-        }
-        body.dark-mode .button.critical-questions-btn {
-            background: linear-gradient(135deg, #c0392b, #a93226);
-        }
-
-
-        #main-buttons-page h1 {
-            font-family: var(--font-family);
-            font-size: 2.0em;
-            font-weight: 900;
-            margin-bottom: 20px; /* تقليل المسافة السفلية للعنوان */
-            color: var(--primary-color);
-            text-align: center;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            transition: color 0.4s ease;
-            line-height: 1.4;
-        }
-        .main-button {
-             width: 100%;
-             max-width: 480px;
-        }
-
-
-        .sub-buttons-page h2 {
-             font-family: var(--font-family);
-             font-size: 1.8em;
-             font-weight: 700;
-             margin-bottom: 25px;
-             color: var(--secondary-color);
-             text-align: center;
-             transition: color 0.4s ease;
-        }
-        .sub-buttons-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-            width: 100%;
-        }
-        .sub-button {
-            background: var(--card-bg);
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            font-size: 1.0em;
-            font-weight: 700;
-            padding: 12px 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-radius: var(--border-radius-md);
-            line-height: 1.4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            gap: 8px;
-            min-height: 80px;
-        }
-         .sub-button i {
-            font-size: 1.3em;
-            margin-bottom: 5px;
-        }
-        .sub-button:hover {
-            background: var(--primary-color);
-            color: var(--text-on-primary);
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px var(--shadow-color);
-        }
-
-        #quiz-page {
-             padding-bottom: 80px;
-             padding-top: 0;
-             margin-bottom: 0;
-        }
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--text-on-primary);
-            text-align: center;
-            padding: 25px 20px;
-            width: 100%;
-            box-sizing: border-box;
-            border-bottom-left-radius: var(--border-radius-lg);
-            border-bottom-right-radius: var(--border-radius-lg);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            transition: background 0.4s ease, box-shadow 0.4s ease;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.8em;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            line-height: 1.3;
-        }
-        header h1 i {
-            font-size: 1.1em;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .container {
-            max-width: 100%;
-            margin: 30px 0 0 0;
-            padding: 30px;
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            width: 100%;
-            box-sizing: border-box;
-            animation: fadeIn 0.6s ease-out;
-            transition: background-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .question {
-            margin-bottom: 35px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 25px;
-            position: relative;
-            width: 100%;
-            box-sizing: border-box;
-            animation: slideInUp 0.5s ease-out forwards;
-            opacity: 0;
-            animation-delay: calc(var(--question-index) * 0.1s);
-            transition: border-color 0.4s ease;
-        }
-
-        @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .question:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        .question h2 {
-            font-size: 1.4em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.6;
-            transition: color 0.4s ease;
-        }
-        .question .original-question, .question .translated-question {
-            font-family: var(--font-family);
-        }
-        .question .translated-question {
-            display: none;
-        }
-
-        .options {
-            list-style-type: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
-
-        .options button {
-            width: 100%;
-            padding: 15px 20px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-md);
-            background-color: #f8f9fa;
-            color: var(--text-color);
-            font-size: 1.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: var(--font-family);
-            text-align: right;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-        }
-        .options button:hover:not(:disabled) {
-            background-color: #e9ecef;
-            border-color: var(--secondary-color);
-            transform: translateX(-5px);
-        }
-        .options button:disabled {
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-         .options button.correct, .options button.wrong {
-            color: white;
-            border-color: transparent;
-            font-weight: 700;
-        }
-        .options button.correct {
-            background-color: var(--correct-color);
-        }
-        .options button.wrong {
-            background-color: var(--wrong-color);
-        }
-
-        .options button.correct::before,
-        .options button.wrong::before {
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            font-size: 1.1em;
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: popIn 0.4s ease-out;
-        }
-        .options button.correct::before { content: "\f00c"; color: white; }
-        .options button.wrong::before { content: "\f00d"; color: white; }
-
-        @keyframes popIn {
-            0% { transform: translateY(-50%) scale(0.5); opacity: 0; }
-            70% { transform: translateY(-50%) scale(1.1); opacity: 1; }
-            100% { transform: translateY(-50%) scale(1); }
-        }
-
-        .options .original-option, .options .translated-option{
-            display: block;
-            font-family: var(--font-family);
-            padding-left: 30px;
-        }
-        .options .translated-option{ display: none; }
-
-        .translate-container {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 20px;
-            gap: 10px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .translate-button, .untranslate-button {
-            padding: 8px 18px;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            background-color: var(--accent-color);
-            color: white;
-            cursor: pointer;
-            font-size: 0.9em;
-            font-family: var(--font-family);
-            font-weight: 700;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-         .translate-button::before { font-family: "Font Awesome 6 Free"; content: "\f0ac"; font-weight: 900; }
-         .untranslate-button::before { font-family: "Font Awesome 6 Free"; content: "\f0e2"; font-weight: 900; }
-
-        .translate-button:hover, .untranslate-button:hover {
-            background-color: #218838; /* Darker Green */
-            transform: scale(1.05);
-        }
-        .untranslate-button { background-color: #adb5bd; } /* Lighter gray */
-        .untranslate-button:hover { background-color: #6c757d; }
-
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: transparent;
-            color: var(--text-light);
-            font-size: 0.9em;
-            width: 100%;
-            font-family: var(--font-family);
-            box-sizing: border-box;
-            margin-top: auto;
-            transition: color 0.4s ease;
-        }
-        footer i.fa-copyright { margin-inline-end: 5px; }
-
-
-        .back-button-container {
-            text-align: center;
-            margin-top: 30px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        .back-button {
-             background: #6c757d; /* Medium Gray */
-             color: white;
-             width: auto;
-             display: inline-flex;
-             padding: 10px 25px;
-             font-size: 1em;
-             font-weight: 700;
-             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-             border-radius: var(--border-radius-lg);
-             transition: all 0.3s ease;
-        }
-         .back-button::before {
-             font-family: "Font Awesome 6 Free"; content: "\f060";
-             font-weight: 900; margin-inline-end: 8px;
-        }
-        .back-button:hover {
-            background-color: #5a6268; /* Darker Gray */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        footer .back-button-container { margin-top: 0; margin-bottom: 10px; }
-
-        .floating-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: var(--text-on-primary);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            box-shadow: 0 5px 15px var(--shadow-color);
-            z-index: 1000;
-            transition: all 0.4s ease;
-            transform: scale(1);
-        }
-        .floating-btn:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 8px 20px var(--hover-shadow-color);
-        }
-        .floating-btn i {
-            transition: transform 0.4s ease;
+            align-items: flex-start;
+            transition: background-color var(--transition-modern), color var(--transition-modern);
         }
 
         body.dark-mode {
-            background: linear-gradient(135deg, var(--dark-bg-start), var(--dark-bg-end));
-            color: var(--dark-text-color);
-            --shadow-color: var(--dark-shadow-color);
-            --hover-shadow-color: var(--dark-hover-shadow-color);
-            --border-color: var(--dark-border-color);
-            --text-color: var(--dark-text-color);
-            --text-light: var(--dark-text-light);
+            background-color: var(--modern-bg-dark);
+            color: var(--modern-text-primary-dark);
         }
 
-        body.dark-mode #main-buttons-page h1 {
-            color: var(--secondary-color);
-            text-shadow: none;
+        .main-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--modern-surface-light);
+            border-radius: var(--border-radius-modern);
+            box-shadow: var(--shadow-modern-lg);
+            padding: 32px 40px;
+            transition: background-color var(--transition-modern), box-shadow var(--transition-modern);
         }
-         body.dark-mode .sub-buttons-page h2 {
-             color: var(--accent-color);
+        body.dark-mode .main-container {
+            background-color: var(--modern-surface-dark);
+        }
+
+
+        #intro-page, #test-page { width: 100%; }
+        #test-page { display: none; }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+            color: var(--modern-text-primary-light);
+            /* تدرج لوني للعناوين */
+            background: linear-gradient(90deg, var(--modern-accent-primary-light), var(--modern-accent-secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        body.dark-mode .page-title {
+             background: linear-gradient(90deg, var(--modern-accent-primary-dark), var(--modern-accent-secondary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1rem; /* 16px */
+            color: var(--modern-text-secondary-light);
+            margin-bottom: 32px;
+        }
+        body.dark-mode .page-subtitle {
+            color: var(--modern-text-secondary-dark);
+        }
+
+        .qr-display {
+            text-align: center;
+            margin: 32px auto 40px;
+        }
+        .qr-display img {
+            max-width: 120px;
+            border-radius: var(--border-radius-modern);
+            border: 2px solid var(--modern-border-light);
+            padding: 6px;
+            background-color: var(--modern-surface-light);
+            box-shadow: var(--shadow-modern);
+        }
+        body.dark-mode .qr-display img {
+            border-color: var(--modern-border-dark);
+            background-color: var(--modern-surface-dark);
+        }
+
+        .action-button {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            background: linear-gradient(90deg, var(--modern-accent-primary-light), var(--modern-accent-secondary-light));
+            border: none;
+            border-radius: 50px; /* زر كبسولة */
+            cursor: pointer;
+            box-shadow: var(--shadow-modern);
+            transition: transform var(--transition-modern), box-shadow var(--transition-modern), filter var(--transition-modern);
+            text-align: center;
+        }
+        .action-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: var(--shadow-modern-lg);
+            filter: brightness(1.1);
+        }
+        body.dark-mode .action-button {
+            background: linear-gradient(90deg, var(--modern-accent-primary-dark), var(--modern-accent-secondary-dark));
+        }
+
+
+        #questions-area {
+            width: 100%;
+            margin-top: 24px;
+            counter-reset: question-counter;
+        }
+
+        .question-card {
+            counter-increment: question-counter;
+            background-color: var(--modern-surface-light);
+            border: 1px solid var(--modern-border-light);
+            border-radius: var(--border-radius-modern);
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: border-color var(--transition-modern), background-color var(--transition-modern);
+            /* لا ظل للبطاقات الصغيرة، الاعتماد على الحدود */
+        }
+        body.dark-mode .question-card {
+            background-color: var(--modern-surface-dark);
+            border-color: var(--modern-border-dark);
+        }
+
+        .question-content {
+            display: flex;
+            align-items: flex-start; /* ليتناسب مع الترقيم والنص */
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .question-number-badge {
+            font-family: var(--font-heading);
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            color: var(--modern-accent-primary-light);
+            background-color: var(--modern-bg-light); /* نفس لون خلفية الصفحة */
+            border: 1px solid var(--modern-accent-primary-light);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            direction: ltr;
+        }
+        body.dark-mode .question-number-badge {
+            color: var(--modern-accent-primary-dark);
+            background-color: var(--modern-bg-dark);
+            border-color: var(--modern-accent-primary-dark);
+        }
+
+        .question-statement {
+            font-weight: 500;
+            font-size: 1.05rem; /* 17px */
+            color: var(--modern-text-primary-light);
+            line-height: 1.6;
+            flex-grow: 1;
+            direction: ltr;
+            text-align: left;
+        }
+        body.dark-mode .question-statement { color: var(--modern-text-primary-dark); }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 12px 16px;
+            border: 1px solid var(--modern-border-light);
+            border-radius: var(--border-radius-modern);
+            transition: background-color var(--transition-modern), border-color var(--transition-modern);
+            position: relative;
+        }
+        .option-item:hover {
+            border-color: var(--modern-accent-primary-light);
+            background-color: rgba(79, 70, 229, 0.05);
+        }
+        body.dark-mode .option-item {
+             border-color: var(--modern-border-dark);
+        }
+        body.dark-mode .option-item:hover {
+            border-color: var(--modern-accent-primary-dark);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+
+        .option-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .option-label {
+            cursor: pointer;
+            flex-grow: 1;
+            font-size: 1rem; /* 16px */
+            padding-right: 30px;
+            position: relative;
+        }
+
+        /* Custom Radio Button Style */
+        .option-label::before { /* Square outline */
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--modern-border-light);
+            border-radius: 4px; /* زوايا مربعة ناعمة */
+            transition: all var(--transition-modern);
+        }
+        .option-label::after { /* Checkmark or fill */
+            content: '\f00c'; /* Font Awesome check */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 3px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            font-size: 12px;
+            color: var(--modern-surface-light);
+            transition: transform var(--transition-modern);
+        }
+        .option-item input[type="radio"]:checked + .option-label::before {
+            border-color: var(--modern-accent-primary-light);
+            background-color: var(--modern-accent-primary-light);
+        }
+        .option-item input[type="radio"]:checked + .option-label::after {
+            transform: translateY(-50%) scale(1);
+        }
+        body.dark-mode .option-label::before {
+            border-color: var(--modern-border-dark);
+        }
+        body.dark-mode .option-item input[type="radio"]:checked + .option-label::before {
+            border-color: var(--modern-accent-primary-dark);
+            background-color: var(--modern-accent-primary-dark);
+        }
+        body.dark-mode .option-item input[type="radio"]:checked + .option-label::after {
+            color: var(--modern-surface-dark);
+        }
+
+        /* Answered States */
+        .question-card.answered .option-item {
+             cursor: default;
+             pointer-events: none;
+             opacity: 0.7;
+        }
+         .question-card.answered .option-item.is-correct,
+         .question-card.answered .option-item.is-user-incorrect {
+             opacity: 1;
          }
 
-        body.dark-mode .sub-button {
-            background: var(--dark-card-bg);
-            color: var(--accent-color);
-            border-color: var(--dark-border-color);
-            box-shadow: 0 2px 8px var(--dark-shadow-color);
+        .question-card.answered .option-item.is-correct {
+            border-color: var(--modern-success-light);
+            background-color: rgba(16, 185, 129, 0.1);
         }
-        body.dark-mode .sub-button:hover {
-            background: var(--dark-border-color);
-            color: var(--dark-accent-color);
-            border-color: var(--accent-color);
-            box-shadow: 0 6px 15px var(--dark-hover-shadow-color);
+        .question-card.answered .option-item.is-correct .option-label::before {
+            border-color: var(--modern-success-light);
+            background-color: var(--modern-success-light);
         }
 
-        body.dark-mode header {
-            background: linear-gradient(135deg, var(--dark-bg-start), #343a40);
-            box-shadow: 0 5px 15px var(--dark-shadow-color);
+        .question-card.answered .option-item.is-user-incorrect {
+            border-color: var(--modern-danger-light);
+            background-color: rgba(239, 68, 68, 0.1);
         }
-
-        body.dark-mode .container {
-            background-color: var(--dark-card-bg);
-            box-shadow: 0 5px 25px var(--dark-shadow-color);
+        .question-card.answered .option-item.is-user-incorrect .option-label::before {
+            border-color: var(--modern-danger-light);
+            background-color: var(--modern-danger-light);
         }
-
-        body.dark-mode .question {
-            border-bottom-color: var(--dark-border-color);
-        }
-        body.dark-mode .question h2 {
-            color: var(--dark-accent-color);
-        }
-
-        body.dark-mode .options button {
-            background-color: #495057;
-            border-color: var(--dark-border-color);
-            color: var(--dark-text-color);
-        }
-        body.dark-mode .options button:hover:not(:disabled) {
-            background-color: #6c757d;
-            border-color: var(--accent-color);
-        }
-        body.dark-mode .options button:disabled {
-            opacity: 0.6;
-        }
-
-         body.dark-mode .options button.correct { background-color: var(--correct-color); }
-         body.dark-mode .options button.wrong { background-color: var(--wrong-color); }
-         body.dark-mode .options button.correct::before,
-         body.dark-mode .options button.wrong::before { color: white; }
-
-
-        body.dark-mode .translate-button { background-color: var(--accent-color); color: #111; }
-        body.dark-mode .translate-button:hover { background-color: var(--dark-accent-color); }
-        body.dark-mode .untranslate-button { background-color: #555; }
-        body.dark-mode .untranslate-button:hover { background-color: #777; }
-
-        body.dark-mode footer { color: var(--dark-text-light); }
-
-        body.dark-mode .back-button {
-            background: #5a6268;
-            color: var(--dark-text-color);
-            box-shadow: 0 2px 8px var(--dark-shadow-color);
-        }
-        body.dark-mode .back-button:hover {
-            background: #6c757d;
-            box-shadow: 0 4px 12px var(--dark-hover-shadow-color);
-        }
-
-        body.dark-mode .floating-btn {
-            background: linear-gradient(135deg, #495057, #343a40);
-            color: var(--dark-accent-color);
-            box-shadow: 0 5px 15px var(--dark-shadow-color);
-        }
-         body.dark-mode .floating-btn:hover {
-             box-shadow: 0 8px 20px var(--dark-hover-shadow-color);
-         }
-         body.dark-mode .button:disabled {
-            background: linear-gradient(135deg, #495057, #5a6268);
+        .question-card.answered .option-item.is-user-incorrect .option-label::after {
+            content: '\f00d'; /* Font Awesome times for incorrect */
         }
 
 
-        @media (max-width: 768px) {
-            .page { padding: 15px; top: 60px; } /* Adjusted top */
-             #main-buttons-page, #ministerial-questions-sub-page { top: 15px; } /* Adjusted top */
-             #main-buttons-page h1 { font-size: 1.7em; }
-             .logo { max-width: 150px; } /* Adjusted logo size */
-             .sub-buttons-page h2 { font-size: 1.6em; }
-             .button { padding: 16px 30px; font-size: 1.15em; }
-             .sub-buttons-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-             .sub-button { font-size: 0.95em; padding: 10px 12px; min-height: 70px; }
-             .sub-button i { font-size: 1.2em; }
-            header { padding: 20px 15px; }
-            header h1 { font-size: 1.5em; gap: 10px; }
-            header h1 i { font-size: 1.0em; }
-            .container { margin-top: 20px; padding: 20px; }
-            .question h2 { font-size: 1.25em; }
-            .options button { font-size: 1em; padding: 12px 15px; }
-             .options button.correct::before, .options button.wrong::before { left: 12px; font-size: 1em; }
-            .options .original-option, .options .translated-option{ padding-left: 25px; }
-             .translate-button, .untranslate-button { font-size: 0.85em; padding: 7px 15px; }
-            footer { font-size: 0.85em; padding: 15px; }
-            .back-button { padding: 9px 20px; font-size: 0.95em; }
-            .floating-btn { width: 50px; height: 50px; font-size: 1.3em; bottom: 20px; right: 20px; }
+        /* Dark Mode Answered States */
+        body.dark-mode .question-card.answered .option-item.is-correct {
+            border-color: var(--modern-success-dark);
+            background-color: rgba(52, 211, 153, 0.1);
+        }
+        body.dark-mode .question-card.answered .option-item.is-correct .option-label::before {
+            border-color: var(--modern-success-dark);
+            background-color: var(--modern-success-dark);
+        }
+        body.dark-mode .question-card.answered .option-item.is-user-incorrect {
+            border-color: var(--modern-danger-dark);
+            background-color: rgba(248, 113, 113, 0.1);
+        }
+        body.dark-mode .question-card.answered .option-item.is-user-incorrect .option-label::before {
+            border-color: var(--modern-danger-dark);
+            background-color: var(--modern-danger-dark);
         }
 
-        @media (max-width: 480px) {
-             #main-buttons-page h1 { font-size: 1.5em; }
-             .logo { max-width: 120px; } /* Further adjusted logo size */
-              .sub-buttons-page h2 { font-size: 1.4em; }
-             .button { padding: 14px 25px; font-size: 1.05em; }
-             .sub-buttons-container { grid-template-columns: 1fr; }
-              .sub-button { font-size: 1em; padding: 12px 15px; }
-              .sub-button i { font-size: 1.3em; }
-            header h1 { font-size: 1.3em; }
-            .container { padding: 15px; }
-            .question h2 { font-size: 1.15em; }
-            .options button { font-size: 0.95em; }
-            .floating-btn { width: 45px; height: 45px; font-size: 1.2em; bottom: 15px; right: 15px;}
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            left: 24px; /* يمين مرئي في RTL */
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--modern-surface-light);
+            color: var(--modern-text-secondary-light);
+            border: 1px solid var(--modern-border-light);
+            box-shadow: var(--shadow-modern);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem; /* 20px */
+            cursor: pointer;
+            z-index: 100;
+            transition: all var(--transition-modern);
         }
+        .theme-toggle:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-modern-lg);
+            color: var(--modern-accent-primary-light);
+        }
+        body.dark-mode .theme-toggle {
+            background-color: var(--modern-surface-dark);
+            color: var(--modern-text-secondary-dark);
+            border-color: var(--modern-border-dark);
+        }
+        body.dark-mode .theme-toggle:hover {
+            color: var(--modern-accent-primary-dark);
+        }
+        .theme-toggle .fa-sun { display: none; }
+        body.dark-mode .theme-toggle .fa-moon { display: none; }
+        body.dark-mode .theme-toggle .fa-sun { display: inline-block; }
 
+        /* Music Control Button */
+        #music-toggle-btn {
+            position: fixed;
+            bottom: 24px;
+            /* Adjust left based on theme toggle button position */
+            left: calc(24px + 48px + 10px); /* theme-toggle-left + theme-toggle-width + margin */
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--modern-surface-light);
+            color: var(--modern-text-secondary-light);
+            border: 1px solid var(--modern-border-light);
+            box-shadow: var(--shadow-modern);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            z-index: 100;
+            transition: all var(--transition-modern);
+        }
+        #music-toggle-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-modern-lg);
+            color: var(--modern-accent-secondary-light); /* Different accent for music */
+        }
+        body.dark-mode #music-toggle-btn {
+            background-color: var(--modern-surface-dark);
+            color: var(--modern-text-secondary-dark);
+            border-color: var(--modern-border-dark);
+        }
+         body.dark-mode #music-toggle-btn:hover {
+            color: var(--modern-accent-secondary-dark);
+        }
+        #music-toggle-btn .fa-volume-xmark { display: none; } /* Initially show play/volume-high */
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            body { padding: 24px 16px; }
+            .main-container { padding: 24px; }
+            .page-title { font-size: 1.875rem; } /* 30px */
+            .page-subtitle { font-size: 0.875rem; margin-bottom: 24px; }
+            .action-button { padding: 12px 28px; font-size: 0.9375rem; }
+            .question-card { padding: 16px; }
+            .question-statement { font-size: 1rem; }
+            .option-label { font-size: 0.9375rem; }
+            .theme-toggle { bottom: 16px; left: 16px; width: 44px; height: 44px; font-size: 1.125rem; }
+            #music-toggle-btn {
+                bottom: 16px;
+                left: calc(16px + 44px + 8px); /* Adjusted for smaller screen */
+                width: 44px;
+                height: 44px;
+                font-size: 1.125rem;
+            }
+        }
     </style>
 </head>
-<body>
+<body> <!-- الوضع الفاتح هو الافتراضي -->
 
-    <div id="main-buttons-page" class="page">
-        <div class="logo-container">
-            <img src="https://files.catbox.moe/570d00.png" alt="الشعار" class="logo">
-        </div>
-        <h1><i class="fas fa-stethoscope"></i> اسئلة محاضرات الفسلجة<br> بنمط مختلف</h1>
+    <audio id="background-music" loop autoplay>
+        <source src="https://files.catbox.moe/np4yp5.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-        <button class="button main-button natural-questions-btn" onclick="navigateToLectureSelection('NaturalQuestions')">
-            <i class="fas fa-leaf"></i>
-            اسئلة طبيعية عادية
-        </button>
-        <button class="button main-button critical-questions-btn" onclick="navigateToLectureSelection('CriticalThinkingQuestions')">
-            <i class="fas fa-lightbulb"></i>
-            اسئلة فكرية
-        </button>
-    </div>
+    <div class="main-container">
+        <div id="intro-page">
+            <h1 class="page-title">مرحباً بك في الاختبار</h1>
+            <p class="page-subtitle"></p>
 
-    <div id="ministerial-questions-sub-page" class="page sub-buttons-page">
-        <h2><i class="fas fa-clipboard-list"></i> اختر محاضرة لعرض الاسئلة <span id="question-type-title"></span></h2>
-        <div class="sub-buttons-container" id="lecture-buttons-container">
-            <!-- Lecture buttons will be dynamically inserted here -->
-        </div>
-        <div class="back-button-container">
-            <button class="button back-button" onclick="showPage('main-buttons-page')">رجوع</button>
-        </div>
-    </div>
-
-    <div id="quiz-page" class="page">
-        <header>
-            <h1 id="quiz-title"> <i class="fas fa-notes-medical"></i> </h1>
-        </header>
-        <div class="container">
-            <p class="loading-text" style="text-align: center; font-size: 1.2em; color: var(--text-light); padding: 30px;">جار تحميل الأسئلة...</p>
-        </div>
-        <footer>
-             <div class="back-button-container" style="margin-top: 0; margin-bottom: 10px;">
-                <button class="button back-button" onclick="showPage(lastSubButtonsPageId)">رجوع</button>
+            <div class="qr-display">
+                 <img src="https://imgg.io/images/2025/04/24/05545881cdff1a4457de56ce04294f90.jpg" alt="رمز الاستجابة السريعة">
             </div>
-            <span><i class="far fa-copyright"></i> عبدالرحمن حسن</span>
-        </footer>
+
+            <button class="action-button" id="start-test-button">
+                ابدأ بلاسئلة
+            </button>
+        </div>
+
+        <div id="test-page">
+             <h1 class="page-title">أسئلة الاختبار</h1>
+             <p class="page-subtitle">اختار الجواب الصح</p>
+            <div id="questions-area">
+                <!-- Questions will be loaded here -->
+            </div>
+        </div>
     </div>
 
-    <button id="darkModeToggle" class="floating-btn" aria-label="Toggle Dark Mode">
-        <i class="fas fa-sun"></i>
+     <button class="theme-toggle" id="theme-toggle-btn" aria-label="تبديل الوضع">
+         <i class="fas fa-moon"></i>
+         <i class="fas fa-sun"></i>
+     </button>
+
+     <button id="music-toggle-btn" aria-label="تشغيل/إيقاف الموسيقى">
+        <i class="fas fa-volume-high"></i> <!-- أيقونة الصوت العالي -->
+        <i class="fas fa-volume-xmark"></i> <!-- أيقونة كتم الصوت -->
     </button>
 
-
     <script>
-         const quizData = {
-            "NaturalQuestions": {
-                "Lecture2_RBC": [
-                    { question: "What is the typical diameter of a Red Blood Cell (RBC)?", options: ["A. 2-4 µm", "B. 6-8 µm", "C. 10-12 µm", "D. 15-20 µm"], correct: 1 },
-                    { question: "Which of the following best describes the shape of an RBC?", options: ["A. Spherical", "B. Bi-Concave disk", "C. Cuboidal", "D. Irregular"], correct: 1 },
-                    { question: "Are mature mammalian RBCs nucleated?", options: ["A. Yes, always", "B. No, they are non-nucleated", "C. Only in certain species", "D. Only during development"], correct: 1 },
-                    { question: "What percentage of an RBC is typically water?", options: ["A. 30-40%", "B. 50%", "C. 60-70%", "D. 80-90%"], correct: 2 },
-                    { question: "What is the approximate normal range of RBCs per cubic mm in humans?", options: ["A. 1-2 million", "B. 2.5-3.5 million", "C. 4.5-5 million", "D. 7-8 million"], correct: 2 },
-                    { question: "What is the primary function of haemoglobin in RBCs?", options: ["A. Fighting infection", "B. Transporting oxygen and carbon dioxide", "C. Blood clotting", "D. Maintaining osmotic balance"], correct: 1 },
-                    { question: "The heme group in haemoglobin contains which metal ion that temporarily links to oxygen?", options: ["A. Magnesium", "B. Calcium", "C. Iron", "D. Copper"], correct: 2 },
-                    { question: "What percentage of an erythrocyte's solid material is typically haemoglobin?", options: ["A. About 50%", "B. About 70%", "C. Most 90%", "D. About 30%"], correct: 2 },
-                    { question: "Which compound acts to store oxygen in muscle fiber and is related to haemoglobin?", options: ["A. Myosin", "B. Actin", "C. Myoglobin", "D. Ferritin"], correct: 2 },
-                    { question: "Which organ acts as a limited reservoir of red blood cells in humans but is more significant in dogs and horses?", options: ["A. Liver", "B. Kidneys", "C. Spleen", "D. Bone marrow"], correct: 2 },
-                    { question: "Which condition stimulates RBC production from bone marrow?", options: ["A. Hyperoxia", "B. Hypoxia", "C. Alkalosis", "D. Acidosis"], correct: 1 },
-                    { question: "Which vitamin, along with stimulating bone marrow, is listed as a factor promoting erythropoiesis?", options: ["A. Vitamin D", "B. Vitamin K", "C. Vitamin C", "D. Vitamin B12 (not explicitly listed on page 1, but Vit C is)"], correct: 2 },
-                    { question: "What is the role of HCL gastric juice in promoting erythropoiesis?", options: ["A. Stimulates bone marrow directly", "B. Helps in liberation of iron in inorganic form", "C. Acts as an antioxidant", "D. Enhances oxygen carrying capacity"], correct: 1 },
-                    { question: "Which of the following is NOT listed as a function of erythrocytes on page 2?", options: ["A. Oxygen carrier to all parts of the body tissues", "B. Carry CO2 from body tissues to lungs for excretion", "C. Production of antibodies", "D. Help in maintain ionic balance"], correct: 2 },
-                    { question: "What is the approximate lifespan of an erythrocyte?", options: ["A. 30 days", "B. 60 days", "C. 120 days", "D. 180 days"], correct: 2 },
-                    { question: "Where are the main sites of destruction for aging red blood cells?", options: ["A. Bone marrow and thymus", "B. Lungs and kidneys", "C. Liver and spleen", "D. Stomach and intestines"], correct: 2 },
-                    { question: "The heme constituent of hemoglobin is eventually excreted as what?", options: ["A. Urea", "B. Creatinine", "C. Bilirubin", "D. Uric acid"], correct: 2 },
-                    { question: "Approximately how many hemoglobin molecules does each red cell contain?", options: ["A. 100 million", "B. 320 million", "C. 640 million", "D. 1 billion"], correct: 2 },
-                    { question: "Normal adult hemoglobin (HbA) consists of how many polypeptide chains?", options: ["A. Two (α2)", "B. Two (β2)", "C. Four (α2β2)", "D. Six (α2β2γ2)"], correct: 2 },
-                    { question: "What are the proteins on the surface of red blood cells that determine blood groups called?", options: ["A. Antibodies", "B. Antigens", "C. Haptens", "D. Cytokines"], correct: 1 },
-                    { question: "If a person has type A antigens on their RBCs, what antibodies will they have in their plasma?", options: ["A. Anti-A antibodies", "B. Anti-B antibodies", "C. Both Anti-A and Anti-B antibodies", "D. No antibodies"], correct: 1 },
-                    { question: "A person with blood group O has which antigens on their RBCs?", options: ["A. A antigens", "B. B antigens", "C. Both A and B antigens", "D. Neither A nor B antigens"], correct: 3 },
-                    { question: "What does 'Rhesus positive' mean?", options: ["A. The person has Rhesus antibodies in their plasma.", "B. The person has Rhesus antigens on their red blood cells.", "C. The person lacks Rhesus antigens.", "D. The person produces Rhesus factor."], correct: 1 },
-                    { question: "A person with A- (A negative) blood group has:", options: ["A. A antigens and Rhesus antigens", "B. A antigens but no Rhesus antigens", "C. B antigens and Rhesus antigens", "D. Neither A nor Rhesus antigens"], correct: 1 },
-                    { question: "Which blood group is characterized by having both A and B antigens but no Rhesus antigens?", options: ["A. AB+", "B. O-", "C. AB-", "D. A-"], correct: 2 }
-                ],
-                "Lecture1_Endocrine": [
-                    { question: "Hormones are described as potent chemical signaling substances also known as:", options: ["A. Enzymes", "B. Neurotransmitters", "C. Messengers", "D. Antigens"], correct: 2 },
-                    { question: "Endocrine glands secrete their products into:", options: ["A. Ducts leading to cavities", "B. The blood capillary", "C. The lumen of an organ", "D. The outer surface of the body"], correct: 1 },
-                    { question: "Which gland is described as the major integrating link between the nervous and endocrine system?", options: ["A. Pituitary gland", "B. Thyroid gland", "C. Hypothalamus", "D. Adrenal gland"], correct: 2 },
-                    { question: "The anterior pituitary gland accounts for what percentage of the total weight of the pituitary gland?", options: ["A. 25%", "B. 50%", "C. 75%", "D. 90%"], correct: 2 },
-                    { question: "The posterior pituitary gland contains axons and axon terminals of neurons whose cell bodies are located in the:", options: ["A. Cerebral cortex", "B. Cerebellum", "C. Supraoptic and paraventricular nuclei of the hypothalamus", "D. Thalamus"], correct: 2 },
-                    { question: "Where is the thyroid gland located?", options: ["A. In the brain, attached to the hypothalamus", "B. In the front of the neck below the Adams' apple", "C. On top of the kidneys", "D. Behind the stomach"], correct: 1 },
-                    { question: "Parathyroid glands produce which hormone?", options: ["A. Thyroxine", "B. Calcitonin", "C. Parathyroid hormone", "D. Aldosterone"], correct: 2 },
-                    { question: "The adrenal glands are also known as:", options: ["A. Parotid glands", "B. Pineal glands", "C. Supra renal glands", "D. Thymus glands"], correct: 2 },
-                    { question: "The adrenal cortex is divided into three zones. Which of the following is NOT one of them?", options: ["A. Zona glomerulosa", "B. Zona fasciculata", "C. Zona medullaris", "D. Zona reticularis"], correct: 2 },
-                    { question: "The pancreas is known as a mixed gland because it has:", options: ["A. Multiple lobes", "B. Both endocrine and exocrine functions", "C. Secretes both peptide and steroid hormones", "D. Produces both enzymes and mucus"], correct: 1 },
-                    { question: "Alpha cells (A cells) in the pancreatic islets secrete which hormone?", options: ["A. Insulin", "B. Glucagon", "C. Somatostatin", "D. Gastrin"], correct: 1 },
-                    { question: "Beta cells (b cells) in the pancreatic islets secrete which hormone that decreases blood glucose concentration?", options: ["A. Glucagon", "B. Somatostatin", "C. Insulin", "D. Adrenaline"], correct: 2 },
-                    { question: "What percentage of pancreatic islet cells are typically beta cells?", options: ["A. 20%", "B. 5%", "C. 75%", "D. 50%"], correct: 2 },
-                    { question: "Which female sex hormones are secreted by the ovaries?", options: ["A. Testosterone and Androgen", "B. Oestrogen and Progesterone", "C. FSH and LH", "D. Cortisol and Aldosterone"], correct: 1 },
-                    { question: "Leydig cells in the testes make and secrete testosterone in response to which hormone from the pituitary gland?", options: ["A. FSH (Follicle-Stimulating Hormone)", "B. LH (Luteinizing Hormone)", "C. ACTH (Adrenocorticotropic Hormone)", "D. TSH (Thyroid-Stimulating Hormone)"], correct: 1 },
-                    { question: "Sertoli cells in the testes help in the process of:", options: ["A. Hormone secretion", "B. Spermatogenesis (production of sperm)", "C. Testosterone storage", "D. Blood-testis barrier formation"], correct: 1 },
-                    { question: "The pineal gland is attached to the roof of which part of the brain?", options: ["A. First ventricle", "B. Second ventricle", "C. Third ventricle", "D. Fourth ventricle"], correct: 2 },
-                    { question: "What hormone is secreted by the pineal gland?", options: ["A. Serotonin", "B. Dopamine", "C. Melatonin", "D. Oxytocin"], correct: 2 },
-                    { question: "What is the primary role attributed to melatonin?", options: ["A. Regulating metabolism", "B. Promoting sleepiness and setting the biological clock", "C. Stimulating growth", "D. Controlling calcium levels"], correct: 1 },
-                    { question: "Exocrine glands deliver their secretion into:", options: ["A. Bloodstream directly", "B. Lymphatic system", "C. Ducts, cavities, lumen of an organ, or outer body", "D. Interstitial fluid"], correct: 2 },
-                    { question: "Hormones are divided into which two main types based on their chemical structure mentioned in the lecture?", options: ["A. Amines and Eicosanoids", "B. Peptides hormones and steroid hormones", "C. Glycoproteins and Lipoproteins", "D. Neurohormones and Paracrine hormones"], correct: 1 },
-                    { question: "The pituitary gland (hypophysis) lies in the:", options: ["A. Foramen magnum", "B. Sella turcica of the sphenoid bone", "C. Cranial cavity generally", "D. Medulla oblongata"], correct: 1 },
-                    { question: "Which cells in the pancreas secrete somatostatin?", options: ["A. Alpha cells", "B. Beta cells", "C. Delta cells", "D. Gamma cells"], correct: 2 },
-                    { question: "The thyroid gland consists of two lobes connected by a(n):", options: ["A. Ligament", "B. Isthmus", "C. Fissure", "D. Septum"], correct: 1 },
-                    { question: "Steroid hormones are produced by which part of the adrenal gland?", options: ["A. Adrenal medulla", "B. Adrenal cortex", "C. Both cortex and medulla", "D. Zona reticularis only"], correct: 1 }
-                ],
-                "Lecture5_Organelles": [
-                    { question: "The Golgi Apparatus is typically composed of how many stacked layers of vesicles?", options: ["A. One or two", "B. Two or three", "C. Four or more", "D. Ten or more"], correct: 2 },
-                    { question: "Where is the Golgi apparatus usually located within the cell?", options: ["A. Scattered throughout the cytoplasm", "B. Near one side of the nucleus", "C. Attached to the endoplasmic reticulum", "D. Inside the mitochondria"], correct: 1 },
-                    { question: "Substances entrapped in ER vesicles are transported to which organelle for processing?", options: ["A. Lysosomes", "B. Mitochondria", "C. Golgi apparatus", "D. Nucleus"], correct: 2 },
-                    { question: "Which of the following can be formed from the Golgi apparatus?", options: ["A. Mitochondria", "B. Ribosomes", "C. Lysosomes, secretory vesicles", "D. Endoplasmic reticulum"], correct: 2 },
-                    { question: "Lysosomes are described as:", options: ["A. Membranous tubules", "B. Vesicular organelles", "C. Non-membranous structures", "D. Filamentous networks"], correct: 1 },
-                    { question: "How do lysosomes primarily form?", options: ["A. By budding off from the mitochondria", "B. By breaking off from the Golgi apparatus", "C. Assembled from free ribosomes", "D. Synthesized directly from the nucleus"], correct: 1 },
-                    { question: "What primary function do lysosomes provide for the cell?", options: ["A. Energy production", "B. Protein synthesis", "C. Intracellular digestive system", "D. Lipid storage"], correct: 2 },
-                    { question: "Which of these can be digested by lysosomes?", options: ["A. Only damaged cellular structures", "B. Only ingested food particles", "C. Only unwanted bacteria", "D. All of the above (damaged structures, food particles, bacteria)"], correct: 3 },
-                    { question: "Mitochondria are also called the:", options: ["A. 'Control centers' of the cell", "B. 'Protein factories' of the cell", "C. 'Power houses' of the cell", "D. 'Storage units' of the cell"], correct: 2 },
-                    { question: "What would happen if cells were without mitochondria?", options: ["A. Protein synthesis would cease", "B. They would be unable to extract enough energy from nutrients", "C. DNA replication would stop", "D. They would lose their shape"], correct: 1 },
-                    { question: "The liberated energy in mitochondria is used to synthesize what 'high-energy' substance?", options: ["A. Glucose", "B. Adenosine triphosphate (ATP)", "C. Cyclic AMP (cAMP)", "D. NADH"], correct: 1 },
-                    { question: "The number of mitochondria per cell varies according to:", options: ["A. Cell size only", "B. Cell function", "C. The age of the organism", "D. The type of nucleus"], correct: 1 },
-                    { question: "Mitochondria are composed mainly of how many lipid bilayer-protein membranes?", options: ["A. One", "B. Two (an outer and an inner membrane)", "C. Three", "D. Four"], correct: 1 },
-                    { question: "The infoldings of the inner mitochondrial membrane form shelves called:", options: ["A. Grana", "B. Thylakoids", "C. Cristae", "D. Lamellae"], correct: 2 },
-                    { question: "What is found attached to the cristae of mitochondria?", options: ["A. Ribosomes", "B. Oxidative enzymes", "C. DNA", "D. Storage granules"], correct: 1 },
-                    { question: "The nucleus is a membrane-bound organelle that contains:", options: ["A. Ribosomes", "B. Genetic material (DNA)", "C. ATP", "D. Lysosomal enzymes"], correct: 1 },
-                    { question: "One of the functions of the nucleus is to maintain the integrity of the cell by facilitating:", options: ["A. Only transcription processes", "B. Only replication processes", "C. Transcription and replication processes", "D. Energy production"], correct: 2 },
-                    { question: "What is the largest organelle inside the cell, taking up about a tenth of the entire cell?", options: ["A. Mitochondrion", "B. Golgi apparatus", "C. Nucleus", "D. Endoplasmic reticulum"], correct: 2 },
-                    { question: "Which of the following is NOT listed as a component of the nucleus?", options: ["A. Nuclear membrane", "B. Nucleoplasm", "C. Centriole", "D. Nucleolus"], correct: 2 },
-                    { question: "Chromatin is a component of the:", options: ["A. Cytoplasm", "B. Mitochondria", "C. Nucleus", "D. Golgi apparatus"], correct: 2 },
-                    { question: "Which of these is a main function of the nucleus?", options: ["A. ATP synthesis", "B. Lipid metabolism", "C. Protein synthesis, cell division, and differentiation", "D. Detoxification"], correct: 2 },
-                    { question: "The nucleus controls the synthesis of enzymes involved in:", options: ["A. Only DNA replication", "B. Cellular metabolism", "C. Only cell division", "D. Only protein export"], correct: 1 },
-                    { question: "Where are chromosomes located in eukaryotic cells?", options: ["A. In the cytoplasm", "B. In the mitochondria", "C. In the nucleus", "D. In the Golgi apparatus"], correct: 2 },
-                    { question: "Chromosomes are made up of strands of:", options: ["A. RNA", "B. Proteins", "C. DNA", "D. Lipids"], correct: 2 },
-                    { question: "Which of the following is NOT listed as a main part of a chromosome?", options: ["A. Kinetochores", "B. Telomeres", "C. Spindle fibers", "D. Chromatids"], correct: 2 }
-                ],
-                "Lecture4_Digestion": [
-                    { question: "What are the two main functions of the digestive system?", options: ["A. Respiration and circulation", "B. Digestion and absorption", "C. Excretion and filtration", "D. Sensation and movement"], correct: 1 },
-                    { question: "Which of the following is NOT one of the four stages of food processing in animals?", options: ["A. Ingestion", "B. Digestion", "C. Excretion", "D. Elimination"], correct: 2 },
-                    { question: "Mechanical digestion primarily involves:", options: ["A. Enzymes breaking down macromolecules", "B. Larger pieces of food broken down into smaller pieces", "C. Absorption of nutrients into the bloodstream", "D. Hormonal regulation of appetite"], correct: 1 },
-                    { question: "Where does chemical breakdown of starch begin?", options: ["A. Stomach", "B. Small intestine", "C. Mouth", "D. Large intestine"], correct: 2 },
-                    { question: "Which enzyme, produced by salivary glands, begins starch breakdown?", options: ["A. Pepsin", "B. Lipase", "C. Salivary amylase", "D. Trypsin"], correct: 2 },
-                    { question: "Which of these is NOT a salivary gland?", options: ["A. Parotid gland", "B. Submandibular gland", "C. Pineal gland", "D. Sublingual gland"], correct: 2 },
-                    { question: "The stomach is located on which side of the abdominal cavity?", options: ["A. Right side", "B. Left side", "C. Centrally", "D. Posteriorly"], correct: 1 },
-                    { question: "Food enters the stomach through a muscular valve called the:", options: ["A. Pyloric sphincter", "B. Ileocecal valve", "C. Lower esophageal sphincter", "D. Sphincter of Oddi"], correct: 2 },
-                    { question: "Which cells in the stomach secrete gastric HCl?", options: ["A. Chief cells", "B. Mucus cells", "C. Parietal cells (oxyntic cells)", "D. G-cells"], correct: 2 },
-                    { question: "Chief cells in the stomach synthesize and secrete:", options: ["A. Gastrin", "B. Intrinsic factor", "C. Pepsinogen", "D. Mucus"], correct: 2 },
-                    { question: "Pepsinogen is activated into pepsin by:", options: ["A. Salivary amylase", "B. Gastric HCl", "C. Trypsin", "D. Bile"], correct: 1 },
-                    { question: "What is the typical pH of gastric juice?", options: ["A. 0.5-1.0", "B. 1-3", "C. 4-5", "D. 6-7"], correct: 1 },
-                    { question: "Which phase of gastric secretion occurs before food enters the stomach?", options: ["A. Gastric phase", "B. Intestinal phase", "C. Cephalic phase", "D. Absorptive phase"], correct: 2 },
-                    { question: "Which hormone causes an increase in the secretion of HCl, pepsinogen, and intrinsic factor from the stomach?", options: ["A. Secretin", "B. Cholecystokinin (CCK)", "C. Gastrin", "D. Somatostatin"], correct: 2 },
-                    { question: "Cholecystokinin (CCK) has its most significant effect on the:", options: ["A. Stomach", "B. Gall bladder", "C. Salivary glands", "D. Esophagus"], correct: 1 },
-                    { question: "Where does most chemical and mechanical digestion and absorption take place?", options: ["A. Stomach", "B. Large intestine", "C. Small intestine", "D. Esophagus"], correct: 2 },
-                    { question: "Tiny projections called ____ line the small intestine and absorb digested food.", options: ["A. Cilia", "B. Flagella", "C. Villi", "D. Rugae"], correct: 2 },
-                    { question: "Which duct is composed of the liver duct and bile duct, draining into the duodenum?", options: ["A. Pancreatic duct", "B. Cystic duct", "C. Common duct (Common bile duct)", "D. Hepatic portal vein"], correct: 2 },
-                    { question: "What is the first and shortest part of the small intestine?", options: ["A. Jejunum", "B. Ileum", "C. Duodenum", "D. Cecum"], correct: 2 },
-                    { question: "The primary function of the ileum is to absorb:", options: ["A. Water and electrolytes", "B. Vitamin B12 and bile salts", "C. Sugars and amino acids", "D. Iron and calcium"], correct: 1 },
-                    { question: "Which organ plays a major role in metabolism and produces bile?", options: ["A. Pancreas", "B. Spleen", "C. Liver", "D. Gallbladder"], correct: 2 },
-                    { question: "Bile is temporarily stored in the:", options: ["A. Liver", "B. Pancreas", "C. Gallbladder", "D. Duodenum"], correct: 2 },
-                    { question: "Which hormones stimulate the liver to produce bile?", options: ["A. Gastrin and GIP", "B. Insulin and glucagon", "C. Secretin and cholecystokinin (CCK)", "D. Somatostatin and motilin"], correct: 2 },
-                    { question: "What is the main function of bile juice in digestion?", options: ["A. Digesting proteins", "B. Emulsification of ingested fat", "C. Digesting carbohydrates", "D. Neutralizing stomach acid primarily"], correct: 1 },
-                    { question: "The exocrine secretion of the pancreas, pancreatic juice, has a pH of approximately:", options: ["A. 2", "B. 5", "C. 8", "D. 10"], correct: 2 }
-                ],
-                "Lecture3_WBC": [
-                    { question: "White blood cells are also known as:", options: ["A. Erythrocytes", "B. Thrombocytes", "C. Leukocytes", "D. Hepatocytes"], correct: 2 },
-                    { question: "All white blood cells are produced and derived from multipotent cells in the bone marrow known as:", options: ["A. Myocytes", "B. Osteocytes", "C. Hematopoietic stem cells", "D. Chondrocytes"], correct: 2 },
-                    { question: "What distinguishes white blood cells from red blood cells and platelets, as mentioned in the text?", options: ["A. Their size", "B. Their shape", "C. The presence of nuclei", "D. Their color"], correct: 2 },
-                    { question: "The normal white cell count in an adult is usually between:", options: ["A. 1,000 - 3,000 /L", "B. 4 x 10^9/L and 1.1 x 10^10/L (4,000 - 11,000 /µL)", "C. 15 x 10^9/L and 20 x 10^10/L", "D. 500 - 1,000 /µL"], correct: 1 },
-                    { question: "An increase in the number of leukocytes over the upper limits is called:", options: ["A. Leukopenia", "B. Anemia", "C. Leukocytosis", "D. Thrombocytopenia"], correct: 2 },
-                    { question: "Which type of white blood cell is the most common in the body, constituting 60-70% of circulating leukocytes?", options: ["A. Lymphocytes", "B. Monocytes", "C. Eosinophils", "D. Neutrophils"], correct: 3 },
-                    { question: "The process by which neutrophils migrate toward sites of infection or inflammation is called:", options: ["A. Phagocytosis", "B. Degranulation", "C. Chemotaxis", "D. Opsonization"], correct: 2 },
-                    { question: "For targets to be recognized by neutrophils for phagocytosis, they must be coated in opsonins, a process known as:", options: ["A. Antibody neutralization", "B. Antibody opsonization", "C. Complement activation", "D. Antigen presentation"], correct: 1 },
-                    { question: "The life span of a circulating human neutrophil is about:", options: ["A. 12 hours", "B. 1-2 days", "C. 4-5 days", "D. 10-14 days"], correct: 2 },
-                    { question: "Which white blood cells compose about 2-4% of the WBC total and rise in response to allergies and parasitic infections?", options: ["A. Basophils", "B. Neutrophils", "C. Eosinophils", "D. Monocytes"], correct: 2 },
-                    { question: "Basophils are chiefly responsible for allergic and antigen response by releasing which chemical?", options: ["A. Interferon", "B. Interleukin", "C. Histamine", "D. Lysozyme"], correct: 2 },
-                    { question: "Heparin, released by basophils, is an:", options: ["A. Anticoagulant", "B. Procoagulant", "C. Vasoconstrictor", "D. Antibiotic"], correct: 0 },
-                    { question: "Mast cells are derived from which type of stem cell?", options: ["A. Lymphoid stem cell", "B. Myeloid stem cell", "C. Erythroid stem cell", "D. Megakaryocytic stem cell"], correct: 1 },
-                    { question: "Which type of lymphocyte plays a central role in cell-mediated immunity and has a T-cell receptor on its surface?", options: ["A. B cells", "B. NK cells", "C. T cells", "D. Plasma cells"], correct: 2 },
-                    { question: "T cells are so named because they mature primarily in the:", options: ["A. Thyroid", "B. Tonsils", "C. Thymus", "D. Thorax"], correct: 2 },
-                    { question: "Which are the largest type of WBCs that eventually leave the bloodstream and become tissue macrophages?", options: ["A. Neutrophils", "B. Lymphocytes", "C. Basophils", "D. Monocytes"], correct: 3 },
-                    { question: "Monocytes have which characteristic shape of nucleus?", options: ["A. Round", "B. Multi-lobed", "C. Kidney-shaped", "D. Bi-lobed"], correct: 2 },
-                    { question: "The normal WBC count for newborns is approximately:", options: ["A. 4,000 to 11,000 /mcL", "B. 6,200 to 17,000 /mcL", "C. 9,000 to 30,000 /mcL", "D. 1,000 to 4,800 /mcL"], correct: 2 },
-                    { question: "Which of the following is NOT listed as a symptom of a low WBC count?", options: ["A. Body aches", "B. Fever", "C. Increased appetite", "D. Headaches"], correct: 2 },
-                    { question: "WBC proliferative disorders causing excessive numbers can be classed as:", options: ["A. Only myeloproliferative", "B. Only lymphoproliferative", "C. Myeloproliferative and lymphoproliferative", "D. Only autoimmune"], correct: 2 },
-                    { question: "A decrease in white blood cells below the lower limit is called:", options: ["A. Leukocytosis", "B. Polycythemia", "C. Leukopenia", "D. Thrombocytosis"], correct: 2 },
-                    { question: "Neutrophil-cagers function by:", options: ["A. Directly killing bacteria with enzymes", "B. Attaching to blood vessel walls to block germs", "C. Producing antibodies", "D. Releasing histamine to cause inflammation"], correct: 1 },
-                    { question: "Eosinophils secrete chemicals that destroy:", options: ["A. Small bacteria", "B. Viruses", "C. Large parasites like hookworms", "D. Fungal cells"], correct: 2 },
-                    { question: "B cells are lymphocytes that primarily:", options: ["A. Perform phagocytosis", "B. Mature in the thymus", "C. Make antibodies", "D. Directly kill infected cells"], correct: 2 },
-                    { question: "White blood cells make up approximately what percentage of the total blood volume in a healthy adult?", options: ["A. 1%", "B. 5%", "C. 10%", "D. 20%"], correct: 0 }
-                ]
-            },
-            "CriticalThinkingQuestions": {
-                "Lecture2_RBC": [
-                    { question: "If a substance interfered with the spleen's ability to effectively store and release RBCs, which group of mammals mentioned would likely experience a more significant acute negative impact on their oxygen transport capacity during sudden, high-demand exertion?", options: ["A. Humans, due to their already limited splenic reservoir.", "B. Dogs and horses, because their spleen stores a larger number of RBCs for such demands.", "C. All mammals equally, as the spleen's role is universally critical.", "D. Neither, as bone marrow response is always primary for acute needs."], correct: 1 },
-                    { question: "A patient presents with chronic fatigue and is found to have iron-deficiency anemia despite adequate dietary iron intake. If the cause is related to one of the \"Factor Promoting erythrocytes\" involving iron availability, which factor is most likely dysfunctional?", options: ["A. Insufficient Vitamin C to stimulate bone marrow.", "B. Reduced thyroxin secretion.", "C. Impaired HCL gastric juice production affecting iron liberation.", "D. Lack of traces of copper."], correct: 2 },
-                    { question: "Considering the diverse functions listed for erythrocytes (page 2), which function is LEAST directly dependent on the physical presence of hemoglobin within the RBC?", options: ["A. Oxygen carrier to all parts of the body tissues.", "B. Carry CO2 from body tissues to lungs for excrete.", "C. Help in maintain ionic balance.", "D. Hb act as important buffer."], correct: 2 },
-                    { question: "A new experimental drug causes mature RBCs to become perfectly spherical and rigid, losing their biconcave shape and flexibility. Which critical aspect of RBC function would be most immediately and severely compromised?", options: ["A. Their ability to carry oxygen via hemoglobin.", "B. Their lifespan of 120 days.", "C. Their ability to navigate narrow capillaries and deliver oxygen to tissues.", "D. Their role in maintaining blood viscosity."], correct: 2 },
-                    { question: "Based on the antigen-antibody relationships described for ABO blood groups (page 5), why can an individual with Type O blood donate RBCs to individuals with Type A, B, or AB blood (considering only ABO compatibility)?", options: ["A. Type O RBCs have both A and B antigens, making them universally compatible.", "B. Type O individuals have no anti-A or anti-B antibodies in their plasma.", "C. Type O RBCs lack A and B antigens, so they won't be attacked by the recipient's antibodies.", "D. Type O plasma contains universal antibodies that protect the donated cells."], correct: 2 },
-                    { question: "If a condition causes the average lifespan of erythrocytes to be reduced to 60 days, but the rate of erythropoiesis (RBC production) remains normal, what is the most likely overall consequence for the patient's blood parameters?", options: ["A. An increase in the total number of circulating RBCs due to faster turnover.", "B. A decrease in the total number of circulating RBCs and potentially signs of anemia.", "C. No significant change in RBC count as production matches the shortened lifespan.", "D. An increase in the size of individual RBCs to compensate."], correct: 1 },
-                    { question: "The structure of normal adult hemoglobin (HbA) as α2β2, with each of the four polypeptide chains having its own heme group, is crucial for its function. What advantage does this multi-subunit, multi-heme structure provide for oxygen transport?", options: ["A. It allows each RBC to carry only one type of gas, either oxygen or carbon dioxide.", "B. It enables each hemoglobin molecule to bind multiple oxygen molecules, increasing carrying capacity.", "C. It makes the hemoglobin molecule more resistant to degradation by phagocytes.", "D. It ensures that carbon dioxide is exclusively carried by the globin chains."], correct: 1 },
-                    { question: "If a disorder led to an uncontrolled, excessive production of RBCs (polycythemia), significantly above the normal 4.5-5 million per cubic mm, which listed function of erythrocytes (page 2) might be adversely affected, leading to circulatory problems?", options: ["A. Oxygen carrier capacity would be diminished.", "B. Hb acting as an important buffer would be impaired.", "C. Ability to maintain blood viscosity would be compromised (viscosity would dangerously increase).", "D. Help in maintaining ionic balance would be lost."], correct: 2 },
-                    { question: "An individual has a congenital condition resulting in a non-functional liver and a severely impaired spleen. Based on the information about RBC aging and destruction, what would be a primary consequence regarding their red blood cells?", options: ["A. RBCs would be produced at a much slower rate by the bone marrow.", "B. Aging RBCs would circulate for a shorter period and be destroyed in the kidneys.", "C. There would be an accumulation of aging, less functional RBCs, and impaired bilirubin processing.", "D. RBCs would become nucleated to compensate for the lack of destruction sites."], correct: 2 },
-                    { question: "The non-nucleated nature of mature mammalian RBCs is a key characteristic. How does this feature most directly contribute to their primary function of oxygen transport?", options: ["A. It allows RBCs to synthesize their own hemoglobin continuously.", "B. It provides more intracellular space for hemoglobin molecules and increases flexibility.", "C. It enables RBCs to actively participate in immune responses.", "D. It makes RBCs more resistant to osmotic changes in the plasma."], correct: 1 },
-                    { question: "A specific toxin inhibits the incorporation of iron into the heme group during hemoglobin synthesis, although globin chain production is unaffected. What would be the most direct and critical consequence for the RBC's primary function?", options: ["A. RBCs would be unable to transport carbon dioxide effectively.", "B. RBCs would lose their biconcave shape and become spherical.", "C. RBCs would be unable to bind and transport oxygen.", "D. RBCs would have a significantly shortened lifespan."], correct: 2 },
-                    { question: "The text mentions that RBCs in venous blood have a \"bigger size\" than those in arterial blood. This size increase is most likely a consequence of which physiological process occurring as blood passes through the tissues?", options: ["A. The uptake of oxygen by the RBCs, causing them to swell.", "B. The uptake of carbon dioxide and associated ionic shifts (e.g., chloride shift, not detailed but implied by gas exchange).", "C. The loss of water from RBCs into the tissue fluid.", "D. The synthesis of new hemoglobin within the RBCs in the venous system."], correct: 1 },
-                    { question: "If a person has a total deficiency of hemoglobin, but their plasma composition remains normal, how would the transport of carbon dioxide from tissues to lungs be affected, according to the text?", options: ["A. CO2 transport would cease completely as Hb is essential.", "B. CO2 transport would be significantly impaired, as Hb carries a portion, but most CO2 is transported in plasma, so some transport would still occur.", "C. CO2 transport would be enhanced as plasma would compensate for the lack of Hb.", "D. There would be no effect on CO2 transport, only on oxygen transport."], correct: 1 },
-                    { question: "How does the total amount of iron stored within the body's red blood cells compare to the iron stored in all other tissues combined?", options: ["A. Roughly equal amounts in RBCs and other tissues.", "B. Significantly less iron in RBCs compared to other tissues.", "C. More than five times the amount of iron is stored in RBCs than in all other tissues combined.", "D. Iron is exclusively stored in red blood cells."], correct: 2 },
-                    { question: "A Rhesus negative woman is pregnant for the second time. Her first child was Rhesus positive. Why is there a significant concern during this second pregnancy that was not present (or was less of a concern) during her first pregnancy with an Rh+ fetus?", options: ["A. The mother's immune system will reject any Rh- fetus.", "B. The mother may have developed anti-Rhesus antibodies during the first pregnancy/delivery, which can now cross the placenta and attack the Rh+ fetus's RBCs.", "C. The Rhesus negative mother will naturally produce Rhesus antigens during the second pregnancy.", "D. The second Rh+ fetus will develop antibodies against the mother's Rh- cells."], correct: 1 },
-                    { question: "A severe deficiency in Vitamin C, according to the factors promoting erythropoiesis listed on page 1, could indirectly lead to reduced oxygen-carrying capacity by:", options: ["A. Directly interfering with iron's ability to bind oxygen.", "B. Causing RBCs to become less flexible and unable to pass through capillaries.", "C. Impairing the bone marrow's stimulation for RBC production.", "D. Preventing the liberation of iron from inorganic forms."], correct: 2 },
-                    { question: "The statement that the spleen's role as an RBC reservoir is \"limited in human\" implies that for acute increases in oxygen demand, humans primarily rely on:", options: ["A. A rapid increase in the size of existing RBCs.", "B. A more rapid and sustained increase in RBC production from bone marrow rather than immediate large-volume splenic release.", "C. Borrowing RBCs from the lymphatic system.", "D. Converting white blood cells into red blood cells."], correct: 1 },
-                    { question: "An individual's blood type is O positive (O+). According to the descriptions of ABO and Rhesus systems, this means their red blood cells have:", options: ["A. A antigens, B antigens, and Rhesus antigens.", "B. No A antigens, no B antigens, but do have Rhesus antigens.", "C. A antigens, no B antigens, and no Rhesus antigens.", "D. No A antigens, no B antigens, and no Rhesus antigens."], correct: 1 },
-                    { question: "The description of each red cell as a \"sort of fluid droplet having Haemoglobin...and electrolytes...having delicate elastic membrane\" primarily emphasizes:", options: ["A. The cell's role in producing hormones and signaling molecules.", "B. The cell's rigid structure necessary for maintaining blood pressure.", "C. The cell's deformable nature and specialized contents, crucial for its passage through capillaries and gas transport.", "D. The cell's ability to actively synthesize proteins and repair itself."], correct: 2 },
-                    { question: "The fact that the iron molecule in hemoglobin \"temporarily\" links oxygen molecules is critical for its function because:", options: ["A. It allows iron to be easily replaced if it becomes damaged.", "B. It ensures that oxygen can be efficiently loaded in the high-oxygen environment of the lungs and unloaded in the lower-oxygen environment of the tissues.", "C. It prevents oxygen from permanently altering the structure of the hemoglobin molecule.", "D. It allows hemoglobin to also bind carbon monoxide with higher affinity."], correct: 1 }
-                ],
-                "Lecture1_Endocrine": [
-                    { question: "A patient has a tumor specifically destroying the nerve cell bodies located in the supraoptic and paraventricular nuclei of the hypothalamus. Which endocrine gland's ability to release its stored hormones would be most directly and significantly impaired?", options: ["A. Anterior pituitary gland.", "B. Posterior pituitary gland.", "C. Adrenal cortex.", "D. Thyroid gland."], correct: 1 },
-                    { question: "If a novel drug is developed that universally blocks all hormone receptors on the surface of target cells without affecting hormone production or secretion, what would be the primary consequence for endocrine system function?", options: ["A. Hormones would accumulate in the bloodstream, leading to toxicity without direct cellular effects.", "B. The endocrine glands would cease hormone production due to lack of feedback.", "C. Body processes regulated by these hormones would become dysregulated despite normal hormone levels, as hormones could not signal target cells.", "D. Target cells would adapt by internalizing hormones through alternative pathways."], correct: 2 },
-                    { question: "Considering the dual exocrine and endocrine roles of the pancreas, if a disease selectively destroys only the Islets of Langerhans, leaving the acinar cells (exocrine part) intact, which vital bodily function would be most critically affected?", options: ["A. The digestion of carbohydrates, proteins, and lipids in the small intestine.", "B. The regulation of blood glucose levels.", "C. The secretion of bicarbonate to neutralize stomach acid in the duodenum.", "D. The production of enzymes that assist in gastric digestion."], correct: 1 },
-                    { question: "A patient is diagnosed with a condition where their adrenal cortex fails to produce its characteristic hormones, but the adrenal medulla functions normally. Which specific class of hormones, essential for various metabolic and stress responses, would be deficient?", options: ["A. Peptide hormones like adrenaline.", "B. Steroid hormones like cortisol and potentially aldosterone.", "C. Glycoprotein hormones like TSH.", "D. Amine hormones like melatonin."], correct: 1 },
-                    { question: "The hypothalamus is described as a \"major integrating link\" between the nervous and endocrine systems. This implies its function is more complex than a typical endocrine gland primarily because:", options: ["A. It is the largest endocrine gland in the body.", "B. It receives neural input and translates it into hormonal signals that control other key endocrine glands, particularly the pituitary.", "C. It secretes only steroid hormones, which have widespread effects.", "D. It directly innervates all other endocrine glands in the body."], correct: 1 },
-                    { question: "A patient presents with symptoms of gigantism and metabolic disturbances. A diagnostic scan reveals a tumor in the sella turcica, significantly enlarging the pituitary gland. Given that the anterior lobe accounts for 75% of the gland's weight and is known to produce growth hormone, which lobe is most likely the primary site of the tumor causing these effects?", options: ["A. The posterior lobe, due to its direct connection to the hypothalamus.", "B. The anterior lobe, due to its size and known role in producing tropic hormones including growth hormone.", "C. The intermediate lobe (not explicitly detailed but sometimes considered), responsible for MSH.", "D. Both lobes equally, as tumors typically affect the entire gland."], correct: 1 },
-                    { question: "If the secretion of Luteinizing Hormone (LH) from the anterior pituitary is completely blocked, which specific hormone production process in the male gonads would be most directly and significantly impaired, according to the text?", options: ["A. Production of inhibin by Sertoli cells.", "B. Production and secretion of testosterone by Leydig cells.", "C. Maturation of sperm within the seminiferous tubules.", "D. Production of FSH by the pituitary itself."], correct: 1 },
-                    { question: "A newly synthesized toxin is found to specifically disrupt the function of glands that secrete their products into ducts. Which of the following glands/secretions mentioned in the text would be most directly affected?", options: ["A. The pituitary gland secreting growth hormone.", "B. Sweat glands secreting sweat.", "C. The adrenal cortex secreting cortisol.", "D. The Islets of Langerhans secreting insulin."], correct: 1 },
-                    { question: "Disruption of melatonin secretion from the pineal gland, leading to erratic levels, would most significantly impact which of the following physiological processes?", options: ["A. The body's primary metabolic rate.", "B. The regulation of blood calcium levels.", "C. The establishment and maintenance of the biological clock and sleep-wake cycles.", "D. The stress response mediated by the adrenal glands."], correct: 2 },
-                    { question: "The thyroid and parathyroid glands, though both located in the neck, have distinct primary roles. Based on their hormone products (thyroxine by thyroid, parathyroid hormone by parathyroid), how do their main regulatory functions differ?", options: ["A. Thyroid primarily regulates blood sugar; parathyroid primarily regulates reproductive functions.", "B. Thyroid primarily regulates overall metabolism; parathyroid primarily regulates calcium homeostasis (though calcium role not explicit for PTH here, its distinction is clear).", "C. Both primarily regulate the body's response to stress.", "D. Thyroid primarily regulates sleep cycles; parathyroid primarily regulates digestive processes."], correct: 1 },
-                    { question: "If Follicle-Stimulating Hormone (FSH) acts on Sertoli cells to support spermatogenesis, and a patient has normal FSH levels and normal testosterone but a very low sperm count, this suggests a potential dysfunction primarily within the:", options: ["A. Leydig cells' response to LH.", "B. Hypothalamus's production of releasing hormones.", "C. Sertoli cells' ability to support sperm development despite FSH stimulation.", "D. Anterior pituitary's ability to produce LH."], correct: 2 },
-                    { question: "The adrenal cortex is described as having three distinct zones (glomerulosa, fasciculata, reticularis). What does this zonal arrangement strongly suggest about the steroid hormones produced by the cortex?", options: ["A. All three zones produce identical steroid hormones, just in different quantities.", "B. Each zone likely specializes in producing different types or classes of steroid hormones with distinct functions.", "C. Steroid hormones are produced in the medulla and stored in these cortical zones.", "D. The zones represent different developmental stages of a single hormone-producing cell type."], correct: 1 },
-                    { question: "How does the fundamental mechanism of product delivery by endocrine glands (e.g., pituitary) differ from that of exocrine glands (e.g., sweat glands)?", options: ["A. Endocrine glands use ducts to deliver hormones locally; exocrine glands release products directly into blood.", "B. Endocrine glands release hormones into the bloodstream for systemic distribution; exocrine glands use ducts to deliver products to specific locations or externally.", "C. Both use ducts, but endocrine ducts are internal and exocrine ducts are external.", "D. Endocrine glands store products indefinitely; exocrine glands release products immediately."], correct: 1 },
-                    { question: "Hormones are broadly classified as \"peptides hormones and steroid hormones.\" If a newly discovered hormone is found to be synthesized on ribosomes and processed through the endoplasmic reticulum and Golgi apparatus, to which class does it most likely belong, and why?", options: ["A. Steroid hormone, because all hormones require extensive processing.", "B. Peptide hormone, because this synthesis pathway is characteristic of protein/peptide production.", "C. It could be either, as both classes follow this pathway.", "D. Neither, as hormones are synthesized by specialized enzymes, not ribosomes."], correct: 1 },
-                    { question: "The ovaries are described as secreting oestrogen and progesterone, which are responsible for the \"development and maintenance of female sexual characteristics.\" This implies these hormones primarily act by:", options: ["A. Directly controlling ovulation and fertilization.", "B. Influencing gene expression and cellular differentiation in target tissues to produce these characteristics.", "C. Providing the primary energy source for reproductive organs.", "D. Regulating blood flow to the pelvic cavity."], correct: 1 },
-                    { question: "Why is the pancreas uniquely referred to as a \"mixed gland\" in the context of its secretions, a term not typically applied with the same emphasis to a gland like the thyroid?", options: ["A. The pancreas secretes multiple hormones, whereas the thyroid secretes only one.", "B. The pancreas has both endocrine (hormones into blood) and exocrine (digestive enzymes into a duct) functions, while the thyroid is primarily endocrine.", "C. The pancreas is physically larger and more complex in structure than the thyroid.", "D. The pancreas's secretions are essential for life, while the thyroid's are not."], correct: 1 },
-                    { question: "The anterior pituitary constitutes 75% of the pituitary gland's total weight. What does this disproportionate size most likely suggest about its functional complexity or output compared to the posterior pituitary?", options: ["A. It primarily serves as a storage site for hormones produced in the hypothalamus.", "B. It is less active than the smaller, more densely packed posterior pituitary.", "C. It likely synthesizes and secretes a larger number and variety of hormones, or regulates more downstream endocrine functions.", "D. Its larger size is mainly due to connective tissue and blood supply, not functional cells."], correct: 2 },
-                    { question: "A male patient exhibits normal levels of Luteinizing Hormone (LH) and Follicle-Stimulating Hormone (FSH), but his testosterone levels are abnormally low and sperm count is also reduced. This pattern suggests a primary dysfunction at the level of the:", options: ["A. Hypothalamus, failing to stimulate the pituitary.", "B. Anterior pituitary, failing to produce sufficient LH and FSH despite hypothalamic stimulation.", "C. Testes, specifically the Leydig cells (for testosterone) and possibly Sertoli cells (for spermatogenesis), failing to respond appropriately to LH and FSH.", "D. Adrenal glands, which also produce small amounts of androgens."], correct: 2 },
-                    { question: "Steroid hormones are known to be derived from cholesterol. If an individual has a genetic condition that severely impairs their body's ability to synthesize or absorb cholesterol, which of the following hormone productions would be most directly and significantly affected?", options: ["A. Insulin and glucagon from the pancreas.", "B. Adrenaline from the adrenal medulla.", "C. Cortisol from the adrenal cortex and sex hormones from the gonads.", "D. Thyroxine from the thyroid gland."], correct: 2 },
-                    { question: "The anatomical attachment of the pituitary gland to the hypothalamus is crucial for the hypothalamus's role as an \"integrating link.\" How does this physical proximity facilitate control?", options: ["A. It allows the hypothalamus to exert direct physical pressure on the pituitary to release hormones.", "B. It enables rapid diffusion of neurotransmitters from the hypothalamus directly into the systemic circulation to act as hormones.", "C. It provides a short pathway for hypothalamic releasing/inhibiting hormones to reach the anterior pituitary via a portal blood system, and for nerve axons to extend from the hypothalamus to the posterior pituitary.", "D. It allows the pituitary to mechanically control the blood flow to the hypothalamus."], correct: 2 }
-                ],
-                "Lecture5_Organelles": [
-                    { question: "A cell line is engineered to have a dysfunctional Endoplasmic Reticulum that cannot properly fold or modify proteins, nor form transport vesicles. How would this most critically impact the Golgi apparatus's primary functions as described?", options: ["A. The Golgi would enlarge due to an accumulation of unprocessed materials from the cytoplasm.", "B. The Golgi would be unable to receive proteins from the ER, thereby halting its processing activities and formation of lysosomes/secretory vesicles.", "C. The Golgi would switch to synthesizing its own proteins and lipids to compensate for the ER's failure.", "D. The Golgi's function would be unaffected as it primarily processes carbohydrates."], correct: 1 },
-                    { question: "A specific neurotoxin is found to disrupt the lipid bilayer structure of the inner mitochondrial membrane but leaves the outer membrane intact. What would be the most immediate and severe consequence for cellular energy production?", options: ["A. The mitochondria would be unable to import pyruvate from the cytoplasm.", "B. The electron transport chain and chemiosmosis would be disrupted, halting ATP synthesis by oxidative phosphorylation.", "C. The Krebs cycle (citric acid cycle) within the mitochondrial matrix would cease immediately.", "D. The outer membrane would rupture due to osmotic imbalance."], correct: 1 },
-                    { question: "If a cell's entire population of lysosomes were to simultaneously rupture and release their enzymatic contents into the cytosol, what would be the most probable and immediate outcome for the cell?", options: ["A. The cell would rapidly synthesize new lysosomes to contain the damage.", "B. The released digestive enzymes would begin to break down cellular components, leading to autodigestion and likely cell death.", "C. The cell would enter a state of dormancy until the enzymes are neutralized.", "D. The pH of the cytoplasm would increase significantly, inactivating the enzymes."], correct: 1 },
-                    { question: "A genetic disorder results in the formation of chromosomes that lack functional kinetochores. During which critical cellular process, directly linked to a primary function of the nucleus, would this defect manifest most disastrously?", options: ["A. During transcription of RNA from DNA.", "B. During the process of protein synthesis on ribosomes.", "C. During cell division (mitosis/meiosis), specifically in the segregation of chromatids.", "D. During the storage of DNA strands and proteins within the nucleoplasm."], correct: 2 },
-                    { question: "The structural organization of the inner mitochondrial membrane, characterized by extensive folding into cristae, is a key adaptation. This feature directly enhances ATP production by:", options: ["A. Decreasing the overall volume of the mitochondrion, concentrating reactants.", "B. Providing a rigid framework that prevents mitochondrial collapse.", "C. Significantly increasing the surface area available for embedding components of the electron transport chain and ATP synthase.", "D. Facilitating the direct transfer of ATP into the nucleus."], correct: 2 },
-                    { question: "A specialized secretory cell, such as a pancreatic acinar cell producing digestive enzymes (proteins), would be expected to have a particularly high abundance and activity of which two organelles involved in the synthesis, processing, and packaging of these enzymes?", options: ["A. Lysosomes and peroxisomes.", "B. Mitochondria and the nucleus.", "C. The Endoplasmic Reticulum (specifically rough ER) and the Golgi apparatus.", "D. Smooth ER and ribosomes only."], correct: 2 },
-                    { question: "The nucleus is described as maintaining \"the integrity of the cell by facilitating transcription and replication processes.\" How do these two processes collectively ensure cellular integrity and proper function over time?", options: ["A. By generating sufficient ATP to power all cellular activities.", "B. By directly repairing physical damage to the cell membrane.", "C. By ensuring the accurate synthesis of proteins (via transcription) and the faithful transmission of genetic information to daughter cells (via replication).", "D. By controlling the import and export of all substances across the nuclear membrane."], correct: 2 },
-                    { question: "Comparing the primary roles of lysosomes and mitochondria, if a cell ingests a complex nutrient particle, how would these two organelles interact with it or its products sequentially?", options: ["A. Mitochondria would first break it down, and lysosomes would extract energy.", "B. Lysosomes would digest the complex particle into simpler molecules, which could then be used by mitochondria for energy extraction.", "C. Both organelles would simultaneously digest and extract energy from the particle.", "D. Mitochondria would package the particle, and lysosomes would transport it out of the cell."], correct: 1 },
-                    { question: "If a eukaryotic cell were to completely lack a Golgi apparatus, but its Endoplasmic Reticulum and ribosomes remained functional, what would be the most likely fate of proteins normally destined for secretion or for incorporation into lysosomes?", options: ["A. These proteins would accumulate in the cytoplasm in a non-functional state or be misdirected.", "B. The ER would adapt to perform all Golgi functions, including final packaging.", "C. Lysosomes would form directly from the ER without Golgi involvement.", "D. Secretory proteins would be immediately degraded by cytoplasmic proteases."], correct: 0 },
-                    { question: "The \"scattered\" arrangement of cells within most connective tissues, as opposed to the \"crowded\" nature of epithelial cells with \"little to no extracellular matrix surrounding them,\" reflects a fundamental difference in their primary functions. This structural difference suggests that:", options: ["A. Connective tissues primarily function in rapid cell-to-cell communication, while epithelial tissues are for storage.", "B. The functional properties of many connective tissues (e.g., strength, elasticity) are largely determined by their abundant extracellular matrix, rather than direct cell-cell interactions, unlike epithelia which often form barriers.", "C. Epithelial cells are less metabolically active than connective tissue cells.", "D. Connective tissue cells are designed for rapid proliferation, while epithelial cells are terminally differentiated."], correct: 1 },
-                    { question: "A phagocytic immune cell engulfs a bacterium. Trace the correct sequence of organelle involvement, as described or implied by their functions, leading to the bacterium's destruction.", options: ["A. Bacterium -> Mitochondria (energy for engulfment) -> Golgi (packaging) -> Lysosome (destruction).", "B. Bacterium -> Engulfment vesicle -> Fusion with Lysosome (containing Golgi-processed enzymes) -> Digestion.", "C. Bacterium -> Nucleus (recognition) -> ER (antibody synthesis) -> Lysosome (destruction).", "D. Bacterium -> Lysosome (initial contact) -> Golgi (transport to ER) -> ER (destruction)."], correct: 1 },
-                    { question: "The nucleolus, a prominent structure within the nucleus, is primarily responsible for ribosome biogenesis (synthesis of ribosomal RNA and assembly of ribosomal subunits). How would a defect specifically impairing nucleolar function indirectly impact the cell's overall capacity for \"protein synthesis,\" a listed major nuclear function?", options: ["A. It would prevent the DNA from being transcribed into mRNA.", "B. It would directly inhibit the function of existing ribosomes in the cytoplasm.", "C. It would lead to a reduced number of functional ribosomes available for translating mRNA, thus limiting protein synthesis capacity.", "D. It would cause mRNA to be degraded before it can leave the nucleus."], correct: 2 },
-                    { question: "The text states the Golgi apparatus processes substances to form lysosomes, secretory vesicles, and \"other cytoplasmic components.\" This latter phrase suggests a broader role for the Golgi beyond just degradation and secretion. This might include:", options: ["A. Synthesizing ATP for cytoplasmic use.", "B. Directly replicating DNA for cell division.", "C. Modifying and sorting proteins and lipids for delivery to other organelles like the cell membrane or ER.", "D. Storing genetic information in the cytoplasm."], correct: 2 },
-                    { question: "If a cell's nuclear DNA sustains significant damage (e.g., from radiation) that impairs its ability to be accurately transcribed, how would this most directly affect the nucleus's role in \"control the synthesis of enzymes involved in cellular metabolism\"?", options: ["A. The cell would switch to using RNA as its primary genetic material for enzyme synthesis.", "B. Damaged DNA would lead to faulty or absent mRNA, resulting in non-functional or missing metabolic enzymes.", "C. The ribosomes would compensate by directly translating DNA without mRNA.", "D. Metabolic enzymes already present in the cytoplasm would become hyperactive."], correct: 1 },
-                    { question: "The double membrane structure of the mitochondrion, with distinct outer and inner membranes, is crucial for its function in ATP synthesis. This compartmentalization primarily allows for:", options: ["A. The storage of large quantities of glucose within the intermembrane space.", "B. The establishment of a proton gradient across the inner membrane, which drives ATP synthase.", "C. The protection of the mitochondrial DNA from cytoplasmic enzymes.", "D. The direct fusion of mitochondria with the nucleus for energy transfer."], correct: 1 },
-                    { question: "If a eukaryotic cell, like an immature red blood cell (reticulocyte), expels its nucleus to become a mature erythrocyte but remains metabolically active for a period, which of the listed primary functions of the nucleus would be most immediately and completely lost upon nuclear expulsion?", options: ["A. Storage of pre-existing RNA and proteins that were in the nucleus.", "B. Control of ongoing transcription of new RNA molecules.", "C. The physical space occupied by the nucleus within the cell.", "D. Maintenance of the cell's overall shape and structure."], correct: 1 },
-                    { question: "Lysosomes are described as \"vesicular organelles\" that \"form by breaking off from the Golgi apparatus.\" This origin implies what about the initial biochemical contents and membrane composition of a newly formed lysosome?", options: ["A. They initially contain only water and ions, acquiring enzymes later from the cytoplasm.", "B. Their membrane is derived from the Golgi membrane, and they are pre-loaded with digestive enzymes that were processed and packaged by the Golgi.", "C. They are essentially empty vesicles that randomly engulf cytoplasmic enzymes.", "D. Their membrane is synthesized de novo in the cytoplasm, and enzymes are imported from mitochondria."], correct: 1 },
-                    { question: "Mitochondria are dubbed \"power houses\" because they \"extract enough energy from the nutrients.\" What is the primary form of \"nutrient\" fuel that enters the mitochondrial pathways (e.g., pyruvate from glucose, fatty acids – implied general biology), and what is the main \"high-energy\" currency produced?", options: ["A. Fuel: ATP; Currency: Glucose.", "B. Fuel: Proteins; Currency: Heat.", "C. Fuel: Products of cytoplasmic nutrient breakdown (e.g., pyruvate, fatty acids); Currency: ATP.", "D. Fuel: Oxygen; Currency: Carbon dioxide."], correct: 2 },
-                    { question: "A cell type with an exceptionally high rate of protein synthesis and secretion, such as a plasma cell producing antibodies, would likely exhibit a very prominent and extensive:", options: ["A. Lysosomal network.", "B. Mitochondrial cristae development.", "C. Golgi apparatus and rough endoplasmic reticulum.", "D. Nuclear chromatin condensation."], correct: 2 },
-                    { question: "The structural characteristic of the Golgi apparatus – \"four or more stacked layers of thin, flat, enclosed vesicles\" – is well-suited for its function in processing and packaging. This stacked arrangement likely facilitates:", options: ["A. The random diffusion of substances throughout all layers simultaneously for rapid processing.", "B. The sequential modification of proteins and lipids as they pass through successive cisternae (stacks), each potentially containing different enzymes.", "C. The storage of large volumes of water for cellular hydration.", "D. The direct synthesis of DNA and RNA within its vesicles."], correct: 1 }
-                ],
-                "Lecture4_Digestion": [
-                    { question: "A patient has a complete obstruction of the common bile duct, but their cystic duct and gallbladder are functional, and the liver continues to produce bile. After a fatty meal, what is the most significant immediate disruption in the digestive process?", options: ["A. Pancreatic lipase secretion will be inhibited due to lack of bile.", "B. Bile will accumulate in the liver, causing jaundice, but fat digestion in the duodenum will proceed normally via pancreatic enzymes alone.", "C. Fats will not be emulsified in the duodenum, severely impairing the efficiency of pancreatic lipase and subsequent fat absorption, even if bile is stored in the gallbladder.", "D. The stomach will increase acid production to compensate for the lack of duodenal bile."], correct: 2 },
-                    { question: "A rare genetic condition causes G-cells in the stomach to be constitutively active, releasing high levels of gastrin irrespective of stomach pH or food presence. Beyond excessive HCl secretion, what other gastric function regulated by gastrin would likely be pathologically overstimulated?", options: ["A. The secretion of somatostatin by D-cells.", "B. The absorption of Vitamin B12.", "C. The motility of the stomach, potentially leading to rapid, uncoordinated emptying.", "D. The production of mucus by goblet cells."], correct: 2 },
-                    { question: "If a patient experiences a complete loss of the exocrine function of the pancreas (e.g., due to severe pancreatitis destroying acinar cells) while retaining normal endocrine function (Islets of Langerhans intact), which specific stage of macronutrient digestion would be most profoundly impaired?", options: ["A. The initial breakdown of starch in the mouth by salivary amylase.", "B. The digestion of proteins by pepsin in the stomach.", "C. The comprehensive enzymatic breakdown of carbohydrates, fats, and proteins into absorbable units within the small intestine.", "D. The absorption of glucose from the bloodstream into cells, regulated by insulin."], correct: 2 },
-                    { question: "A new drug is developed that specifically blocks the binding of secretin to its receptors on pancreatic ductal cells, without affecting CCK receptors. Following the entry of acidic chyme into the duodenum, which characteristic of the secreted pancreatic juice would be most significantly altered?", options: ["A. The concentration of digestive enzymes like amylase and lipase would be greatly reduced.", "B. The volume of juice secreted would increase, but its pH would remain highly acidic.", "C. The secretion of bicarbonate would be substantially diminished, leading to inadequate neutralization of duodenal acidity.", "D. The release of glucagon from pancreatic alpha cells would be inhibited."], correct: 2 },
-                    { question: "How does the mechanical action of stomach churning by its muscular walls specifically enhance the chemical digestion of proteins by pepsin?", options: ["A. It directly activates pepsinogen to pepsin without the need for HCl.", "B. It denatures proteins through physical force, making peptide bonds more accessible to pepsin, and increases the contact between pepsin and its substrate.", "C. It selectively moves undigested fats away from proteins to prevent interference.", "D. It raises the pH of the stomach contents to the optimal range for pepsin activity."], correct: 1 },
-                    { question: "A patient with severe liver cirrhosis exhibits impaired synthesis of blood proteins, including several coagulation factors. What is the most critical non-digestive systemic consequence likely to arise from this specific impairment?", options: ["A. An inability to store glucose as glycogen, leading to hyperglycemia.", "B. An increased susceptibility to infections due to reduced antibody production.", "C. A tendency for excessive bleeding and bruising due to deficient blood clotting.", "D. Impaired detoxification of metabolic waste products, leading to encephalopathy."], correct: 2 },
-                    { question: "If an individual ingests a potent, irreversible inhibitor of salivary amylase that has no effect on pancreatic amylase or any other digestive enzyme, how would the overall process of carbohydrate digestion be impacted from mouth to absorption?", options: ["A. Carbohydrate digestion would be completely blocked, leading to malabsorption.", "B. Starch digestion would not commence in the mouth, but would still occur efficiently in the small intestine due to pancreatic amylase, with minimal overall impact on absorption.", "C. Only simple sugar absorption would be affected, not starch digestion.", "D. The stomach would adapt by secreting its own amylase to compensate."], correct: 1 },
-                    { question: "The highly acidic environment of the stomach (pH 1-3) is essential for pepsin activity. Beyond activating pepsinogen, what other crucial role does this low pH play in the initial stages of protein digestion within the stomach?", options: ["A. It directly hydrolyzes peptide bonds in proteins without enzymatic assistance.", "B. It causes the denaturation (unfolding) of dietary proteins, exposing more peptide bonds to pepsin attack.", "C. It neutralizes any alkaline substances ingested with food.", "D. It stimulates the secretion of intrinsic factor for vitamin B12 absorption."], correct: 1 },
-                    { question: "The intestinal phase of gastric secretion is described as \"blocking the effect of the cephalic and gastric phases.\" What is the primary physiological advantage of this inhibitory feedback mechanism?", options: ["A. To conserve energy by halting all digestive processes once food leaves the stomach.", "B. To prevent excessive gastric acid and enzyme secretion that could damage the duodenal mucosa and to allow optimal conditions for intestinal digestion.", "C. To stimulate appetite for the next meal by emptying the stomach rapidly.", "D. To redirect blood flow from the stomach to the small intestine."], correct: 1 },
-                    { question: "Compare the primary trigger for gastrin release leading to increased gastric acid secretion with the primary trigger for cholecystokinin (CCK) release from the duodenum that influences pancreatic secretion.", options: ["A. Gastrin: presence of fats in stomach; CCK: presence of acid in duodenum.", "B. Gastrin: distension of stomach/presence of food/low pH; CCK: presence of fats and proteins in duodenum.", "C. Gastrin: sight/smell of food; CCK: high blood sugar.", "D. Gastrin: presence of carbohydrates in duodenum; CCK: distension of gallbladder."], correct: 1 },
-                    { question: "If the structural integrity of the villi in the jejunum is severely compromised (e.g., blunting due to celiac disease), leading to a dramatically reduced surface area, which fundamental process of the small intestine would be most directly and negatively impacted?", options: ["A. The secretion of digestive enzymes by the intestinal glands.", "B. The mechanical segmentation and peristalsis movements.", "C. The absorption of the final products of digestion (monosaccharides, amino acids, fatty acids).", "D. The production of gastrointestinal hormones like secretin and CCK."], correct: 2 },
-                    { question: "The liver's function of storing glucose as glycogen, coupled with the regulatory actions of pancreatic hormones insulin and glucagon, is a cornerstone of metabolic homeostasis. This coordinated system primarily serves to:", options: ["A. Ensure a constant supply of bile for fat digestion.", "B. Maintain relatively stable blood glucose concentrations despite intermittent food intake and varying energy demands.", "C. Regulate the body's core temperature through metabolic heat generation.", "D. Control the synthesis and breakdown of blood proteins."], correct: 1 },
-                    { question: "If the lower esophageal sphincter (LES) becomes chronically incompetent and fails to maintain adequate closure, what is the most likely pathological consequence arising from the normal physiological environment of the stomach?", options: ["A. A peptic ulcer in the duodenum due to excessive acid reaching it.", "B. Gastroesophageal reflux disease (GERD), where acidic stomach contents damage the esophageal lining.", "C. Impaired protein digestion in the stomach due to loss of acidity.", "D. Accelerated gastric emptying leading to dumping syndrome."], correct: 1 },
-                    { question: "Both Cholecystokinin (CCK) and Gastric Inhibitory Peptide (GIP)/enteroglucagon exert inhibitory effects on gastric function once chyme enters the small intestine. What is the shared physiological purpose of these hormones in modulating stomach activity at this stage?", options: ["A. To rapidly increase gastric acid secretion to prepare for the next meal.", "B. To slow down gastric emptying and reduce gastric secretions, allowing the small intestine adequate time and optimal conditions to process the incoming chyme.", "C. To stimulate vigorous stomach contractions to ensure all contents are expelled.", "D. To promote the absorption of nutrients directly from the stomach lining."], correct: 1 },
-                    { question: "The text mentions that protein digestion into peptides and amino acids \"principally occurs in the stomach but some also occurs in the small intestine.\" How do the enzymatic actions in these two locations complement each other for complete protein breakdown?", options: ["A. Stomach pepsin completely digests proteins to amino acids; small intestine enzymes absorb them.", "B. Stomach pepsin initiates protein breakdown into larger polypeptides; pancreatic and intestinal proteases in the small intestine further hydrolyze these into smaller peptides and amino acids.", "C. Small intestine enzymes denature proteins; stomach pepsin then digests them.", "D. Both locations use identical enzymes, but the stomach works faster due to higher acidity."], correct: 1 },
-                    { question: "The stimulation of pancreatic exocrine secretion by the parasympathetic nervous system during the cephalic phase (before food ingestion) illustrates what principle of digestive physiology?", options: ["A. The digestive system only responds to direct physical contact with food.", "B. The body initiates anticipatory digestive responses based on sensory cues (sight, smell, thought of food) to prepare for incoming nutrients.", "C. Hormonal control is always secondary to nervous control in digestion.", "D. Pancreatic secretion is primarily a mechanism to neutralize stomach acid after it's produced."], correct: 1 },
-                    { question: "Sodium bicarbonate is a crucial component of pancreatic juice. Its primary importance for effective duodenal digestion lies in its ability to:", options: ["A. Directly activate pancreatic lipase and amylase.", "B. Emulsify dietary fats into smaller droplets.", "C. Neutralize the acidic chyme from the stomach, creating an optimal pH environment for pancreatic enzyme activity and protecting the duodenal mucosa.", "D. Stimulate the release of CCK from the duodenal wall."], correct: 2 },
-                    { question: "If an individual has their gallbladder surgically removed (cholecystectomy), how might their ability to digest a particularly large, high-fat meal be affected compared to someone with a functioning gallbladder, even if liver bile production is normal?", options: ["A. Fat digestion will be completely unimpaired as the liver produces sufficient bile.", "B. They may experience difficulty and discomfort (e.g., steatorrhea) because concentrated bile cannot be released in a large bolus to efficiently emulsify the large fat load; continuous, less concentrated bile flow from the liver may be insufficient.", "C. Protein and carbohydrate digestion will also be severely impaired.", "D. They will be unable to absorb any fat-soluble vitamins."], correct: 1 },
-                    { question: "The liver's role in \"detoxifying blood\" is critical. Considering the circulatory pathways associated with the digestive system, the blood being detoxified by the liver in this context has primarily just passed through which anatomical region, collecting absorbed substances?", options: ["A. The systemic arterial circulation supplying the liver itself.", "B. The capillary beds of the lungs.", "C. The capillary beds of the small and large intestines (via the hepatic portal system).", "D. The renal tubules of the kidneys."], correct: 2 },
-                    { question: "The text states, \"Somatostatin: inhibits the function of insulin. Produced if the body is getting too much glucose.\" This statement, when taken in isolation regarding glucose regulation, presents a potential physiological paradox because:", options: ["A. High glucose should normally stimulate insulin release to lower glucose, so inhibiting insulin under high glucose conditions would exacerbate hyperglycemia.", "B. Somatostatin typically enhances insulin's action on glucose uptake.", "C. Insulin's primary role is to increase blood glucose, which somatostatin would then counter.", "D. \"Too much glucose\" should actually inhibit somatostatin production to allow insulin to work."], correct: 0 }
-                ],
-                "Lecture3_WBC": [
-                    { question: "A patient with a rare genetic disorder is unable to produce functional Interleukin-8 (IL-8) and Interferon-gamma (IFN-γ). Which specific critical function of neutrophils would be most significantly impaired, leading to increased susceptibility to localized infections?", options: ["A. Their ability to phagocytose opsonized bacteria.", "B. Their capacity for degranulation and release of antimicrobial proteins.", "C. Their chemotactic migration from blood vessels to the site of infection/inflammation.", "D. Their intrinsic ability to produce superoxides for killing microbes."], correct: 2 },
-                    { question: "If a person has a specific defect in their neutrophils that prevents the \"burst of superoxides\" during phagocytosis, but all other aspects of engulfment and lysosomal function are normal, how would their defense against certain intracellular bacteria be compromised?", options: ["A. Neutrophils would be unable to recognize or engulf the bacteria.", "B. Bacteria would be engulfed but might survive and even replicate within the neutrophil due to impaired intracellular killing mechanisms.", "C. Lysosomes would fail to fuse with the phagosomes containing the bacteria.", "D. Neutrophils would die immediately upon contact with the bacteria."], correct: 1 },
-                    { question: "Considering the distinct characteristics of neutrophils (short-lived, cannot renew lysosomes) versus monocytes (longer-lived, can replace lysosomal contents, become macrophages), which cell type would be more effective in resolving a chronic, walled-off abscess with a large accumulation of dead cells and persistent bacteria?", options: ["A. Neutrophils, due to their rapid response and high numbers in acute inflammation.", "B. Monocytes/macrophages, due to their sustained phagocytic capacity, ability to clear debris, and longer active life.", "C. Eosinophils, because of their ability to handle large particulate matter.", "D. Basophils, by releasing heparin to improve access to the abscess."], correct: 1 },
-                    { question: "A novel immunosuppressive drug selectively blocks the expression of T-cell receptors on the surface of T lymphocytes without affecting B cell function or innate immunity. Which specific arm of the adaptive immune response would be most profoundly disabled?", options: ["A. Humoral immunity mediated by antibody production.", "B. The inflammatory response orchestrated by mast cells.", "C. Cell-mediated immunity, including the direct killing of infected cells and regulation of other immune cells.", "D. The complement system's ability to lyse pathogens."], correct: 2 },
-                    { question: "If a mutation in hematopoietic stem cells specifically blocks the differentiation pathway leading to all granulocytes (neutrophils, eosinophils, basophils), but development of lymphocytes and monocytes remains unaffected, which of these broad immune functions would be most severely compromised?", options: ["A. Antibody production and antigen presentation by B cells.", "B. The initial rapid response to bacterial infections, allergic reactions, and defense against parasites typically mediated by these cells.", "C. The development of immunological memory by T cells.", "D. Phagocytosis by macrophages derived from monocytes."], correct: 1 },
-                    { question: "A patient with severe protein-calorie malnutrition (a cause of \"malnutrition\" listed on page 1) presents with leukopenia. This reduction in WBC count is most likely due to:", options: ["A. An autoimmune attack on circulating white blood cells.", "B. Insufficient availability of amino acids and energy required for the synthesis and proliferation of hematopoietic stem cells and their progeny.", "C. A specific viral infection that targets only white blood cells.", "D. Increased destruction of white blood cells by an overactive spleen."], correct: 1 },
-                    { question: "An individual consistently suffers from severe, debilitating helminth (parasitic worm) infections, despite having normal counts of neutrophils, lymphocytes, and monocytes. This clinical picture strongly suggests a potential dysfunction or deficiency primarily in which type of white blood cell?", options: ["A. Basophils, due to their role in histamine release.", "B. Natural Killer (NK) cells, for viral defense.", "C. Eosinophils, which are specialized in secreting chemicals to destroy large parasites.", "D. B cells, as antibody production is key for all infections."], correct: 2 },
-                    { question: "Systemic anaphylaxis involves widespread mast cell degranulation. How do the described \"local responses\" (increased permeability of blood vessels, contraction of smooth muscles, increased mucus production) escalate to become life-threatening when they occur systemically?", options: ["A. Localized swelling simply spreads, compressing vital organs.", "B. Widespread vasodilation and permeability cause a catastrophic drop in blood pressure (shock), while widespread bronchial smooth muscle contraction severely impairs breathing.", "C. Increased mucus production primarily blocks the digestive tract.", "D. The neuroimmune effects directly cause cardiac arrest."], correct: 1 },
-                    { question: "A 5-year-old child's routine blood test reveals a total lymphocyte count of 7,000 cells/µL. The adult reference range is 1,000-4,800 cells/µL. Based only on the ranges provided in the text, what is the most accurate initial interpretation?", options: ["A. This is definitively indicative of a lymphoproliferative disorder.", "B. This is significantly below the normal range for a child and suggests immunodeficiency.", "C. This count falls within the normal lymphocyte range provided for children (3,000-9,500/µL) and may not be abnormal.", "D. Lymphocyte counts are not age-dependent."], correct: 2 },
-                    { question: "How does the protective mechanism of \"neutrophil-cagers\" (attaching to vessel walls to block germs) fundamentally differ from the direct anti-microbial action of \"neutrophil-killers\" (phagocytosis and degranulation)?", options: ["A. Cagers primarily use chemical warfare, while killers use physical engulfment.", "B. Cagers form a passive physical barrier to prevent microbial entry/spread, while killers actively seek out, ingest, and destroy microbes.", "C. Cagers are a type of lymphocyte, while killers are true neutrophils.", "D. Cagers only function in the lymphatic system, killers in the blood."], correct: 1 },
-                    { question: "During a primary exposure to an allergen, B cells may be activated to produce IgE antibodies. If re-exposure to the same allergen occurs, how do these pre-existing IgE antibodies contribute to the rapid allergic response involving mast cells or basophils?", options: ["A. IgE antibodies directly neutralize the allergen in the bloodstream.", "B. IgE antibodies bind to receptors on mast cells/basophils; subsequent binding of the allergen to this cell-bound IgE triggers degranulation and mediator release.", "C. IgE antibodies suppress T cell activity, allowing mast cells to overreact.", "D. IgE antibodies transform into histamine and heparin upon allergen contact."], correct: 1 },
-                    { question: "Monocytes, upon differentiating into tissue macrophages, \"present pieces of pathogens to T cells.\" What is the critical immunological purpose of this antigen presentation, even if not fully elaborated in this text?", options: ["A. It serves to directly kill the T cells that recognize the pathogen.", "B. It enables T cells to identify and remember specific pathogens, leading to a more targeted and effective adaptive immune response (including T helper and cytotoxic T cell activation).", "C. It signals monocytes to increase their rate of phagocytosis.", "D. It is primarily a mechanism for monocytes to eliminate pathogens from their own cytoplasm."], correct: 1 },
-                    { question: "A patient is diagnosed with chronic lymphocytic leukemia, a \"proliferative disorder\" characterized by extremely high numbers of abnormal lymphocytes. How might this \"leukocytosis\" paradoxically lead to a weakened immune system and increased susceptibility to infections?", options: ["A. The abnormal lymphocytes actively destroy healthy immune cells.", "B. The sheer volume of abnormal cells physically obstructs blood flow to lymphoid organs.", "C. The abnormal, often dysfunctional, lymphocytes crowd out or impair the development and function of normal, effective lymphocytes and other immune cells.", "D. The high lymphocyte count triggers a systemic anti-inflammatory response that suppresses all immunity."], correct: 2 },
-                    { question: "Histamine released by basophils makes blood vessels more permeable. What is the primary benefit of this increased permeability at a site of localized infection?", options: ["A. It allows red blood cells to deliver more oxygen to the inflamed tissue.", "B. It facilitates the leakage of plasma proteins (like antibodies and complement) and the migration of other leukocytes (like neutrophils) from the blood into the infected tissue.", "C. It causes pain, alerting the individual to the infection.", "D. It directly kills bacteria by changing the osmotic environment."], correct: 1 },
-                    { question: "If a person has a genetic defect that significantly impairs the process of \"antibody opsonization\" (coating pathogens with antibodies), how would the phagocytic efficiency of neutrophils and monocytes be primarily affected?", options: ["A. These phagocytes would be unable to migrate to the site of infection.", "B. The pathogens would be too large for these cells to engulf.", "C. The phagocytes would have greatly reduced ability to recognize, bind to, and engulf the non-opsonized pathogens.", "D. The lysosomes within the phagocytes would be unable to digest any engulfed pathogens."], correct: 2 },
-                    { question: "The observation that eosinophils are \"numerous in the mucous membranes of the respiratory, digestive, and lower urinary tracts\" is strategically significant for their role because:", options: ["A. These locations are primary sites for oxygen absorption, which eosinophils facilitate.", "B. These tracts are major portals of entry for allergens and parasites, against which eosinophils are specialized to defend.", "C. Eosinophils mature in these mucous membranes before entering the bloodstream.", "D. These membranes are rich in the specific nutrients eosinophils require for survival."], correct: 1 },
-                    { question: "The text states that leukocytosis \"is normal when it is part of h^alfhy [healthy] immune responses, which happen frequently.\" Which of the following scenarios, explicitly mentioned as causing an increase in WBC count, best exemplifies such a normal, healthy response?", options: ["A. Leukocytosis associated with chronic anemia or malnutrition.", "B. Leukocytosis in response to an acute bacterial infection.", "C. Leukocytosis due to a neoplastic condition of the bone marrow.", "D. Leukocytosis as a side effect of certain immunosuppressive drugs."], correct: 1 },
-                    { question: "A patient undergoing chemotherapy for cancer (a treatment known to suppress bone marrow activity) develops a fever and other signs of infection. A blood test would most likely reveal which quantitative WBC abnormality, contributing to their susceptibility?", options: ["A. Significant leukocytosis, with an overproduction of immature WBCs.", "B. Leukopenia, a critically low total white blood cell count.", "C. A selective increase in basophils and eosinophils only.", "D. Normal WBC count but dysfunctional cells."], correct: 1 },
-                    { question: "Compare the primary effector mechanism of basophils/mast cells in initiating an acute allergic response (e.g., hay fever) versus the primary effector mechanism of eosinophils in combating a multicellular parasitic worm infection.", options: ["A. Basophils/mast cells phagocytose allergens; eosinophils release histamine.", "B. Basophils/mast cells release mediators (like histamine) causing vasodilation, permeability, and smooth muscle effects; eosinophils release cytotoxic chemicals directly onto the surface of large parasites.", "C. Both cell types primarily function by producing antibodies against the respective threat.", "D. Basophils/mast cells present allergen fragments to T cells; eosinophils engulf and digest worms intracellularly."], correct: 1 },
-                    { question: "If a pathogenic organism, like a large fungal hypha, is too large to be phagocytosed by a single neutrophil, which other granulocyte described in the text possesses a mechanism specifically suited for attacking such large extracellular targets?", options: ["A. Basophils, by releasing anticoagulants to isolate the fungus.", "B. Monocytes, by fusing to form giant cells around the fungus.", "C. Eosinophils, by releasing toxic proteins and enzymes from their granules onto the surface of the large pathogen.", "D. Lymphocytes, by directly lysing the fungal cell membrane through perforins."], correct: 2 }
-                ]
-            }
-         };
+        const questions = [
+            { text: "The phone is one of field source of data collection?", answer: "T" },
+            { text: "The television is one of field source of data collection?", answer: "F" },
+            { text: "The watching method is one of field source of data collection?", answer: "T" },
+            { text: "The experience is one of field source of data collection?", answer: "T" },
+            { text: "The comprehensive inventory method is from the data collection methods?", answer: "T" },
+            { text: "The sampling method is from the data collection methods?", answer: "T" },
+            { text: "The amputation method is from the data collection methods?", answer: "T" },
+            { text: "The double style is from the data collection methods?", answer: "T" },
+            { text: "The coding method is from the data collection methods?", answer: "F" },
+            { text: "The processing method is from the data collection methods?", answer: "F" },
+            { text: "The historical source is divided into primary and secondary sources?", answer: "T" },
+            { text: "The historical source is divided into primary and final sources?", answer: "F" },
+            { text: "Statistics is a science that specializes in mineral collection?", answer: "F" },
+            { text: "Statistics is a science that specializes in data collection?", answer: "T" },
+            { text: "We can divide the statistics science into two parts?", answer: "T" },
+            { text: "We can divide the statistics science into three parts?", answer: "F" },
+            { text: "Inferential statistics mean by decision making?", answer: "T" },
+            { text: "Inferential statistics mean by data collecting?", answer: "F" },
+            { text: "Historical source is one of brainstorm source?", answer: "T" },
+            { text: "Sports source is one of the data sources?", answer: "F" },
+            { text: "Scientific source is one of the data sources?", answer: "F" },
+            { text: "Field source is one of the data sources?", answer: "T" },
+            { text: "The discrete variables are numbers without points?", answer: "T" },
+            { text: "The discrete variables are numbers with points?", answer: "F" },
+            { text: "The continuous variables are numbers with points?", answer: "T" },
+            { text: "The continuous variables are numbers without points?", answer: "F" },
+            { text: "Qualitative variables cannot be counted?", answer: "T" },
+            { text: "Qualitative variables can be counted?", answer: "F" },
+            { text: "Quantitative variables can be counted?", answer: "T" },
+            { text: "Quantitative variables cannot be counted?", answer: "F" },
+            { text: "Defining the research problem is one of the stages of researching in statistics method?", answer: "T" },
+            { text: "Defining the research problem isnot one of the stages of researching in statistics method?", answer: "F" },
+            { text: "Setting assumptions is one of the stages of researching in statistics method?", answer: "T" },
+            { text: "Setting assumptions isnot one of the stages of researching in statistics method?", answer: "F" },
+            { text: "Data tab is one of the stages of researching in statistics method?", answer: "T" },
+            { text: "Data tab isnot one of the stages of researching in statistics method?", answer: "F" },
+            { text: "The questionnaire is one of the statistics tools?", answer: "T" },
+            { text: "The questionnaire isnot one of the statistics tools?", answer: "F" }
+        ];
 
-         const lectureTitlesMap = {
-            "Lecture2_RBC": "محاضرة (Red blood cell (Erythrocyte))",
-            "Lecture1_Endocrine": "محاضرة (THE ENDOCRINE SYSTEM)",
-            "Lecture5_Organelles": "محاضرة (Golgi Apparatus & Other Organelles)", // Adjusted title for brevity
-            "Lecture4_Digestion": "محاضرة (Digestion and Gastrointestinal physiology)",
-            "Lecture3_WBC": "محاضرة (White blood cells)"
-        };
+        const startButton = document.getElementById('start-test-button');
+        const introPage = document.getElementById('intro-page');
+        const testPage = document.getElementById('test-page');
+        const questionsContainer = document.getElementById('questions-area');
+        const themeToggleButton = document.getElementById('theme-toggle-btn');
+        const body = document.body;
+        const themeStorageKey = 'modernThemePreference';
+        const backgroundMusic = document.getElementById('background-music');
+        const musicToggleButton = document.getElementById('music-toggle-btn');
+        const musicIconPlay = musicToggleButton.querySelector('.fa-volume-high');
+        const musicIconMute = musicToggleButton.querySelector('.fa-volume-xmark');
 
-        const lectureIconsMap = { // Assign appropriate icons
-            "Lecture2_RBC": "fas fa-tint", // Blood drop
-            "Lecture1_Endocrine": "fas fa-brain", // Brain for hypothalamus/pituitary focus
-            "Lecture5_Organelles": "fas fa-microscope", // Microscope for organelles
-            "Lecture4_Digestion": "fas fa-stomach", // Stomach for digestion
-            "Lecture3_WBC": "fas fa-shield-virus" // Shield for immunity
-        };
-
-
-        let currentQuestions = [];
-        let currentQuizCategory = ''; // Will store 'NaturalQuestions' or 'CriticalThinkingQuestions'
-        let currentQuizLecture = '';
-        let lastSubButtonsPageId = 'main-buttons-page';
-        const allPages = document.querySelectorAll('.page');
-        const quizContainer = document.querySelector("#quiz-page .container");
-        const quizTitleElement = document.getElementById('quiz-title');
-        const loadingTextElement = document.querySelector('.loading-text');
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const bodyElement = document.body;
-        const toggleIcon = darkModeToggle.querySelector('i');
-        const lectureButtonsContainer = document.getElementById('lecture-buttons-container');
-        const questionTypeTitleElement = document.getElementById('question-type-title'); // Corrected ID
-
-
-        function showPage(pageId) {
-            allPages.forEach(page => page.classList.remove('visible'));
-            setTimeout(() => {
-                const targetPage = document.getElementById(pageId);
-                if (targetPage) {
-                     if (pageId === 'main-buttons-page') {
-                        lastSubButtonsPageId = 'main-buttons-page';
-                    } else if (targetPage.classList.contains('sub-buttons-page')) {
-                        lastSubButtonsPageId = pageId;
-                    }
-                    targetPage.classList.add('visible');
-                    window.scrollTo(0, 0);
-                } else {
-                    console.error("Page not found:", pageId);
-                    document.getElementById('main-buttons-page').classList.add('visible');
-                }
-            }, 50);
-        }
-
-        function navigateToLectureSelection(questionCategory) {
-            currentQuizCategory = questionCategory;
-            lectureButtonsContainer.innerHTML = '';
-
-            let categoryArabic = '';
-            if (questionCategory === 'NaturalQuestions') categoryArabic = 'للأسئلة الطبيعية';
-            else if (questionCategory === 'CriticalThinkingQuestions') categoryArabic = 'للأسئلة الفكرية الدقيقة';
-            questionTypeTitleElement.textContent = categoryArabic;
-
-
-            const lecturesForCategory = quizData[questionCategory];
-            if (lecturesForCategory && Object.keys(lecturesForCategory).length > 0) {
-                Object.keys(lecturesForCategory).forEach(lectureKey => {
-                    const button = document.createElement("button");
-                    button.classList.add("button", "sub-button");
-                    const lectureTitle = lectureTitlesMap[lectureKey] || lectureKey.replace(/_/g, ' ');
-                    const lectureIcon = lectureIconsMap[lectureKey] || "fas fa-book";
-                    button.innerHTML = `<i class="${lectureIcon}"></i> ${lectureTitle.replace('محاضرة (', '').replace(')', '')}`;
-                    button.onclick = () => loadQuiz(questionCategory, lectureKey);
-                    lectureButtonsContainer.appendChild(button);
-                });
+        // --- Music Controls ---
+        function updateMusicButtonIcon(isPlaying) {
+            if (isPlaying) {
+                musicIconPlay.style.display = 'none';
+                musicIconMute.style.display = 'inline-block';
             } else {
-                 lectureButtonsContainer.innerHTML = `<p style='text-align: center; color: var(--text-light); width: 100%;'>لا توجد محاضرات متاحة لهذا النوع من الأسئلة حاليًا.</p>`;
-            }
-            showPage('ministerial-questions-sub-page');
-        }
-
-
-        function loadQuiz(category, lectureKey) {
-            currentQuizLecture = lectureKey;
-            currentQuestions = quizData[category]?.[lectureKey] || [];
-
-            const displayLectureTitle = lectureTitlesMap[lectureKey] || lectureKey.replace(/_/g, ' ');
-            quizTitleElement.innerHTML = `<i class="fas fa-notes-medical"></i> ${displayLectureTitle}`;
-
-            quizContainer.innerHTML = '';
-            if (loadingTextElement) loadingTextElement.style.display = 'block';
-            showPage('quiz-page');
-
-            setTimeout(() => {
-                if (loadingTextElement) loadingTextElement.style.display = 'none';
-                if (currentQuestions.length > 0) {
-                    currentQuestions.forEach((q, index) => {
-                        const questionDiv = createQuestionElement(q, index);
-                        quizContainer.appendChild(questionDiv);
-                    });
-                } else {
-                    quizContainer.innerHTML = "<p style='text-align: center; color: var(--text-light);'>عذرًا، لا توجد أسئلة متاحة لهذه المحاضرة حاليًا.</p>";
-                }
-                 const quizBackButton = document.querySelector('#quiz-page .back-button');
-                 if (quizBackButton) {
-                    quizBackButton.onclick = () => showPage(lastSubButtonsPageId || 'ministerial-questions-sub-page');
-                 }
-
-            }, 300);
-        }
-
-        function createQuestionElement(q, index) {
-             const questionDiv = document.createElement("div");
-            questionDiv.classList.add("question");
-            questionDiv.style.setProperty('--question-index', index);
-            questionDiv.innerHTML = `<h2 class="original-question">(${index + 1}) ${q.question}</h2>
-                                     <h2 class="translated-question" style="display: none;"></h2>`;
-
-            const optionsList = document.createElement("ul");
-            optionsList.classList.add("options");
-
-            q.options.forEach((option, i) => {
-                const button = document.createElement("button");
-                button.innerHTML = `<span class="original-option">${option}</span>
-                                    <span class="translated-option" style="display: none;"></span>`;
-                button.addEventListener("click", () => handleAnswer(button, i, q.correct, optionsList));
-                const listItem = document.createElement("li");
-                listItem.appendChild(button);
-                optionsList.appendChild(listItem);
-            });
-
-            questionDiv.appendChild(optionsList);
-
-            const translateContainer = document.createElement("div");
-            translateContainer.classList.add("translate-container");
-
-            const translateButton = document.createElement("button");
-            translateButton.classList.add("translate-button");
-            translateButton.textContent = "ترجمة";
-            translateButton.onclick = () => translateQuestion(questionDiv, q.question, q.options);
-            translateContainer.appendChild(translateButton);
-
-            const untranslateButton = document.createElement("button");
-            untranslateButton.classList.add("untranslate-button");
-            untranslateButton.textContent = "الغاء الترجمة";
-            untranslateButton.onclick = () => untranslateQuestion(questionDiv);
-             untranslateButton.style.display = 'none';
-            translateContainer.appendChild(untranslateButton);
-
-            questionDiv.appendChild(translateContainer);
-
-            return questionDiv;
-        }
-
-
-        function handleAnswer(selectedButton, selectedIndex, correctAnswerIndex, optionsList) {
-            const buttons = optionsList.querySelectorAll("button");
-            buttons.forEach((button, index) => {
-                button.disabled = true;
-                if (index === correctAnswerIndex) {
-                    button.classList.add("correct");
-                } else if (button === selectedButton) {
-                    button.classList.add("wrong");
-                }
-            });
-
-            const nextQuestion = optionsList.closest('.question').nextElementSibling;
-             if(nextQuestion && nextQuestion.classList.contains('question')){
-                setTimeout(() => {
-                    nextQuestion.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 600);
-             }
-        }
-
-        async function translateText(text, targetLang = 'ar', sourceLang = 'en') {
-            if (!text || text.trim() === '') return '';
-
-            const proxyUrl = 'https://corsproxy.io/?';
-            const googleTranslateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sourceLang}&tl=${targetLang}&dt=t&q=${encodeURIComponent(text)}`;
-            const requestUrl = proxyUrl + googleTranslateUrl;
-
-            try {
-                const response = await fetch(requestUrl);
-                if (!response.ok) {
-                    let errorBody = `Status: ${response.status}`;
-                    try { errorBody = await response.text(); } catch (_) {}
-                    console.error(`Translation API Error for text "${text}": ${errorBody}`);
-                    return `[خطأ في الترجمة: ${response.status}]`;
-                }
-                const data = await response.json();
-
-                if (data && Array.isArray(data[0]) && data[0].length > 0 && Array.isArray(data[0][0]) && data[0][0].length > 0 && typeof data[0][0][0] === 'string') {
-                    return data[0][0][0];
-                } else if (data && data.translatedText) {
-                    return data.translatedText;
-                } else {
-                     console.warn("Unexpected translation response structure:", JSON.stringify(data));
-                     return `[خطأ في تنسيق الترجمة]`;
-                }
-            } catch (error) {
-                console.error("Translation failed for text \""+ text + "\":", error);
-                return `[خطأ في الاتصال بالترجمة]`;
+                musicIconPlay.style.display = 'inline-block';
+                musicIconMute.style.display = 'none';
             }
         }
 
-        async function translateQuestion(questionDiv, originalQuestion, originalOptions) {
-            const translateButton = questionDiv.querySelector(".translate-button");
-            const untranslateButton = questionDiv.querySelector(".untranslate-button");
-            const translatedQuestionEl = questionDiv.querySelector(".translated-question");
-            const originalQuestionEl = questionDiv.querySelector(".original-question");
-            const optionButtons = questionDiv.querySelectorAll(".options button");
-            const questionNumberMatch = originalQuestionEl.textContent.match(/^\((\d+)\)/);
-            const questionNumberPrefix = questionNumberMatch ? questionNumberMatch[0] + ' ' : '';
-
-            translateButton.disabled = true;
-            translateButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> جاري...`;
-
-            originalQuestionEl.style.display = "none";
-            translatedQuestionEl.style.display = "block";
-
-            if (!translatedQuestionEl.dataset.translated || translatedQuestionEl.textContent.startsWith('[خطأ')) {
-                translatedQuestionEl.textContent = `${questionNumberPrefix}جاري ترجمة السؤال...`;
-                const questionTextToTranslate = originalQuestion.replace(/^\(\d+\)\s*/, '');
-                const translatedQText = await translateText(questionTextToTranslate);
-                translatedQuestionEl.textContent = `${questionNumberPrefix}${translatedQText}`;
-                translatedQuestionEl.dataset.translated = !translatedQText.startsWith('[خطأ') ? "true" : "false";
-            }
-
-            const translationPromises = Array.from(optionButtons).map(async (button, index) => {
-                const originalOptionEl = button.querySelector(".original-option");
-                const translatedOptionEl = button.querySelector(".translated-option");
-
-                originalOptionEl.style.display = "none";
-                translatedOptionEl.style.display = "inline";
-
-                 if (!translatedOptionEl.dataset.translated || translatedOptionEl.textContent.startsWith('[خطأ')) {
-                    translatedOptionEl.textContent = '...ترجمة';
-                    const optionTextToTranslate = originalOptions[index].replace(/^[a-zA-Z][).]?\s*/, '').trim();
-                    const translatedOptText = await translateText(optionTextToTranslate);
-                    translatedOptionEl.textContent = translatedOptText;
-                    translatedOptionEl.dataset.translated = !translatedOptText.startsWith('[خطأ') ? "true" : "false";
-                 }
+        function playMusic() {
+            backgroundMusic.play().then(() => {
+                updateMusicButtonIcon(true);
+            }).catch(error => {
+                console.warn("Autoplay was prevented or an error occurred:", error);
+                // If autoplay fails, ensure the icon shows 'play' state
+                updateMusicButtonIcon(false);
+                // Optionally, prompt user to click the play button
+                // This could be a small, non-intrusive message
             });
-
-             try {
-                await Promise.all(translationPromises);
-             } catch (error) {
-                 console.error("Error during option translations:", error);
-             }
-
-            translateButton.disabled = false;
-            translateButton.innerHTML = `ترجمة`;
-            translateButton.style.display = 'none';
-            untranslateButton.style.display = 'inline-flex';
         }
 
-        function untranslateQuestion(questionDiv) {
-            const translateButton = questionDiv.querySelector(".translate-button");
-            const untranslateButton = questionDiv.querySelector(".untranslate-button");
-            const translatedQuestionEl = questionDiv.querySelector(".translated-question");
-            const originalQuestionEl = questionDiv.querySelector(".original-question");
-            const optionButtons = questionDiv.querySelectorAll(".options button");
-
-            translatedQuestionEl.style.display = 'none';
-            originalQuestionEl.style.display = 'block';
-
-            optionButtons.forEach((button) => {
-                button.querySelector(".original-option").style.display = 'inline';
-                button.querySelector(".translated-option").style.display = 'none';
-            });
-
-            untranslateButton.style.display = 'none';
-            translateButton.style.display = 'inline-flex';
+        function pauseMusic() {
+            backgroundMusic.pause();
+            updateMusicButtonIcon(false);
         }
 
-        function setDarkMode(isDark) {
-             if (isDark) {
-                bodyElement.classList.add('dark-mode');
-                toggleIcon.classList.remove('fa-sun');
-                toggleIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'dark');
+        function toggleMusic() {
+            if (backgroundMusic.paused) {
+                playMusic();
             } else {
-                bodyElement.classList.remove('dark-mode');
-                toggleIcon.classList.remove('fa-moon');
-                toggleIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'light');
+                pauseMusic();
             }
         }
 
-        darkModeToggle.addEventListener('click', () => {
-            setDarkMode(!bodyElement.classList.contains('dark-mode'));
+        musicToggleButton.addEventListener('click', toggleMusic);
+
+        // Attempt to autoplay when the page loads
+        // This might be blocked by the browser, but it's worth trying.
+        // The `catch` block in playMusic() will handle failures.
+        window.addEventListener('load', () => {
+            // Try to play music. Icon will be updated based on success/failure.
+            playMusic();
+
+            // Check initial state for icon (in case autoplay was blocked but audio element thinks it's playing)
+            // A more robust check:
+            if (backgroundMusic.paused || backgroundMusic.currentTime === 0 && !backgroundMusic.ended && backgroundMusic.readyState > HTMLMediaElement.HAVE_NOTHING) {
+                 // If it's truly not playing or ready to play but paused.
+                 if(!backgroundMusic.autoplay && backgroundMusic.paused) { // Double check if autoplay attribute failed and it's paused
+                    updateMusicButtonIcon(false);
+                 } else if (backgroundMusic.autoplay && backgroundMusic.paused) {
+                    // If autoplay was set but it's still paused, it was likely blocked
+                    updateMusicButtonIcon(false);
+                 } else if (!backgroundMusic.paused) {
+                    updateMusicButtonIcon(true);
+                 }
+            } else if (!backgroundMusic.paused) {
+                 updateMusicButtonIcon(true);
+            }
+
         });
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-             const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                 setDarkMode(true);
-             } else {
-                 setDarkMode(false);
-             }
-            showPage('main-buttons-page');
+        // --- Question Loading and Handling (same as before) ---
+        function loadQuestions() {
+            questionsContainer.innerHTML = '';
+            let questionCounter = 0;
+            questions.forEach((q, index) => {
+                questionCounter++;
+                const questionCard = document.createElement('div');
+                questionCard.classList.add('question-card');
+                questionCard.dataset.correctAnswer = q.answer;
+
+                const questionContent = document.createElement('div');
+                questionContent.classList.add('question-content');
+
+                const questionNumberBadge = document.createElement('span');
+                questionNumberBadge.classList.add('question-number-badge');
+                questionNumberBadge.textContent = questionCounter;
+                questionContent.appendChild(questionNumberBadge);
+
+                const questionStatement = document.createElement('p');
+                questionStatement.classList.add('question-statement');
+                questionStatement.textContent = q.text;
+                questionContent.appendChild(questionStatement);
+
+                questionCard.appendChild(questionContent);
+
+                const optionsList = document.createElement('div');
+                optionsList.classList.add('options-list');
+
+                const optionTrue = createOptionItem('T', 'صح', index);
+                optionsList.appendChild(optionTrue);
+
+                const optionFalse = createOptionItem('F', 'خطأ', index);
+                optionsList.appendChild(optionFalse);
+
+                questionCard.appendChild(optionsList);
+                questionsContainer.appendChild(questionCard);
+            });
+        }
+
+        function createOptionItem(value, labelText, questionIndex) {
+            const optionItem = document.createElement('div');
+            optionItem.classList.add('option-item');
+            optionItem.dataset.value = value;
+
+            const radioInput = document.createElement('input');
+            radioInput.type = 'radio';
+            radioInput.name = `question${questionIndex}`;
+            radioInput.id = `q${questionIndex}-${value}`;
+            radioInput.value = value;
+
+            const label = document.createElement('label');
+            label.htmlFor = `q${questionIndex}-${value}`;
+            label.classList.add('option-label');
+            label.textContent = labelText;
+
+            optionItem.appendChild(radioInput);
+            optionItem.appendChild(label);
+
+            radioInput.addEventListener('change', handleAnswer);
+            optionItem.addEventListener('click', () => {
+                 if (!radioInput.disabled) {
+                     radioInput.checked = true;
+                     radioInput.dispatchEvent(new Event('change'));
+                 }
+            });
+            return optionItem;
+        }
+
+        function handleAnswer(event) {
+            const selectedRadio = event.target;
+            const questionCard = selectedRadio.closest('.question-card');
+            const correctAnswer = questionCard.dataset.correctAnswer;
+
+            questionCard.classList.add('answered');
+            questionCard.querySelectorAll('input[type="radio"]').forEach(radio => radio.disabled = true);
+
+            questionCard.querySelectorAll('.option-item').forEach(optionItem => {
+                const optionValue = optionItem.dataset.value;
+                const optionRadio = optionItem.querySelector('input[type="radio"]');
+                if (optionValue === correctAnswer) {
+                    optionItem.classList.add('is-correct');
+                }
+                if (optionRadio.checked && optionValue !== correctAnswer) {
+                     optionItem.classList.add('is-user-incorrect');
+                }
+            });
+        }
+
+
+        startButton.addEventListener('click', () => {
+            introPage.style.display = 'none';
+            testPage.style.display = 'block';
+            loadQuestions();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // If music hasn't started (e.g., due to autoplay restrictions),
+            // try playing it now that there's a definite user interaction.
+            if (backgroundMusic.paused) {
+                playMusic();
+            }
         });
 
+        // --- Theme Toggle Logic (same as before) ---
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        }
+
+        const savedTheme = localStorage.getItem(themeStorageKey);
+        if (savedTheme) {
+            applyTheme(savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+             applyTheme('dark');
+        } else {
+            applyTheme('light');
+        }
+
+
+        themeToggleButton.addEventListener('click', () => {
+            const currentThemeIsDark = body.classList.contains('dark-mode');
+            if (currentThemeIsDark) {
+                applyTheme('light');
+                localStorage.setItem(themeStorageKey, 'light');
+            } else {
+                applyTheme('dark');
+                localStorage.setItem(themeStorageKey, 'dark');
+            }
+        });
     </script>
 
 </body>
