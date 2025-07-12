@@ -3,751 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اسئلة الاحصاء</title>
-    <!-- Google Fonts: Inter (خط عصري متعدد الاستخدامات), Poppins (للعناوين) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-236N37LHFR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-236N37LHFR');
-</script>
+    <title>زوجني - Zawajni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            /* Light Mode (Default) */
-            --modern-bg-light: #F7F8FA; /* رمادي فاتح جداً ونظيف */
-            --modern-surface-light: #FFFFFF;
-            --modern-text-primary-light: #1A202C; /* أسود ناعم */
-            --modern-text-secondary-light: #4A5568; /* رمادي أغمق قليلاً */
-            --modern-accent-primary-light: #4F46E5; /* بنفسجي حيوي (Indigo) */
-            --modern-accent-secondary-light: #EC4899; /* وردي حيوي (Pink) */
-            --modern-border-light: #E2E8F0; /* رمادي فاتح للحدود */
-            --modern-success-light: #10B981; /* أخضر زمردي */
-            --modern-danger-light: #EF4444; /* أحمر */
-
-            /* Dark Mode */
-            --modern-bg-dark: #111827; /* رمادي داكن جداً (Almost Black) */
-            --modern-surface-dark: #1F2937; /* رمادي داكن للأسطح */
-            --modern-text-primary-dark: #F3F4F6; /* رمادي فاتح جداً للنص */
-            --modern-text-secondary-dark: #9CA3AF; /* رمادي متوسط للنص الثانوي */
-            --modern-accent-primary-dark: #6366F1; /* بنفسجي أفتح قليلاً */
-            --modern-accent-secondary-dark: #F472B6; /* وردي أفتح */
-            --modern-border-dark: #374151; /* رمادي داكن للحدود */
-            --modern-success-dark: #34D399; /* أخضر أفتح */
-            --modern-danger-dark: #F87171; /* أحمر أفتح */
-
-            --font-heading: 'Poppins', 'Vazirmatn', sans-serif;
-            --font-body: 'Inter', 'Vazirmatn', sans-serif;
-
-            --border-radius-modern: 8px;
-            --shadow-modern: 0px 4px 6px -1px rgba(0, 0, 0, 0.07), 0px 2px 4px -1px rgba(0, 0, 0, 0.04);
-            --shadow-modern-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.07), 0px 4px 6px -2px rgba(0, 0, 0, 0.03);
-            --transition-modern: 0.3s ease-in-out;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: var(--font-body);
-            line-height: 1.7;
-            background-color: var(--modern-bg-light);
-            color: var(--modern-text-primary-light);
-            direction: rtl;
-            min-height: 100vh;
-            padding: 32px 24px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            transition: background-color var(--transition-modern), color var(--transition-modern);
+            font-family: 'Cairo', sans-serif;
         }
-
-        body.dark-mode {
-            background-color: var(--modern-bg-dark);
-            color: var(--modern-text-primary-dark);
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        .main-container {
-            width: 100%;
-            max-width: 800px;
-            background-color: var(--modern-surface-light);
-            border-radius: var(--border-radius-modern);
-            box-shadow: var(--shadow-modern-lg);
-            padding: 32px 40px;
-            transition: background-color var(--transition-modern), box-shadow var(--transition-modern);
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
-        body.dark-mode .main-container {
-            background-color: var(--modern-surface-dark);
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
         }
-
-
-        #intro-page, #test-page { width: 100%; }
-        #test-page { display: none; }
-
-        .page-title {
-            font-family: var(--font-heading);
-            font-size: 2.25rem; /* 36px */
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 12px;
-            color: var(--modern-text-primary-light);
-            /* تدرج لوني للعناوين */
-            background: linear-gradient(90deg, var(--modern-accent-primary-light), var(--modern-accent-secondary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
-        body.dark-mode .page-title {
-             background: linear-gradient(90deg, var(--modern-accent-primary-dark), var(--modern-accent-secondary-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+        .tab-active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background-color: #eff6ff;
         }
-
-
-        .page-subtitle {
-            text-align: center;
-            font-size: 1rem; /* 16px */
-            color: var(--modern-text-secondary-light);
-            margin-bottom: 32px;
+        .form-input {
+            transition: all 0.3s ease-in-out;
         }
-        body.dark-mode .page-subtitle {
-            color: var(--modern-text-secondary-dark);
+        .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
         }
-
-        .qr-display {
-            text-align: center;
-            margin: 32px auto 40px;
-        }
-        .qr-display img {
-            max-width: 120px;
-            border-radius: var(--border-radius-modern);
-            border: 2px solid var(--modern-border-light);
-            padding: 6px;
-            background-color: var(--modern-surface-light);
-            box-shadow: var(--shadow-modern);
-        }
-        body.dark-mode .qr-display img {
-            border-color: var(--modern-border-dark);
-            background-color: var(--modern-surface-dark);
-        }
-
-        .action-button {
-            display: block;
-            width: fit-content;
-            margin: 40px auto;
-            padding: 14px 32px;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 600;
-            color: #FFFFFF;
-            background: linear-gradient(90deg, var(--modern-accent-primary-light), var(--modern-accent-secondary-light));
-            border: none;
-            border-radius: 50px; /* زر كبسولة */
-            cursor: pointer;
-            box-shadow: var(--shadow-modern);
-            transition: transform var(--transition-modern), box-shadow var(--transition-modern), filter var(--transition-modern);
-            text-align: center;
-        }
-        .action-button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: var(--shadow-modern-lg);
-            filter: brightness(1.1);
-        }
-        body.dark-mode .action-button {
-            background: linear-gradient(90deg, var(--modern-accent-primary-dark), var(--modern-accent-secondary-dark));
-        }
-
-
-        #questions-area {
-            width: 100%;
-            margin-top: 24px;
-            counter-reset: question-counter;
-        }
-
-        .question-card {
-            counter-increment: question-counter;
-            background-color: var(--modern-surface-light);
-            border: 1px solid var(--modern-border-light);
-            border-radius: var(--border-radius-modern);
-            padding: 20px 24px;
-            margin-bottom: 20px;
-            position: relative;
-            transition: border-color var(--transition-modern), background-color var(--transition-modern);
-            /* لا ظل للبطاقات الصغيرة، الاعتماد على الحدود */
-        }
-        body.dark-mode .question-card {
-            background-color: var(--modern-surface-dark);
-            border-color: var(--modern-border-dark);
-        }
-
-        .question-content {
-            display: flex;
-            align-items: flex-start; /* ليتناسب مع الترقيم والنص */
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        .question-number-badge {
-            font-family: var(--font-heading);
-            font-size: 0.875rem; /* 14px */
-            font-weight: 600;
-            color: var(--modern-accent-primary-light);
-            background-color: var(--modern-bg-light); /* نفس لون خلفية الصفحة */
-            border: 1px solid var(--modern-accent-primary-light);
+        /* Simple loading spinner */
+        .loader {
+            border: 4px solid #f3f3f3;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            direction: ltr;
+            border-top: 4px solid #3b82f6;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
         }
-        body.dark-mode .question-number-badge {
-            color: var(--modern-accent-primary-dark);
-            background-color: var(--modern-bg-dark);
-            border-color: var(--modern-accent-primary-dark);
-        }
-
-        .question-statement {
-            font-weight: 500;
-            font-size: 1.05rem; /* 17px */
-            color: var(--modern-text-primary-light);
-            line-height: 1.6;
-            flex-grow: 1;
-            direction: ltr;
-            text-align: left;
-        }
-        body.dark-mode .question-statement { color: var(--modern-text-primary-dark); }
-
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .option-item {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 12px 16px;
-            border: 1px solid var(--modern-border-light);
-            border-radius: var(--border-radius-modern);
-            transition: background-color var(--transition-modern), border-color var(--transition-modern);
-            position: relative;
-        }
-        .option-item:hover {
-            border-color: var(--modern-accent-primary-light);
-            background-color: rgba(79, 70, 229, 0.05);
-        }
-        body.dark-mode .option-item {
-             border-color: var(--modern-border-dark);
-        }
-        body.dark-mode .option-item:hover {
-            border-color: var(--modern-accent-primary-dark);
-            background-color: rgba(99, 102, 241, 0.1);
-        }
-
-        .option-item input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .option-label {
-            cursor: pointer;
-            flex-grow: 1;
-            font-size: 1rem; /* 16px */
-            padding-right: 30px;
-            position: relative;
-        }
-
-        /* Custom Radio Button Style */
-        .option-label::before { /* Square outline */
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--modern-border-light);
-            border-radius: 4px; /* زوايا مربعة ناعمة */
-            transition: all var(--transition-modern);
-        }
-        .option-label::after { /* Checkmark or fill */
-            content: '\f00c'; /* Font Awesome check */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            right: 3px;
-            top: 50%;
-            transform: translateY(-50%) scale(0);
-            font-size: 12px;
-            color: var(--modern-surface-light);
-            transition: transform var(--transition-modern);
-        }
-        .option-item input[type="radio"]:checked + .option-label::before {
-            border-color: var(--modern-accent-primary-light);
-            background-color: var(--modern-accent-primary-light);
-        }
-        .option-item input[type="radio"]:checked + .option-label::after {
-            transform: translateY(-50%) scale(1);
-        }
-        body.dark-mode .option-label::before {
-            border-color: var(--modern-border-dark);
-        }
-        body.dark-mode .option-item input[type="radio"]:checked + .option-label::before {
-            border-color: var(--modern-accent-primary-dark);
-            background-color: var(--modern-accent-primary-dark);
-        }
-        body.dark-mode .option-item input[type="radio"]:checked + .option-label::after {
-            color: var(--modern-surface-dark);
-        }
-
-        /* Answered States */
-        .question-card.answered .option-item {
-             cursor: default;
-             pointer-events: none;
-             opacity: 0.7;
-        }
-         .question-card.answered .option-item.is-correct,
-         .question-card.answered .option-item.is-user-incorrect {
-             opacity: 1;
-         }
-
-        .question-card.answered .option-item.is-correct {
-            border-color: var(--modern-success-light);
-            background-color: rgba(16, 185, 129, 0.1);
-        }
-        .question-card.answered .option-item.is-correct .option-label::before {
-            border-color: var(--modern-success-light);
-            background-color: var(--modern-success-light);
-        }
-
-        .question-card.answered .option-item.is-user-incorrect {
-            border-color: var(--modern-danger-light);
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-        .question-card.answered .option-item.is-user-incorrect .option-label::before {
-            border-color: var(--modern-danger-light);
-            background-color: var(--modern-danger-light);
-        }
-        .question-card.answered .option-item.is-user-incorrect .option-label::after {
-            content: '\f00d'; /* Font Awesome times for incorrect */
-        }
-
-
-        /* Dark Mode Answered States */
-        body.dark-mode .question-card.answered .option-item.is-correct {
-            border-color: var(--modern-success-dark);
-            background-color: rgba(52, 211, 153, 0.1);
-        }
-        body.dark-mode .question-card.answered .option-item.is-correct .option-label::before {
-            border-color: var(--modern-success-dark);
-            background-color: var(--modern-success-dark);
-        }
-        body.dark-mode .question-card.answered .option-item.is-user-incorrect {
-            border-color: var(--modern-danger-dark);
-            background-color: rgba(248, 113, 113, 0.1);
-        }
-        body.dark-mode .question-card.answered .option-item.is-user-incorrect .option-label::before {
-            border-color: var(--modern-danger-dark);
-            background-color: var(--modern-danger-dark);
-        }
-
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: fixed;
-            bottom: 24px;
-            left: 24px; /* يمين مرئي في RTL */
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--modern-surface-light);
-            color: var(--modern-text-secondary-light);
-            border: 1px solid var(--modern-border-light);
-            box-shadow: var(--shadow-modern);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.25rem; /* 20px */
-            cursor: pointer;
-            z-index: 100;
-            transition: all var(--transition-modern);
-        }
-        .theme-toggle:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: var(--shadow-modern-lg);
-            color: var(--modern-accent-primary-light);
-        }
-        body.dark-mode .theme-toggle {
-            background-color: var(--modern-surface-dark);
-            color: var(--modern-text-secondary-dark);
-            border-color: var(--modern-border-dark);
-        }
-        body.dark-mode .theme-toggle:hover {
-            color: var(--modern-accent-primary-dark);
-        }
-        .theme-toggle .fa-sun { display: none; }
-        body.dark-mode .theme-toggle .fa-moon { display: none; }
-        body.dark-mode .theme-toggle .fa-sun { display: inline-block; }
-
-        /* Music Control Button */
-        #music-toggle-btn {
-            position: fixed;
-            bottom: 24px;
-            /* Adjust left based on theme toggle button position */
-            left: calc(24px + 48px + 10px); /* theme-toggle-left + theme-toggle-width + margin */
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background-color: var(--modern-surface-light);
-            color: var(--modern-text-secondary-light);
-            border: 1px solid var(--modern-border-light);
-            box-shadow: var(--shadow-modern);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.25rem;
-            cursor: pointer;
-            z-index: 100;
-            transition: all var(--transition-modern);
-        }
-        #music-toggle-btn:hover {
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: var(--shadow-modern-lg);
-            color: var(--modern-accent-secondary-light); /* Different accent for music */
-        }
-        body.dark-mode #music-toggle-btn {
-            background-color: var(--modern-surface-dark);
-            color: var(--modern-text-secondary-dark);
-            border-color: var(--modern-border-dark);
-        }
-         body.dark-mode #music-toggle-btn:hover {
-            color: var(--modern-accent-secondary-dark);
-        }
-        #music-toggle-btn .fa-volume-xmark { display: none; } /* Initially show play/volume-high */
-
-
-        /* Responsive Adjustments */
-        @media (max-width: 600px) {
-            body { padding: 24px 16px; }
-            .main-container { padding: 24px; }
-            .page-title { font-size: 1.875rem; } /* 30px */
-            .page-subtitle { font-size: 0.875rem; margin-bottom: 24px; }
-            .action-button { padding: 12px 28px; font-size: 0.9375rem; }
-            .question-card { padding: 16px; }
-            .question-statement { font-size: 1rem; }
-            .option-label { font-size: 0.9375rem; }
-            .theme-toggle { bottom: 16px; left: 16px; width: 44px; height: 44px; font-size: 1.125rem; }
-            #music-toggle-btn {
-                bottom: 16px;
-                left: calc(16px + 44px + 8px); /* Adjusted for smaller screen */
-                width: 44px;
-                height: 44px;
-                font-size: 1.125rem;
-            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body> <!-- الوضع الفاتح هو الافتراضي -->
+<body class="bg-gray-50 text-gray-800">
 
-    <audio id="background-music" loop autoplay>
-        <source src="https://files.catbox.moe/" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <div id="app-container" class="container mx-auto p-4 max-w-6xl">
 
-    <div class="main-container">
-        <div id="intro-page">
-            <h1 class="page-title">مرحباً بك في الاختبار</h1>
-            <p class="page-subtitle"></p>
+        <!-- Header -->
+        <header class="text-center my-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-600">زوجني</h1>
+            <p class="text-gray-500 mt-2 text-lg">منصة للبحث عن شريك الحياة المناسب</p>
+        </header>
 
-            <div class="qr-display">
-                 <img src="https://imgg.io/images/2025/04/24/05545881cdff1a4457de56ce04294f90.jpg" alt="رمز الاستجابة السريعة">
+        <!-- Tabs Navigation -->
+        <div class="mb-6">
+            <div class="flex justify-center border-b border-gray-200">
+                <button id="view-tab" class="py-3 px-6 font-semibold text-lg border-b-2 tab-active">عرض المتاحين</button>
+                <button id="add-tab" class="py-3 px-6 font-semibold text-lg border-b-2 border-transparent text-gray-500 hover:text-blue-500">أضف ملفك</button>
             </div>
-
-            <button class="action-button" id="start-test-button">
-                ابدأ بلاسئلة
-            </button>
         </div>
 
-        <div id="test-page">
-             <h1 class="page-title">أسئلة الاختبار</h1>
-             <p class="page-subtitle">اختار الجواب الصح</p>
-            <div id="questions-area">
-                <!-- Questions will be loaded here -->
+        <!-- Main Content -->
+        <main>
+            <!-- View Profiles Section -->
+            <div id="view-section">
+                <div id="loader" class="flex justify-center items-center py-10">
+                    <div class="loader"></div>
+                </div>
+                <div id="profiles-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Profile cards will be inserted here by JavaScript -->
+                </div>
+                 <div id="no-profiles" class="text-center py-10 text-gray-500 text-xl hidden">
+                    <p>لا توجد ملفات متاحة حالياً. كن أول من يضيف ملفه!</p>
+                </div>
             </div>
+
+            <!-- Add Profile Section -->
+            <div id="add-section" class="hidden">
+                <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                    <h2 class="text-2xl font-bold text-center mb-6 text-gray-700">إنشاء ملف شخصي جديد</h2>
+                    <form id="add-profile-form" novalidate>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div class="md:col-span-2">
+                                <label for="name" class="block mb-2 font-semibold text-gray-600">الاسم (أو كنية)</label>
+                                <input type="text" id="name" name="name" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required>
+                            </div>
+                            <!-- Age -->
+                            <div>
+                                <label for="age" class="block mb-2 font-semibold text-gray-600">العمر</label>
+                                <input type="number" id="age" name="age" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required>
+                            </div>
+                            <!-- Height -->
+                            <div>
+                                <label for="height" class="block mb-2 font-semibold text-gray-600">الطول (سم)</label>
+                                <input type="number" id="height" name="height" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required>
+                            </div>
+                            <!-- Gender -->
+                            <div class="md:col-span-2">
+                                <label for="gender" class="block mb-2 font-semibold text-gray-600">الجنس</label>
+                                <select id="gender" name="gender" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required>
+                                    <option value="male">ذكر</option>
+                                    <option value="female">أنثى</option>
+                                </select>
+                            </div>
+                            <!-- Personal Specs -->
+                            <div class="md:col-span-2">
+                                <label for="personal-specs" class="block mb-2 font-semibold text-gray-600">مواصفاتي الشخصية</label>
+                                <textarea id="personal-specs" name="personal-specs" rows="3" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required></textarea>
+                            </div>
+                            <!-- Partner Specs -->
+                            <div class="md:col-span-2">
+                                <label for="partner-specs" class="block mb-2 font-semibold text-gray-600">المواصفات المطلوبة في الشريك</label>
+                                <textarea id="partner-specs" name="partner-specs" rows="3" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input" required></textarea>
+                            </div>
+                            <!-- Contact Info Header -->
+                            <div class="md:col-span-2 mt-4 pt-4 border-t">
+                                <h3 class="font-bold text-lg text-gray-700">معلومات التواصل</h3>
+                                <p class="text-sm text-gray-500">يجب إدخال معرف تليجرام أو رقم الهاتف (أحدهما على الأقل).</p>
+                            </div>
+                            <!-- Telegram -->
+                            <div>
+                                <label for="telegram" class="block mb-2 font-semibold text-gray-600">معرف تليجرام (اختياري)</label>
+                                <input type="text" id="telegram" name="telegram" placeholder="@username" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input">
+                            </div>
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block mb-2 font-semibold text-gray-600">رقم الهاتف (اختياري)</label>
+                                <input type="tel" id="phone" name="phone" class="w-full p-3 bg-gray-100 rounded-lg border border-gray-200 form-input">
+                            </div>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="mt-8 text-center">
+                            <button type="submit" id="submit-button" class="w-full md:w-auto bg-blue-600 text-white font-bold py-3 px-12 rounded-lg hover:bg-blue-700 transition-colors duration-300 disabled:bg-gray-400">
+                                إضافة الملف
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for notifications -->
+    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50">
+        <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full text-center">
+            <div id="modal-icon" class="mx-auto mb-4">
+                <!-- Icon will be inserted here -->
+            </div>
+            <h3 id="modal-title" class="text-xl font-bold mb-2"></h3>
+            <p id="modal-message" class="text-gray-600 mb-6"></p>
+            <button id="modal-close-button" class="bg-blue-600 text-white font-bold py-2 px-8 rounded-lg hover:bg-blue-700 transition-colors">
+                حسناً
+            </button>
         </div>
     </div>
 
-     <button class="theme-toggle" id="theme-toggle-btn" aria-label="تبديل الوضع">
-         <i class="fas fa-moon"></i>
-         <i class="fas fa-sun"></i>
-     </button>
 
-     <button id="music-toggle-btn" aria-label="تشغيل/إيقاف الموسيقى">
-        <i class="fas fa-volume-high"></i> <!-- أيقونة الصوت العالي -->
-        <i class="fas fa-volume-xmark"></i> <!-- أيقونة كتم الصوت -->
-    </button>
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-    <script>
-        const questions = [
-            { text: "The phone is one of field source of data collection?", answer: "T" },
-            { text: "The television is one of field source of data collection?", answer: "F" },
-            { text: "The watching method is one of field source of data collection?", answer: "T" },
-            { text: "The experience is one of field source of data collection?", answer: "T" },
-            { text: "The comprehensive inventory method is from the data collection methods?", answer: "T" },
-            { text: "The sampling method is from the data collection methods?", answer: "T" },
-            { text: "The amputation method is from the data collection methods?", answer: "T" },
-            { text: "The double style is from the data collection methods?", answer: "T" },
-            { text: "The coding method is from the data collection methods?", answer: "F" },
-            { text: "The processing method is from the data collection methods?", answer: "F" },
-            { text: "The historical source is divided into primary and secondary sources?", answer: "T" },
-            { text: "The historical source is divided into primary and final sources?", answer: "F" },
-            { text: "Statistics is a science that specializes in mineral collection?", answer: "F" },
-            { text: "Statistics is a science that specializes in data collection?", answer: "T" },
-            { text: "We can divide the statistics science into two parts?", answer: "T" },
-            { text: "We can divide the statistics science into three parts?", answer: "F" },
-            { text: "Inferential statistics mean by decision making?", answer: "T" },
-            { text: "Inferential statistics mean by data collecting?", answer: "F" },
-            { text: "Historical source is one of brainstorm source?", answer: "T" },
-            { text: "Sports source is one of the data sources?", answer: "F" },
-            { text: "Scientific source is one of the data sources?", answer: "F" },
-            { text: "Field source is one of the data sources?", answer: "T" },
-            { text: "The discrete variables are numbers without points?", answer: "T" },
-            { text: "The discrete variables are numbers with points?", answer: "F" },
-            { text: "The continuous variables are numbers with points?", answer: "T" },
-            { text: "The continuous variables are numbers without points?", answer: "F" },
-            { text: "Qualitative variables cannot be counted?", answer: "T" },
-            { text: "Qualitative variables can be counted?", answer: "F" },
-            { text: "Quantitative variables can be counted?", answer: "T" },
-            { text: "Quantitative variables cannot be counted?", answer: "F" },
-            { text: "Defining the research problem is one of the stages of researching in statistics method?", answer: "T" },
-            { text: "Defining the research problem isnot one of the stages of researching in statistics method?", answer: "F" },
-            { text: "Setting assumptions is one of the stages of researching in statistics method?", answer: "T" },
-            { text: "Setting assumptions isnot one of the stages of researching in statistics method?", answer: "F" },
-            { text: "Data tab is one of the stages of researching in statistics method?", answer: "T" },
-            { text: "Data tab isnot one of the stages of researching in statistics method?", answer: "F" },
-            { text: "The questionnaire is one of the statistics tools?", answer: "T" },
-            { text: "The questionnaire isnot one of the statistics tools?", answer: "F" }
-        ];
+        // --- Firebase Configuration ---
+        // This configuration is a placeholder. In a real environment, this would be provided securely.
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'zawajni-app-default';
 
-        const startButton = document.getElementById('start-test-button');
-        const introPage = document.getElementById('intro-page');
-        const testPage = document.getElementById('test-page');
-        const questionsContainer = document.getElementById('questions-area');
-        const themeToggleButton = document.getElementById('theme-toggle-btn');
-        const body = document.body;
-        const themeStorageKey = 'modernThemePreference';
-        const backgroundMusic = document.getElementById('background-music');
-        const musicToggleButton = document.getElementById('music-toggle-btn');
-        const musicIconPlay = musicToggleButton.querySelector('.fa-volume-high');
-        const musicIconMute = musicToggleButton.querySelector('.fa-volume-xmark');
+        // --- Initialize Firebase ---
+        let app, db, auth, userId;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+            setLogLevel('debug'); // Use 'debug' for development, 'silent' for production
+        } catch (e) {
+            console.error("Firebase initialization failed:", e);
+            showNotification('error', 'خطأ فادح', 'فشل الاتصال بالخادم. يرجى تحديث الصفحة.');
+        }
 
-        // --- Music Controls ---
-        function updateMusicButtonIcon(isPlaying) {
-            if (isPlaying) {
-                musicIconPlay.style.display = 'none';
-                musicIconMute.style.display = 'inline-block';
+
+        // --- DOM Elements ---
+        const viewTab = document.getElementById('view-tab');
+        const addTab = document.getElementById('add-tab');
+        const viewSection = document.getElementById('view-section');
+        const addSection = document.getElementById('add-section');
+        const profilesGrid = document.getElementById('profiles-grid');
+        const noProfilesMessage = document.getElementById('no-profiles');
+        const loader = document.getElementById('loader');
+        const form = document.getElementById('add-profile-form');
+        const submitButton = document.getElementById('submit-button');
+
+        // Modal Elements
+        const modal = document.getElementById('notification-modal');
+        const modalIcon = document.getElementById('modal-icon');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const modalCloseButton = document.getElementById('modal-close-button');
+
+        // --- Authentication ---
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in.
+                userId = user.uid;
+                console.log("User is authenticated with UID:", userId);
+                // Now that we are authenticated, listen for profile data
+                listenForProfiles();
             } else {
-                musicIconPlay.style.display = 'inline-block';
-                musicIconMute.style.display = 'none';
-            }
-        }
-
-        function playMusic() {
-            backgroundMusic.play().then(() => {
-                updateMusicButtonIcon(true);
-            }).catch(error => {
-                console.warn("Autoplay was prevented or an error occurred:", error);
-                // If autoplay fails, ensure the icon shows 'play' state
-                updateMusicButtonIcon(false);
-                // Optionally, prompt user to click the play button
-                // This could be a small, non-intrusive message
-            });
-        }
-
-        function pauseMusic() {
-            backgroundMusic.pause();
-            updateMusicButtonIcon(false);
-        }
-
-        function toggleMusic() {
-            if (backgroundMusic.paused) {
-                playMusic();
-            } else {
-                pauseMusic();
-            }
-        }
-
-        musicToggleButton.addEventListener('click', toggleMusic);
-
-        // Attempt to autoplay when the page loads
-        // This might be blocked by the browser, but it's worth trying.
-        // The `catch` block in playMusic() will handle failures.
-        window.addEventListener('load', () => {
-            // Try to play music. Icon will be updated based on success/failure.
-            playMusic();
-
-            // Check initial state for icon (in case autoplay was blocked but audio element thinks it's playing)
-            // A more robust check:
-            if (backgroundMusic.paused || backgroundMusic.currentTime === 0 && !backgroundMusic.ended && backgroundMusic.readyState > HTMLMediaElement.HAVE_NOTHING) {
-                 // If it's truly not playing or ready to play but paused.
-                 if(!backgroundMusic.autoplay && backgroundMusic.paused) { // Double check if autoplay attribute failed and it's paused
-                    updateMusicButtonIcon(false);
-                 } else if (backgroundMusic.autoplay && backgroundMusic.paused) {
-                    // If autoplay was set but it's still paused, it was likely blocked
-                    updateMusicButtonIcon(false);
-                 } else if (!backgroundMusic.paused) {
-                    updateMusicButtonIcon(true);
-                 }
-            } else if (!backgroundMusic.paused) {
-                 updateMusicButtonIcon(true);
-            }
-
-        });
-
-
-        // --- Question Loading and Handling (same as before) ---
-        function loadQuestions() {
-            questionsContainer.innerHTML = '';
-            let questionCounter = 0;
-            questions.forEach((q, index) => {
-                questionCounter++;
-                const questionCard = document.createElement('div');
-                questionCard.classList.add('question-card');
-                questionCard.dataset.correctAnswer = q.answer;
-
-                const questionContent = document.createElement('div');
-                questionContent.classList.add('question-content');
-
-                const questionNumberBadge = document.createElement('span');
-                questionNumberBadge.classList.add('question-number-badge');
-                questionNumberBadge.textContent = questionCounter;
-                questionContent.appendChild(questionNumberBadge);
-
-                const questionStatement = document.createElement('p');
-                questionStatement.classList.add('question-statement');
-                questionStatement.textContent = q.text;
-                questionContent.appendChild(questionStatement);
-
-                questionCard.appendChild(questionContent);
-
-                const optionsList = document.createElement('div');
-                optionsList.classList.add('options-list');
-
-                const optionTrue = createOptionItem('T', 'صح', index);
-                optionsList.appendChild(optionTrue);
-
-                const optionFalse = createOptionItem('F', 'خطأ', index);
-                optionsList.appendChild(optionFalse);
-
-                questionCard.appendChild(optionsList);
-                questionsContainer.appendChild(questionCard);
-            });
-        }
-
-        function createOptionItem(value, labelText, questionIndex) {
-            const optionItem = document.createElement('div');
-            optionItem.classList.add('option-item');
-            optionItem.dataset.value = value;
-
-            const radioInput = document.createElement('input');
-            radioInput.type = 'radio';
-            radioInput.name = `question${questionIndex}`;
-            radioInput.id = `q${questionIndex}-${value}`;
-            radioInput.value = value;
-
-            const label = document.createElement('label');
-            label.htmlFor = `q${questionIndex}-${value}`;
-            label.classList.add('option-label');
-            label.textContent = labelText;
-
-            optionItem.appendChild(radioInput);
-            optionItem.appendChild(label);
-
-            radioInput.addEventListener('change', handleAnswer);
-            optionItem.addEventListener('click', () => {
-                 if (!radioInput.disabled) {
-                     radioInput.checked = true;
-                     radioInput.dispatchEvent(new Event('change'));
-                 }
-            });
-            return optionItem;
-        }
-
-        function handleAnswer(event) {
-            const selectedRadio = event.target;
-            const questionCard = selectedRadio.closest('.question-card');
-            const correctAnswer = questionCard.dataset.correctAnswer;
-
-            questionCard.classList.add('answered');
-            questionCard.querySelectorAll('input[type="radio"]').forEach(radio => radio.disabled = true);
-
-            questionCard.querySelectorAll('.option-item').forEach(optionItem => {
-                const optionValue = optionItem.dataset.value;
-                const optionRadio = optionItem.querySelector('input[type="radio"]');
-                if (optionValue === correctAnswer) {
-                    optionItem.classList.add('is-correct');
+                // User is signed out. Try to sign in anonymously.
+                console.log("No user found, signing in anonymously...");
+                try {
+                    await signInAnonymously(auth);
+                } catch (error) {
+                    console.error("Anonymous sign-in failed:", error);
+                    showNotification('error', 'خطأ في المصادقة', 'لا يمكن الوصول إلى قاعدة البيانات. تحقق من اتصالك بالإنترنت.');
                 }
-                if (optionRadio.checked && optionValue !== correctAnswer) {
-                     optionItem.classList.add('is-user-incorrect');
-                }
+            }
+        });
+
+
+        // --- Tab Switching Logic ---
+        function switchTab(activeTab) {
+            if (activeTab === 'view') {
+                viewTab.classList.add('tab-active');
+                addTab.classList.remove('tab-active');
+                viewSection.classList.remove('hidden');
+                addSection.classList.add('hidden');
+            } else {
+                addTab.classList.add('tab-active');
+                viewTab.classList.remove('tab-active');
+                addSection.classList.remove('hidden');
+                viewSection.classList.add('hidden');
+            }
+        }
+        viewTab.addEventListener('click', () => switchTab('view'));
+        addTab.addEventListener('click', () => switchTab('add'));
+
+
+        // --- Firestore Logic ---
+        const PROFILES_COLLECTION = `/artifacts/${appId}/public/data/profiles`;
+
+        // Function to listen for real-time updates from Firestore
+        function listenForProfiles() {
+             if (!db) return;
+            const q = query(collection(db, PROFILES_COLLECTION));
+            
+            onSnapshot(q, (querySnapshot) => {
+                loader.style.display = 'none';
+                const profiles = [];
+                querySnapshot.forEach((doc) => {
+                    profiles.push({ id: doc.id, ...doc.data() });
+                });
+                renderProfiles(profiles.reverse()); // Show newest first
+            }, (error) => {
+                console.error("Error fetching profiles: ", error);
+                loader.style.display = 'none';
+                showNotification('error', 'خطأ في جلب البيانات', 'حدث خطأ أثناء تحميل الملفات الشخصية.');
             });
         }
 
+        // Function to render profiles to the DOM
+        function renderProfiles(profiles) {
+            profilesGrid.innerHTML = ''; // Clear existing profiles
+            if (profiles.length === 0) {
+                noProfilesMessage.classList.remove('hidden');
+            } else {
+                noProfilesMessage.classList.add('hidden');
+                profiles.forEach(profile => {
+                    const card = createProfileCard(profile);
+                    profilesGrid.appendChild(card);
+                });
+            }
+        }
+        
+        // Function to create a single profile card element
+        function createProfileCard(profile) {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-xl shadow-md overflow-hidden transform hover:-translate-y-1 transition-transform duration-300';
+            
+            const maleAvatar = `https://placehold.co/400x400/3b82f6/ffffff?text=ذكر`;
+            const femaleAvatar = `https://placehold.co/400x400/ec4899/ffffff?text=أنثى`;
+            const avatarUrl = profile.gender === 'male' ? maleAvatar : femaleAvatar;
 
-        startButton.addEventListener('click', () => {
-            introPage.style.display = 'none';
-            testPage.style.display = 'block';
-            loadQuestions();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // If music hasn't started (e.g., due to autoplay restrictions),
-            // try playing it now that there's a definite user interaction.
-            if (backgroundMusic.paused) {
-                playMusic();
+            let contactInfoHTML = '';
+            if (profile.telegram) {
+                contactInfoHTML += `
+                    <a href="https://t.me/${profile.telegram.replace('@', '')}" target="_blank" class="flex items-center space-x-2 space-x-reverse text-sm text-cyan-600 hover:underline">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.57c-.28 1.1-.86 1.32-1.7.82l-4.7-3.45l-2.2 2.12c-.24.24-.45.46-.9.46z"></path></svg>
+                        <span>تليجرام</span>
+                    </a>
+                `;
+            }
+            if (profile.phone) {
+                contactInfoHTML += `
+                    <div class="flex items-center space-x-2 space-x-reverse text-sm text-green-600">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.76a11.024 11.024 0 006.254 6.254l.76-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        <span>${profile.phone}</span>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <img class="w-full h-48 object-cover" src="${avatarUrl}" alt="صورة شخصية">
+                <div class="p-5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-gray-800">${profile.name || 'مجهول'}</h3>
+                        <span class="text-sm font-semibold ${profile.gender === 'male' ? 'text-blue-600 bg-blue-100' : 'text-pink-600 bg-pink-100'} px-2 py-1 rounded-full">${profile.age} سنة</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-3">الطول: ${profile.height} سم</p>
+                    
+                    <div class="my-3 text-sm space-y-2">
+                        <p><strong class="font-semibold text-gray-600">مواصفاتي:</strong> ${profile.personalSpecs}</p>
+                        <p><strong class="font-semibold text-gray-600">أبحث عن:</strong> ${profile.partnerSpecs}</p>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-gray-200 flex items-center justify-around gap-4">
+                        ${contactInfoHTML}
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // --- Form Submission Logic ---
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitButton.disabled = true;
+            submitButton.textContent = 'جاري الإضافة...';
+
+            const name = form.name.value.trim();
+            const age = form.age.value;
+            const height = form.height.value;
+            const gender = form.gender.value;
+            const personalSpecs = form['personal-specs'].value.trim();
+            const partnerSpecs = form['partner-specs'].value.trim();
+            const telegram = form.telegram.value.trim();
+            const phone = form.phone.value.trim();
+
+            // Validation
+            if (!name || !age || !height || !personalSpecs || !partnerSpecs) {
+                showNotification('error', 'حقول فارغة', 'الرجاء ملء جميع الحقول المطلوبة.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'إضافة الملف';
+                return;
+            }
+            if (!telegram && !phone) {
+                showNotification('error', 'معلومات التواصل', 'يجب إدخال معرف تليجرام أو رقم الهاتف.');
+                submitButton.disabled = false;
+                submitButton.textContent = 'إضافة الملف';
+                return;
+            }
+            
+            const newProfile = {
+                name,
+                age: Number(age),
+                height: Number(height),
+                gender,
+                personalSpecs,
+                partnerSpecs,
+                telegram,
+                phone,
+                createdAt: new Date().toISOString()
+            };
+
+            try {
+                if (!db) throw new Error("Database not initialized");
+                await addDoc(collection(db, PROFILES_COLLECTION), newProfile);
+                showNotification('success', 'تم بنجاح!', 'تمت إضافة ملفك الشخصي بنجاح.');
+                form.reset();
+                switchTab('view');
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                showNotification('error', 'خطأ في الإضافة', 'حدث خطأ غير متوقع. حاول مرة أخرى.');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'إضافة الملف';
             }
         });
 
-        // --- Theme Toggle Logic (same as before) ---
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-            } else {
-                body.classList.remove('dark-mode');
-            }
+        // --- Notification Modal Logic ---
+        function showNotification(type, title, message) {
+            const successIcon = `<svg class="w-16 h-16 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            const errorIcon = `<svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+            
+            modalIcon.innerHTML = type === 'success' ? successIcon : errorIcon;
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+            modal.classList.remove('hidden');
         }
 
-        const savedTheme = localStorage.getItem(themeStorageKey);
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-             applyTheme('dark');
-        } else {
-            applyTheme('light');
-        }
-
-
-        themeToggleButton.addEventListener('click', () => {
-            const currentThemeIsDark = body.classList.contains('dark-mode');
-            if (currentThemeIsDark) {
-                applyTheme('light');
-                localStorage.setItem(themeStorageKey, 'light');
-            } else {
-                applyTheme('dark');
-                localStorage.setItem(themeStorageKey, 'dark');
-            }
+        modalCloseButton.addEventListener('click', () => {
+            modal.classList.add('hidden');
         });
+        
     </script>
 
 </body>
 </html>
+
